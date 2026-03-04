@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: {
-    template: "%s | DataBridges",
-    default: "DataBridges — AI Consulting for Irish Businesses",
+  icons: {
+    icon: "/images/favicon.png",
   },
+  title: "DataBridges | Making AI Useful for Irish Business",
   description:
-    "DataBridges helps Irish businesses adopt AI and automation without the hype. Practical AI consulting, Power Platform, SharePoint, and training from Kilcock, Co. Kildare.",
-  keywords: [
-    "AI consulting Ireland",
-    "Power Platform",
-    "SharePoint automation",
-    "AI training",
-    "Kildare",
-    "business automation",
-    "Microsoft 365",
-  ],
-  authors: [{ name: "Oisín — DataBridges" }],
-  robots: { index: true, follow: true },
+    "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams. Based in Kilcock, Co. Kildare.",
   openGraph: {
     type: "website",
     locale: "en_IE",
     siteName: "DataBridges",
-    title: "DataBridges — AI Consulting for Irish Businesses",
+    title: "DataBridges | Making AI Useful for Irish Business",
     description:
-      "Practical AI adoption, Power Platform, SharePoint automation, and training for Irish businesses. Based in Kilcock, Co. Kildare.",
+      "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams. Based in Kilcock, Co. Kildare.",
   },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -49,9 +50,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IE">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-        <main>{children}</main>
+      <body
+        className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
+        style={{ fontFamily: "var(--font-dm-sans)" }}
+      >
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <Nav />
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>

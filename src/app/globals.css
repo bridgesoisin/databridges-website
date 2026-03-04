@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0A1E3D;
-  --navy: #0A1E3D;
-  --cyan: #3DE0E8;
-  --yellow: #FFC857;
+  --color-navy: #0A1E3D;
+  --color-cyan: #3DE0E8;
+  --color-yellow: #FFC857;
+  --color-offwhite: #F8F7F4;
+  --color-white: #FFFFFF;
+  --color-grey-mid: #6B7280;
+  --color-grey-light: #E5E7EB;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-navy: #0A1E3D;
+  --color-cyan: #3DE0E8;
+  --color-yellow: #FFC857;
+  --color-offwhite: #F8F7F4;
+  --color-grey-mid: #6B7280;
+  --color-grey-light: #E5E7EB;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+/* Skip to main content */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--color-cyan);
+  color: var(--color-navy);
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
 }
 
+.skip-link:focus {
+  top: 0;
+}
+
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Base body */
+body {
+  color: var(--color-navy);
+  background: var(--color-white);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Scroll reveal defaults — visible by default, animated only when motion OK */
+.scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero word reveal */
+.hero-word {
+  display: inline-block;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-word {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroWordReveal 500ms ease-out forwards;
+  }
+
+  @keyframes heroWordReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Mobile nav overlay */
+.nav-overlay {
+  transform: translateY(-100%);
+  transition: transform 400ms ease-out;
+}
+
+.nav-overlay.open {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-overlay {
+    transform: none;
+    display: none;
+  }
+  .nav-overlay.open {
+    display: flex;
+  }
+}
+
+/* Nav link stagger for mobile overlay */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-overlay-link {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
+
+  .nav-overlay.open .nav-overlay-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toggle animation */
+.toggle-panel {
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+/* Gradient fade for LinkedIn cards */
+.text-fade {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }

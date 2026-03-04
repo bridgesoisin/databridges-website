@@ -1,81 +1,227 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Oisín Bridges | DataBridges",
   description:
-    "Learn about DataBridges and Oisín — an Irish AI consultant based in Kilcock, Co. Kildare, helping businesses adopt technology that actually works.",
+    "Oisín Bridges is an AI consultant, Machine Learning engineer and UCD lecturer based in Kilcock, Kildare. He founded DataBridges in 2021 after years working in Irish public sector data roles.",
 };
 
-const values = [
+const credentials = [
   {
-    title: "Plain language",
-    description:
-      "If you need a glossary to understand the advice, the advice isn't good enough. Everything DataBridges delivers is explained in terms that make sense to the people who'll actually use it.",
+    title: "MSc Data-Intensive Astrophysics (Distinction)",
+    subtitle: "Cardiff University · 2020–2021",
+    initial: "MSc",
   },
   {
-    title: "Practical results",
-    description:
-      "The measure of success isn't a beautiful deck or a completed project — it's whether the thing works and gets used. That's what we optimise for.",
+    title: "BSc Astrophysics",
+    subtitle: "Maynooth University · 2015–2019",
+    initial: "BSc",
   },
   {
-    title: "No hidden agenda",
-    description:
-      "DataBridges doesn't take referral fees or vendor commissions. Recommendations are based on what's right for you, not what pays the best margin.",
+    title: "AI & ML Lecturer + Course Developer",
+    subtitle: "UCD Professional Academy · Oct 2025–present",
+    initial: "AI",
+  },
+  {
+    title: "GenAI Lecturer",
+    subtitle: "UCD Professional Academy · Feb 2026–present",
+    initial: "Gen",
+  },
+  {
+    title: "Senior Analyst",
+    subtitle: "Health Service Executive · Mar 2025–present",
+    initial: "HSE",
+  },
+  {
+    title: "Data Analyst",
+    subtitle: "Tusla – Child & Family Agency · Oct 2021–Mar 2025",
+    initial: "DA",
+  },
+  {
+    title: "Microsoft Copilot Business Value",
+    subtitle: "Certified",
+    initial: "MS",
+  },
+  {
+    title: "DataBridges",
+    subtitle: "Founded January 2021",
+    initial: "DB",
   },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Page header */}
-      <section className="bg-[#0A1E3D] text-white py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">About DataBridges</h1>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            A one-person consultancy with a straightforward mission: make technology work for
-            Irish businesses, not the other way around.
+      {/* HERO */}
+      <section aria-labelledby="about-hero-heading" className="bg-navy py-32 px-6">
+        <div className="mx-auto max-w-5xl">
+          <h1
+            id="about-hero-heading"
+            className="text-6xl font-extrabold text-white"
+            style={{ fontFamily: "var(--font-syne)" }}
+          >
+            Hi, I&apos;m Ois&iacute;n.
+          </h1>
+          <p
+            className="text-gray-300 text-xl max-w-2xl mt-6"
+            style={{ fontFamily: "var(--font-dm-sans)" }}
+          >
+            I built DataBridges because digital transformation kept making
+            work harder, not easier. That seemed like something worth fixing.
           </p>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-20 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#0A1E3D] mb-6">The Story</h2>
-          <div className="space-y-5 text-gray-600 leading-relaxed">
-            <p>
-              DataBridges was founded by Oisín, based in Kilcock, Co. Kildare. The name comes
-              from a simple idea: technology should act as a bridge between people and better
-              outcomes — not a barrier, not a buzzword generator, not a reason to hire an army
-              of consultants.
-            </p>
-            <p>
-              After working inside Irish organisations across different sectors, a pattern
-              emerged: businesses were spending real money on AI and automation projects that
-              delivered very little. Not because the technology was bad, but because the advice
-              wasn't grounded in how people actually work.
-            </p>
-            <p>
-              DataBridges exists to fix that. Small enough to stay honest. Experienced enough
-              to cut through the noise. Based in Ireland, working with Irish businesses, on
-              problems that actually matter to them.
-            </p>
+      {/* STORY SECTION */}
+      <section
+        aria-labelledby="story-heading"
+        className="py-24 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="flex justify-center">
+            <Image
+              src="/images/headshot-oisin.jpeg"
+              alt="Oisín Bridges, founder of DataBridges"
+              width={320}
+              height={320}
+              className="rounded-2xl max-w-xs w-full object-cover aspect-square"
+            />
+          </div>
+
+          {/* Story */}
+          <div>
+            <h2 id="story-heading" className="sr-only">
+              My Story
+            </h2>
+
+            {/* Act 1 */}
+            <div>
+              <p
+                className="text-xs uppercase tracking-widest text-cyan mb-2"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                The beginning
+              </p>
+              <h3
+                className="text-2xl font-semibold text-navy mb-3"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                I studied the universe.
+              </h3>
+              <p
+                className="text-gray-700 leading-relaxed"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                At Cardiff University, I completed an MSc in Data-Intensive
+                Astrophysics with Distinction. My dissertation used deep
+                learning models to predict where the James Webb Space
+                Telescope would find submillimetre galaxies in the COSMOS
+                field. It was the kind of data science that required patience,
+                rigour, and a healthy tolerance for debugging at 2am. Not a
+                weekend bootcamp. Not a YouTube certificate. The real thing.
+              </p>
+            </div>
+
+            {/* Act 2 */}
+            <div className="mt-10">
+              <p
+                className="text-xs uppercase tracking-widest text-cyan mb-2"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                Then
+              </p>
+              <h3
+                className="text-2xl font-semibold text-navy mb-3"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                Then I studied Irish organisations.
+              </h3>
+              <p
+                className="text-gray-700 leading-relaxed"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                Four years as a data analyst inside Tusla and the HSE taught
+                me how Irish public sector teams actually work &mdash; the
+                legacy systems, the Excel dependencies, the understaffed IT
+                departments, the genuine goodwill from people who want better
+                tools but have never had someone explain them clearly. I saw
+                &ldquo;digital transformation&rdquo; projects arrive with
+                fanfare and leave teams worse off. That stuck with me.
+              </p>
+            </div>
+
+            {/* Act 3 */}
+            <div className="mt-10">
+              <p
+                className="text-xs uppercase tracking-widest text-cyan mb-2"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                Now
+              </p>
+              <h3
+                className="text-2xl font-semibold text-navy mb-3"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                Now I close the gap.
+              </h3>
+              <p
+                className="text-gray-700 leading-relaxed"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
+                I founded DataBridges in January 2021 to work directly with
+                Irish SMEs and public sector teams. I also lecture at UCD
+                Professional Academy &mdash; AI and machine learning,
+                productivity with AI. The approach is the same in both:
+                practical, specific, and honest about what AI can and cannot
+                do. If you can explain something to a classroom, you can
+                explain it to anyone. If that sounds useful, let&apos;s talk.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-gray-50 py-20 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#0A1E3D] mb-10">How We Work</h2>
-          <div className="space-y-8">
-            {values.map((v) => (
-              <div key={v.title} className="flex gap-4">
-                <span className="text-[#3DE0E8] font-bold text-xl mt-0.5">→</span>
+      {/* CREDENTIALS */}
+      <section
+        aria-labelledby="credentials-heading"
+        className="py-20 px-6 bg-white"
+      >
+        <div className="mx-auto max-w-3xl">
+          <h2
+            id="credentials-heading"
+            className="text-3xl font-semibold text-navy text-center"
+            style={{ fontFamily: "var(--font-syne)" }}
+          >
+            Background
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+            {credentials.map((cred) => (
+              <div
+                key={cred.title}
+                className="bg-white border border-gray-100 rounded-xl p-5 flex items-start gap-4"
+              >
+                <div
+                  className="w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan text-xs font-bold flex-shrink-0"
+                  style={{ fontFamily: "var(--font-syne)" }}
+                >
+                  {cred.initial}
+                </div>
                 <div>
-                  <h3 className="font-bold text-[#0A1E3D] mb-1">{v.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{v.description}</p>
+                  <p
+                    className="text-sm font-semibold text-navy"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    {cred.title}
+                  </p>
+                  <p
+                    className="text-xs text-gray-500 mt-1"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    {cred.subtitle}
+                  </p>
                 </div>
               </div>
             ))}
@@ -84,19 +230,34 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#0A1E3D] py-16 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Sound like a good fit?</h2>
-          <p className="text-gray-300 mb-8">
-            If you're looking for practical help — not a PowerPoint about digital transformation
-            — get in touch and we'll take it from there.
-          </p>
-          <Link
-            href="/contact/"
-            className="bg-[#3DE0E8] text-[#0A1E3D] px-8 py-3 rounded-full font-semibold hover:bg-[#FFC857] transition-colors"
+      <section
+        aria-labelledby="about-cta-heading"
+        className="bg-navy py-20 px-6"
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          <h2
+            id="about-cta-heading"
+            className="text-4xl font-bold text-white"
+            style={{ fontFamily: "var(--font-syne)" }}
           >
-            Get in Touch
-          </Link>
+            Want to work together?
+          </h2>
+          <p
+            className="text-gray-300 text-lg max-w-xl mx-auto mt-4"
+            style={{ fontFamily: "var(--font-dm-sans)" }}
+          >
+            A 30-minute call costs nothing and usually tells us both whether
+            it&apos;s worth going further. No sales script. Just a
+            conversation.
+          </p>
+          
+          <a
+            href="mailto:hello@databridges.ie"
+            className="inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
+            style={{ fontFamily: "var(--font-syne)" }}
+          >
+            Book a Free Chat &rarr;
+          </a>
         </div>
       </section>
     </>
