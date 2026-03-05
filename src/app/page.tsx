@@ -193,7 +193,7 @@ export default function Home() {
               className="text-gray-500 mt-2"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
-              (Ois&íacute;n has one anyway. But that&apos;s beside the
+              (Ois&iacute;n has one anyway. But that&apos;s beside the
               point.)
             </p>
             <a
