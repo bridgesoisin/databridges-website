@@ -47,11 +47,11 @@ export default function Nav() {
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
         <Link href="/" aria-label="DataBridges home">
           <Image
-            src="/images/logo-wordmark.png"
+            src="/images/db-monogram.png"
             alt="DataBridges"
-            width={160}
-            height={36}
-            className="h-9 w-auto"
+            width={40}
+            height={40}
+            className="h-10 w-auto"
             priority
           />
         </Link>

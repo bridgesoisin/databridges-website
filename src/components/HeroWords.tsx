@@ -17,7 +17,7 @@ export default function HeroWords() {
           </span>
         ))}
       </span>
-      <span className="block" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 6vw, 5.5rem)", fontWeight: 700, color: "var(--color-cyan)" }}>
+      <span className="block whitespace-nowrap" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2rem, 6vw, 5.5rem)", fontWeight: 700, color: "var(--color-cyan)" }}>
         {line2Words.map((word, i) => (
           <span
             key={word}
