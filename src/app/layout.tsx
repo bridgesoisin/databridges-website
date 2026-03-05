@@ -27,7 +27,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/images/favicon.png",
+    icon: [
+      { url: "/images/favicon.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: "/images/favicon.png",
   },
   title: "DataBridges | Making AI Useful for Irish Business",
   description:
