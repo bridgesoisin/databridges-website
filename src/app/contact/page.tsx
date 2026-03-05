@@ -18,21 +18,14 @@ export default function ContactPage() {
         <div className="mx-auto max-w-5xl">
           <h1
             id="contact-hero-heading"
-            className="text-6xl font-extrabold text-white"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-6xl font-extrabold text-white"
           >
             Let&apos;s Talk
           </h1>
-          <p
-            className="text-cyan text-2xl mt-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-cyan text-2xl mt-2">
             (Briefly. Like humans.)
           </p>
-          <p
-            className="text-gray-300 text-lg max-w-xl mt-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-300 text-lg max-w-xl mt-4">
             Tell us what&apos;s driving you mad. We&apos;ll tell you whether
             AI can fix it. No scripts, no jargon, no pressure.
           </p>
@@ -55,15 +48,11 @@ export default function ContactPage() {
           </div>
 
           {/* RIGHT — DETAILS (40%) */}
-          <div
-            className="md:col-span-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <div className="md:col-span-2">
             <div>
               <p className="text-xs uppercase tracking-widest text-cyan mb-2">
                 Email
               </p>
-              
               <a
                 href="mailto:hello@databridges.ie"
                 className="text-navy font-medium hover:text-cyan transition-colors duration-200"

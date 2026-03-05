@@ -47,10 +47,7 @@ export default function Home() {
         className="bg-navy min-h-[100svh] flex items-center relative"
       >
         <div className="mx-auto max-w-5xl w-full px-6 pt-[120px] md:pt-[100px] pb-16">
-          <p
-            className="text-sm text-cyan uppercase tracking-widest mb-6"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-sm text-cyan uppercase tracking-widest mb-6">
             AI Consulting &middot; Power Platform &middot; Training
           </p>
 
@@ -60,10 +57,7 @@ export default function Home() {
 
           <p
             className="text-xl max-w-2xl mt-6"
-            style={{
-              fontFamily: "var(--font-dm-sans)",
-              color: "var(--color-grey-mid)",
-            }}
+            style={{ color: "var(--color-grey-mid)" }}
           >
             DataBridges helps Irish businesses connect people, data and
             process &mdash; turning &ldquo;there has to be a smarter way to
@@ -71,27 +65,21 @@ export default function Home() {
           </p>
 
           <div className="mt-10 flex gap-4 flex-wrap">
-            
             <a
               href="mailto:hello@databridges.ie"
               className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               Book a Free Chat &rarr;
             </a>
             <a
               href="#services"
               className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               See What We Do
             </a>
           </div>
 
-          <p
-            className="mt-16 text-sm text-white/40"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="mt-16 text-sm text-white/40">
             Based in Kilcock, Co. Kildare &middot; Working with teams across
             Ireland
           </p>
@@ -106,16 +94,12 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p
-            className="text-sm uppercase tracking-widest text-cyan mb-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
             The Problem
           </p>
           <h2
             id="pain-heading"
-            className="text-5xl md:text-6xl font-bold text-navy"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-5xl md:text-6xl font-bold text-navy"
           >
             Sound familiar?
           </h2>
@@ -123,16 +107,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             <ScrollReveal delay={0}>
               <div className="bg-white rounded-2xl p-8">
-                <p
-                  className="text-lg text-cyan mb-4"
-                  style={{ fontFamily: "var(--font-jetbrains)" }}
-                >
+                <p className="font-jetbrains text-lg text-cyan mb-4">
                   Final_V12_UseThisOne(2).xlsx
                 </p>
-                <p
-                  className="text-gray-600 leading-relaxed"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
+                <p className="text-gray-600 leading-relaxed">
                   The spreadsheet that runs everything &mdash; until someone
                   sorts the wrong column and suddenly Dave&apos;s salary is
                   attached to the wrong department. Instant chaos.
@@ -142,16 +120,10 @@ export default function Home() {
 
             <ScrollReveal delay={100}>
               <div className="bg-white rounded-2xl p-8">
-                <p
-                  className="text-lg text-cyan mb-4"
-                  style={{ fontFamily: "var(--font-jetbrains)" }}
-                >
+                <p className="font-jetbrains text-lg text-cyan mb-4">
                   Copy. Paste. Repeat.
                 </p>
-                <p
-                  className="text-gray-600 leading-relaxed"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
+                <p className="text-gray-600 leading-relaxed">
                   Time returns, attendance records, contact lists &mdash;
                   manually copied between sheets every week because
                   that&apos;s just how it&apos;s always been done.
@@ -162,16 +134,10 @@ export default function Home() {
 
             <ScrollReveal delay={200}>
               <div className="bg-white rounded-2xl p-8">
-                <p
-                  className="text-lg text-cyan mb-4"
-                  style={{ fontFamily: "var(--font-jetbrains)" }}
-                >
+                <p className="font-jetbrains text-lg text-cyan mb-4">
                   40MB and climbing.
                 </p>
-                <p
-                  className="text-gray-600 leading-relaxed"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
+                <p className="text-gray-600 leading-relaxed">
                   That tidy little project tracker is now a monster that
                   freezes when you hit filter. It was never a database. It
                   was never meant to be.
@@ -182,24 +148,17 @@ export default function Home() {
 
           {/* Transition paragraph */}
           <div className="mt-16 text-center">
-            <p
-              className="text-2xl md:text-3xl text-navy italic"
-              style={{ fontFamily: "var(--font-syne)" }}
-            >
+            <p className="font-syne text-2xl md:text-3xl text-navy italic">
               There&apos;s a smarter way. It doesn&apos;t require a
               master&apos;s degree.
             </p>
-            <p
-              className="text-gray-500 mt-2"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-gray-500 mt-2">
               (Ois&iacute;n has one anyway. But that&apos;s beside the
               point.)
             </p>
             <a
               href="#what-we-do"
               className="inline-block mt-8 text-cyan font-medium hover:underline transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               Show me how &rarr;
             </a>
@@ -217,23 +176,16 @@ export default function Home() {
         className="py-24 px-6 bg-white"
       >
         <div className="mx-auto max-w-5xl">
-          <p
-            className="text-sm uppercase tracking-widest text-cyan mb-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
             What We Do
           </p>
           <h2
             id="services-heading"
-            className="text-5xl font-bold text-navy"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-5xl font-bold text-navy"
           >
             Four ways we help.
           </h2>
-          <p
-            className="text-gray-500 mt-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-500 mt-2">
             Real problems, solved simply. No hype, no decks, no nonsense.
           </p>
 
@@ -336,15 +288,11 @@ export default function Home() {
         <div className="mx-auto max-w-5xl">
           <h2
             id="credibility-heading"
-            className="text-4xl font-bold text-white text-center"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-4xl font-bold text-white text-center"
           >
             Not a consultant who learned some buzzwords.
           </h2>
-          <p
-            className="text-gray-300 text-lg max-w-2xl text-center mx-auto mt-6"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-300 text-lg max-w-2xl text-center mx-auto mt-6">
             Ois&iacute;n has worked inside the HSE and Tusla before
             consulting for organisations like them. He has an MSc in data
             science and teaches AI at UCD. He has been doing this since 2021.
@@ -370,7 +318,6 @@ export default function Home() {
               <span
                 key={cred}
                 className="border border-white/20 text-white/60 text-xs px-4 py-2 rounded-full"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {cred}
               </span>
@@ -387,23 +334,16 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl">
-          <p
-            className="text-sm uppercase tracking-widest text-navy/60 mb-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-sm uppercase tracking-widest text-navy/60 mb-4">
             Free Tool
           </p>
           <h2
             id="euai-heading"
-            className="text-4xl md:text-5xl font-bold text-navy"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-4xl md:text-5xl font-bold text-navy"
           >
             Does the EU AI Act affect your business?
           </h2>
-          <p
-            className="text-navy/70 text-lg mt-4 mb-12"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-navy/70 text-lg mt-4 mb-12">
             Answer 4 questions. Get an honest answer in 30 seconds.
           </p>
 
@@ -430,23 +370,16 @@ export default function Home() {
 
           {/* Text */}
           <div className="md:pl-12">
-            <p
-              className="text-sm uppercase tracking-widest text-cyan mb-4"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-sm uppercase tracking-widest text-cyan mb-4">
               About Ois&iacute;n
             </p>
             <h2
               id="about-teaser-heading"
-              className="text-4xl font-bold text-navy"
-              style={{ fontFamily: "var(--font-syne)" }}
+              className="font-syne text-4xl font-bold text-navy"
             >
               An astrophysicist who got tired of bad spreadsheets.
             </h2>
-            <p
-              className="text-gray-600 text-lg leading-relaxed mt-4"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-gray-600 text-lg leading-relaxed mt-4">
               Ois&iacute;n trained as a data scientist at Cardiff University,
               spent four years analysing data inside the HSE and Tusla, and
               started DataBridges in 2021 because digital transformation
@@ -456,7 +389,6 @@ export default function Home() {
             <a
               href="/about"
               className="inline-block mt-6 text-cyan font-medium hover:underline transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               Full story &rarr;
             </a>
@@ -472,15 +404,11 @@ export default function Home() {
         <div className="mx-auto max-w-5xl">
           <h2
             id="linkedin-heading"
-            className="text-3xl font-semibold text-navy text-center"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-3xl font-semibold text-navy text-center"
           >
             Straight talk about AI
           </h2>
-          <p
-            className="text-gray-500 text-center mt-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-500 text-center mt-2">
             No hype. No vendor decks. Just honest takes.
           </p>
 
@@ -501,7 +429,6 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-navy font-medium hover:text-cyan transition-colors duration-200"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               Follow Ois&iacute;n on LinkedIn &rarr;
             </a>
@@ -518,23 +445,18 @@ export default function Home() {
         <div className="mx-auto max-w-2xl text-center">
           <h2
             id="footer-cta-heading"
-            className="text-4xl md:text-5xl font-extrabold text-navy leading-tight"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-4xl md:text-5xl font-extrabold text-navy leading-tight"
           >
             Ready to stop doing things the hard way?
           </h2>
-          <p
-            className="text-navy/70 text-xl mt-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-navy/70 text-xl mt-4">
             30 minutes. No sales script. Just an honest chat about whether we
             can help.
           </p>
-          
+
           <a
             href="mailto:hello@databridges.ie"
-            className="inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
             Book a Free Chat &rarr;
           </a>

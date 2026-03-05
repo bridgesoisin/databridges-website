@@ -58,15 +58,11 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl">
           <h1
             id="about-hero-heading"
-            className="text-6xl font-extrabold text-white"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-6xl font-extrabold text-white"
           >
             Hi, I&apos;m Ois&iacute;n.
           </h1>
-          <p
-            className="text-gray-300 text-xl max-w-2xl mt-6"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-300 text-xl max-w-2xl mt-6">
             I built DataBridges because digital transformation kept making
             work harder, not easier. That seemed like something worth fixing.
           </p>
@@ -98,22 +94,13 @@ export default function AboutPage() {
 
             {/* Act 1 */}
             <div>
-              <p
-                className="text-xs uppercase tracking-widest text-cyan mb-2"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <p className="text-xs uppercase tracking-widest text-cyan mb-2">
                 The beginning
               </p>
-              <h3
-                className="text-2xl font-semibold text-navy mb-3"
-                style={{ fontFamily: "var(--font-syne)" }}
-              >
+              <h3 className="font-syne text-2xl font-semibold text-navy mb-3">
                 I studied the universe.
               </h3>
-              <p
-                className="text-gray-700 leading-relaxed"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <p className="text-gray-700 leading-relaxed">
                 At Cardiff University, I completed an MSc in Data-Intensive
                 Astrophysics with Distinction. My dissertation used deep
                 learning models to predict where the James Webb Space
@@ -126,22 +113,13 @@ export default function AboutPage() {
 
             {/* Act 2 */}
             <div className="mt-10">
-              <p
-                className="text-xs uppercase tracking-widest text-cyan mb-2"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <p className="text-xs uppercase tracking-widest text-cyan mb-2">
                 Then
               </p>
-              <h3
-                className="text-2xl font-semibold text-navy mb-3"
-                style={{ fontFamily: "var(--font-syne)" }}
-              >
+              <h3 className="font-syne text-2xl font-semibold text-navy mb-3">
                 Then I studied Irish organisations.
               </h3>
-              <p
-                className="text-gray-700 leading-relaxed"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <p className="text-gray-700 leading-relaxed">
                 Four years as a data analyst inside Tusla and the HSE taught
                 me how Irish public sector teams actually work &mdash; the
                 legacy systems, the Excel dependencies, the understaffed IT
@@ -154,22 +132,13 @@ export default function AboutPage() {
 
             {/* Act 3 */}
             <div className="mt-10">
-              <p
-                className="text-xs uppercase tracking-widest text-cyan mb-2"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <p className="text-xs uppercase tracking-widest text-cyan mb-2">
                 Now
               </p>
-              <h3
-                className="text-2xl font-semibold text-navy mb-3"
-                style={{ fontFamily: "var(--font-syne)" }}
-              >
+              <h3 className="font-syne text-2xl font-semibold text-navy mb-3">
                 Now I close the gap.
               </h3>
-              <p
-                className="text-gray-700 leading-relaxed"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <p className="text-gray-700 leading-relaxed">
                 I founded DataBridges in January 2021 to work directly with
                 Irish SMEs and public sector teams. I also lecture at UCD
                 Professional Academy &mdash; AI and machine learning,
@@ -191,8 +160,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl">
           <h2
             id="credentials-heading"
-            className="text-3xl font-semibold text-navy text-center"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-3xl font-semibold text-navy text-center"
           >
             Background
           </h2>
@@ -203,23 +171,14 @@ export default function AboutPage() {
                 key={cred.title}
                 className="bg-white border border-gray-100 rounded-xl p-5 flex items-start gap-4"
               >
-                <div
-                  className="w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan text-xs font-bold flex-shrink-0"
-                  style={{ fontFamily: "var(--font-syne)" }}
-                >
+                <div className="font-syne w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan text-xs font-bold flex-shrink-0">
                   {cred.initial}
                 </div>
                 <div>
-                  <p
-                    className="text-sm font-semibold text-navy"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
+                  <p className="text-sm font-semibold text-navy">
                     {cred.title}
                   </p>
-                  <p
-                    className="text-xs text-gray-500 mt-1"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
+                  <p className="text-xs text-gray-500 mt-1">
                     {cred.subtitle}
                   </p>
                 </div>
@@ -237,24 +196,19 @@ export default function AboutPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2
             id="about-cta-heading"
-            className="text-4xl font-bold text-white"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-4xl font-bold text-white"
           >
             Want to work together?
           </h2>
-          <p
-            className="text-gray-300 text-lg max-w-xl mx-auto mt-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-300 text-lg max-w-xl mx-auto mt-4">
             A 30-minute call costs nothing and usually tells us both whether
             it&apos;s worth going further. No sales script. Just a
             conversation.
           </p>
-          
+
           <a
             href="mailto:hello@databridges.ie"
-            className="inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
           >
             Book a Free Chat &rarr;
           </a>

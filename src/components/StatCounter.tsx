@@ -74,16 +74,10 @@ export default function StatCounter({ target, label }: StatCounterProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <div
-        className="text-5xl font-extrabold text-cyan"
-        style={{ fontFamily: "var(--font-syne)" }}
-      >
+      <div className="font-syne text-5xl font-extrabold text-cyan">
         {display}
       </div>
-      <div
-        className="text-sm text-gray-400 mt-2 uppercase tracking-wide"
-        style={{ fontFamily: "var(--font-dm-sans)" }}
-      >
+      <div className="text-sm text-gray-400 mt-2 uppercase tracking-wide">
         {label}
       </div>
     </div>

@@ -13,15 +13,11 @@ export default function BeforeAfterToggle() {
       <div className="mx-auto max-w-4xl">
         <h2
           id="before-after-heading"
-          className="text-4xl font-bold text-white text-center mb-4"
-          style={{ fontFamily: "var(--font-syne)" }}
+          className="font-syne text-4xl font-bold text-white text-center mb-4"
         >
           What We Actually Change
         </h2>
-        <p
-          className="text-gray-400 text-center mb-12"
-          style={{ fontFamily: "var(--font-dm-sans)" }}
-        >
+        <p className="text-gray-400 text-center mb-12">
           Same data. Completely different future.
         </p>
 
@@ -29,23 +25,23 @@ export default function BeforeAfterToggle() {
         <div className="flex justify-center gap-2 mb-10">
           <button
             onClick={() => setShowAfter(false)}
+            aria-pressed={!showAfter}
             className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
               !showAfter
                 ? "bg-cyan text-navy"
                 : "border border-white/20 text-white/60 hover:text-white"
             }`}
-            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Before
           </button>
           <button
             onClick={() => setShowAfter(true)}
+            aria-pressed={showAfter}
             className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
               showAfter
                 ? "bg-cyan text-navy"
                 : "border border-white/20 text-white/60 hover:text-white"
             }`}
-            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             After
           </button>
@@ -61,10 +57,7 @@ export default function BeforeAfterToggle() {
                 : "opacity-0 scale-95 absolute inset-0 pointer-events-none"
             }`}
           >
-            <div
-              className="bg-white rounded-xl overflow-hidden text-xs"
-              style={{ fontFamily: "var(--font-jetbrains)" }}
-            >
+            <div className="font-jetbrains bg-white rounded-xl overflow-hidden text-xs">
               {/* Header row */}
               <div className="bg-gray-200 flex border-b border-gray-300">
                 <div className="w-8 py-1.5 px-2 text-gray-500 border-r border-gray-300">
@@ -210,16 +203,10 @@ export default function BeforeAfterToggle() {
                     key={kpi.label}
                     className="bg-white rounded-xl p-4 text-center border border-gray-100"
                   >
-                    <div
-                      className="text-2xl font-bold text-cyan"
-                      style={{ fontFamily: "var(--font-syne)" }}
-                    >
+                    <div className="font-syne text-2xl font-bold text-cyan">
                       {kpi.value}
                     </div>
-                    <div
-                      className="text-xs text-gray-500 mt-1"
-                      style={{ fontFamily: "var(--font-dm-sans)" }}
-                    >
+                    <div className="text-xs text-gray-500 mt-1">
                       {kpi.label}
                     </div>
                   </div>
@@ -228,10 +215,7 @@ export default function BeforeAfterToggle() {
 
               {/* Bar chart */}
               <div className="bg-white rounded-xl p-4 border border-gray-100 mb-6">
-                <p
-                  className="text-xs text-gray-500 mb-3 font-medium"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
+                <p className="text-xs text-gray-500 mb-3 font-medium">
                   Monthly Output
                 </p>
                 <div className="flex items-end gap-2 h-24">
@@ -249,26 +233,17 @@ export default function BeforeAfterToggle() {
                   ))}
                 </div>
                 <div className="flex justify-between mt-2">
-                  <span
-                    className="text-[10px] text-gray-400"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
+                  <span className="text-[10px] text-gray-400">
                     Jan
                   </span>
-                  <span
-                    className="text-[10px] text-gray-400"
-                    style={{ fontFamily: "var(--font-dm-sans)" }}
-                  >
+                  <span className="text-[10px] text-gray-400">
                     Aug
                   </span>
                 </div>
               </div>
 
               {/* Clean table */}
-              <div
-                className="bg-white rounded-xl overflow-hidden border border-gray-100 text-sm"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
-              >
+              <div className="bg-white rounded-xl overflow-hidden border border-gray-100 text-sm">
                 <div className="grid grid-cols-4 bg-navy/5 py-2 px-4 text-xs font-medium text-gray-500">
                   <span>Name</span>
                   <span>Department</span>
@@ -313,10 +288,7 @@ export default function BeforeAfterToggle() {
           </div>
         </div>
 
-        <p
-          className="text-sm text-gray-400 text-center mt-8"
-          style={{ fontFamily: "var(--font-dm-sans)" }}
-        >
+        <p className="text-sm text-gray-400 text-center mt-8">
           Built with Microsoft Power Platform. No new software licences
           required.
         </p>

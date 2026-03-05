@@ -46,6 +46,16 @@ html {
 body {
   color: var(--color-navy);
   background: var(--color-white);
+  font-family: var(--font-dm-sans);
+}
+
+/* Font utilities */
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+.font-jetbrains {
+  font-family: var(--font-jetbrains);
 }
 
 /* Focus styles */
