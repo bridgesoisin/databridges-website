@@ -1,20 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="bg-navy py-12 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Left — Logo and tagline */}
+          {/* Left — Wordmark and tagline */}
           <div>
-            <Image
-              src="/images/logo-wordmark.png"
-              alt="DataBridges"
-              width={120}
-              height={28}
-              className="h-7 w-auto"
-            />
+            <span className="text-xl font-bold tracking-tight">
+              <span className="text-white">data</span>
+              <span className="text-cyan">bridges</span>
+            </span>
             <p
               className="text-sm text-gray-400 mt-3"
               style={{ fontFamily: "var(--font-dm-sans)" }}
