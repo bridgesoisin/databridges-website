@@ -18,22 +18,15 @@ export default function ServiceCard({
       <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center text-cyan">
         {icon}
       </div>
-      <h3
-        className="text-xl text-navy mt-4 font-semibold"
-        style={{ fontFamily: "var(--font-syne)" }}
-      >
+      <h3 className="font-syne text-xl text-navy mt-4 font-semibold">
         {name}
       </h3>
-      <p
-        className="text-gray-600 mt-2"
-        style={{ fontFamily: "var(--font-dm-sans)" }}
-      >
+      <p className="text-gray-600 mt-2">
         {description}
       </p>
       <Link
         href={href}
         className="inline-block text-cyan text-sm font-medium mt-6 hover:underline transition-colors duration-200"
-        style={{ fontFamily: "var(--font-dm-sans)" }}
       >
         Learn more &rarr;
       </Link>

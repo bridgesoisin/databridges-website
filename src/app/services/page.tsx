@@ -60,58 +60,39 @@ function ServiceSection({
           </div>
           <h2
             id={`${id}-heading`}
-            className="text-3xl font-bold text-navy"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-3xl font-bold text-navy"
           >
             {name}
           </h2>
         </div>
 
         <div className="mt-8">
-          <p
-            className="text-xs uppercase tracking-widest text-cyan font-medium mb-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
             The Problem
           </p>
-          <p
-            className="text-gray-700 text-lg leading-relaxed"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-700 text-lg leading-relaxed">
             {problem}
           </p>
         </div>
 
         <div className="mt-8">
-          <p
-            className="text-xs uppercase tracking-widest text-cyan font-medium mb-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
             What DataBridges Does
           </p>
-          <p
-            className="text-gray-700 text-lg leading-relaxed"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-700 text-lg leading-relaxed">
             {whatWeDo}
           </p>
         </div>
 
         <div className="mt-8">
-          <p
-            className="text-xs uppercase tracking-widest text-cyan font-medium mb-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
             What You Get
           </p>
           <ul className="space-y-3 mt-3">
             {whatYouGet.map((item) => (
               <li key={item} className="flex items-start gap-3">
                 {checkIcon}
-                <span
-                  className="text-gray-700"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
+                <span className="text-gray-700">
                   {item}
                 </span>
               </li>
@@ -121,11 +102,9 @@ function ServiceSection({
 
         {children}
 
-        
         <a
           href="mailto:hello@databridges.ie"
           className="inline-block mt-10 text-cyan font-medium hover:underline transition-colors duration-200"
-          style={{ fontFamily: "var(--font-dm-sans)" }}
         >
           {ctaLabel} &rarr;
         </a>
@@ -143,23 +122,16 @@ export default function ServicesPage() {
         className="bg-navy py-32 px-6"
       >
         <div className="mx-auto max-w-5xl">
-          <p
-            className="text-sm uppercase tracking-widest text-cyan mb-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
             What We Do
           </p>
           <h1
             id="services-hero-heading"
-            className="text-6xl font-extrabold text-white"
-            style={{ fontFamily: "var(--font-syne)" }}
+            className="font-syne text-6xl font-extrabold text-white"
           >
             Services
           </h1>
-          <p
-            className="text-gray-300 text-xl max-w-2xl mt-4"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-gray-300 text-xl max-w-2xl mt-4">
             Real problems. Practical solutions. No jargon, no decks, no
             47-slide PowerPoint strategies.
           </p>
@@ -193,16 +165,10 @@ export default function ServicesPage() {
           className="rounded-xl p-6 mt-8"
           style={{ backgroundColor: "var(--color-yellow)" }}
         >
-          <h3
-            className="text-navy font-semibold text-lg"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
+          <h3 className="font-syne text-navy font-semibold text-lg">
             August 2, 2026 &mdash; Are you ready?
           </h3>
-          <p
-            className="text-navy/80 mt-2"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-navy/80 mt-2">
             If your organisation uses AI for recruitment decisions, credit
             scoring, or evaluating eligibility for public services, you fall
             under Annex III of the EU AI Act. The enforcement regime begins
@@ -212,7 +178,6 @@ export default function ServicesPage() {
           <Link
             href="/#eu-ai-act-checker"
             className="inline-block mt-3 text-navy font-medium underline hover:no-underline transition-colors duration-200"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Take the free 2-minute check &rarr;
           </Link>

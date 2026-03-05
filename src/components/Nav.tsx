@@ -174,11 +174,8 @@ export default function Nav() {
             key={link.href}
             href={link.href}
             onClick={() => setMenuOpen(false)}
-            className="nav-overlay-link text-white font-bold text-3xl hover:text-cyan transition-colors duration-200"
-            style={{
-              transitionDelay: `${i * 80}ms`,
-              fontFamily: "var(--font-syne)",
-            }}
+            className="font-syne nav-overlay-link text-white font-bold text-3xl hover:text-cyan transition-colors duration-200"
+            style={{ transitionDelay: `${i * 80}ms` }}
           >
             {link.label}
           </Link>
@@ -187,11 +184,8 @@ export default function Nav() {
         <Link
           href="mailto:hello@databridges.ie"
           onClick={() => setMenuOpen(false)}
-          className="nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
-          style={{
-            transitionDelay: `${navLinks.length * 80}ms`,
-            fontFamily: "var(--font-syne)",
-          }}
+          className="font-syne nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
+          style={{ transitionDelay: `${navLinks.length * 80}ms` }}
         >
           Book a Chat
         </Link>

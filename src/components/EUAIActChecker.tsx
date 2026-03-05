@@ -138,27 +138,19 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4" aria-hidden="true">
               &#9888;
             </div>
-            <h3
-              className="text-2xl font-bold text-navy mb-4"
-              style={{ fontFamily: "var(--font-syne)" }}
-            >
+            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
               Your systems likely fall under Annex III.
             </h3>
-            <p
-              className="text-navy/70 text-lg leading-relaxed max-w-lg mx-auto"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-navy/70 text-lg leading-relaxed max-w-lg mx-auto">
               The EU AI Act classifies AI used for recruitment, credit
               scoring, and public benefit eligibility as high-risk. The
               enforcement deadline is August 2, 2026 &mdash; that&apos;s{" "}
               <strong>{daysLeft} days away</strong>. The gap analysis
               process takes time. You should start now.
             </p>
-            
             <a
               href="mailto:hello@databridges.ie"
-              className="inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
-              style={{ fontFamily: "var(--font-syne)" }}
+              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a compliance chat with Ois&iacute;n &rarr;
             </a>
@@ -170,24 +162,17 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4 text-emerald-600" aria-hidden="true">
               &#10003;
             </div>
-            <h3
-              className="text-2xl font-bold text-navy mb-4"
-              style={{ fontFamily: "var(--font-syne)" }}
-            >
+            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
               You&apos;re likely outside the highest-risk categories.
             </h3>
-            <p
-              className="text-navy/70 text-lg leading-relaxed max-w-lg mx-auto"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-navy/70 text-lg leading-relaxed max-w-lg mx-auto">
               General AI obligations still apply under the EU AI Act, but
               you&apos;re not in the most urgent tier. A 30-minute review
               would confirm your position and give you peace of mind.
             </p>
             <a
               href="mailto:hello@databridges.ie"
-              className="inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
-              style={{ fontFamily: "var(--font-syne)" }}
+              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free 30-minute chat &rarr;
             </a>
@@ -199,34 +184,24 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4 text-cyan" aria-hidden="true">
               ?
             </div>
-            <h3
-              className="text-2xl font-bold text-navy mb-4"
-              style={{ fontFamily: "var(--font-syne)" }}
-            >
+            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
               Hard to say without a bit more context.
             </h3>
-            <p
-              className="text-navy/70 text-lg leading-relaxed max-w-lg mx-auto"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-navy/70 text-lg leading-relaxed max-w-lg mx-auto">
               If you&apos;re not sure whether the Act applies to you, that
               uncertainty is usually the answer. Let&apos;s spend 30 minutes
               finding out &mdash; it&apos;s free and there&apos;s no obligation.
             </p>
             <a
               href="mailto:hello@databridges.ie"
-              className="inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
-              style={{ fontFamily: "var(--font-syne)" }}
+              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free chat &rarr;
             </a>
           </div>
         )}
 
-        <p
-          className="text-sm text-navy/40 text-center mt-8"
-          style={{ fontFamily: "var(--font-dm-sans)" }}
-        >
+        <p className="text-sm text-navy/40 text-center mt-8">
           This tool gives a general indication only, not legal advice. For
           formal compliance assessment, consult a qualified solicitor.
         </p>
@@ -235,7 +210,6 @@ export default function EUAIActChecker() {
           <button
             onClick={handleReset}
             className="text-navy/60 text-sm underline hover:text-navy transition-colors duration-200"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Start again
           </button>
@@ -259,17 +233,11 @@ export default function EUAIActChecker() {
       </div>
 
       {/* Question */}
-      <h3
-        className="text-xl font-bold text-navy mb-2"
-        style={{ fontFamily: "var(--font-syne)" }}
-      >
+      <h3 className="font-syne text-xl font-bold text-navy mb-2">
         {currentQuestion.question}
       </h3>
       {currentQuestion.note && (
-        <p
-          className="text-sm text-navy/50 mb-6"
-          style={{ fontFamily: "var(--font-dm-sans)" }}
-        >
+        <p className="text-sm text-navy/50 mb-6">
           ({currentQuestion.note})
         </p>
       )}
@@ -285,7 +253,6 @@ export default function EUAIActChecker() {
                 ? "bg-navy text-white"
                 : "bg-white border border-navy/20 text-navy hover:border-navy/40"
             }`}
-            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {option}
           </button>
@@ -298,7 +265,6 @@ export default function EUAIActChecker() {
           <button
             onClick={handleBack}
             className="text-navy/60 text-sm hover:text-navy transition-colors duration-200"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             &larr; Back
           </button>
@@ -314,7 +280,6 @@ export default function EUAIActChecker() {
               ? "bg-navy text-white hover:bg-navy/90"
               : "bg-navy/20 text-navy/40 cursor-not-allowed"
           }`}
-          style={{ fontFamily: "var(--font-dm-sans)" }}
         >
           {currentStep === 3 ? "See my result →" : "Next →"}
         </button>

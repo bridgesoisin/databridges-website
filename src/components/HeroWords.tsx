@@ -6,7 +6,7 @@ export default function HeroWords() {
 
   return (
     <>
-      <span className="block leading-none" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(3rem, 8vw, 6.5rem)", fontWeight: 800 }}>
+      <span className="font-syne block leading-none" style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", fontWeight: 800 }}>
         {line1Words.map((word, i) => (
           <span
             key={word}
@@ -17,7 +17,7 @@ export default function HeroWords() {
           </span>
         ))}
       </span>
-      <span className="block whitespace-nowrap" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2rem, 6vw, 5.5rem)", fontWeight: 700, color: "var(--color-cyan)" }}>
+      <span className="font-syne block whitespace-nowrap" style={{ fontSize: "clamp(2rem, 6vw, 5.5rem)", fontWeight: 700, color: "var(--color-cyan)" }}>
         {line2Words.map((word, i) => (
           <span
             key={word}

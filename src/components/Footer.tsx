@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export default function Footer() {
@@ -11,10 +13,7 @@ export default function Footer() {
               <span className="text-white">data</span>
               <span className="text-cyan">bridges</span>
             </span>
-            <p
-              className="text-sm text-gray-400 mt-3"
-              style={{ fontFamily: "var(--font-dm-sans)" }}
-            >
+            <p className="text-sm text-gray-400 mt-3">
               Making AI Useful (and mildly tolerable)
             </p>
           </div>
@@ -31,7 +30,6 @@ export default function Footer() {
                 key={link.href}
                 href={link.href}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {link.label}
               </Link>
@@ -39,11 +37,7 @@ export default function Footer() {
           </nav>
 
           {/* Right — Contact */}
-          <div
-            className="flex flex-col gap-3"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
-            
+          <div className="flex flex-col gap-3">
             <a
               href="mailto:hello@databridges.ie"
               className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
@@ -66,16 +60,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-between gap-4">
-          <p
-            className="text-xs text-gray-500"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
-            &copy; 2026 DataBridges | Kilcock, Co. Kildare
+          <p className="text-xs text-gray-500">
+            &copy; {new Date().getFullYear()} DataBridges | Kilcock, Co. Kildare
           </p>
-          <p
-            className="text-xs text-gray-500"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
+          <p className="text-xs text-gray-500">
             Built with Next.js &middot; Hosted on Netlify
           </p>
         </div>
