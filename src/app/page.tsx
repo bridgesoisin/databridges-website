@@ -186,7 +186,8 @@ export default function Home() {
               className="text-2xl md:text-3xl text-navy italic"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              There&apos;s a smarter way. It doesn&apos;t require a master&apos;s degree.
+              There&apos;s a smarter way. It doesn&apos;t require a
+              master&apos;s degree.
             </p>
             <p
               className="text-gray-500 mt-2"
