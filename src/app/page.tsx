@@ -43,6 +43,8 @@ export default function Home() {
 
       {/* ─── SECTION 1: HERO ─── */}
       <section
+        id="hero"
+        data-otter-section="hero"
         aria-labelledby="hero-heading"
         className="bg-navy min-h-[100svh] flex items-center relative"
       >
@@ -89,6 +91,7 @@ export default function Home() {
       {/* ─── SECTION 2: PAIN POINTS ─── */}
       <section
         id="services"
+        data-otter-section="services"
         aria-labelledby="pain-heading"
         className="py-24 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
@@ -172,6 +175,7 @@ export default function Home() {
       {/* ─── SECTION 4: SERVICES GRID ─── */}
       <section
         id="what-we-do"
+        data-otter-section="what-we-do"
         aria-labelledby="services-heading"
         className="py-24 px-6 bg-white"
       >
@@ -282,6 +286,8 @@ export default function Home() {
 
       {/* ─── SECTION 5: CREDIBILITY ─── */}
       <section
+        id="credibility"
+        data-otter-section="credibility"
         aria-labelledby="credibility-heading"
         className="bg-navy py-24 px-6"
       >
@@ -329,6 +335,7 @@ export default function Home() {
       {/* ─── SECTION 6: EU AI ACT CHECKER ─── */}
       <section
         id="eu-ai-act-checker"
+        data-otter-section="eu-ai-act-checker"
         aria-labelledby="euai-heading"
         className="py-24 px-6"
         style={{ backgroundColor: "var(--color-yellow)" }}
@@ -353,6 +360,8 @@ export default function Home() {
 
       {/* ─── SECTION 7: ABOUT TEASER ─── */}
       <section
+        id="about-teaser"
+        data-otter-section="about-teaser"
         aria-labelledby="about-teaser-heading"
         className="py-24 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
@@ -398,6 +407,8 @@ export default function Home() {
 
       {/* ─── SECTION 8: LINKEDIN CONTENT ─── */}
       <section
+        id="linkedin"
+        data-otter-section="linkedin"
         aria-labelledby="linkedin-heading"
         className="py-24 px-6 bg-white"
       >
@@ -438,6 +449,8 @@ export default function Home() {
 
       {/* ─── SECTION 9: FOOTER CTA ─── */}
       <section
+        id="footer-cta"
+        data-otter-section="footer-cta"
         aria-labelledby="footer-cta-heading"
         className="py-24 px-6"
         style={{ backgroundColor: "var(--color-yellow)" }}

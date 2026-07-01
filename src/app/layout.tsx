@@ -3,6 +3,7 @@ import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import OtterGuide from "@/components/OtterGuide";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -63,6 +64,7 @@ export default function RootLayout({
         <Nav />
         <main id="main-content">{children}</main>
         <Footer />
+        <OtterGuide />
       </body>
     </html>
   );

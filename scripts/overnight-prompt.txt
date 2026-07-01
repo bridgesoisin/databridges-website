@@ -1,0 +1,19 @@
+You are doing an unattended overnight design upgrade of the DataBridges website.
+
+1. Read CLAUDE.md and DESIGN_UPGRADE.md in full.
+2. In DESIGN_UPGRADE.md, find the FIRST unchecked task (a line starting with "- [ ]").
+3. Implement ONLY that one task, completely, to the "Definition of done":
+   - Match the quality and patterns of the /seo-aeo reference exemplar.
+   - Follow every rule in DESIGN_UPGRADE.md (tokens only, no new heavy deps,
+     reduced-motion fallbacks, accessibility, responsive at 360/768/1280,
+     keep existing content/routes/JSON-LD/OtterGuide intact).
+4. Run `npm run build` and `npm run lint`. Fix every error and any warning you
+   introduced. Do not finish until both are green.
+5. Tick that task's checkbox (change "- [ ]" to "- [x]") and append one line to
+   the "Progress log" section: date, task id, and a one-line summary.
+6. Stop. Do not start another task. Do not push to any remote. Do not edit
+   secrets or .env files. Do not add dependencies to package.json.
+
+If the first unchecked task is ambiguous, make the most reasonable choice that
+matches the exemplar and note your assumption in the progress log. Work
+carefully: one solid, shippable task is the goal, not speed.

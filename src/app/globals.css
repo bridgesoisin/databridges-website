@@ -149,3 +149,378 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
+
+/* ============================================================
+   Otter guide mascot
+   ============================================================ */
+
+.otter-guide-root {
+  --otter-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Entrance: the whole root drops in and settles */
+.otter-guide-root {
+  opacity: 0;
+  transform: translateY(40px) scale(0.85);
+  transition: opacity 500ms var(--otter-ease), transform 600ms var(--otter-ease);
+}
+
+.otter-guide-root.otter-mounted {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* The avatar button: idle float + state-driven motion */
+.otter-avatar-btn {
+  cursor: pointer;
+  transform-origin: 50% 85%;
+  transition: box-shadow 250ms ease, transform 250ms var(--otter-ease);
+}
+
+.otter-guide-root.otter-mounted .otter-avatar-btn {
+  animation: otter-float 4.5s ease-in-out infinite;
+}
+
+.otter-avatar-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 26px rgba(10, 30, 61, 0.32);
+}
+
+.otter-avatar-btn:focus-visible {
+  outline: 3px solid var(--color-yellow);
+  outline-offset: 3px;
+}
+
+/* Entrance wave: a quick tilt-wave right after mount */
+.otter-guide-root.otter-enter .otter-avatar-btn {
+  animation: otter-wave 1200ms var(--otter-ease) 1;
+}
+
+/* Searching: user is scrolling chaotically -> perk up + bounce */
+.otter-guide-root.otter-searching .otter-avatar-btn {
+  animation: otter-alert 700ms ease-in-out infinite;
+}
+
+/* Reading: user is calmly reading -> gentle, focused bob */
+.otter-guide-root.otter-reading .otter-avatar-btn {
+  animation: otter-read-bob 2.8s ease-in-out infinite;
+}
+
+@keyframes otter-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-1.5deg); }
+}
+
+@keyframes otter-wave {
+  0% { transform: translateY(0) rotate(0deg); }
+  20% { transform: translateY(-8px) rotate(-10deg); }
+  40% { transform: translateY(-4px) rotate(9deg); }
+  60% { transform: translateY(-6px) rotate(-7deg); }
+  80% { transform: translateY(-2px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes otter-alert {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-10px) scale(1.06); }
+  60% { transform: translateY(-2px) scale(1.02); }
+}
+
+@keyframes otter-read-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(0.6deg); }
+}
+
+/* Props layer (laptop, search glow) sits beside the avatar */
+.otter-prop {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px) scale(0.8);
+  transition: opacity 300ms var(--otter-ease), transform 300ms var(--otter-ease);
+}
+
+.otter-prop.otter-prop-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Laptop shown while reading */
+.otter-laptop {
+  left: -18px;
+  bottom: -6px;
+}
+
+.otter-laptop .otter-key {
+  animation: otter-type 1.1s steps(1, end) infinite;
+}
+.otter-laptop .otter-key:nth-child(2) { animation-delay: 0.18s; }
+.otter-laptop .otter-key:nth-child(3) { animation-delay: 0.36s; }
+.otter-laptop .otter-key:nth-child(4) { animation-delay: 0.54s; }
+
+@keyframes otter-type {
+  0%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+
+/* Search glow / magnifier shown while searching */
+.otter-search {
+  left: -14px;
+  top: -12px;
+}
+.otter-guide-root.otter-searching .otter-search {
+  animation: otter-search-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes otter-search-sweep {
+  0%, 100% { transform: translate(0, 0) rotate(-8deg); }
+  50% { transform: translate(4px, 4px) rotate(8deg); }
+}
+
+/* Sparkle for AI idle tips */
+.otter-spark {
+  right: -6px;
+  top: -10px;
+}
+.otter-guide-root .otter-spark.otter-prop-visible {
+  animation: otter-spark-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes otter-spark-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.9) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(12deg); }
+}
+
+/* Bubble pop-in */
+.otter-bubble {
+  transform-origin: bottom right;
+  animation: otter-bubble-pop 320ms var(--otter-ease) 1;
+}
+
+@keyframes otter-bubble-pop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Panel slide-in */
+.otter-panel {
+  transform-origin: bottom right;
+  animation: otter-panel-in 300ms var(--otter-ease) 1;
+}
+
+@keyframes otter-panel-in {
+  0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Typing dots inside chat */
+.otter-typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 1px;
+  border-radius: 50%;
+  background: var(--color-grey-mid);
+  animation: otter-typing-dot 1.2s ease-in-out infinite;
+}
+.otter-typing span:nth-child(2) { animation-delay: 0.2s; }
+.otter-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes otter-typing-dot {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Respect reduced motion: keep it calm, no looping/bouncing */
+@media (prefers-reduced-motion: reduce) {
+  .otter-guide-root,
+  .otter-avatar-btn,
+  .otter-prop,
+  .otter-bubble,
+  .otter-panel {
+    transition: opacity 200ms ease;
+  }
+  .otter-guide-root.otter-mounted .otter-avatar-btn,
+  .otter-guide-root.otter-enter .otter-avatar-btn,
+  .otter-guide-root.otter-searching .otter-avatar-btn,
+  .otter-guide-root.otter-reading .otter-avatar-btn,
+  .otter-guide-root.otter-searching .otter-search,
+  .otter-laptop .otter-key,
+  .otter-spark.otter-prop-visible,
+  .otter-bubble,
+  .otter-panel,
+  .otter-typing span {
+    animation: none !important;
+  }
+  .otter-guide-root {
+    transform: none;
+  }
+}
+
+/* Otter guide: entrance + idle bob */
+.otter-guide-root {
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.otter-guide-root.otter-mounted {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .otter-guide-root.otter-mounted .otter-avatar-btn {
+    animation: otterBob 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes otterBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.otter-avatar-btn {
+  transition: transform 200ms ease-out;
+}
+
+.otter-avatar-btn:hover {
+  transform: scale(1.06);
+}
+
+.otter-avatar-btn:active {
+  transform: scale(0.97);
+}
+
+/* Speech bubble pop-in */
+.otter-bubble {
+  animation: otterBubbleIn 260ms ease-out;
+  transform-origin: bottom right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .otter-bubble {
+    animation: none;
+  }
+}
+
+@keyframes otterBubbleIn {
+  from { opacity: 0; transform: scale(0.9) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Chat panel pop-in */
+.otter-panel {
+  animation: otterBubbleIn 220ms ease-out;
+  transform-origin: bottom right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .otter-panel {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   SEO / AEO consulting page graphics (dependency-free)
+   ============================================================ */
+
+/* Floating gradient blobs behind the hero */
+.seo-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(36px);
+  opacity: 0.5;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .seo-blob { animation: seoFloat 14s ease-in-out infinite; }
+  .seo-blob:nth-child(2) { animation-duration: 18s; animation-direction: reverse; }
+  .seo-blob:nth-child(3) { animation-duration: 22s; }
+}
+@keyframes seoFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(24px, -18px) scale(1.08); }
+  66% { transform: translate(-18px, 14px) scale(0.96); }
+}
+
+/* Rank bars that rise into place when revealed */
+.seo-bar {
+  transform-origin: bottom center;
+  transform: scaleY(0);
+}
+.scroll-reveal.revealed .seo-bar,
+.seo-graphic.revealed .seo-bar {
+  animation: seoBarRise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.seo-bar:nth-child(1) { animation-delay: 0.05s; }
+.seo-bar:nth-child(2) { animation-delay: 0.15s; }
+.seo-bar:nth-child(3) { animation-delay: 0.25s; }
+.seo-bar:nth-child(4) { animation-delay: 0.35s; }
+.seo-bar:nth-child(5) { animation-delay: 0.45s; }
+@keyframes seoBarRise {
+  from { transform: scaleY(0); opacity: 0.3; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+/* Pulsing answer-engine nodes */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-node { animation: seoPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .seo-node:nth-child(2) { animation-delay: 0.4s; }
+  .seo-node:nth-child(3) { animation-delay: 0.8s; }
+  .seo-node:nth-child(4) { animation-delay: 1.2s; }
+}
+@keyframes seoPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Citation ring that expands around the cited source */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-ring { animation: seoRing 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes seoRing {
+  0% { opacity: 0.7; transform: scale(0.4); }
+  70% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* Query flow line: animated dash travelling along the path */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-flow { stroke-dasharray: 10 12; animation: seoDash 1.6s linear infinite; }
+}
+@keyframes seoDash {
+  to { stroke-dashoffset: -44; }
+}
+
+/* Scanning highlight across a search bar */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-scan { animation: seoScan 3.2s ease-in-out infinite; }
+}
+@keyframes seoScan {
+  0%, 100% { transform: translateX(-6px); opacity: 0.35; }
+  50% { transform: translateX(120px); opacity: 0.9; }
+}
+
+/* Slow rotation for the orbit motif */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-orbit { animation: seoOrbit 26s linear infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes seoOrbit {
+  to { transform: rotate(360deg); }
+}
+
+/* Cards lift on hover */
+.seo-card {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+.seo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(10, 30, 61, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-blob, .seo-node, .seo-ring, .seo-flow, .seo-scan, .seo-orbit { animation: none !important; }
+  .seo-bar { transform: scaleY(1); }
+  .seo-card:hover { transform: none; }
+}

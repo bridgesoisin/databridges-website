@@ -7,6 +7,8 @@ export default function BeforeAfterToggle() {
 
   return (
     <section
+      id="before-after"
+      data-otter-section="before-after"
       aria-labelledby="before-after-heading"
       className="bg-navy py-24 px-6"
     >
