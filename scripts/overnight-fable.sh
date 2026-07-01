@@ -52,6 +52,7 @@ seconds_until_reset() {
 remaining() { grep -c '^- \[ \]' DESIGN_UPGRADE.md 2>/dev/null || echo 0; }
 
 fails=0
+stall=0
 for (( i=1; i<=MAX_ITERS; i++ )); do
   left=$(remaining)
   log "Iteration $i — $left task(s) remaining."
@@ -63,6 +64,12 @@ for (( i=1; i<=MAX_ITERS; i++ )); do
           --output-format json 2>&1) || true
   printf '%s\n' "$out" >> "$LOG"
 
+  # --- not-authenticated: stop, this needs a human to run /login -----------
+  if printf '%s' "$out" | grep -qiE "not logged in|please run /login|invalid.*api key|authentication_error|oauth"; then
+    log "ERROR: Claude Code is not logged in. Run 'claude', then '/login', verify it replies, and restart this script."
+    break
+  fi
+
   # --- usage-limit handling ------------------------------------------------
   if printf '%s' "$out" | grep -qiE "usage limit|rate limit|limit reached|reset(s)? at|reached your .* limit"; then
     secs=$(seconds_until_reset)
@@ -70,6 +77,18 @@ for (( i=1; i<=MAX_ITERS; i++ )); do
     sleep "$secs"
     sleep "$POST_RESET_BUFFER"
     continue    # retry the SAME task; nothing was ticked
+  fi
+
+  # --- stall guard: task count must go down, else stop after 3 -------------
+  if [ "$(remaining)" -ge "$left" ]; then
+    stall=$(( stall + 1 ))
+    log "No task completed this iteration (stall $stall/3)."
+    if [ "$stall" -ge 3 ]; then
+      log "ERROR: 3 iterations with no progress. Stopping for human review. Check $LOG."
+      break
+    fi
+  else
+    stall=0
   fi
 
   # --- build gate + commit -------------------------------------------------

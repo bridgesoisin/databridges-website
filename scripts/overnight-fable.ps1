@@ -57,6 +57,7 @@ function Remaining-Tasks {
 
 $prompt = Get-Content $PromptFile -Raw
 $fails = 0
+$stall = 0
 
 for ($i = 1; $i -le $MaxIters; $i++) {
   $left = Remaining-Tasks
@@ -66,12 +67,31 @@ for ($i = 1; $i -le $MaxIters; $i++) {
   $out = & claude -p $prompt --model $Model --dangerously-skip-permissions --output-format json 2>&1 | Out-String
   Add-Content -Path $Log -Value $out
 
+  # Not authenticated: stop immediately, this needs a human to run /login.
+  if ($out -match "(?i)not logged in|please run /login|invalid.*api key|authentication_error|oauth") {
+    Log "ERROR: Claude Code is not logged in. Run 'claude', then '/login', verify it replies, and restart this script."
+    break
+  }
+
   if ($out -match "(?i)usage limit|rate limit|limit reached|reset(s)? at|reached your .* limit") {
     $secs = Seconds-Until-Reset
     Log "Usage limit detected. Sleeping $secs s until ~${ResetHour}:00, then resuming."
     Start-Sleep -Seconds $secs
     Start-Sleep -Seconds $PostResetBufferSec
     continue   # retry the SAME task; nothing was ticked
+  }
+
+  # Stall guard: if the unchecked-task count is not going down, Fable is not
+  # registering progress. Stop after 3 such iterations rather than spin.
+  if ((Remaining-Tasks) -ge $left) {
+    $stall++
+    Log "No task completed this iteration (stall $stall/3)."
+    if ($stall -ge 3) {
+      Log "ERROR: 3 iterations with no progress. Stopping for human review. Check $Log."
+      break
+    }
+  } else {
+    $stall = 0
   }
 
   npm run build *>> $Log
