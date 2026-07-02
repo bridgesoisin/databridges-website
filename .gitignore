@@ -42,6 +42,7 @@ next-env.d.ts
 
 # claude code / overnight runner
 .claude/worktrees/
+.claude/overnight-session-id
 scripts/overnight.log
 scripts/overnight-summary.md
 esbuild.err
