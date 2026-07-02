@@ -524,3 +524,130 @@ body {
   .seo-bar { transform: scaleY(1); }
   .seo-card:hover { transform: none; }
 }
+
+/* ============================================================
+   Graphics kit (src/components/graphics/) — shared keyframes and
+   utilities, namespaced .gfx-* to avoid collisions. Each component
+   documents its contract here; motion only runs under
+   prefers-reduced-motion: no-preference, with a calm static fallback.
+   ============================================================ */
+
+/* AnimatedBlobs: blurred colour blobs drifting behind hero sections */
+.gfx-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(36px);
+  opacity: 0.5;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-blob { animation: gfxDrift 14s ease-in-out infinite; }
+  .gfx-blob:nth-child(2) { animation-duration: 18s; animation-direction: reverse; }
+  .gfx-blob:nth-child(3) { animation-duration: 22s; }
+  .gfx-blob:nth-child(4) { animation-duration: 16s; animation-direction: reverse; }
+}
+@keyframes gfxDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(24px, -18px) scale(1.08); }
+  66% { transform: translate(-18px, 14px) scale(0.96); }
+}
+
+/* RankBars: bars rise, staggered, when the wrapping ScrollReveal gains
+   .revealed; without motion they render at full height immediately */
+.gfx-bar {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-bar { transform: scaleY(0); }
+  .scroll-reveal.revealed .gfx-bar {
+    animation: gfxBarRise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .gfx-bar:nth-child(1) { animation-delay: 0.05s; }
+  .gfx-bar:nth-child(2) { animation-delay: 0.15s; }
+  .gfx-bar:nth-child(3) { animation-delay: 0.25s; }
+  .gfx-bar:nth-child(4) { animation-delay: 0.35s; }
+  .gfx-bar:nth-child(5) { animation-delay: 0.45s; }
+  .gfx-bar:nth-child(6) { animation-delay: 0.55s; }
+  .gfx-bar:nth-child(7) { animation-delay: 0.65s; }
+  .gfx-bar:nth-child(8) { animation-delay: 0.75s; }
+}
+@keyframes gfxBarRise {
+  from { transform: scaleY(0); opacity: 0.3; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+/* NodeGraph: pulsing nodes (delays cycle by position among the SVG's
+   circles, so siblings never pulse in unison) + expanding hub ring */
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-node { animation: gfxPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .gfx-node:nth-of-type(2n) { animation-delay: 0.4s; }
+  .gfx-node:nth-of-type(3n) { animation-delay: 0.8s; }
+  .gfx-node:nth-of-type(5n) { animation-delay: 1.2s; }
+  .gfx-ring { animation: gfxRing 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes gfxPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+@keyframes gfxRing {
+  0% { opacity: 0.7; transform: scale(0.4); }
+  70%, 100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* NodeGraph links / FlowDiagram connectors: travelling dash. Links fall
+   back to a static solid line, flow connectors to a static dashed one. */
+.gfx-flow { stroke-dasharray: 10 12; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-link { stroke-dasharray: 10 12; }
+  .gfx-link, .gfx-flow { animation: gfxDash 1.6s linear infinite; }
+}
+@keyframes gfxDash {
+  to { stroke-dashoffset: -44; }
+}
+
+/* NumberedFeatures cards: subtle hover lift */
+.gfx-card {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+.gfx-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--color-navy) 14%, transparent);
+}
+
+/* LogoMarquee: seamless translateX(-50%) loop over a duplicated track;
+   without motion the duplicate hides and the chips wrap into static rows */
+.gfx-marquee {
+  overflow: hidden;
+}
+.gfx-marquee-track {
+  display: inline-flex;
+  align-items: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-marquee {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .gfx-marquee-track {
+    width: max-content;
+    will-change: transform;
+    animation: gfxMarquee var(--gfx-marquee-duration, 28s) linear infinite;
+  }
+  .gfx-marquee-dup { display: contents; }
+}
+@keyframes gfxMarquee {
+  to { transform: translateX(-50%); }
+}
+
+/* Calm fallbacks under reduced motion (belt and braces on top of the
+   no-preference gates above) */
+@media (prefers-reduced-motion: reduce) {
+  .gfx-blob, .gfx-node, .gfx-ring, .gfx-link, .gfx-flow, .gfx-marquee-track { animation: none !important; }
+  .gfx-bar { transform: scaleY(1); }
+  .gfx-ring { opacity: 0.3; }
+  .gfx-card { transition: none; }
+  .gfx-card:hover { transform: none; }
+  .gfx-marquee-track { flex-wrap: wrap; justify-content: center; }
+  .gfx-marquee-dup { display: none; }
+}

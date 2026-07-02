@@ -46,7 +46,7 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
   `NodeGraph`, `FlowDiagram`, `StatBand` (wrapping the existing `StatCounter`),
   `NumberedFeatures`, and `LogoMarquee`. Each takes props, uses tokens, and has
   a reduced-motion fallback.
-- [ ] F2: Add any shared keyframes/utility classes these components need to
+- [x] F2: Add any shared keyframes/utility classes these components need to
   `globals.css` under a clearly commented "Graphics kit" block, namespaced
   `.gfx-*` to avoid collisions.
 
@@ -80,3 +80,4 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
 The agent appends one line per completed task here (date + task id + commit).
 
 - 2026-07-02 — F1 — graphics kit components (`AnimatedBlobs`, `RankBars`, `NodeGraph`, `FlowDiagram`, `StatBand`, `NumberedFeatures`, `LogoMarquee`) complete; fixed `StatCounter` set-state-in-effect lint error and excluded `.claude/` worktrees from ESLint so the gate is green.
+- 2026-07-02 — F2 — "Graphics kit" block added to `globals.css` (`.gfx-*` namespaced): blob drift, staggered bar rise, node pulse + hub ring, travelling-dash links/flow, card hover lift, seamless marquee loop with fade mask; all motion gated on `prefers-reduced-motion: no-preference` with static fallbacks (bars full height, solid links, marquee wraps to rows, faint ring). Build + lint green.
