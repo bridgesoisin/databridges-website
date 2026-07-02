@@ -132,7 +132,7 @@ export default function EUAIActChecker() {
     const daysLeft = getDaysUntilDeadline();
 
     return (
-      <div className="animate-fade-in">
+      <div>
         {resultType === "high" && (
           <div className="text-center">
             <div className="text-5xl mb-4" aria-hidden="true">
@@ -249,10 +249,10 @@ export default function EUAIActChecker() {
             key={option}
             onClick={() => handleSelect(option)}
             aria-pressed={isSelected(option)}
-            className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-4 py-2.5 rounded-full text-sm font-medium border transition-colors duration-200 ${
               isSelected(option)
-                ? "bg-navy text-white"
-                : "bg-white border border-navy/20 text-navy hover:border-navy/40"
+                ? "bg-navy border-navy text-white"
+                : "bg-white border-navy/20 text-navy hover:border-navy/40"
             }`}
           >
             {option}
@@ -276,7 +276,7 @@ export default function EUAIActChecker() {
         <button
           onClick={handleNext}
           disabled={!canAdvance()}
-          className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200 ${
+          className={`px-6 py-3 rounded-full text-sm font-semibold transition-colors duration-200 ${
             canAdvance()
               ? "bg-navy text-white hover:bg-navy/90"
               : "bg-navy/20 text-navy/40 cursor-not-allowed"

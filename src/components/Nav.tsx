@@ -40,10 +40,10 @@ export default function Nav() {
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-gray-100"
-          : "bg-transparent"
+          ? "bg-white/80 backdrop-blur-md border-gray-100"
+          : "bg-transparent border-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">

@@ -28,10 +28,10 @@ export default function BeforeAfterToggle() {
           <button
             onClick={() => setShowAfter(false)}
             aria-pressed={!showAfter}
-            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+            className={`px-6 py-2 rounded-full text-sm font-semibold border transition-colors duration-200 ${
               !showAfter
-                ? "bg-cyan text-navy"
-                : "border border-white/20 text-white/60 hover:text-white"
+                ? "bg-cyan border-cyan text-navy"
+                : "border-white/20 text-white/60 hover:text-white"
             }`}
           >
             Before
@@ -39,10 +39,10 @@ export default function BeforeAfterToggle() {
           <button
             onClick={() => setShowAfter(true)}
             aria-pressed={showAfter}
-            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+            className={`px-6 py-2 rounded-full text-sm font-semibold border transition-colors duration-200 ${
               showAfter
-                ? "bg-cyan text-navy"
-                : "border border-white/20 text-white/60 hover:text-white"
+                ? "bg-cyan border-cyan text-navy"
+                : "border-white/20 text-white/60 hover:text-white"
             }`}
           >
             After

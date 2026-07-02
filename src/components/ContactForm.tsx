@@ -54,7 +54,7 @@ function ContactFormInner() {
             id="name"
             name="name"
             required
-            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200"
+            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200"
           />
         </div>
 
@@ -70,7 +70,7 @@ function ContactFormInner() {
             id="email"
             name="email"
             required
-            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200"
+            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200"
           />
         </div>
 
@@ -86,7 +86,7 @@ function ContactFormInner() {
             id="organisation"
             name="organisation"
             placeholder="Where do you work? (optional)"
-            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200"
+            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200"
           />
         </div>
 
@@ -103,7 +103,7 @@ function ContactFormInner() {
             rows={6}
             required
             placeholder="e.g. We have three people manually copying data between spreadsheets every Monday morning and it's taking about two hours each time..."
-            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200 resize-y"
+            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200 resize-y"
           />
         </div>
 
@@ -122,7 +122,7 @@ export default function ContactForm() {
   return (
     <Suspense
       fallback={
-        <div className="animate-pulse bg-gray-200 rounded-2xl h-96" />
+        <div className="animate-pulse bg-gray-200 rounded-2xl h-[37rem]" />
       }
     >
       <ContactFormInner />

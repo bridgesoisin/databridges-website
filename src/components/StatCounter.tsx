@@ -68,7 +68,7 @@ export default function StatCounter({ target, label }: StatCounterProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-syne text-5xl font-extrabold text-cyan">
+      <div className="font-syne text-5xl font-extrabold text-cyan tabular-nums">
         {display}
       </div>
       <div className="text-sm text-gray-400 mt-2 uppercase tracking-wide">
