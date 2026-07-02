@@ -294,7 +294,7 @@ export default function SeoAeoPage() {
             <ScrollReveal>
               <div className="seo-card h-full rounded-3xl border border-gray-100 bg-white p-8"
                 style={{ boxShadow: "0 6px 20px rgba(10,30,61,0.06)" }}>
-                <span className="font-jetbrains text-sm uppercase tracking-widest text-cyan">
+                <span className="font-jetbrains text-sm uppercase tracking-widest text-cyan-ink">
                   SEO
                 </span>
                 <h3 className="font-syne text-2xl font-bold text-navy mt-2">
@@ -310,7 +310,7 @@ export default function SeoAeoPage() {
             <ScrollReveal delay={80}>
               <div className="seo-card h-full rounded-3xl border border-gray-100 bg-white p-8"
                 style={{ boxShadow: "0 6px 20px rgba(10,30,61,0.06)" }}>
-                <span className="font-jetbrains text-sm uppercase tracking-widest text-yellow">
+                <span className="font-jetbrains text-sm uppercase tracking-widest text-yellow-ink">
                   AEO
                 </span>
                 <h3 className="font-syne text-2xl font-bold text-navy mt-2">
@@ -397,7 +397,10 @@ export default function SeoAeoPage() {
               <ScrollReveal key={tip.n} delay={(i % 2) * 60}>
                 <div className="seo-card flex gap-4 rounded-2xl border border-gray-100 bg-white p-6"
                   style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.05)" }}>
-                  <span className="font-syne text-3xl font-extrabold text-cyan shrink-0">
+                  <span
+                    aria-hidden="true"
+                    className="font-syne text-3xl font-extrabold text-cyan shrink-0"
+                  >
                     {tip.n}
                   </span>
                   <span>

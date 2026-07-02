@@ -247,7 +247,7 @@ function ServiceSection({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text column */}
           <div className={reverse ? "lg:order-2" : ""}>
-            <p className="font-jetbrains text-sm text-cyan mb-3" aria-hidden="true">
+            <p className="font-jetbrains text-sm text-cyan-ink mb-3" aria-hidden="true">
               /{String(index).padStart(2, "0")}
             </p>
             <div className="flex items-center gap-3">
@@ -263,14 +263,14 @@ function ServiceSection({
             </div>
 
             <div className="mt-8">
-              <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
+              <p className="text-xs uppercase tracking-widest text-cyan-ink font-medium mb-2">
                 The Problem
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">{problem}</p>
             </div>
 
             <div className="mt-8">
-              <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
+              <p className="text-xs uppercase tracking-widest text-cyan-ink font-medium mb-2">
                 What DataBridges Does
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">{whatWeDo}</p>
@@ -290,7 +290,7 @@ function ServiceSection({
 
         {/* Numbered deliverables */}
         <ScrollReveal className="mt-12">
-          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-4">
+          <p className="text-xs uppercase tracking-widest text-cyan-ink font-medium mb-4">
             What You Get
           </p>
           <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 list-none p-0">
@@ -312,7 +312,7 @@ function ServiceSection({
 
         <a
           href="mailto:hello@databridges.ie"
-          className="inline-block mt-10 text-cyan font-medium hover:underline transition-colors duration-200"
+          className="inline-block mt-10 text-cyan-ink font-medium hover:underline transition-colors duration-200"
         >
           {ctaLabel} &rarr;
         </a>

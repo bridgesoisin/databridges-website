@@ -291,7 +291,7 @@ export default function AboutPage() {
                     }`}
                   />
                   <ScrollReveal delay={i * 80}>
-                    <p className="text-xs uppercase tracking-widest text-cyan mb-2">
+                    <p className="text-xs uppercase tracking-widest text-cyan-ink mb-2">
                       {act.eyebrow}
                     </p>
                     <h3 className="font-syne text-2xl font-semibold text-navy mb-3">
@@ -315,7 +315,7 @@ export default function AboutPage() {
       >
         <div className="mx-auto max-w-4xl">
           <p
-            className="font-jetbrains text-sm text-cyan text-center mb-3"
+            className="font-jetbrains text-sm text-cyan-ink text-center mb-3"
             aria-hidden="true"
           >
             /timeline
@@ -363,12 +363,12 @@ export default function AboutPage() {
                         className="gfx-card flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-5"
                         style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.05)" }}
                       >
-                        <div className="font-syne w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan text-xs font-bold flex-shrink-0">
+                        <div className="font-syne w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan-ink text-xs font-bold flex-shrink-0">
                           {item.initial}
                         </div>
                         <div>
                           <p
-                            className="font-jetbrains text-[11px] uppercase tracking-widest text-cyan"
+                            className="font-jetbrains text-[11px] uppercase tracking-widest text-cyan-ink"
                             aria-hidden="true"
                           >
                             {item.year}

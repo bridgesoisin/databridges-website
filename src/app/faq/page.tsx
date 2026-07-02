@@ -318,7 +318,7 @@ export default function FaqPage() {
                 style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.06)" }}
               >
                 <p
-                  className="font-jetbrains text-xs text-cyan tracking-widest"
+                  className="font-jetbrains text-xs text-cyan-ink tracking-widest"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, "0")}

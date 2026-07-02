@@ -34,7 +34,7 @@ function Chips({ items }: { items: string[] }) {
         <span
           key={item}
           role="listitem"
-          className="font-jetbrains text-sm uppercase tracking-widest text-navy/60 whitespace-nowrap px-6 py-2"
+          className="font-jetbrains text-sm uppercase tracking-widest text-navy/70 whitespace-nowrap px-6 py-2"
         >
           {item}
         </span>
@@ -50,12 +50,11 @@ export default function LogoMarquee({
   className = "",
 }: LogoMarqueeProps) {
   return (
-    <div
-      role="list"
-      aria-label={ariaLabel}
-      className={`gfx-marquee ${className}`}
-    >
+    <div className={`gfx-marquee ${className}`}>
+      {/* role="list" sits on the track so listitems are its direct children */}
       <div
+        role="list"
+        aria-label={ariaLabel}
         className="gfx-marquee-track"
         style={{ "--gfx-marquee-duration": `${duration}s` } as CSSProperties}
       >

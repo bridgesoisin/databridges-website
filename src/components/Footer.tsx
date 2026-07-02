@@ -60,10 +60,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap justify-between gap-4">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             &copy; {new Date().getFullYear()} DataBridges | Kilcock, Co. Kildare
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-400">
             Built with Next.js &middot; Hosted on Netlify
           </p>
         </div>

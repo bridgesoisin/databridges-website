@@ -66,9 +66,11 @@ export default function Nav() {
               href={link.href}
               className={`text-sm font-medium transition-colors duration-200 ${
                 pathname === link.href
-                  ? "text-cyan"
+                  ? scrolled
+                    ? "text-cyan-ink"
+                    : "text-cyan"
                   : scrolled
-                  ? "text-navy hover:text-cyan"
+                  ? "text-navy hover:text-cyan-ink"
                   : "text-white hover:text-cyan"
               }`}
             >

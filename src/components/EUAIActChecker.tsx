@@ -201,7 +201,7 @@ export default function EUAIActChecker() {
           </div>
         )}
 
-        <p className="text-sm text-navy/40 text-center mt-8">
+        <p className="text-sm text-navy/70 text-center mt-8">
           This tool gives a general indication only, not legal advice. For
           formal compliance assessment, consult a qualified solicitor.
         </p>
@@ -209,7 +209,7 @@ export default function EUAIActChecker() {
         <div className="text-center mt-6">
           <button
             onClick={handleReset}
-            className="text-navy/60 text-sm underline hover:text-navy transition-colors duration-200"
+            className="text-navy/80 text-sm underline hover:text-navy transition-colors duration-200"
           >
             Start again
           </button>
@@ -237,7 +237,7 @@ export default function EUAIActChecker() {
         {currentQuestion.question}
       </h3>
       {currentQuestion.note && (
-        <p className="text-sm text-navy/50 mb-6">
+        <p className="text-sm text-navy/70 mb-6">
           ({currentQuestion.note})
         </p>
       )}
@@ -248,6 +248,7 @@ export default function EUAIActChecker() {
           <button
             key={option}
             onClick={() => handleSelect(option)}
+            aria-pressed={isSelected(option)}
             className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
               isSelected(option)
                 ? "bg-navy text-white"
@@ -264,7 +265,7 @@ export default function EUAIActChecker() {
         {currentStep > 0 ? (
           <button
             onClick={handleBack}
-            className="text-navy/60 text-sm hover:text-navy transition-colors duration-200"
+            className="text-navy/80 text-sm hover:text-navy transition-colors duration-200"
           >
             &larr; Back
           </button>

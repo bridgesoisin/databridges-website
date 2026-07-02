@@ -53,6 +53,7 @@ export default function BeforeAfterToggle() {
         <div className="relative">
           {/* BEFORE panel */}
           <div
+            aria-hidden={showAfter}
             className={`toggle-panel ${
               !showAfter
                 ? "opacity-100 scale-100"
@@ -187,6 +188,7 @@ export default function BeforeAfterToggle() {
 
           {/* AFTER panel */}
           <div
+            aria-hidden={!showAfter}
             className={`toggle-panel ${
               showAfter
                 ? "opacity-100 scale-100"
@@ -205,7 +207,7 @@ export default function BeforeAfterToggle() {
                     key={kpi.label}
                     className="bg-white rounded-xl p-4 text-center border border-gray-100"
                   >
-                    <div className="font-syne text-2xl font-bold text-cyan">
+                    <div className="font-syne text-2xl font-bold text-cyan-ink">
                       {kpi.value}
                     </div>
                     <div className="text-xs text-gray-500 mt-1">
@@ -235,10 +237,10 @@ export default function BeforeAfterToggle() {
                   ))}
                 </div>
                 <div className="flex justify-between mt-2">
-                  <span className="text-[10px] text-gray-400">
+                  <span className="text-[10px] text-gray-500">
                     Jan
                   </span>
-                  <span className="text-[10px] text-gray-400">
+                  <span className="text-[10px] text-gray-500">
                     Aug
                   </span>
                 </div>

@@ -308,7 +308,7 @@ export default function ContactPage() {
                   key={d.label}
                   className="gfx-card bg-white rounded-2xl border border-navy/10 border-l-4 border-l-cyan p-5"
                 >
-                  <p className="text-xs uppercase tracking-widest text-cyan mb-2">
+                  <p className="text-xs uppercase tracking-widest text-cyan-ink mb-2">
                     {d.label}
                   </p>
                   {d.body}
@@ -317,7 +317,7 @@ export default function ContactPage() {
 
               {/* what happens next */}
               <div className="pt-6">
-                <p className="text-xs uppercase tracking-widest text-cyan mb-3">
+                <p className="text-xs uppercase tracking-widest text-cyan-ink mb-3">
                   What happens next
                 </p>
                 <FlowDiagram
@@ -325,7 +325,7 @@ export default function ContactPage() {
                   ariaLabel="What happens after you send a message"
                 />
                 <p
-                  className="font-jetbrains text-xs text-navy/50 text-center mt-2"
+                  className="font-jetbrains text-xs text-navy/70 text-center mt-2"
                   aria-hidden="true"
                 >
                   no sales script, just an answer

@@ -22,7 +22,7 @@ function ContactFormInner() {
         </p>
         <a
           href="/contact"
-          className="inline-block mt-6 text-cyan font-medium hover:underline transition-colors duration-200"
+          className="inline-block mt-6 text-cyan-ink font-medium hover:underline transition-colors duration-200"
         >
           &larr; Back to contact
         </a>
@@ -86,7 +86,7 @@ function ContactFormInner() {
             id="organisation"
             name="organisation"
             placeholder="Where do you work? (optional)"
-            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-400 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200"
+            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200"
           />
         </div>
 
@@ -103,7 +103,7 @@ function ContactFormInner() {
             rows={6}
             required
             placeholder="e.g. We have three people manually copying data between spreadsheets every Monday morning and it's taking about two hours each time..."
-            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-400 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200 resize-y"
+            className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all duration-200 resize-y"
           />
         </div>
 

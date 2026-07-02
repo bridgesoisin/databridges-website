@@ -18,7 +18,7 @@ export default function LinkedInPostCard({
           <p className="text-sm font-medium text-navy">
             Ois&iacute;n Bridges
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-500">
             DataBridges
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function LinkedInPostCard({
         href={postUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block text-cyan text-sm font-medium mt-4 hover:underline transition-colors duration-200"
+        className="inline-block text-cyan-ink text-sm font-medium mt-4 hover:underline transition-colors duration-200"
       >
         Read on LinkedIn &rarr;
       </a>

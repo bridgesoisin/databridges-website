@@ -621,7 +621,7 @@ export default function OtterGuide() {
       >
         <Image
           src="/images/mascot/otter-avatar.png"
-          alt="Open the DataBridges otter guide"
+          alt=""
           fill
           sizes="64px"
           style={{ objectFit: "cover" }}

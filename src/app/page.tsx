@@ -96,10 +96,7 @@ export default function Home() {
               <HeroWords />
             </h1>
 
-            <p
-              className="text-xl max-w-xl mt-6"
-              style={{ color: "var(--color-grey-mid)" }}
-            >
+            <p className="text-xl max-w-xl mt-6 text-gray-300">
               DataBridges helps Irish businesses connect people, data and
               process &mdash; turning &ldquo;there has to be a smarter way to
               do this&rdquo; into something that actually works.
@@ -120,7 +117,7 @@ export default function Home() {
               </a>
             </div>
 
-            <p className="mt-16 text-sm text-white/40">
+            <p className="mt-16 text-sm text-white/60">
               Based in Kilcock, Co. Kildare &middot; Working with teams across
               Ireland
             </p>
@@ -165,7 +162,7 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
             The Problem
           </p>
           <h2
@@ -178,7 +175,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             <ScrollReveal delay={0} className="h-full">
               <div className="gfx-card bg-white rounded-2xl p-8 h-full">
-                <p className="font-jetbrains text-lg text-cyan mb-4">
+                <p className="font-jetbrains text-lg text-cyan-ink mb-4">
                   Final_V12_UseThisOne(2).xlsx
                 </p>
                 <p className="text-gray-600 leading-relaxed">
@@ -191,7 +188,7 @@ export default function Home() {
 
             <ScrollReveal delay={100} className="h-full">
               <div className="gfx-card bg-white rounded-2xl p-8 h-full">
-                <p className="font-jetbrains text-lg text-cyan mb-4">
+                <p className="font-jetbrains text-lg text-cyan-ink mb-4">
                   Copy. Paste. Repeat.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
@@ -205,7 +202,7 @@ export default function Home() {
 
             <ScrollReveal delay={200} className="h-full">
               <div className="gfx-card bg-white rounded-2xl p-8 h-full">
-                <p className="font-jetbrains text-lg text-cyan mb-4">
+                <p className="font-jetbrains text-lg text-cyan-ink mb-4">
                   40MB and climbing.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
@@ -229,7 +226,7 @@ export default function Home() {
             </p>
             <a
               href="#what-we-do"
-              className="inline-block mt-8 text-cyan font-medium hover:underline transition-colors duration-200"
+              className="inline-block mt-8 text-cyan-ink font-medium hover:underline transition-colors duration-200"
             >
               Show me how &rarr;
             </a>
@@ -248,7 +245,7 @@ export default function Home() {
         className="py-24 px-6 bg-white"
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
             What We Do
           </p>
           <h2
@@ -361,7 +358,7 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
             How It Works
           </p>
           <h2
@@ -440,7 +437,7 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl">
-          <p className="text-sm uppercase tracking-widest text-navy/60 mb-4">
+          <p className="text-sm uppercase tracking-widest text-navy/70 mb-4">
             Free Tool
           </p>
           <h2
@@ -478,7 +475,7 @@ export default function Home() {
 
           {/* Text */}
           <ScrollReveal delay={100} className="md:pl-12">
-            <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+            <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
               About Ois&iacute;n
             </p>
             <h2
@@ -496,7 +493,7 @@ export default function Home() {
             </p>
             <a
               href="/about"
-              className="inline-block mt-6 text-cyan font-medium hover:underline transition-colors duration-200"
+              className="inline-block mt-6 text-cyan-ink font-medium hover:underline transition-colors duration-200"
             >
               Full story &rarr;
             </a>

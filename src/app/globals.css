@@ -8,6 +8,10 @@
   --color-white: #FFFFFF;
   --color-grey-mid: #6B7280;
   --color-grey-light: #E5E7EB;
+  /* "Ink" variants: same hue as the accent, dark enough for AA (4.5:1)
+     body text on white/off-white. Use cyan/yellow for text on navy only. */
+  --color-cyan-ink: #0E7A83;
+  --color-yellow-ink: #8A6100;
 }
 
 @theme {
@@ -17,6 +21,8 @@
   --color-offwhite: #F8F7F4;
   --color-grey-mid: #6B7280;
   --color-grey-light: #E5E7EB;
+  --color-cyan-ink: #0E7A83;
+  --color-yellow-ink: #8A6100;
 }
 
 /* Skip to main content */
@@ -37,9 +43,11 @@
   top: 0;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+/* Smooth scroll (motion, so gated on the user's preference) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Base body */
@@ -58,10 +66,12 @@ body {
   font-family: var(--font-jetbrains);
 }
 
-/* Focus styles */
+/* Focus styles: two-tone ring (navy halo + cyan outline) so the indicator
+   keeps ≥3:1 contrast on light and dark surfaces alike */
 *:focus-visible {
   outline: 2px solid var(--color-cyan);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-navy);
 }
 
 /* Scroll reveal defaults — visible by default, animated only when motion OK */
@@ -105,14 +115,19 @@ body {
   }
 }
 
-/* Mobile nav overlay */
+/* Mobile nav overlay. `visibility: hidden` (delayed until the slide-out
+   finishes) keeps the closed menu out of the tab order and the
+   accessibility tree. */
 .nav-overlay {
   transform: translateY(-100%);
-  transition: transform 400ms ease-out;
+  visibility: hidden;
+  transition: transform 400ms ease-out, visibility 0s linear 400ms;
 }
 
 .nav-overlay.open {
   transform: translateY(0);
+  visibility: visible;
+  transition: transform 400ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -142,6 +157,12 @@ body {
 /* Toggle animation */
 .toggle-panel {
   transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle-panel {
+    transition: none;
+  }
 }
 
 /* Gradient fade for LinkedIn cards */
@@ -520,7 +541,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .seo-blob, .seo-node, .seo-ring, .seo-flow, .seo-scan, .seo-orbit { animation: none !important; }
+  .seo-blob, .seo-node, .seo-ring, .seo-flow, .seo-scan, .seo-orbit, .seo-bar { animation: none !important; }
   .seo-bar { transform: scaleY(1); }
   .seo-card:hover { transform: none; }
 }

@@ -26,7 +26,7 @@ export default function ServiceCard({
       </p>
       <Link
         href={href}
-        className="inline-block text-cyan text-sm font-medium mt-6 hover:underline transition-colors duration-200"
+        className="inline-block text-cyan-ink text-sm font-medium mt-6 hover:underline transition-colors duration-200"
       >
         Learn more &rarr;
       </Link>

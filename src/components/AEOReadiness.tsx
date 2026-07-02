@@ -126,7 +126,7 @@ export default function AEOReadiness() {
           <span className="font-syne text-xl font-bold text-navy">
             {t.label}
           </span>
-          <span className="font-syne text-2xl font-extrabold" style={{ color: t.color }}>
+          <span className="font-syne text-2xl font-extrabold text-navy">
             {pct}%
           </span>
         </div>
