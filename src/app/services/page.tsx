@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
+import RankBars from "@/components/graphics/RankBars";
+import NodeGraph from "@/components/graphics/NodeGraph";
+import FlowDiagram from "@/components/graphics/FlowDiagram";
 
 export const metadata: Metadata = {
   title: "Services | DataBridges — AI Consulting & Power Platform",
@@ -7,25 +12,201 @@ export const metadata: Metadata = {
     "AI consulting, Power Platform development, SharePoint automation and AI training workshops for Irish businesses and public sector teams.",
 };
 
-const checkIcon = (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-cyan flex-shrink-0 mt-0.5"
-    aria-hidden="true"
-  >
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);
+/* Bespoke service graphics (dependency-free SVG on the .gfx-* contract
+   in globals.css). Both are wrapped in ScrollReveal by ServiceSection,
+   which is what triggers the .gfx-bar rise. */
+
+/** Power Platform: a dashboard window with rising bars and a trend line. */
+function DashboardGraphic() {
+  return (
+    <svg
+      viewBox="0 0 460 340"
+      role="img"
+      aria-label="Illustration of a dashboard with key figures, rising bars and an upward trend line"
+      className="w-full h-auto"
+    >
+      {/* window frame */}
+      <rect
+        x="20"
+        y="16"
+        width="420"
+        height="308"
+        rx="16"
+        fill="var(--color-offwhite)"
+        fillOpacity="0.05"
+        stroke="var(--color-cyan)"
+        strokeOpacity="0.35"
+        strokeWidth="1.5"
+      />
+      <circle cx="44" cy="42" r="5" fill="var(--color-cyan)" opacity="0.6" />
+      <circle cx="62" cy="42" r="5" fill="var(--color-yellow)" opacity="0.6" />
+      <circle cx="80" cy="42" r="5" fill="var(--color-offwhite)" opacity="0.3" />
+
+      {/* KPI chips */}
+      {[40, 170, 300].map((x) => (
+        <g key={x}>
+          <rect
+            x={x}
+            y="64"
+            width="120"
+            height="48"
+            rx="10"
+            fill="var(--color-offwhite)"
+            fillOpacity="0.06"
+            stroke="var(--color-cyan)"
+            strokeOpacity="0.25"
+          />
+          <rect
+            x={x + 14}
+            y="78"
+            width="62"
+            height="7"
+            rx="3.5"
+            fill="var(--color-cyan)"
+            fillOpacity="0.8"
+          />
+          <rect
+            x={x + 14}
+            y="93"
+            width="42"
+            height="6"
+            rx="3"
+            fill="var(--color-offwhite)"
+            fillOpacity="0.3"
+          />
+        </g>
+      ))}
+
+      {/* rising bars */}
+      <line
+        x1="44"
+        y1="296"
+        x2="244"
+        y2="296"
+        stroke="var(--color-offwhite)"
+        strokeOpacity="0.2"
+      />
+      <g>
+        {[60, 95, 125, 150, 170].map((h, i) => (
+          <rect
+            key={h}
+            className="gfx-bar"
+            x={52 + i * 40}
+            y={296 - h}
+            width="26"
+            height={h}
+            rx="6"
+            fill="var(--color-cyan)"
+            fillOpacity={0.5 + i * 0.12}
+          />
+        ))}
+      </g>
+
+      {/* trend line */}
+      <path
+        className="gfx-flow"
+        d="M268 262 L316 224 L352 238 L412 158"
+        fill="none"
+        stroke="var(--color-yellow)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <circle className="gfx-node" cx="412" cy="158" r="6" fill="var(--color-yellow)" />
+    </svg>
+  );
+}
+
+/** Training: a presenter on screen with knowledge fanning out to the team. */
+function WorkshopGraphic() {
+  const row1 = [70, 176, 284, 390];
+  const row2 = [123, 230, 337];
+  return (
+    <svg
+      viewBox="0 0 460 300"
+      role="img"
+      aria-label="Illustration of a workshop presenter sharing knowledge with a team"
+      className="w-full h-auto"
+    >
+      {/* presenter screen */}
+      <rect
+        x="150"
+        y="16"
+        width="160"
+        height="96"
+        rx="14"
+        fill="var(--color-offwhite)"
+        fillOpacity="0.06"
+        stroke="var(--color-cyan)"
+        strokeOpacity="0.4"
+        strokeWidth="1.5"
+      />
+      <circle
+        className="gfx-ring"
+        cx="230"
+        cy="64"
+        r="24"
+        fill="none"
+        stroke="var(--color-yellow)"
+        strokeWidth="2"
+      />
+
+      {/* knowledge fanning out */}
+      {row1.map((x) => (
+        <line
+          key={`p-${x}`}
+          className="gfx-link"
+          x1="230"
+          y1="112"
+          x2={x}
+          y2="180"
+          stroke="var(--color-cyan)"
+          strokeOpacity="0.35"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      ))}
+      {row2.map((x, i) => (
+        <g key={`r2-${x}`}>
+          <line
+            className="gfx-link"
+            x1={row1[i]}
+            y1="180"
+            x2={x}
+            y2="252"
+            stroke="var(--color-cyan)"
+            strokeOpacity="0.25"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          <line
+            className="gfx-link"
+            x1={row1[i + 1]}
+            y1="180"
+            x2={x}
+            y2="252"
+            stroke="var(--color-cyan)"
+            strokeOpacity="0.25"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </g>
+      ))}
+
+      {/* presenter + team nodes (after the lines so they sit on top) */}
+      <circle className="gfx-node" cx="230" cy="64" r="12" fill="var(--color-yellow)" />
+      {row1.map((x) => (
+        <circle key={`n1-${x}`} className="gfx-node" cx={x} cy="180" r="11" fill="var(--color-cyan)" />
+      ))}
+      {row2.map((x) => (
+        <circle key={`n2-${x}`} className="gfx-node" cx={x} cy="252" r="9" fill="var(--color-cyan)" fillOpacity="0.75" />
+      ))}
+    </svg>
+  );
+}
 
 interface ServiceSectionProps {
   id: string;
+  index: number;
   name: string;
   icon: React.ReactNode;
   problem: string;
@@ -33,11 +214,16 @@ interface ServiceSectionProps {
   whatYouGet: string[];
   ctaLabel: string;
   bg: string;
+  /** Graphic column sits left of the text on lg screens. */
+  reverse?: boolean;
+  graphic: React.ReactNode;
+  graphicCaption: string;
   children?: React.ReactNode;
 }
 
 function ServiceSection({
   id,
+  index,
   name,
   icon,
   problem,
@@ -45,60 +231,82 @@ function ServiceSection({
   whatYouGet,
   ctaLabel,
   bg,
+  reverse = false,
+  graphic,
+  graphicCaption,
   children,
 }: ServiceSectionProps) {
   return (
     <section
       id={id}
+      data-otter-section={id}
       aria-labelledby={`${id}-heading`}
-      className={`py-20 px-6 ${bg}`}
+      className={`py-20 md:py-24 px-6 ${bg}`}
     >
-      <div className="mx-auto max-w-4xl">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center text-cyan">
-            {icon}
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Text column */}
+          <div className={reverse ? "lg:order-2" : ""}>
+            <p className="font-jetbrains text-sm text-cyan mb-3" aria-hidden="true">
+              /{String(index).padStart(2, "0")}
+            </p>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center text-cyan flex-shrink-0">
+                {icon}
+              </div>
+              <h2
+                id={`${id}-heading`}
+                className="font-syne text-3xl font-bold text-navy"
+              >
+                {name}
+              </h2>
+            </div>
+
+            <div className="mt-8">
+              <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
+                The Problem
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">{problem}</p>
+            </div>
+
+            <div className="mt-8">
+              <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
+                What DataBridges Does
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">{whatWeDo}</p>
+            </div>
           </div>
-          <h2
-            id={`${id}-heading`}
-            className="font-syne text-3xl font-bold text-navy"
-          >
-            {name}
-          </h2>
+
+          {/* Graphic column */}
+          <ScrollReveal delay={80} className={reverse ? "lg:order-1" : ""}>
+            <div className="gfx-card rounded-3xl bg-navy p-6 sm:p-10">
+              <p className="font-jetbrains text-xs uppercase tracking-widest text-cyan mb-5">
+                {graphicCaption}
+              </p>
+              {graphic}
+            </div>
+          </ScrollReveal>
         </div>
 
-        <div className="mt-8">
-          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
-            The Problem
-          </p>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            {problem}
-          </p>
-        </div>
-
-        <div className="mt-8">
-          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
-            What DataBridges Does
-          </p>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            {whatWeDo}
-          </p>
-        </div>
-
-        <div className="mt-8">
-          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-2">
+        {/* Numbered deliverables */}
+        <ScrollReveal className="mt-12">
+          <p className="text-xs uppercase tracking-widest text-cyan font-medium mb-4">
             What You Get
           </p>
-          <ul className="space-y-3 mt-3">
-            {whatYouGet.map((item) => (
+          <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 list-none p-0">
+            {whatYouGet.map((item, i) => (
               <li key={item} className="flex items-start gap-3">
-                {checkIcon}
-                <span className="text-gray-700">
-                  {item}
+                <span
+                  aria-hidden="true"
+                  className="font-syne text-xl font-extrabold text-cyan shrink-0 leading-7"
+                >
+                  {String(i + 1).padStart(2, "0")}
                 </span>
+                <span className="text-gray-700 leading-7">{item}</span>
               </li>
             ))}
-          </ul>
-        </div>
+          </ol>
+        </ScrollReveal>
 
         {children}
 
@@ -113,34 +321,68 @@ function ServiceSection({
   );
 }
 
+const SERVICE_ANCHORS = [
+  { label: "AI Consulting", href: "#ai-consulting" },
+  { label: "Power Platform", href: "#power-platform" },
+  { label: "SharePoint", href: "#sharepoint" },
+  { label: "Training", href: "#training" },
+];
+
 export default function ServicesPage() {
   return (
     <>
       {/* HERO */}
       <section
+        id="services-hero"
+        data-otter-section="services-hero"
         aria-labelledby="services-hero-heading"
-        className="bg-navy py-32 px-6"
+        className="relative overflow-hidden bg-navy pt-36 pb-24 px-6"
       >
-        <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
-            What We Do
-          </p>
-          <h1
-            id="services-hero-heading"
-            className="font-syne text-6xl font-extrabold text-white"
-          >
-            Services
-          </h1>
-          <p className="text-gray-300 text-xl max-w-2xl mt-4">
-            Real problems. Practical solutions. No jargon, no decks, no
-            47-slide PowerPoint strategies.
-          </p>
+        <AnimatedBlobs />
+
+        <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div>
+            <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+              What We Do
+            </p>
+            <h1
+              id="services-hero-heading"
+              className="font-syne text-5xl md:text-6xl font-extrabold text-white"
+            >
+              Services
+            </h1>
+            <p className="text-gray-300 text-xl max-w-2xl mt-4">
+              Real problems. Practical solutions. No jargon, no decks, no
+              47-slide PowerPoint strategies.
+            </p>
+
+            <nav aria-label="Jump to a service" className="mt-8 flex flex-wrap gap-3">
+              {SERVICE_ANCHORS.map((s) => (
+                <a
+                  key={s.href}
+                  href={s.href}
+                  className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 hover:border-cyan hover:text-cyan transition-colors duration-200"
+                >
+                  {s.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Hero graphic: the manual grind shrinking */}
+          <div className="max-w-xs mx-auto w-full lg:max-w-sm lg:justify-self-end">
+            <RankBars ariaLabel="Bar chart of manual admin hours falling after automation" />
+            <p className="font-jetbrains text-xs text-white/50 text-center mt-3" aria-hidden="true">
+              hours lost to manual admin
+            </p>
+          </div>
         </div>
       </section>
 
       {/* SERVICE 1: AI Consulting */}
       <ServiceSection
         id="ai-consulting"
+        index={1}
         name="AI Consulting & Integration"
         icon={
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -159,10 +401,14 @@ export default function ServicesPage() {
         ]}
         ctaLabel="Talk to Oisín about AI Consulting"
         bg="bg-white"
+        graphic={
+          <NodeGraph ariaLabel="Illustration of AI tools connected through one central, governed hub" />
+        }
+        graphicCaption="Every tool, one governed hub"
       >
         {/* EU AI Act callout */}
         <div
-          className="rounded-xl p-6 mt-8"
+          className="rounded-xl p-6 mt-10"
           style={{ backgroundColor: "var(--color-yellow)" }}
         >
           <h3 className="font-syne text-navy font-semibold text-lg">
@@ -187,6 +433,7 @@ export default function ServicesPage() {
       {/* SERVICE 2: Power Platform */}
       <ServiceSection
         id="power-platform"
+        index={2}
         name="Power Platform Development"
         icon={
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -204,11 +451,15 @@ export default function ServicesPage() {
         ]}
         ctaLabel="Talk to Oisín about Power Platform"
         bg="bg-offwhite"
+        reverse
+        graphic={<DashboardGraphic />}
+        graphicCaption="Dashboards people actually open"
       />
 
       {/* SERVICE 3: SharePoint */}
       <ServiceSection
         id="sharepoint"
+        index={3}
         name="SharePoint Automation"
         icon={
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -230,11 +481,34 @@ export default function ServicesPage() {
         ]}
         ctaLabel="Talk to Oisín about SharePoint"
         bg="bg-white"
+        graphic={
+          <>
+            <FlowDiagram
+              steps={["Request", "Approve", "Notify"]}
+              ariaLabel="Automated approval workflow"
+            />
+            <ul
+              aria-label="Connects with"
+              className="mt-6 flex flex-wrap gap-2 list-none p-0"
+            >
+              {["Teams", "Outlook", "Power Automate"].map((tool) => (
+                <li
+                  key={tool}
+                  className="font-jetbrains rounded-full border border-cyan/30 px-3 py-1 text-xs text-cyan"
+                >
+                  {tool}
+                </li>
+              ))}
+            </ul>
+          </>
+        }
+        graphicCaption="Approvals without email chains"
       />
 
       {/* SERVICE 4: Training */}
       <ServiceSection
         id="training"
+        index={4}
         name="Training & Workshops"
         icon={
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -253,7 +527,38 @@ export default function ServicesPage() {
         ]}
         ctaLabel="Talk to Oisín about Training"
         bg="bg-offwhite"
+        reverse
+        graphic={<WorkshopGraphic />}
+        graphicCaption="Skills that stick after we leave"
       />
+
+      {/* FOOTER CTA */}
+      <section
+        id="services-cta"
+        data-otter-section="footer-cta"
+        aria-labelledby="services-cta-heading"
+        className="py-24 px-6"
+        style={{ backgroundColor: "var(--color-yellow)" }}
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          <h2
+            id="services-cta-heading"
+            className="font-syne text-4xl md:text-5xl font-extrabold text-navy leading-tight"
+          >
+            Not sure which one you need?
+          </h2>
+          <p className="text-navy/70 text-xl mt-4">
+            Most projects touch more than one. Start with a free 30-minute
+            chat and we&apos;ll point you at the fastest win.
+          </p>
+          <a
+            href="mailto:hello@databridges.ie"
+            className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
+          >
+            Book a Free Chat &rarr;
+          </a>
+        </div>
+      </section>
     </>
   );
 }

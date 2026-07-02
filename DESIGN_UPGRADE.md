@@ -54,7 +54,7 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
 - [x] P1: Redesign the Home page (`src/app/page.tsx`) — animated hero with
   `AnimatedBlobs` + a hero graphic, convert sections to use the graphics kit,
   add a numbered "how it works" feature list and a stat band. Keep all copy.
-- [ ] P2: Redesign Services (`src/app/services/page.tsx`) — one animated graphic
+- [x] P2: Redesign Services (`src/app/services/page.tsx`) — one animated graphic
   per service, numbered feature list, alternating graphic/text blocks.
 - [ ] P3: Redesign About (`src/app/about/page.tsx`) — animated credentials/
   timeline graphic; keep the real credentials content.
@@ -81,4 +81,5 @@ The agent appends one line per completed task here (date + task id + commit).
 
 - 2026-07-02 — F1 — graphics kit components (`AnimatedBlobs`, `RankBars`, `NodeGraph`, `FlowDiagram`, `StatBand`, `NumberedFeatures`, `LogoMarquee`) complete; fixed `StatCounter` set-state-in-effect lint error and excluded `.claude/` worktrees from ESLint so the gate is green.
 - 2026-07-02 — P1 — Home page redesigned with the graphics kit: hero now two-column with `AnimatedBlobs` + `NodeGraph` hub graphic (HeroWords sizes retuned to fit the column, `whitespace-nowrap` dropped so 360px never overflows); `StatBand` with the four credibility stats directly after the hero; `LogoMarquee` technology strip; pain-point cards got `.gfx-card` hover lift + equal heights; new "How it works" section (`FlowDiagram` Chat→Map→Build→Train + 4-item `NumberedFeatures`, `data-otter-section="how-it-works"`); about-teaser and LinkedIn cards wrapped in `ScrollReveal`. All copy, JSON-LD and anchors kept. Build + lint green.
+- 2026-07-02 — P2 — Services page redesigned: navy hero with `AnimatedBlobs`, falling `RankBars` ("hours lost to manual admin") and anchor chips to the four services; each service is now an alternating text/graphic block (graphic panel is navy `rounded-3xl` with a JetBrains caption, sides alternate via `reverse`) — AI Consulting gets `NodeGraph`, Power Platform a bespoke dashboard SVG (KPI chips + rising `.gfx-bar`s + yellow trend line), SharePoint a `FlowDiagram` Request→Approve→Notify with integration chips, Training a bespoke presenter-to-team fan SVG (`.gfx-ring`/`.gfx-node`/`.gfx-link`); "What You Get" converted from check bullets to a numbered two-column list; new yellow footer CTA ("Not sure which one you need?"); `data-otter-section` anchors added per section. All copy, ids and the EU AI Act callout kept. Build + lint green.
 - 2026-07-02 — F2 — "Graphics kit" block added to `globals.css` (`.gfx-*` namespaced): blob drift, staggered bar rise, node pulse + hub ring, travelling-dash links/flow, card hover lift, seamless marquee loop with fade mask; all motion gated on `prefers-reduced-motion: no-preference` with static fallbacks (bars full height, solid links, marquee wraps to rows, faint ring). Build + lint green.
