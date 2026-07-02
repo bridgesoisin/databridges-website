@@ -33,18 +33,21 @@ export default function StatCounter({ target, label }: StatCounterProps) {
   useEffect(() => {
     if (!visible) return;
 
-    // Check if target is purely numeric (with optional + suffix)
+    // Non-numeric targets (initial state) already display verbatim.
     const numMatch = target.match(/^(\d+)(\+?)$/);
-    if (!numMatch) {
-      // Non-numeric — just show it
-      setDisplay(target);
-      return;
-    }
+    if (!numMatch) return;
+
+    // Reduced motion: keep the static final value, no count-up.
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReduced) return;
 
     const targetNum = parseInt(numMatch[1], 10);
     const suffix = numMatch[2] || "";
     const duration = 1200;
     const startTime = performance.now();
+    let rafId: number;
 
     function animate(currentTime: number) {
       const elapsed = currentTime - startTime;
@@ -55,21 +58,12 @@ export default function StatCounter({ target, label }: StatCounterProps) {
       setDisplay(`${current}${suffix}`);
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
       }
     }
 
-    // Check for reduced motion
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReduced) {
-      setDisplay(target);
-    } else {
-      setDisplay(`0${suffix}`);
-      requestAnimationFrame(animate);
-    }
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
   }, [visible, target]);
 
   return (

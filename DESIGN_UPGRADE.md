@@ -41,7 +41,7 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
 ## Backlog (grind top to bottom, one per run)
 
 ### Foundations (build these first — later pages reuse them)
-- [ ] F1: Create `src/components/graphics/` with reusable, dependency-free
+- [x] F1: Create `src/components/graphics/` with reusable, dependency-free
   animated components modelled on `/seo-aeo`: `AnimatedBlobs`, `RankBars`,
   `NodeGraph`, `FlowDiagram`, `StatBand` (wrapping the existing `StatCounter`),
   `NumberedFeatures`, and `LogoMarquee`. Each takes props, uses tokens, and has
@@ -78,3 +78,5 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
 
 ## Progress log
 The agent appends one line per completed task here (date + task id + commit).
+
+- 2026-07-02 — F1 — graphics kit components (`AnimatedBlobs`, `RankBars`, `NodeGraph`, `FlowDiagram`, `StatBand`, `NumberedFeatures`, `LogoMarquee`) complete; fixed `StatCounter` set-state-in-effect lint error and excluded `.claude/` worktrees from ESLint so the gate is green.
