@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 
 export const metadata: Metadata = {
   title: "FAQ | DataBridges — AI, Power Platform & Automation in Ireland",
@@ -76,6 +77,175 @@ const faqJsonLd = {
   })),
 };
 
+/* Hero graphic: floating question bubbles resolving, along a dashed flight
+   path, into one clear answer with a tick. Dependency-free SVG on the
+   .gfx-* contract in globals.css. */
+function QuestionsToAnswer() {
+  const scatter = [
+    { x: 48, y: 34, r: 2.5, o: 0.5 },
+    { x: 168, y: 22, r: 2, o: 0.6 },
+    { x: 292, y: 30, r: 3, o: 0.4 },
+    { x: 420, y: 44, r: 2, o: 0.55 },
+    { x: 434, y: 176, r: 2.5, o: 0.4 },
+    { x: 30, y: 196, r: 2, o: 0.4 },
+  ];
+  return (
+    <svg
+      viewBox="0 0 460 250"
+      role="img"
+      aria-label="Several question bubbles resolving into one clear answer"
+      className="w-full h-auto"
+    >
+      {/* ambient pulsing dots */}
+      {scatter.map((s) => (
+        <circle
+          key={`${s.x}-${s.y}`}
+          className="gfx-node"
+          cx={s.x}
+          cy={s.y}
+          r={s.r}
+          fill="var(--color-offwhite)"
+          opacity={s.o}
+        />
+      ))}
+
+      {/* stacked question bubbles */}
+      <g>
+        <rect
+          x="30"
+          y="58"
+          width="88"
+          height="60"
+          rx="14"
+          fill="var(--color-offwhite)"
+          fillOpacity="0.05"
+          stroke="var(--color-cyan)"
+          strokeOpacity="0.4"
+          strokeWidth="1.5"
+        />
+        <polygon
+          points="52,118 68,118 52,134"
+          fill="var(--color-offwhite)"
+          fillOpacity="0.05"
+          stroke="var(--color-cyan)"
+          strokeOpacity="0.4"
+          strokeWidth="1.5"
+        />
+        <text
+          x="74"
+          y="98"
+          textAnchor="middle"
+          fontSize="30"
+          fontWeight="700"
+          fill="var(--color-cyan)"
+          fillOpacity="0.9"
+        >
+          ?
+        </text>
+      </g>
+      <g>
+        <rect
+          x="96"
+          y="150"
+          width="74"
+          height="52"
+          rx="12"
+          fill="var(--color-offwhite)"
+          fillOpacity="0.05"
+          stroke="var(--color-cyan)"
+          strokeOpacity="0.3"
+          strokeWidth="1.5"
+        />
+        <text
+          x="133"
+          y="185"
+          textAnchor="middle"
+          fontSize="24"
+          fontWeight="700"
+          fill="var(--color-cyan)"
+          fillOpacity="0.6"
+        >
+          ?
+        </text>
+      </g>
+      <g>
+        <rect
+          x="150"
+          y="42"
+          width="60"
+          height="44"
+          rx="11"
+          fill="var(--color-offwhite)"
+          fillOpacity="0.05"
+          stroke="var(--color-cyan)"
+          strokeOpacity="0.25"
+          strokeWidth="1.5"
+        />
+        <text
+          x="180"
+          y="72"
+          textAnchor="middle"
+          fontSize="20"
+          fontWeight="700"
+          fill="var(--color-cyan)"
+          fillOpacity="0.45"
+        >
+          ?
+        </text>
+      </g>
+
+      {/* flight path from questions to the answer */}
+      <path
+        className="gfx-flow"
+        d="M172 132 C 224 168, 258 168, 300 138"
+        fill="none"
+        stroke="var(--color-yellow)"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+
+      {/* the one clear answer */}
+      <circle
+        className="gfx-ring"
+        cx="356"
+        cy="128"
+        r="58"
+        fill="none"
+        stroke="var(--color-cyan)"
+        strokeWidth="2"
+      />
+      <rect
+        x="298"
+        y="92"
+        width="118"
+        height="72"
+        rx="14"
+        fill="var(--color-offwhite)"
+        fillOpacity="0.06"
+        stroke="var(--color-yellow)"
+        strokeOpacity="0.5"
+        strokeWidth="1.5"
+      />
+      <polygon
+        points="322,164 340,164 322,182"
+        fill="var(--color-offwhite)"
+        fillOpacity="0.06"
+        stroke="var(--color-yellow)"
+        strokeOpacity="0.5"
+        strokeWidth="1.5"
+      />
+      <polyline
+        points="332,128 348,144 382,110"
+        fill="none"
+        stroke="var(--color-yellow)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function FaqPage() {
   return (
     <>
@@ -90,27 +260,42 @@ export default function FaqPage() {
         id="faq-hero"
         data-otter-section="faq-hero"
         aria-labelledby="faq-hero-heading"
-        className="bg-navy py-32 px-6"
+        className="relative overflow-hidden bg-navy pt-36 pb-24 px-6"
       >
-        <div className="mx-auto max-w-5xl">
-          <h1
-            id="faq-hero-heading"
-            className="font-syne text-5xl md:text-6xl font-extrabold text-white"
-          >
-            Frequently Asked Questions
-          </h1>
-          <p className="text-cyan text-2xl mt-2">Straight answers, no jargon.</p>
-          <p className="text-gray-300 text-lg max-w-2xl mt-4">
-            The things people ask most about working with DataBridges. Can&apos;t
-            see your question? Email{" "}
-            <a
-              href="mailto:hello@databridges.ie"
-              className="text-cyan underline underline-offset-4"
+        <AnimatedBlobs />
+
+        <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div>
+            <h1
+              id="faq-hero-heading"
+              className="font-syne text-5xl md:text-6xl font-extrabold text-white"
             >
-              hello@databridges.ie
-            </a>
-            .
-          </p>
+              Frequently Asked Questions
+            </h1>
+            <p className="text-cyan text-2xl mt-2">Straight answers, no jargon.</p>
+            <p className="text-gray-300 text-lg max-w-2xl mt-4">
+              The things people ask most about working with DataBridges. Can&apos;t
+              see your question? Email{" "}
+              <a
+                href="mailto:hello@databridges.ie"
+                className="text-cyan underline underline-offset-4"
+              >
+                hello@databridges.ie
+              </a>
+              .
+            </p>
+          </div>
+
+          {/* Hero graphic: questions resolving into one clear answer */}
+          <div className="max-w-sm mx-auto w-full lg:max-w-md lg:justify-self-end">
+            <QuestionsToAnswer />
+            <p
+              className="font-jetbrains text-xs text-white/50 text-center mt-3"
+              aria-hidden="true"
+            >
+              your questions &rarr; one straight answer
+            </p>
+          </div>
         </div>
       </section>
 
@@ -129,10 +314,16 @@ export default function FaqPage() {
           {FAQS.map((f, i) => (
             <ScrollReveal key={f.q} delay={i * 40}>
               <article
-                className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8"
+                className="gfx-card bg-white rounded-2xl border border-gray-100 border-l-4 border-l-cyan p-6 md:p-8"
                 style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.06)" }}
               >
-                <h3 className="font-syne text-xl md:text-2xl font-bold text-navy">
+                <p
+                  className="font-jetbrains text-xs text-cyan tracking-widest"
+                  aria-hidden="true"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-syne text-xl md:text-2xl font-bold text-navy mt-2">
                   {f.q}
                 </h3>
                 <p className="text-gray-600 text-base leading-relaxed mt-3">
@@ -149,33 +340,42 @@ export default function FaqPage() {
         id="faq-cta"
         data-otter-section="footer-cta"
         aria-labelledby="faq-cta-heading"
-        className="bg-navy py-20 px-6"
+        className="relative overflow-hidden bg-navy py-20 px-6"
       >
-        <div className="mx-auto max-w-3xl text-center">
-          <h2
-            id="faq-cta-heading"
-            className="font-syne text-3xl md:text-4xl font-extrabold text-white"
-          >
-            Still have a question?
-          </h2>
-          <p className="text-gray-300 text-lg mt-3">
-            A first 30-minute chat is free, with no sales script. Tell us what&apos;s
-            broken and we&apos;ll tell you straight whether we can help.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-block rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105"
+        <AnimatedBlobs
+          blobs={[
+            { size: 260, color: "var(--color-cyan)", top: -100, left: -80 },
+            { size: 220, color: "var(--color-yellow)", bottom: -110, right: -60 },
+          ]}
+        />
+
+        <div className="relative mx-auto max-w-3xl text-center">
+          <ScrollReveal>
+            <h2
+              id="faq-cta-heading"
+              className="font-syne text-3xl md:text-4xl font-extrabold text-white"
             >
-              Book a free chat
-            </Link>
-            <Link
-              href="/services"
-              className="inline-block rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              See our services
-            </Link>
-          </div>
+              Still have a question?
+            </h2>
+            <p className="text-gray-300 text-lg mt-3">
+              A first 30-minute chat is free, with no sales script. Tell us what&apos;s
+              broken and we&apos;ll tell you straight whether we can help.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-block rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105"
+              >
+                Book a free chat
+              </Link>
+              <Link
+                href="/services"
+                className="inline-block rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                See our services
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>
