@@ -269,7 +269,7 @@ export default function ContactPage() {
         className="py-20 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-5 gap-16">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">
           {/* LEFT — FORM (60%) */}
           <ScrollReveal className="md:col-span-3">
             <div className="relative">

@@ -80,19 +80,19 @@ export default function BeforeAfterToggle() {
                 <div className="w-8 py-2 px-2 text-gray-400 border-r border-gray-200 bg-gray-50">
                   1
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   Name
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   Dept
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   Hours
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-red-600 bg-red-50 font-bold">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-red-600 bg-red-50 font-bold">
                   #REF!
                 </div>
-                <div className="flex-[3] py-2 px-2 text-gray-500 italic col-span-3">
+                <div className="flex-[3] min-w-0 truncate py-2 px-2 text-gray-500 italic">
                   FINAL FINAL (use this one)
                 </div>
               </div>
@@ -102,25 +102,25 @@ export default function BeforeAfterToggle() {
                 <div className="w-8 py-2 px-2 text-gray-400 border-r border-gray-200 bg-gray-50">
                   2
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   Murphy
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   Finance
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   37.5
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-500 text-[10px]">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-500 text-[10px]">
                   =SUM(B2:B47) &larr; DO NOT DELETE
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   &nbsp;
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   &nbsp;
                 </div>
-                <div className="flex-1 py-2 px-2 text-gray-700">&nbsp;</div>
+                <div className="flex-1 min-w-0 truncate py-2 px-2 text-gray-700">&nbsp;</div>
               </div>
 
               {/* Row 3 */}
@@ -128,25 +128,25 @@ export default function BeforeAfterToggle() {
                 <div className="w-8 py-2 px-2 text-gray-400 border-r border-gray-200 bg-gray-50">
                   3
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   O&apos;Brien
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   HR
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   40
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   €32,100
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   &nbsp;
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-400 text-[10px]">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-400 text-[10px]">
                   40,823 KB
                 </div>
-                <div className="flex-1 py-2 px-2 text-gray-700">&nbsp;</div>
+                <div className="flex-1 min-w-0 truncate py-2 px-2 text-gray-700">&nbsp;</div>
               </div>
 
               {/* Row 4 */}
@@ -154,29 +154,29 @@ export default function BeforeAfterToggle() {
                 <div className="w-8 py-2 px-2 text-gray-400 border-r border-gray-200 bg-gray-50">
                   4
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   Kelly
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-orange-600">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-orange-600">
                   ???
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   35
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   €28,400
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   &nbsp;
                 </div>
-                <div className="flex-1 py-2 px-2 border-r border-gray-200 text-gray-700">
+                <div className="flex-1 min-w-0 truncate py-2 px-2 border-r border-gray-200 text-gray-700">
                   &nbsp;
                 </div>
-                <div className="flex-1 py-2 px-2 text-gray-700">&nbsp;</div>
+                <div className="flex-1 min-w-0 truncate py-2 px-2 text-gray-700">&nbsp;</div>
               </div>
 
               {/* Status bar */}
-              <div className="bg-gray-100 py-1.5 px-3 text-[10px] text-gray-500 border-t border-gray-300 flex justify-between">
+              <div className="bg-gray-100 py-1.5 px-3 text-[10px] text-gray-500 border-t border-gray-300 flex justify-between gap-2">
                 <span>Ready</span>
                 <span className="text-amber-600">
                   ⚠ Circular reference warning
@@ -195,7 +195,7 @@ export default function BeforeAfterToggle() {
           >
             <div className="bg-gray-50 rounded-xl p-6">
               {/* KPI cards */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
                 {[
                   { value: "€142k", label: "saved" },
                   { value: "14hrs/week", label: "automated" },
@@ -245,12 +245,12 @@ export default function BeforeAfterToggle() {
               </div>
 
               {/* Clean table */}
-              <div className="bg-white rounded-xl overflow-hidden border border-gray-100 text-sm">
-                <div className="grid grid-cols-4 bg-navy/5 py-2 px-4 text-xs font-medium text-gray-500">
-                  <span>Name</span>
-                  <span>Department</span>
-                  <span>Hours</span>
-                  <span>Status</span>
+              <div className="bg-white rounded-xl overflow-hidden border border-gray-100 text-xs sm:text-sm">
+                <div className="grid grid-cols-4 gap-2 bg-navy/5 py-2 px-4 text-xs font-medium text-gray-500">
+                  <span className="truncate">Name</span>
+                  <span className="truncate">Department</span>
+                  <span className="truncate">Hours</span>
+                  <span className="truncate">Status</span>
                 </div>
                 {[
                   {
@@ -274,11 +274,11 @@ export default function BeforeAfterToggle() {
                 ].map((row) => (
                   <div
                     key={row.name}
-                    className="grid grid-cols-4 py-2 px-4 border-t border-gray-100 text-gray-700"
+                    className="grid grid-cols-4 gap-2 py-2 px-4 border-t border-gray-100 text-gray-700"
                   >
-                    <span>{row.name}</span>
-                    <span>{row.dept}</span>
-                    <span>{row.hours}</span>
+                    <span className="truncate">{row.name}</span>
+                    <span className="truncate">{row.dept}</span>
+                    <span className="truncate">{row.hours}</span>
                     <span className="text-emerald-600 flex items-center gap-1">
                       <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block" />
                       {row.status}

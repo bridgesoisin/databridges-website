@@ -32,7 +32,11 @@ export default function StatBand({
     <section aria-label={ariaLabel} className={`bg-navy px-6 py-16 ${className}`}>
       <div
         className={`mx-auto max-w-5xl grid grid-cols-1 gap-10 ${
-          stats.length % 2 === 0 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+          stats.length % 2 === 0
+            ? stats.length >= 4
+              ? "sm:grid-cols-2 lg:grid-cols-4"
+              : "sm:grid-cols-2"
+            : "sm:grid-cols-3"
         }`}
       >
         {stats.map((s) => (
