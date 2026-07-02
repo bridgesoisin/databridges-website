@@ -51,7 +51,7 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
   `.gfx-*` to avoid collisions.
 
 ### Page redesigns
-- [ ] P1: Redesign the Home page (`src/app/page.tsx`) — animated hero with
+- [x] P1: Redesign the Home page (`src/app/page.tsx`) — animated hero with
   `AnimatedBlobs` + a hero graphic, convert sections to use the graphics kit,
   add a numbered "how it works" feature list and a stat band. Keep all copy.
 - [ ] P2: Redesign Services (`src/app/services/page.tsx`) — one animated graphic
@@ -80,4 +80,5 @@ numbered feature lists, alternating graphic/text blocks, tidy CTAs.
 The agent appends one line per completed task here (date + task id + commit).
 
 - 2026-07-02 — F1 — graphics kit components (`AnimatedBlobs`, `RankBars`, `NodeGraph`, `FlowDiagram`, `StatBand`, `NumberedFeatures`, `LogoMarquee`) complete; fixed `StatCounter` set-state-in-effect lint error and excluded `.claude/` worktrees from ESLint so the gate is green.
+- 2026-07-02 — P1 — Home page redesigned with the graphics kit: hero now two-column with `AnimatedBlobs` + `NodeGraph` hub graphic (HeroWords sizes retuned to fit the column, `whitespace-nowrap` dropped so 360px never overflows); `StatBand` with the four credibility stats directly after the hero; `LogoMarquee` technology strip; pain-point cards got `.gfx-card` hover lift + equal heights; new "How it works" section (`FlowDiagram` Chat→Map→Build→Train + 4-item `NumberedFeatures`, `data-otter-section="how-it-works"`); about-teaser and LinkedIn cards wrapped in `ScrollReveal`. All copy, JSON-LD and anchors kept. Build + lint green.
 - 2026-07-02 — F2 — "Graphics kit" block added to `globals.css` (`.gfx-*` namespaced): blob drift, staggered bar rise, node pulse + hub ring, travelling-dash links/flow, card hover lift, seamless marquee loop with fade mask; all motion gated on `prefers-reduced-motion: no-preference` with static fallbacks (bars full height, solid links, marquee wraps to rows, faint ring). Build + lint green.

@@ -3,9 +3,45 @@ import ServiceCard from "@/components/ServiceCard";
 import LinkedInPostCard from "@/components/LinkedInPostCard";
 import BeforeAfterToggle from "@/components/BeforeAfterToggle";
 import EUAIActChecker from "@/components/EUAIActChecker";
-import StatCounter from "@/components/StatCounter";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroWords from "@/components/HeroWords";
+import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
+import NodeGraph from "@/components/graphics/NodeGraph";
+import FlowDiagram from "@/components/graphics/FlowDiagram";
+import StatBand from "@/components/graphics/StatBand";
+import NumberedFeatures from "@/components/graphics/NumberedFeatures";
+import LogoMarquee from "@/components/graphics/LogoMarquee";
+
+const TECH_ITEMS = [
+  "Microsoft Copilot",
+  "Power Apps",
+  "Power Automate",
+  "Power BI",
+  "SharePoint",
+  "Dataverse",
+  "Microsoft Teams",
+  "ChatGPT",
+  "Microsoft 365",
+];
+
+const HOW_IT_WORKS = [
+  {
+    title: "A free chat",
+    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help — and say so if we can't.",
+  },
+  {
+    title: "Map the mess",
+    body: "We sit with the people actually doing the work, find where the hours go, and pick the fix with the fastest payback.",
+  },
+  {
+    title: "Build it with you",
+    body: "Working software in weeks, not a slide deck. Built on the Microsoft 365 tools you already pay for, shaped around how your team works.",
+  },
+  {
+    title: "Hand it over properly",
+    body: "Training and plain-English documentation so your team owns it. No dependency, no retainer trap.",
+  },
+];
 
 export default function Home() {
   return (
@@ -46,49 +82,81 @@ export default function Home() {
         id="hero"
         data-otter-section="hero"
         aria-labelledby="hero-heading"
-        className="bg-navy min-h-[100svh] flex items-center relative"
+        className="bg-navy min-h-[100svh] flex items-center relative overflow-hidden"
       >
-        <div className="mx-auto max-w-5xl w-full px-6 pt-[120px] md:pt-[100px] pb-16">
-          <p className="text-sm text-cyan uppercase tracking-widest mb-6">
-            AI Consulting &middot; Power Platform &middot; Training
-          </p>
+        <AnimatedBlobs />
 
-          <h1 id="hero-heading">
-            <HeroWords />
-          </h1>
+        <div className="relative mx-auto max-w-6xl w-full px-6 pt-[120px] md:pt-[100px] pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+          <div>
+            <p className="text-sm text-cyan uppercase tracking-widest mb-6">
+              AI Consulting &middot; Power Platform &middot; Training
+            </p>
 
-          <p
-            className="text-xl max-w-2xl mt-6"
-            style={{ color: "var(--color-grey-mid)" }}
-          >
-            DataBridges helps Irish businesses connect people, data and
-            process &mdash; turning &ldquo;there has to be a smarter way to
-            do this&rdquo; into something that actually works.
-          </p>
+            <h1 id="hero-heading">
+              <HeroWords />
+            </h1>
 
-          <div className="mt-10 flex gap-4 flex-wrap">
-            <a
-              href="mailto:hello@databridges.ie"
-              className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
+            <p
+              className="text-xl max-w-xl mt-6"
+              style={{ color: "var(--color-grey-mid)" }}
             >
-              Book a Free Chat &rarr;
-            </a>
-            <a
-              href="#services"
-              className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
-            >
-              See What We Do
-            </a>
+              DataBridges helps Irish businesses connect people, data and
+              process &mdash; turning &ldquo;there has to be a smarter way to
+              do this&rdquo; into something that actually works.
+            </p>
+
+            <div className="mt-10 flex gap-4 flex-wrap">
+              <a
+                href="mailto:hello@databridges.ie"
+                className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
+              >
+                Book a Free Chat &rarr;
+              </a>
+              <a
+                href="#services"
+                className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
+              >
+                See What We Do
+              </a>
+            </div>
+
+            <p className="mt-16 text-sm text-white/40">
+              Based in Kilcock, Co. Kildare &middot; Working with teams across
+              Ireland
+            </p>
           </div>
 
-          <p className="mt-16 text-sm text-white/40">
-            Based in Kilcock, Co. Kildare &middot; Working with teams across
-            Ireland
-          </p>
+          {/* Hero graphic: people, data and process joined through one hub */}
+          <div className="max-w-sm mx-auto w-full lg:max-w-none">
+            <NodeGraph ariaLabel="Illustration of people, data and process connected through one central hub" />
+          </div>
         </div>
       </section>
 
-      {/* ─── SECTION 2: PAIN POINTS ─── */}
+      {/* ─── SECTION 2: STAT BAND ─── */}
+      <StatBand
+        ariaLabel="DataBridges in numbers"
+        stats={[
+          { target: "5+", label: "Years consulting" },
+          { target: "4", label: "Years in Irish public sector" },
+          { target: "UCD", label: "Professional Academy" },
+          { target: "Aug '26", label: "EU AI Act deadline" },
+        ]}
+      />
+
+      {/* ─── SECTION 3: TECHNOLOGY MARQUEE ─── */}
+      <section
+        aria-label="Technologies DataBridges works with"
+        className="py-10"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <LogoMarquee
+          items={TECH_ITEMS}
+          ariaLabel="Technologies DataBridges works with"
+        />
+      </section>
+
+      {/* ─── SECTION 4: PAIN POINTS ─── */}
       <section
         id="services"
         data-otter-section="services"
@@ -108,8 +176,8 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <ScrollReveal delay={0}>
-              <div className="bg-white rounded-2xl p-8">
+            <ScrollReveal delay={0} className="h-full">
+              <div className="gfx-card bg-white rounded-2xl p-8 h-full">
                 <p className="font-jetbrains text-lg text-cyan mb-4">
                   Final_V12_UseThisOne(2).xlsx
                 </p>
@@ -121,8 +189,8 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={100}>
-              <div className="bg-white rounded-2xl p-8">
+            <ScrollReveal delay={100} className="h-full">
+              <div className="gfx-card bg-white rounded-2xl p-8 h-full">
                 <p className="font-jetbrains text-lg text-cyan mb-4">
                   Copy. Paste. Repeat.
                 </p>
@@ -135,8 +203,8 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
-              <div className="bg-white rounded-2xl p-8">
+            <ScrollReveal delay={200} className="h-full">
+              <div className="gfx-card bg-white rounded-2xl p-8 h-full">
                 <p className="font-jetbrains text-lg text-cyan mb-4">
                   40MB and climbing.
                 </p>
@@ -169,10 +237,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 3: BEFORE/AFTER ─── */}
+      {/* ─── SECTION 5: BEFORE/AFTER ─── */}
       <BeforeAfterToggle />
 
-      {/* ─── SECTION 4: SERVICES GRID ─── */}
+      {/* ─── SECTION 6: SERVICES GRID ─── */}
       <section
         id="what-we-do"
         data-otter-section="what-we-do"
@@ -284,7 +352,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 5: CREDIBILITY ─── */}
+      {/* ─── SECTION 7: HOW IT WORKS ─── */}
+      <section
+        id="how-it-works"
+        data-otter-section="how-it-works"
+        aria-labelledby="how-heading"
+        className="py-24 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+            How It Works
+          </p>
+          <h2
+            id="how-heading"
+            className="font-syne text-4xl md:text-5xl font-bold text-navy"
+          >
+            Four steps. No jargon.
+          </h2>
+          <p className="text-gray-500 mt-2">
+            From &ldquo;there has to be a smarter way&rdquo; to sorted &mdash;
+            here is the route every project takes.
+          </p>
+
+          <ScrollReveal className="mt-12">
+            <FlowDiagram
+              steps={["Chat", "Map", "Build", "Train"]}
+              ariaLabel="How a DataBridges project runs"
+              className="max-w-2xl mx-auto"
+            />
+          </ScrollReveal>
+
+          <NumberedFeatures
+            items={HOW_IT_WORKS}
+            columns={2}
+            className="mt-12"
+          />
+        </div>
+      </section>
+
+      {/* ─── SECTION 8: CREDIBILITY ─── */}
       <section
         id="credibility"
         data-otter-section="credibility"
@@ -305,14 +412,6 @@ export default function Home() {
             The difference shows.
           </p>
 
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatCounter target="5+" label="Years consulting" />
-            <StatCounter target="4" label="Years in Irish public sector" />
-            <StatCounter target="UCD" label="Professional Academy" />
-            <StatCounter target="Aug '26" label="EU AI Act deadline" />
-          </div>
-
           {/* Credential pills */}
           <div className="mt-12 flex flex-wrap gap-3 justify-center">
             {[
@@ -332,7 +431,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 6: EU AI ACT CHECKER ─── */}
+      {/* ─── SECTION 9: EU AI ACT CHECKER ─── */}
       <section
         id="eu-ai-act-checker"
         data-otter-section="eu-ai-act-checker"
@@ -358,7 +457,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 7: ABOUT TEASER ─── */}
+      {/* ─── SECTION 10: ABOUT TEASER ─── */}
       <section
         id="about-teaser"
         data-otter-section="about-teaser"
@@ -367,7 +466,7 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center">
+          <ScrollReveal className="flex justify-center">
             <Image
               src="/images/headshot-oisin.jpeg"
               alt="Oisín Bridges, founder of DataBridges, wearing a tweed jacket and paisley tie"
@@ -375,10 +474,10 @@ export default function Home() {
               height={384}
               className="rounded-2xl max-w-sm w-full object-cover aspect-square"
             />
-          </div>
+          </ScrollReveal>
 
           {/* Text */}
-          <div className="md:pl-12">
+          <ScrollReveal delay={100} className="md:pl-12">
             <p className="text-sm uppercase tracking-widest text-cyan mb-4">
               About Ois&iacute;n
             </p>
@@ -401,11 +500,11 @@ export default function Home() {
             >
               Full story &rarr;
             </a>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ─── SECTION 8: LINKEDIN CONTENT ─── */}
+      {/* ─── SECTION 11: LINKEDIN CONTENT ─── */}
       <section
         id="linkedin"
         data-otter-section="linkedin"
@@ -424,14 +523,18 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <LinkedInPostCard
-              previewText="Irish businesses love spreadsheets. But here are the top 5 ways they go wrong. 1. One wrong sort and the whole thing collapses. You think you're sorting by date, suddenly everyone's salary..."
-              postUrl="https://www.linkedin.com/feed/update/urn:li:activity:7421857533692387328"
-            />
-            <LinkedInPostCard
-              previewText="The AI Deadline is Closer Than You Think. If your business uses AI for recruitment, credit scoring, or educational placement, the August 2026 Annex III deadline is real and it is approaching..."
-              postUrl="https://www.linkedin.com/pulse/compliance-traps-eu-ai-act-how-irish-firms-can-avoid-them-zy5jf"
-            />
+            <ScrollReveal className="h-full">
+              <LinkedInPostCard
+                previewText="Irish businesses love spreadsheets. But here are the top 5 ways they go wrong. 1. One wrong sort and the whole thing collapses. You think you're sorting by date, suddenly everyone's salary..."
+                postUrl="https://www.linkedin.com/feed/update/urn:li:activity:7421857533692387328"
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={100} className="h-full">
+              <LinkedInPostCard
+                previewText="The AI Deadline is Closer Than You Think. If your business uses AI for recruitment, credit scoring, or educational placement, the August 2026 Annex III deadline is real and it is approaching..."
+                postUrl="https://www.linkedin.com/pulse/compliance-traps-eu-ai-act-how-irish-firms-can-avoid-them-zy5jf"
+              />
+            </ScrollReveal>
           </div>
 
           <div className="mt-10 text-center">
@@ -447,7 +550,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 9: FOOTER CTA ─── */}
+      {/* ─── SECTION 12: FOOTER CTA ─── */}
       <section
         id="footer-cta"
         data-otter-section="footer-cta"
