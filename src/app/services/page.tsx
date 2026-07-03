@@ -390,13 +390,13 @@ export default function ServicesPage() {
             <line x1="10" y1="22" x2="14" y2="22" />
           </svg>
         }
-        problem="Your organisation has Microsoft 365. Some teams are using Copilot. Most are not. A few are using AI tools with no governance in place, creating risk nobody has formally acknowledged. Meanwhile the EU AI Act is moving from guidance to enforcement."
-        whatWeDo="We audit how your team currently works, identify where AI genuinely saves time (and where it does not), and roll out tools with proper training and guardrails. Microsoft Copilot, ChatGPT, Gemini — whichever fits your stack and your budget. We also help you understand your EU AI Act obligations before the enforcement regime begins in August 2026."
+        problem="Your organisation has Microsoft 365. Some teams are using Copilot. Most are not. A few are using AI tools with no governance in place, creating risk nobody has formally acknowledged. Meanwhile the EU AI Act's first transparency deadline lands in August 2026."
+        whatWeDo="We audit how your team currently works, identify where AI genuinely saves time (and where it does not), and roll out tools with proper training and guardrails. Microsoft Copilot, ChatGPT, Gemini — whichever fits your stack and your budget. We also help you meet your EU AI Act obligations — the Article 50 transparency duties that apply from August 2026, and the high-risk (Annex III) rules now phased to 2027–2028."
         whatYouGet={[
           "AI readiness audit and workflow analysis",
           "Tool recommendations matched to your actual needs",
           "Implementation support and staff onboarding",
-          "EU AI Act risk assessment (Annex III applicability)",
+          "EU AI Act risk assessment (transparency duties + Annex III applicability)",
           "Ongoing support during rollout",
         ]}
         ctaLabel="Talk to Oisín about AI Consulting"
@@ -412,14 +412,15 @@ export default function ServicesPage() {
           style={{ backgroundColor: "var(--color-yellow)" }}
         >
           <h3 className="font-syne text-navy font-semibold text-lg">
-            August 2, 2026 &mdash; Are you ready?
+            The August 2026 deadline didn&apos;t move.
           </h3>
           <p className="text-navy/80 mt-2">
-            If your organisation uses AI for recruitment decisions, credit
-            scoring, or evaluating eligibility for public services, you fall
-            under Annex III of the EU AI Act. The enforcement regime begins
-            the day the National AI Office opens &mdash; not after a grace
-            period.
+            The May 2026 Digital Omnibus delayed the high-risk (Annex III)
+            rules to December 2027 &mdash; but the Article 50{" "}
+            <strong>transparency</strong> duties still apply from{" "}
+            <strong>2 August 2026</strong>. Run a chatbot, an AI phone line, or
+            publish AI-generated content and they apply to you, high-risk or
+            not. Most people read the wrong line.
           </p>
           <Link
             href="/#eu-ai-act-checker"

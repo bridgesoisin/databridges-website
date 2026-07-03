@@ -53,7 +53,7 @@ const SECTION_TIPS: Record<string, Tip> = {
   "eu-ai-act-checker": {
     kind: "section",
     message:
-      "The August 2026 deadline catches more businesses than people expect. Worth 30 seconds.",
+      "The AI Act's August 2026 transparency deadline catches more businesses than people expect — chatbots and AI content count. Worth 30 seconds.",
     replies: [
       { label: "Take the check below", scrollTo: "eu-ai-act-checker" },
       { label: "More questions? FAQ", href: "/faq" },

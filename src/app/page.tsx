@@ -146,7 +146,7 @@ export default function Home() {
           { target: "5+", label: "Years consulting" },
           { target: "4", label: "Years in Irish public sector" },
           { target: "UCD", label: "Professional Academy" },
-          { target: "Aug '26", label: "EU AI Act deadline" },
+          { target: "Aug '26", label: "AI Act transparency deadline" },
         ]}
       />
 
@@ -537,8 +537,8 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={100} className="h-full">
               <LinkedInPostCard
-                previewText="The AI Deadline is Closer Than You Think. If your business uses AI for recruitment, credit scoring, or educational placement, the August 2026 Annex III deadline is real and it is approaching..."
-                postUrl="https://www.linkedin.com/pulse/compliance-traps-eu-ai-act-how-irish-firms-can-avoid-them-zy5jf"
+                previewText="The AI Act deadline is still August 2026. The EU pushed the high-risk rules back to 2027 and 2028 — plenty of us read that as 'we can relax.' We read the wrong line. The Article 50 transparency obligations were never part of that delay. They still land on 2 August 2026..."
+                postUrl="https://www.linkedin.com/pulse/2nd-august-2026-disclosures-ois%C3%ADn-bridges-ltuuf"
               />
             </ScrollReveal>
           </div>

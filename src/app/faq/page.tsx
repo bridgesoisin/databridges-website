@@ -59,7 +59,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Does the EU AI Act affect my business?",
-    a: "It might. The EU AI Act introduces obligations that phase in through August 2026, and they catch more businesses than people expect. There is a free 30-second checker on the DataBridges home page that gives you a quick sense of where you stand.",
+    a: "Very possibly. The May 2026 Digital Omnibus delayed the high-risk (Annex III) rules to December 2027, but the AI Act's Article 50 transparency duties still apply from 2 August 2026 — and they apply even if you have no high-risk AI. If you run a chatbot, an AI phone line, or publish AI-generated content, you have disclosures to make. There is a free 30-second checker on the DataBridges home page that shows where you stand. This is general guidance, not legal advice.",
   },
   {
     q: "How do I get started?",
