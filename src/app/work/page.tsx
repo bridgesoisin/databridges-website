@@ -130,6 +130,28 @@ export default function WorkPage() {
         </div>
       </section>
 
+      {/* ─── FOUR BRIDGES TEASER (stub — compact framework variant added in a later phase) ─── */}
+      <section
+        id="work-four-bridges"
+        data-otter-section="work-four-bridges"
+        aria-labelledby="work-four-bridges-heading"
+        className="py-24 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
+            Our framework
+          </p>
+          <h2
+            id="work-four-bridges-heading"
+            className="font-syne text-4xl md:text-5xl font-bold text-navy"
+          >
+            The same four bridges under every job on this page.
+          </h2>
+          {/* Compact FourBridges variant + CTA are added in a later phase. */}
+        </div>
+      </section>
+
       {/* ─── FOOTER CTA ─── */}
       <section
         id="footer-cta"
