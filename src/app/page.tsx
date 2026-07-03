@@ -12,6 +12,10 @@ import FlowDiagram from "@/components/graphics/FlowDiagram";
 import StatBand from "@/components/graphics/StatBand";
 import NumberedFeatures from "@/components/graphics/NumberedFeatures";
 import LogoMarquee from "@/components/graphics/LogoMarquee";
+import BeforeAfterBars from "@/components/graphics/BeforeAfterBars";
+import WorkflowPipeline from "@/components/graphics/WorkflowPipeline";
+import ChangeHeatmap from "@/components/graphics/ChangeHeatmap";
+import FourBridges from "@/components/graphics/FourBridges";
 
 const TECH_ITEMS = [
   "Microsoft Copilot",
@@ -246,6 +250,35 @@ export default function Home() {
       {/* ─── SECTION 5: BEFORE/AFTER ─── */}
       <BeforeAfterToggle />
 
+      {/* ─── SECTION 5b: WHERE WE'VE HELPED (stub — filled in a later phase) ─── */}
+      <section
+        id="where-weve-helped"
+        data-otter-section="where-weve-helped"
+        aria-labelledby="where-heading"
+        className="py-24 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
+            Where we&apos;ve helped
+          </p>
+          <h2
+            id="where-heading"
+            className="font-syne text-5xl md:text-6xl font-bold text-navy"
+          >
+            Five sectors. One pattern: less faffing, more done.
+          </h2>
+          <p className="text-gray-500 mt-2 max-w-2xl">
+            A regulated finance firm, a fit-out company drowning in sticky
+            notes, legal teams, the health service, and a room full of people
+            learning AI properly. Same job every time &mdash; find the grind,
+            build the fix.
+          </p>
+
+          {/* Featured vignette cards are populated in a later content phase. */}
+        </div>
+      </section>
+
       {/* ─── SECTION 6: SERVICES GRID ─── */}
       <section
         id="what-we-do"
@@ -394,6 +427,75 @@ export default function Home() {
             columns={2}
             className="mt-12"
           />
+        </div>
+      </section>
+
+      {/* ─── SECTION 7b: DASHBOARDS ─── */}
+      <section
+        id="dashboards"
+        data-otter-section="dashboards"
+        aria-labelledby="dashboards-heading"
+        className="py-24 px-6 bg-white"
+      >
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
+            The receipts
+          </p>
+          <h2
+            id="dashboards-heading"
+            className="font-syne text-4xl md:text-5xl font-bold text-navy"
+          >
+            Dashboards people actually open.
+          </h2>
+          <p className="text-gray-500 mt-2 max-w-2xl">
+            A flavour of the real work &mdash; anonymised by sector. The hours
+            saved are modest and honest; the point is they add up, every week.
+          </p>
+
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <ScrollReveal>
+              <BeforeAfterBars
+                title="admin-hours.dash"
+                caption="Approval-triage admin per analyst in a public-sector service desk, before and after automation. Illustrative."
+                savedLabel="≈1 hr/wk saved"
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <ChangeHeatmap caption="Change-ticket volume by quarter, 2019–2026 — the resourcing picture behind a public-sector transition team. Illustrative." />
+            </ScrollReveal>
+            <ScrollReveal delay={40} className="lg:col-span-2">
+              <WorkflowPipeline
+                stages={["Intake", "Schedule", "Survey", "Quote", "Labour"]}
+                caption="Lead-to-labour flow for a construction & fit-out business: one connected pipeline across Power Platform, Dataverse and Azure OpenAI — no re-keying between systems."
+              />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 7c: FOUR BRIDGES ─── */}
+      <section
+        id="four-bridges"
+        data-otter-section="four-bridges"
+        aria-labelledby="four-bridges-heading"
+        className="bg-navy py-24 px-6"
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+            The framework
+          </p>
+          <h2
+            id="four-bridges-heading"
+            className="font-syne text-4xl md:text-5xl font-bold text-white"
+          >
+            Four Bridges to AI adoption.
+          </h2>
+          <p className="text-gray-300 mt-2 max-w-2xl">
+            Every engagement crosses the same four spans, in order. Skip one and
+            the whole thing wobbles &mdash; so we build them one at a time.
+          </p>
+
+          <FourBridges tone="light" className="mt-14" />
         </div>
       </section>
 

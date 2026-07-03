@@ -683,6 +683,99 @@ body {
   to { transform: translateX(-50%); }
 }
 
+/* ── Animated dashboard cards (DashCard shell + BeforeAfterBars,
+   WorkflowPipeline, ChangeHeatmap) and the FourBridges diagram ── */
+
+/* DashCard: glass panel chrome around a dashboard graphic. Reads on navy and
+   off-white alike (translucent film + cyan-dim border). */
+.gfx-dash {
+  margin: 0;
+  border-radius: 20px;
+  padding: 20px 22px 22px;
+  border: 1px solid color-mix(in srgb, var(--color-cyan) 30%, transparent);
+  background: color-mix(in srgb, var(--color-offwhite) 6%, transparent);
+  box-shadow: 0 10px 34px color-mix(in srgb, var(--color-navy) 10%, transparent);
+}
+.gfx-dash-head { padding-bottom: 14px; border-bottom: 1px solid color-mix(in srgb, var(--color-cyan) 18%, transparent); }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-dash { transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms ease; }
+  .gfx-dash:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--color-navy) 16%, transparent);
+  }
+}
+
+/* BeforeAfterBars: two bars rise (reusing gfxBarRise), the reclaimed slice
+   pulses forever. Static full-height bars + steady slice under reduce. */
+.gfx-ba-bar { transform-box: fill-box; transform-origin: bottom center; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-ba-bar { transform: scaleY(0); }
+  .scroll-reveal.revealed .gfx-ba-bar { animation: gfxBarRise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .scroll-reveal.revealed .gfx-ba-bar.gfx-ba-after { animation-delay: 0.28s; }
+  .gfx-ba-save { transform-box: fill-box; transform-origin: center; animation: gfxSavePulse 3s ease-in-out infinite 1.3s; }
+}
+@keyframes gfxSavePulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.8; }
+}
+
+/* WorkflowPipeline: travelling dash connector, pulsing nodes, looping packet. */
+.gfx-pipe-line { stroke-dasharray: 8 10; }
+.gfx-pipe-packet { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-pipe-line { animation: gfxDash 1.6s linear infinite; }
+  .gfx-pipe-node { transform-box: fill-box; transform-origin: center; animation: gfxPipeNode 2.8s ease-in-out infinite; }
+  .gfx-pipe-packet { transform-box: fill-box; animation: gfxPipePacket 5s ease-in-out infinite; }
+}
+@keyframes gfxPipeNode {
+  0%, 100% { stroke-opacity: 0.5; }
+  50% { stroke-opacity: 1; }
+}
+@keyframes gfxPipePacket {
+  0% { transform: translateX(0); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateX(var(--gfx-pipe-travel, 0px)); opacity: 0; }
+}
+
+/* ChangeHeatmap: cells scale/fade in on a diagonal wave, hottest cells shimmer. */
+.gfx-cell { transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-cell { opacity: 0; transform: scale(0.4); }
+  .scroll-reveal.revealed .gfx-cell { animation: gfxCellIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .scroll-reveal.revealed .gfx-cell-hot {
+    animation: gfxCellIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards,
+               gfxCellShimmer 3.2s ease-in-out infinite 1.6s;
+  }
+}
+@keyframes gfxCellIn {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes gfxCellShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+/* FourBridges: arches draw, piers rise, labels fade up, traveller crosses. */
+.gfx-arch { fill: none; }
+.gfx-traveller { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-arch { stroke-dasharray: 260; stroke-dashoffset: 260; }
+  .scroll-reveal.revealed .gfx-arch { animation: gfxDraw 950ms ease-out forwards; }
+  .gfx-pier { transform-box: fill-box; transform-origin: bottom center; transform: scaleY(0); }
+  .scroll-reveal.revealed .gfx-pier { animation: gfxBarRise 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .gfx-span-label { opacity: 0; }
+  .scroll-reveal.revealed .gfx-span-label { animation: gfxFadeUp 620ms ease-out forwards; }
+  .gfx-traveller { transform-box: fill-box; animation: gfxPipePacket 6s ease-in-out infinite 1.4s; }
+}
+@keyframes gfxDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes gfxFadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Calm fallbacks under reduced motion (belt and braces on top of the
    no-preference gates above) */
 @media (prefers-reduced-motion: reduce) {
@@ -693,4 +786,17 @@ body {
   .gfx-card:hover { transform: none; }
   .gfx-marquee-track { flex-wrap: wrap; justify-content: center; }
   .gfx-marquee-dup { display: none; }
+  /* Dashboard cards + FourBridges: fully drawn, no looping motion */
+  .gfx-dash { transition: none; }
+  .gfx-dash:hover { transform: none; }
+  .gfx-ba-bar { transform: scaleY(1); }
+  .gfx-ba-save { animation: none; opacity: 0.55; }
+  .gfx-pipe-line { animation: none; }
+  .gfx-pipe-node { animation: none; }
+  .gfx-pipe-packet { display: none; }
+  .gfx-cell { opacity: 1; transform: none; animation: none; }
+  .gfx-arch { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+  .gfx-pier { transform: scaleY(1); animation: none; }
+  .gfx-span-label { opacity: 1; animation: none; }
+  .gfx-traveller { display: none; }
 }
