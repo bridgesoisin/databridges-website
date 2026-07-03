@@ -4,6 +4,8 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import OtterGuide from "@/components/OtterGuide";
+import ScrollDriver from "@/components/ScrollDriver";
+import CursorTracer from "@/components/CursorTracer";
 import { graph, websiteLd, organizationLd, personLd } from "@/lib/jsonld";
 
 const syne = Syne({
@@ -95,6 +97,8 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <OtterGuide />
+        <ScrollDriver />
+        <CursorTracer />
       </body>
     </html>
   );

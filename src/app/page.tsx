@@ -61,6 +61,7 @@ export default function Home() {
       <section
         id="hero"
         data-otter-section="hero"
+        data-scroll-section
         aria-labelledby="hero-heading"
         className="bg-navy min-h-[100svh] flex items-center relative overflow-hidden"
       >
@@ -74,6 +75,7 @@ export default function Home() {
               markSize={60}
               textClassName="text-5xl sm:text-6xl"
               className="wordmark-in mb-8"
+              markClassName="windmill windmill--section"
             />
 
             <p className="db-eyebrow db-eyebrow--dark mb-6">

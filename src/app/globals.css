@@ -14,6 +14,13 @@
   --color-yellow-ink: #8A6100;
   /* One shared emphasis easing for the whole motion system. */
   --ease-emph: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Scroll driver outputs — safe static defaults so CSS renders correctly
+     before JS hydrates, and forever under reduced-motion. */
+  --scroll-progress: 0; /* 0..1 whole-document scroll */
+  --scroll-y: 0px; /* raw window.scrollY in px */
+  --vh: 1vh; /* stable viewport-height unit (mobile URL-bar safe) */
 }
 
 @theme {
@@ -76,7 +83,8 @@ body {
   box-shadow: 0 0 0 4px var(--color-navy);
 }
 
-/* Scroll reveal defaults — visible by default, animated only when motion OK */
+/* ---- Reveal system (extends ScrollReveal) ---- */
+/* Visible by default, animated only when motion OK */
 .scroll-reveal {
   opacity: 1;
   transform: none;
@@ -85,13 +93,49 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 600ms ease-out, transform 600ms ease-out;
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    transition-delay: var(--sr-delay, 0ms);
+    will-change: opacity, transform;
   }
+  .sr-fade { transform: none; }
+  .sr-fade-up { transform: translateY(24px); }
+  .sr-fade-down { transform: translateY(-24px); }
+  .sr-slide-left { transform: translateX(32px); }
+  .sr-slide-right { transform: translateX(-32px); }
+  .sr-zoom { transform: scale(0.94); }
 
   .scroll-reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+
+  /* Stagger: direct children ripple in. nth-child ladder, no JS timers. */
+  .sr-stagger > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  }
+  .sr-stagger.revealed > * { opacity: 1; transform: none; }
+  .sr-stagger.revealed > *:nth-child(1) { transition-delay: calc(0 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(2) { transition-delay: calc(1 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(3) { transition-delay: calc(2 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(4) { transition-delay: calc(3 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(5) { transition-delay: calc(4 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(6) { transition-delay: calc(5 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(7) { transition-delay: calc(6 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(8) { transition-delay: calc(7 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(9) { transition-delay: calc(8 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(10) { transition-delay: calc(9 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(11) { transition-delay: calc(10 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(12) { transition-delay: calc(11 * var(--sr-step, 90ms)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .sr-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -128,7 +172,7 @@ body {
   .wordmark-in {
     opacity: 0;
     transform: translateY(-12px);
-    animation: wordmarkIn 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: wordmarkIn 600ms var(--ease-emph) forwards;
   }
 
   @keyframes wordmarkIn {
@@ -199,15 +243,28 @@ body {
    Otter guide mascot
    ============================================================ */
 
+/* Visible by default — JS only adds the *entrance motion*, never gates
+   visibility. Matches the .scroll-reveal / .wordmark-in pattern so the
+   mascot shows even with slow/failed JS or reduced motion. */
 .otter-guide-root {
-  --otter-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --otter-ease: var(--ease-emph);
+  opacity: 1;
+  transform: none;
 }
 
-/* Entrance: the whole root drops in and settles */
-.otter-guide-root {
-  opacity: 0;
-  transform: translateY(40px) scale(0.85);
-  transition: opacity 500ms var(--otter-ease), transform 600ms var(--otter-ease);
+@media (prefers-reduced-motion: no-preference) {
+  .otter-guide-root {
+    opacity: 0;
+    transform: translateY(40px) scale(0.85);
+    transition: opacity 500ms var(--otter-ease), transform 600ms var(--otter-ease);
+  }
+  /* Safety net: if JS never adds .otter-mounted, reveal after a beat anyway. */
+  .otter-guide-root:not(.otter-mounted) {
+    animation: otter-failsafe-in 1ms linear 1400ms forwards;
+  }
+  @keyframes otter-failsafe-in {
+    to { opacity: 1; transform: none; }
+  }
 }
 
 .otter-guide-root.otter-mounted {
@@ -399,70 +456,6 @@ body {
   }
   .otter-guide-root {
     transform: none;
-  }
-}
-
-/* Otter guide: entrance + idle bob */
-.otter-guide-root {
-  opacity: 0;
-  transform: translateY(40px) scale(0.9);
-  transition: opacity 500ms ease-out, transform 500ms ease-out;
-}
-
-.otter-guide-root.otter-mounted {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .otter-guide-root.otter-mounted .otter-avatar-btn {
-    animation: otterBob 3.2s ease-in-out infinite;
-  }
-}
-
-@keyframes otterBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.otter-avatar-btn {
-  transition: transform 200ms ease-out;
-}
-
-.otter-avatar-btn:hover {
-  transform: scale(1.06);
-}
-
-.otter-avatar-btn:active {
-  transform: scale(0.97);
-}
-
-/* Speech bubble pop-in */
-.otter-bubble {
-  animation: otterBubbleIn 260ms ease-out;
-  transform-origin: bottom right;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .otter-bubble {
-    animation: none;
-  }
-}
-
-@keyframes otterBubbleIn {
-  from { opacity: 0; transform: scale(0.9) translateY(8px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* Chat panel pop-in */
-.otter-panel {
-  animation: otterBubbleIn 220ms ease-out;
-  transform-origin: bottom right;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .otter-panel {
-    animation: none;
   }
 }
 
@@ -928,4 +921,140 @@ body {
 /* Shared soft card shadow (retires ad-hoc rgba(10,30,61,…) inline shadows). */
 .db-card-shadow {
   box-shadow: 0 4px 16px color-mix(in srgb, var(--color-navy) 8%, transparent);
+}
+
+/* ============================================================
+   Motion system (Phase 6): pin/parallax, windmill, otter scroll
+   lean, neon cursor tracer. Every block is motion-gated with a
+   static visible fallback + a reduced-motion kill switch. Section
+   progress vars (--sp, --sp-center, --sp-in) are written by
+   ScrollDriver onto [data-scroll-section] elements and default to
+   0 so scenes render as clean static stacks pre-hydration.
+   ============================================================ */
+
+/* ---- Pin / parallax scenes ---- */
+.pin-scene {
+  position: relative;
+}
+.pin-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  overflow: clip;
+  display: grid;
+  place-items: center;
+}
+.pin-layer {
+  grid-area: 1 / 1;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Layers drift at different rates -> depth. --sp is 0..1 for this section. */
+  .pin-back { transform: translate3d(0, calc(var(--sp, 0) * -12vh), 0); }
+  .pin-mid { transform: translate3d(0, calc(var(--sp, 0) * -6vh), 0); }
+  .pin-fore {
+    transform: translate3d(0, calc(var(--sp, 0) * 4vh), 0);
+    opacity: calc(0.4 + var(--sp-in, 1) * 0.6);
+  }
+  /* Optional "crossfade over as you scroll": stack two panels, swap on --sp */
+  .pin-swap-a { opacity: calc(1 - var(--sp, 0)); }
+  .pin-swap-b { opacity: var(--sp, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-sticky {
+    position: static;
+    min-height: auto;
+  }
+  .pin-layer {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ---- Windmill decorative rotation ---- */
+.windmill {
+  display: inline-block;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Global: rotate a full turn across the whole page scroll. */
+  .windmill { transform: rotate(calc(var(--scroll-progress, 0) * 360deg)); }
+  /* Section-scoped: 1.5 turns as its section passes. On a [data-scroll-section]. */
+  .windmill--section { transform: rotate(calc(var(--sp, 0) * 540deg)); }
+  /* Ambient (no scroll section around it): gentle continuous spin. */
+  .windmill--idle { animation: windmill-spin 18s linear infinite; }
+  @keyframes windmill-spin { to { transform: rotate(360deg); } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .windmill,
+  .windmill--section,
+  .windmill--idle {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---- Otter mascot scroll lean (additive; sits under state poses) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .otter-scroll-layer {
+    display: block;
+    /* Lean into scroll direction + a gentle bob mapped to progress.
+       Small numbers — the mascot must stay unobtrusive (project rule). */
+    transform:
+      translateY(calc(var(--scroll-progress, 0) * -10px))
+      rotate(calc((var(--scroll-progress, 0) - 0.5) * 8deg));
+    transition: transform 120ms linear;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .otter-scroll-layer { transform: none !important; }
+}
+
+/* ---- Neon-cyan mouse tracer (desktop pointer only) ---- */
+.cursor-tracer-dot,
+.cursor-tracer-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+.cursor-tracer-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-cyan);
+  box-shadow: 0 0 10px 1px var(--color-cyan);
+}
+.cursor-tracer-ring {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-cyan);
+  transition: opacity 200ms var(--ease-out), width 180ms var(--ease-out),
+    height 180ms var(--ease-out), border-color 180ms var(--ease-out);
+}
+.cursor-tracer-on .cursor-tracer-dot,
+.cursor-tracer-on .cursor-tracer-ring { opacity: 0.9; }
+.cursor-tracer-press .cursor-tracer-ring { width: 22px; height: 22px; }
+.cursor-tracer-hot .cursor-tracer-ring {
+  width: 44px;
+  height: 44px;
+  border-color: var(--color-yellow);
+}
+
+/* Belt-and-braces: never render on touch or reduced-motion, even if JS mis-fires */
+@media (pointer: coarse) {
+  .cursor-tracer-dot,
+  .cursor-tracer-ring { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-tracer-dot,
+  .cursor-tracer-ring { display: none !important; }
 }

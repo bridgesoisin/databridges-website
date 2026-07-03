@@ -597,36 +597,40 @@ export default function OtterGuide() {
         </svg>
       </div>
 
-      {/* Toggle avatar button */}
-      <button
-        ref={toggleBtnRef}
-        onClick={toggleMenu}
-        aria-label={
-          menuOpen
-            ? "Close the DataBridges otter menu"
-            : "Open the DataBridges otter guide"
-        }
-        aria-expanded={menuOpen}
-        className="otter-avatar-btn"
-        style={{
-          width: "64px",
-          height: "64px",
-          borderRadius: "50%",
-          overflow: "hidden",
-          border: "3px solid var(--color-cyan)",
-          boxShadow: "0 6px 18px rgba(10,30,61,0.25)",
-          position: "relative",
-          background: "var(--color-navy)",
-        }}
-      >
-        <Image
-          src="/images/mascot/otter-avatar.png"
-          alt=""
-          fill
-          sizes="64px"
-          style={{ objectFit: "cover" }}
-        />
-      </button>
+      {/* Toggle avatar button. Wrapped in a scroll-layer span so the
+          scroll-driven lean (globals.css) composes with, rather than
+          clobbers, the button's own idle/state pose animations. */}
+      <span className="otter-scroll-layer">
+        <button
+          ref={toggleBtnRef}
+          onClick={toggleMenu}
+          aria-label={
+            menuOpen
+              ? "Close the DataBridges otter menu"
+              : "Open the DataBridges otter guide"
+          }
+          aria-expanded={menuOpen}
+          className="otter-avatar-btn"
+          style={{
+            width: "64px",
+            height: "64px",
+            borderRadius: "50%",
+            overflow: "hidden",
+            border: "3px solid var(--color-cyan)",
+            boxShadow: "0 6px 18px rgba(10,30,61,0.25)",
+            position: "relative",
+            background: "var(--color-navy)",
+          }}
+        >
+          <Image
+            src="/images/mascot/otter-avatar.png"
+            alt=""
+            fill
+            sizes="64px"
+            style={{ objectFit: "cover" }}
+          />
+        </button>
+      </span>
     </div>
   );
 }

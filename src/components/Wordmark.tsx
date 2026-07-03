@@ -11,6 +11,8 @@ interface WordmarkProps {
   textClassName?: string;
   /** Extra classes on the wrapper. */
   className?: string;
+  /** Extra classes on the diamond mark itself (e.g. "windmill windmill--section"). */
+  markClassName?: string;
   /** Render the diamond mark (set false for text-only lockups). */
   showMark?: boolean;
   /** `priority` the mark image (use in above-the-fold hero). */
@@ -27,6 +29,7 @@ export default function Wordmark({
   markSize = 56,
   textClassName = "text-4xl sm:text-5xl",
   className = "",
+  markClassName = "",
   showMark = true,
   priority = false,
 }: WordmarkProps) {
@@ -42,7 +45,7 @@ export default function Wordmark({
           aria-hidden="true"
           width={markSize}
           height={markSize}
-          className="w-auto shrink-0"
+          className={`w-auto shrink-0 ${markClassName}`}
           style={{ height: markSize }}
           priority={priority}
         />
