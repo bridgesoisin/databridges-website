@@ -2,6 +2,29 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import StatBand from "@/components/graphics/StatBand";
+import NumberedFeatures from "@/components/graphics/NumberedFeatures";
+import ScrollReveal from "@/components/ScrollReveal";
+import VignetteCard from "@/components/VignetteCard";
+import { VIGNETTES } from "@/data/vignettes";
+
+const BRIDGES = [
+  {
+    title: "Design & explainability",
+    body: "AI you can open up and explain — not a black box you have to take on faith.",
+  },
+  {
+    title: "Leadership & trust",
+    body: "Getting the people who sign it off on board, and the people who use it comfortable.",
+  },
+  {
+    title: "Operations & implementation",
+    body: "The unglamorous bit: building it, wiring it in, and making it survive contact with Monday.",
+  },
+  {
+    title: "Strategy & infrastructure",
+    body: "The plumbing and the plan underneath, so it still makes sense in two years.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Our Work — AI & Power Platform case studies | DataBridges",
@@ -37,12 +60,30 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "DataBridges engagements",
+  description:
+    "Honest before-and-after case studies from real DataBridges engagements, anonymised by sector.",
+  itemListElement: VIGNETTES.map((v, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: v.title,
+    description: v.proof,
+  })),
+};
+
 export default function WorkPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
       {/* ─── HERO ─── */}
@@ -108,11 +149,25 @@ export default function WorkPage() {
             the fix on tools you already pay for, hand it back working.
           </p>
 
-          {/* Vignette grid is populated in a later content phase. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {VIGNETTES.map((v, i) => (
+              <ScrollReveal
+                key={v.slug}
+                delay={(i % 2) * 100}
+                className={`h-full${
+                  i === VIGNETTES.length - 1 && VIGNETTES.length % 2 === 1
+                    ? " md:col-span-2"
+                    : ""
+                }`}
+              >
+                <VignetteCard vignette={v} />
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ─── HOW WE ANONYMISE (honesty note stub) ─── */}
+      {/* ─── HOW WE ANONYMISE (honesty note) ─── */}
       <section
         id="how-we-anonymise"
         data-otter-section="how-we-anonymise"
@@ -120,13 +175,20 @@ export default function WorkPage() {
         className="py-24 px-6 bg-white"
       >
         <div className="mx-auto max-w-3xl">
-          <h2
-            id="anonymise-heading"
-            className="font-syne text-3xl font-bold text-navy"
-          >
-            Why no logos or euro figures?
-          </h2>
-          {/* Copy is finalised in a later content phase. */}
+          <div className="rounded-2xl bg-navy/[0.04] p-8 md:p-10">
+            <h2
+              id="anonymise-heading"
+              className="font-syne text-3xl font-bold text-navy"
+            >
+              Why no logos or euro figures?
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed mt-4">
+              Because most of this work sits inside regulated firms and the
+              public sector, and because a saving we can&apos;t stand over
+              isn&apos;t proof &mdash; it&apos;s decoration. If a client&apos;s
+              happy to be named, we&apos;ll ask them, not assume.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -148,7 +210,22 @@ export default function WorkPage() {
           >
             The same four bridges under every job on this page.
           </h2>
-          {/* Compact FourBridges variant + CTA are added in a later phase. */}
+          <p className="text-gray-500 mt-2 max-w-2xl">
+            Most AI projects don&apos;t fail on the tech. They fall into the gap
+            between a clever demo and a team actually using it. These are the
+            four spans we build across, every time.
+          </p>
+
+          <NumberedFeatures items={BRIDGES} columns={2} className="mt-12" />
+
+          <div className="mt-10">
+            <Link
+              href="/#four-bridges"
+              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
+            >
+              See the framework in full &rarr;
+            </Link>
+          </div>
         </div>
       </section>
 

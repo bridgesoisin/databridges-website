@@ -1,0 +1,47 @@
+/**
+ * The LinkedIn posts surfaced in the Home "Straight talk about AI" section.
+ *
+ * Topic `tag`s let the section read as a body of work rather than five
+ * near-identical AI-Act posts. The EU AI Act preview (post 1) is the
+ * already-corrected Article 50 / 2 August 2026 story — do not regress it.
+ */
+
+export interface LinkedInPost {
+  tag: string; // topic chip
+  previewText: string;
+  postUrl: string;
+}
+
+export const LINKEDIN_POSTS: LinkedInPost[] = [
+  {
+    tag: "EU AI Act",
+    previewText:
+      "The AI Act deadline is still August 2026. The EU pushed the high-risk rules back to 2027 and 2028 — plenty of us read that as 'we can relax.' We read the wrong line. The Article 50 transparency obligations were never part of that delay. They still land on 2 August 2026...",
+    postUrl:
+      "https://www.linkedin.com/pulse/2nd-august-2026-disclosures-ois%C3%ADn-bridges-ltuuf",
+  },
+  {
+    tag: "Ireland",
+    previewText:
+      "Ireland's own AI law is moving. The Regulation of Artificial Intelligence Bill 2026 is before the Oireachtas and sets up an AI Office of Ireland — the local enforcement layer under the EU Act. Here's what Irish businesses should watch...",
+    postUrl: "https://linkedin.com/in/oisin-bridges",
+  },
+  {
+    tag: "Copyright",
+    previewText:
+      "A US publisher is suing Google over AI-generated answers eating its traffic. Whatever the verdict, it's the fight that decides who gets paid when an AI quotes your work — and it matters for anyone publishing online...",
+    postUrl: "https://linkedin.com/in/oisin-bridges",
+  },
+  {
+    tag: "Jobs",
+    previewText:
+      "Ford quietly rehired engineers it had let AI 'replace'. The lesson isn't 'AI doesn't work' — it's that the hard part was never the code. Judgement doesn't automate as cleanly as the slide decks promised...",
+    postUrl: "https://linkedin.com/in/oisin-bridges",
+  },
+  {
+    tag: "Framework",
+    previewText:
+      "Most AI projects don't fail on the technology. They fall into the gap between a clever demo and a team actually using the thing. Here are the four bridges I build across every time...",
+    postUrl: "https://linkedin.com/in/oisin-bridges",
+  },
+];

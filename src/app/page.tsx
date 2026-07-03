@@ -16,6 +16,9 @@ import BeforeAfterBars from "@/components/graphics/BeforeAfterBars";
 import WorkflowPipeline from "@/components/graphics/WorkflowPipeline";
 import ChangeHeatmap from "@/components/graphics/ChangeHeatmap";
 import FourBridges from "@/components/graphics/FourBridges";
+import VignetteCard from "@/components/VignetteCard";
+import { VIGNETTES } from "@/data/vignettes";
+import { LINKEDIN_POSTS } from "@/data/linkedin";
 
 const TECH_ITEMS = [
   "Microsoft Copilot",
@@ -62,12 +65,13 @@ export default function Home() {
             description:
               "AI consulting, Power Platform development and training workshops for Irish SMEs and public sector teams.",
             url: "https://databridges.ie",
-            telephone: "",
+            telephone: "+353 85 136 4920",
             email: "hello@databridges.ie",
             address: {
               "@type": "PostalAddress",
               addressLocality: "Kilcock",
               addressRegion: "Co. Kildare",
+              postalCode: "W23WV63",
               addressCountry: "IE",
             },
             founder: {
@@ -148,8 +152,8 @@ export default function Home() {
         ariaLabel="DataBridges in numbers"
         stats={[
           { target: "5+", label: "Years consulting" },
-          { target: "4", label: "Years in Irish public sector" },
-          { target: "UCD", label: "Professional Academy" },
+          { target: "~1hr", label: "Saved per analyst each week" },
+          { target: "UCD", label: "Live AI cohorts delivered" },
           { target: "Aug '26", label: "AI Act transparency deadline" },
         ]}
       />
@@ -275,7 +279,22 @@ export default function Home() {
             build the fix.
           </p>
 
-          {/* Featured vignette cards are populated in a later content phase. */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {VIGNETTES.filter((v) => v.featured).map((v, i) => (
+              <ScrollReveal key={v.slug} delay={i * 100} className="h-full">
+                <VignetteCard vignette={v} href="/work#cases" compact />
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <a
+              href="/work"
+              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
+            >
+              See all our work &rarr;
+            </a>
+          </div>
         </div>
       </section>
 
@@ -630,19 +649,20 @@ export default function Home() {
             No hype. No vendor decks. Just honest takes.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <ScrollReveal className="h-full">
-              <LinkedInPostCard
-                previewText="Irish businesses love spreadsheets. But here are the top 5 ways they go wrong. 1. One wrong sort and the whole thing collapses. You think you're sorting by date, suddenly everyone's salary..."
-                postUrl="https://www.linkedin.com/feed/update/urn:li:activity:7421857533692387328"
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={100} className="h-full">
-              <LinkedInPostCard
-                previewText="The AI Act deadline is still August 2026. The EU pushed the high-risk rules back to 2027 and 2028 — plenty of us read that as 'we can relax.' We read the wrong line. The Article 50 transparency obligations were never part of that delay. They still land on 2 August 2026..."
-                postUrl="https://www.linkedin.com/pulse/2nd-august-2026-disclosures-ois%C3%ADn-bridges-ltuuf"
-              />
-            </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            {LINKEDIN_POSTS.map((post, i) => (
+              <ScrollReveal
+                key={post.postUrl + post.tag}
+                delay={(i % 3) * 80}
+                className="h-full"
+              >
+                <LinkedInPostCard
+                  tag={post.tag}
+                  previewText={post.previewText}
+                  postUrl={post.postUrl}
+                />
+              </ScrollReveal>
+            ))}
           </div>
 
           <div className="mt-10 text-center">

@@ -199,9 +199,9 @@ export default function BeforeAfterToggle() {
               {/* KPI cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
                 {[
-                  { value: "€142k", label: "saved" },
-                  { value: "14hrs/week", label: "automated" },
-                  { value: "0", label: "data errors" },
+                  { value: "1 sheet", label: "not forty tabs" },
+                  { value: "37.5 hrs", label: "reconciled, not retyped" },
+                  { value: "0", label: "#REF! errors" },
                 ].map((kpi) => (
                   <div
                     key={kpi.label}
@@ -292,9 +292,16 @@ export default function BeforeAfterToggle() {
           </div>
         </div>
 
-        <p className="text-sm text-gray-400 text-center mt-8">
-          Built with Microsoft Power Platform. No new software licences
-          required.
+        <p className="text-sm text-gray-400 text-center mt-8 max-w-2xl mx-auto">
+          Built with Microsoft Power Platform &mdash; no new software licences.
+          This is an illustration of the shape of the work; the real numbers
+          live on our{" "}
+          <a
+            href="/work"
+            className="text-cyan underline underline-offset-2 hover:text-white transition-colors duration-200"
+          >
+            Work page &rarr;
+          </a>
         </p>
       </div>
     </section>
