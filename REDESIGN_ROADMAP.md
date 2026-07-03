@@ -194,3 +194,27 @@ That is **wrong**. The correct, stronger story:
 - [x] **Phone + Eircode:** cleared to publish. Show **085 136 4920** and Eircode **W23WV63**
       on Contact and in LocalBusiness schema (`telephone`, `address` incl. postalCode, `geo`).
 - [x] **Canonical email:** keep `hello@databridges.ie` on-site (CV's gmail is not used publicly).
+
+---
+
+## Run log
+
+**2026-07-03 — Opus manual pass:** roadmap (`40002b2`), hero wordmark lockup (`86c7e7b`),
+EU AI Act correctness site-wide (`49a63d2`), untrack private material (`d8f6530`).
+
+**2026-07-03 — ultracode workflow `wf_a8aaef3d-662`** (15 agents, 0 errors): 5 parallel
+design specs → 6 strictly-sequential build-gated phases → 4 adversarial verifiers.
+- `11880d9` structure — /work page + Nav/Footer/sitemap wiring + home section stubs
+- `364c990` content — /work vignettes (`src/data/vignettes.ts`), home proof + Four Bridges,
+  honest before/after stats (invented €142k figures removed), expanded LinkedIn (`src/data/linkedin.ts`)
+- `08b7f4e` dashboards — animated dashboard cards + Four Bridges diagram (graphics kit)
+- `3786095` seo/aeo — `metadataBase`, canonicals, OG/Twitter, JSON-LD identity graph
+  (`src/lib/jsonld.ts`: Organization/LocalBusiness/Person/Breadcrumb/Service, phone + Eircode + geo),
+  `_redirects` fix, Article-50 FAQ
+- `ba63a9c` ux — one type/eyebrow/rhythm design system across pages
+- `48f7d4c` motion — `ScrollDriver` (scroll-progress vars), reveal/pin/parallax/windmill,
+  otter mascot visibility fix + scroll animation, `CursorTracer` (neon-cyan, desktop-only)
+- `ad09cad` a11y follow-up — gated 6 hover transforms under `prefers-reduced-motion`
+
+Verify pass: build + lint green; EU AI Act facts intact; no client named; no invented metrics;
+tokens (not hex); no new dependencies. **Status: roadmap phases 1–6 complete on `redesign/overnight` (unpushed).**
