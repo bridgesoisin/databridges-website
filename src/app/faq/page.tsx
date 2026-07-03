@@ -376,7 +376,7 @@ export default function FaqPage() {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-block rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105"
+                className="inline-block rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
               >
                 Book a free chat
               </Link>

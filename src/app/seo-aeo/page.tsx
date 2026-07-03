@@ -199,7 +199,7 @@ export default function SeoAeoPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="#readiness"
-                className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105"
+                className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
               >
                 Free readiness check
               </Link>
@@ -489,7 +489,7 @@ export default function SeoAeoPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
               href="mailto:hello@databridges.ie?subject=SEO%20and%20AEO"
-              className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105"
+              className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
             >
               Book a free chat
             </a>

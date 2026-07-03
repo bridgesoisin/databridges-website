@@ -10,7 +10,7 @@ export default function LinkedInPostCard({
   tag,
 }: LinkedInPostCardProps) {
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <div className="bg-white border border-gray-100 rounded-2xl p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       {/* Topic chip */}
       {tag && (
         <span className="inline-block mb-4 border border-cyan-ink/20 text-cyan-ink text-xs font-medium px-3 py-1 rounded-full">
