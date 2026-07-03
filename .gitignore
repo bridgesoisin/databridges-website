@@ -44,6 +44,9 @@ next-env.d.ts
 ~$*
 *.tmp
 
+# private source material (CVs, business docs) — kept on disk, never committed
+/Addtional Material/
+
 # claude code / overnight runner
 .claude/worktrees/
 .claude/overnight-session-id
