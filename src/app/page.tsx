@@ -5,6 +5,7 @@ import BeforeAfterToggle from "@/components/BeforeAfterToggle";
 import EUAIActChecker from "@/components/EUAIActChecker";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroWords from "@/components/HeroWords";
+import Wordmark from "@/components/Wordmark";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import NodeGraph from "@/components/graphics/NodeGraph";
 import FlowDiagram from "@/components/graphics/FlowDiagram";
@@ -88,6 +89,14 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-6xl w-full px-6 pt-[120px] md:pt-[100px] pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
           <div>
+            <Wordmark
+              variant="onDark"
+              priority
+              markSize={60}
+              textClassName="text-5xl sm:text-6xl"
+              className="wordmark-in mb-8"
+            />
+
             <p className="text-sm text-cyan uppercase tracking-widest mb-6">
               AI Consulting &middot; Power Platform &middot; Training
             </p>
