@@ -15,6 +15,8 @@ export interface StatBandStat {
   /** Value to count up to, e.g. "40" or "100+"; non-numeric shows as-is. */
   target: string;
   label: string;
+  /** Accent for the number. Reserve "yellow" for the one hook stat. */
+  accent?: "cyan" | "yellow";
 }
 
 interface StatBandProps {
@@ -29,7 +31,7 @@ export default function StatBand({
   className = "",
 }: StatBandProps) {
   return (
-    <section aria-label={ariaLabel} className={`bg-navy px-6 py-16 ${className}`}>
+    <section aria-label={ariaLabel} className={`bg-navy px-6 py-14 md:py-16 ${className}`}>
       <div
         className={`mx-auto max-w-5xl grid grid-cols-1 gap-10 ${
           stats.length % 2 === 0
@@ -40,7 +42,12 @@ export default function StatBand({
         }`}
       >
         {stats.map((s) => (
-          <StatCounter key={s.label} target={s.target} label={s.label} />
+          <StatCounter
+            key={s.label}
+            target={s.target}
+            label={s.label}
+            accent={s.accent}
+          />
         ))}
       </div>
     </section>

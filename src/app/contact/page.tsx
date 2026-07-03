@@ -212,6 +212,17 @@ const DETAILS = [
     ),
   },
   {
+    label: "Phone",
+    body: (
+      <a
+        href="tel:+353851364920"
+        className="text-navy font-medium hover:text-cyan transition-colors duration-200"
+      >
+        085 136 4920
+      </a>
+    ),
+  },
+  {
     label: "LinkedIn",
     body: (
       <>
@@ -239,6 +250,7 @@ const DETAILS = [
     body: (
       <>
         <p className="text-navy font-medium">Kilcock, Co. Kildare, Ireland</p>
+        <p className="font-jetbrains text-sm text-navy/70 mt-1">W23 WV63</p>
         <p className="text-sm text-gray-500 mt-1">
           Working with teams across Ireland
         </p>
@@ -266,19 +278,16 @@ export default function ContactPage() {
         id="contact-hero"
         data-otter-section="contact-hero"
         aria-labelledby="contact-hero-heading"
-        className="relative overflow-hidden bg-navy pt-36 pb-24 px-6"
+        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
       >
         <AnimatedBlobs />
 
         <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
-            <h1
-              id="contact-hero-heading"
-              className="font-syne text-5xl md:text-6xl font-extrabold text-white"
-            >
+            <h1 id="contact-hero-heading" className="db-display text-white">
               Let&apos;s Talk
             </h1>
-            <p className="text-cyan text-2xl mt-2">(Briefly. Like humans.)</p>
+            <p className="text-cyan text-2xl mt-3">(Briefly. Like humans.)</p>
             <p className="text-gray-300 text-lg max-w-xl mt-4">
               Tell us what&apos;s driving you mad. We&apos;ll tell you whether
               AI can fix it. No scripts, no jargon, no pressure.
@@ -303,7 +312,7 @@ export default function ContactPage() {
         id="contact-form"
         data-otter-section="contact-form"
         aria-labelledby="contact-form-heading"
-        className="py-20 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">

@@ -12,6 +12,8 @@
      body text on white/off-white. Use cyan/yellow for text on navy only. */
   --color-cyan-ink: #0E7A83;
   --color-yellow-ink: #8A6100;
+  /* One shared emphasis easing for the whole motion system. */
+  --ease-emph: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme {
@@ -799,4 +801,131 @@ body {
   .gfx-pier { transform: scaleY(1); animation: none; }
   .gfx-span-label { opacity: 1; animation: none; }
   .gfx-traveller { display: none; }
+}
+
+/* ============================================================
+   Design system — Phase 5 layout / visual-hierarchy utilities.
+   One type scale, one eyebrow, restrained section-transition
+   devices. Tokens only; these are static (no motion to gate).
+   ============================================================ */
+
+/* Type scale (Syne headings). clamp() removes most bespoke md: jumps
+   and floors sizes so 360px never overflows. */
+.db-display {
+  font-family: var(--font-syne);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* ~40 → 72px */
+}
+.db-h2 {
+  font-family: var(--font-syne);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-size: clamp(1.875rem, 3.5vw, 3rem); /* ~30 → 48px */
+}
+.db-h3 {
+  font-family: var(--font-syne);
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: clamp(1.25rem, 2vw, 1.5rem); /* ~20 → 24px */
+}
+.db-subhead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+/* Eyebrow — one treatment, coloured by surface, with a leading brand
+   diamond tick that threads the whole site. */
+.db-eyebrow {
+  font-family: var(--font-jetbrains);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.db-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  rotate: 45deg;
+  background: currentColor;
+  opacity: 0.85;
+  flex: none;
+}
+.db-eyebrow--light { color: var(--color-cyan-ink); }        /* on light surfaces */
+.db-eyebrow--dark { color: var(--color-cyan); }             /* on navy */
+.db-eyebrow--yellow { color: color-mix(in srgb, var(--color-navy) 72%, transparent); } /* on yellow */
+
+/* Light↔light seam: a centred hairline carrying the diamond mark so
+   same-family joins feel authored rather than stacked. Decorative. */
+.db-seam {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+.db-seam::before,
+.db-seam::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-navy) 12%, transparent)
+  );
+}
+.db-seam::after {
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in srgb, var(--color-navy) 12%, transparent)
+  );
+}
+.db-seam-mark {
+  width: 8px;
+  height: 8px;
+  rotate: 45deg;
+  background: var(--color-cyan);
+  opacity: 0.7;
+  flex: none;
+}
+
+/* Navy↔light ramp: a soft gradient bleed on the LIGHT section's edge so
+   navy dissolves in rather than knife-cutting. The section must be
+   `relative` with its content wrapped `relative z-10`. */
+.db-navy-top,
+.db-navy-bottom {
+  position: relative;
+}
+.db-navy-top::before,
+.db-navy-bottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+.db-navy-top::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-navy), transparent);
+}
+.db-navy-bottom::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-navy), transparent);
+}
+
+/* Shared soft card shadow (retires ad-hoc rgba(10,30,61,…) inline shadows). */
+.db-card-shadow {
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-navy) 8%, transparent);
 }

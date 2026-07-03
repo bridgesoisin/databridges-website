@@ -66,7 +66,7 @@ export default function Home() {
       >
         <AnimatedBlobs />
 
-        <div className="relative mx-auto max-w-6xl w-full px-6 pt-[120px] md:pt-[100px] pb-16 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+        <div className="relative mx-auto max-w-6xl w-full px-6 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
           <div>
             <Wordmark
               variant="onDark"
@@ -76,7 +76,7 @@ export default function Home() {
               className="wordmark-in mb-8"
             />
 
-            <p className="text-sm text-cyan uppercase tracking-widest mb-6">
+            <p className="db-eyebrow db-eyebrow--dark mb-6">
               AI Consulting &middot; Power Platform &middot; Training
             </p>
 
@@ -125,7 +125,11 @@ export default function Home() {
           { target: "5+", label: "Years consulting" },
           { target: "~1hr", label: "Saved per analyst each week" },
           { target: "UCD", label: "Live AI cohorts delivered" },
-          { target: "Aug '26", label: "AI Act transparency deadline" },
+          {
+            target: "Aug '26",
+            label: "AI Act transparency deadline",
+            accent: "yellow",
+          },
         ]}
       />
 
@@ -146,21 +150,16 @@ export default function Home() {
         id="services"
         data-otter-section="services"
         aria-labelledby="pain-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
-            The Problem
-          </p>
-          <h2
-            id="pain-heading"
-            className="font-syne text-5xl md:text-6xl font-bold text-navy"
-          >
+          <p className="db-eyebrow db-eyebrow--light mb-4">The Problem</p>
+          <h2 id="pain-heading" className="db-h2 text-navy">
             Sound familiar?
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 md:mt-14">
             <ScrollReveal delay={0} className="h-full">
               <div className="gfx-card bg-white rounded-2xl p-8 h-full">
                 <p className="font-jetbrains text-lg text-cyan-ink mb-4">
@@ -230,27 +229,24 @@ export default function Home() {
         id="where-weve-helped"
         data-otter-section="where-weve-helped"
         aria-labelledby="where-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
+          <p className="db-eyebrow db-eyebrow--light mb-4">
             Where we&apos;ve helped
           </p>
-          <h2
-            id="where-heading"
-            className="font-syne text-5xl md:text-6xl font-bold text-navy"
-          >
+          <h2 id="where-heading" className="db-h2 text-navy">
             Five sectors. One pattern: less faffing, more done.
           </h2>
-          <p className="text-gray-500 mt-2 max-w-2xl">
+          <p className="db-subhead text-gray-500 mt-3">
             A regulated finance firm, a fit-out company drowning in sticky
             notes, legal teams, the health service, and a room full of people
             learning AI properly. Same job every time &mdash; find the grind,
             build the fix.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 md:mt-14">
             {VIGNETTES.filter((v) => v.featured).map((v, i) => (
               <ScrollReveal key={v.slug} delay={i * 100} className="h-full">
                 <VignetteCard vignette={v} href="/work#cases" compact />
@@ -274,23 +270,21 @@ export default function Home() {
         id="what-we-do"
         data-otter-section="what-we-do"
         aria-labelledby="services-heading"
-        className="py-24 px-6 bg-white"
+        className="py-20 md:py-28 px-6 bg-white"
       >
+        <div className="db-seam mb-14 md:mb-16" aria-hidden="true">
+          <span className="db-seam-mark" />
+        </div>
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
-            What We Do
-          </p>
-          <h2
-            id="services-heading"
-            className="font-syne text-5xl font-bold text-navy"
-          >
+          <p className="db-eyebrow db-eyebrow--light mb-4">What We Do</p>
+          <h2 id="services-heading" className="db-h2 text-navy">
             Four ways we help.
           </h2>
-          <p className="text-gray-500 mt-2">
+          <p className="db-subhead text-gray-500 mt-3">
             Real problems, solved simply. No hype, no decks, no nonsense.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 md:mt-14">
             <ServiceCard
               icon={
                 <svg
@@ -386,25 +380,20 @@ export default function Home() {
         id="how-it-works"
         data-otter-section="how-it-works"
         aria-labelledby="how-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
-            How It Works
-          </p>
-          <h2
-            id="how-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-navy"
-          >
+          <p className="db-eyebrow db-eyebrow--light mb-4">How It Works</p>
+          <h2 id="how-heading" className="db-h2 text-navy">
             Four steps. No jargon.
           </h2>
-          <p className="text-gray-500 mt-2">
+          <p className="db-subhead text-gray-500 mt-3">
             From &ldquo;there has to be a smarter way&rdquo; to sorted &mdash;
             here is the route every project takes.
           </p>
 
-          <ScrollReveal className="mt-12">
+          <ScrollReveal className="mt-12 md:mt-14">
             <FlowDiagram
               steps={["Chat", "Map", "Build", "Train"]}
               ariaLabel="How a DataBridges project runs"
@@ -425,24 +414,19 @@ export default function Home() {
         id="dashboards"
         data-otter-section="dashboards"
         aria-labelledby="dashboards-heading"
-        className="py-24 px-6 bg-white"
+        className="db-navy-bottom py-20 md:py-28 px-6 bg-white"
       >
-        <div className="mx-auto max-w-6xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
-            The receipts
-          </p>
-          <h2
-            id="dashboards-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-navy"
-          >
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <p className="db-eyebrow db-eyebrow--light mb-4">The receipts</p>
+          <h2 id="dashboards-heading" className="db-h2 text-navy">
             Dashboards people actually open.
           </h2>
-          <p className="text-gray-500 mt-2 max-w-2xl">
+          <p className="db-subhead text-gray-500 mt-3">
             A flavour of the real work &mdash; anonymised by sector. The hours
             saved are modest and honest; the point is they add up, every week.
           </p>
 
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="mt-12 md:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ScrollReveal>
               <BeforeAfterBars
                 title="admin-hours.dash"
@@ -468,19 +452,14 @@ export default function Home() {
         id="four-bridges"
         data-otter-section="four-bridges"
         aria-labelledby="four-bridges-heading"
-        className="bg-navy py-24 px-6"
+        className="bg-navy py-24 md:py-32 px-6"
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
-            The framework
-          </p>
-          <h2
-            id="four-bridges-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-white"
-          >
+          <p className="db-eyebrow db-eyebrow--dark mb-4">Our framework</p>
+          <h2 id="four-bridges-heading" className="db-h2 text-white">
             Four Bridges to AI adoption.
           </h2>
-          <p className="text-gray-300 mt-2 max-w-2xl">
+          <p className="db-subhead text-gray-300 mt-3">
             Every engagement crosses the same four spans, in order. Skip one and
             the whole thing wobbles &mdash; so we build them one at a time.
           </p>
@@ -494,38 +473,42 @@ export default function Home() {
         id="credibility"
         data-otter-section="credibility"
         aria-labelledby="credibility-heading"
-        className="bg-navy py-24 px-6"
+        className="bg-navy py-20 md:py-28 px-6"
       >
         <div className="mx-auto max-w-5xl">
           <h2
             id="credibility-heading"
-            className="font-syne text-4xl font-bold text-white text-center"
+            className="db-h2 text-white text-center"
           >
             Not a consultant who learned some buzzwords.
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl text-center mx-auto mt-6">
+          <p className="db-subhead text-gray-300 text-center mx-auto mt-6">
             Ois&iacute;n has worked inside the HSE and Tusla before
             consulting for organisations like them. He has an MSc in data
             science and teaches AI at UCD. He has been doing this since 2021.
             The difference shows.
           </p>
 
-          {/* Credential pills */}
-          <div className="mt-12 flex flex-wrap gap-3 justify-center">
+          {/* Credential list — substance, not tags */}
+          <ul className="mt-12 md:mt-14 mx-auto max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
             {[
               "MSc Astrophysics (Distinction) · Cardiff",
               "UCD Professional Academy Lecturer",
               "Microsoft Copilot Certified",
-              "HSE · Tusla",
+              "HSE · Tusla · Senior Analyst",
             ].map((cred) => (
-              <span
+              <li
                 key={cred}
-                className="border border-white/20 text-white/60 text-xs px-4 py-2 rounded-full"
+                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white/80"
               >
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rotate-45 bg-cyan shrink-0"
+                />
                 {cred}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -534,20 +517,19 @@ export default function Home() {
         id="eu-ai-act-checker"
         data-otter-section="eu-ai-act-checker"
         aria-labelledby="euai-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6 border-t border-navy/10"
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl">
-          <p className="text-sm uppercase tracking-widest text-navy/70 mb-4">
-            Free Tool
-          </p>
-          <h2
-            id="euai-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-navy"
-          >
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
+          <p className="db-eyebrow db-eyebrow--yellow mb-4">Free Tool</p>
+          <h2 id="euai-heading" className="db-h2 text-navy">
             Does the EU AI Act affect your business?
           </h2>
-          <p className="text-navy/70 text-lg mt-4 mb-12">
+          <p className="db-subhead text-navy/70 mt-4 mb-12">
             Answer 4 questions. Get an honest answer in 30 seconds.
           </p>
 
@@ -560,7 +542,7 @@ export default function Home() {
         id="about-teaser"
         data-otter-section="about-teaser"
         aria-labelledby="about-teaser-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -576,13 +558,10 @@ export default function Home() {
 
           {/* Text */}
           <ScrollReveal delay={100} className="md:pl-12">
-            <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
+            <p className="db-eyebrow db-eyebrow--light mb-4">
               About Ois&iacute;n
             </p>
-            <h2
-              id="about-teaser-heading"
-              className="font-syne text-4xl font-bold text-navy"
-            >
+            <h2 id="about-teaser-heading" className="db-h2 text-navy">
               An astrophysicist who got tired of bad spreadsheets.
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mt-4">
@@ -607,20 +586,17 @@ export default function Home() {
         id="linkedin"
         data-otter-section="linkedin"
         aria-labelledby="linkedin-heading"
-        className="py-24 px-6 bg-white"
+        className="py-20 md:py-28 px-6 bg-white"
       >
         <div className="mx-auto max-w-5xl">
-          <h2
-            id="linkedin-heading"
-            className="font-syne text-3xl font-semibold text-navy text-center"
-          >
+          <h2 id="linkedin-heading" className="db-h2 text-navy text-center">
             Straight talk about AI
           </h2>
-          <p className="text-gray-500 text-center mt-2">
+          <p className="db-subhead text-gray-500 text-center mx-auto mt-3">
             No hype. No vendor decks. Just honest takes.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-14">
             {LINKEDIN_POSTS.map((post, i) => (
               <ScrollReveal
                 key={post.postUrl + post.tag}
@@ -654,13 +630,17 @@ export default function Home() {
         id="footer-cta"
         data-otter-section="footer-cta"
         aria-labelledby="footer-cta-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6 border-t border-navy/10"
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl text-center">
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
           <h2
             id="footer-cta-heading"
-            className="font-syne text-4xl md:text-5xl font-extrabold text-navy leading-tight"
+            className="db-h2 font-extrabold text-navy leading-tight"
           >
             Ready to stop doing things the hard way?
           </h2>

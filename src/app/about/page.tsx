@@ -241,25 +241,42 @@ export default function AboutPage() {
         id="about-hero"
         data-otter-section="about-hero"
         aria-labelledby="about-hero-heading"
-        className="relative overflow-hidden bg-navy pt-36 pb-24 px-6"
+        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
       >
         <AnimatedBlobs />
 
         <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
-            <p className="text-sm uppercase tracking-widest text-cyan mb-4">
-              About DataBridges
-            </p>
-            <h1
-              id="about-hero-heading"
-              className="font-syne text-5xl md:text-6xl font-extrabold text-white"
-            >
+            <p className="db-eyebrow db-eyebrow--dark mb-4">About DataBridges</p>
+            <h1 id="about-hero-heading" className="db-display text-white">
               Hi, I&apos;m Ois&iacute;n.
             </h1>
             <p className="text-gray-300 text-xl max-w-2xl mt-6">
               I built DataBridges because digital transformation kept making
               work harder, not easier. That seemed like something worth fixing.
             </p>
+
+            {/* Credentials strip — surfaced once above the fold */}
+            <ul className="mt-8 flex flex-wrap gap-2 list-none p-0">
+              {[
+                "MSc Distinction · Cardiff",
+                "Master's Excellence Scholarship",
+                "ITIL 4",
+                "Microsoft Copilot Certified",
+                "UCD lecturer",
+              ].map((cred) => (
+                <li
+                  key={cred}
+                  className="font-jetbrains flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs text-white/70"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="inline-block h-1.5 w-1.5 rotate-45 bg-cyan"
+                  />
+                  {cred}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Hero graphic: constellation bridge */}
@@ -280,7 +297,7 @@ export default function AboutPage() {
         id="about-story"
         data-otter-section="about-story"
         aria-labelledby="story-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -323,10 +340,10 @@ export default function AboutPage() {
                     }`}
                   />
                   <ScrollReveal delay={i * 80}>
-                    <p className="text-xs uppercase tracking-widest text-cyan-ink mb-2">
+                    <p className="db-eyebrow db-eyebrow--light mb-2">
                       {act.eyebrow}
                     </p>
-                    <h3 className="font-syne text-2xl font-semibold text-navy mb-3">
+                    <h3 className="db-h3 text-navy mb-3">
                       {act.heading}
                     </h3>
                     <p className="text-gray-700 leading-relaxed">{act.body}</p>
@@ -343,7 +360,7 @@ export default function AboutPage() {
         id="credentials"
         data-otter-section="credentials"
         aria-labelledby="credentials-heading"
-        className="py-20 md:py-24 px-6 bg-white"
+        className="py-20 md:py-28 px-6 bg-white"
       >
         <div className="mx-auto max-w-4xl">
           <p
@@ -352,10 +369,7 @@ export default function AboutPage() {
           >
             /timeline
           </p>
-          <h2
-            id="credentials-heading"
-            className="font-syne text-3xl font-semibold text-navy text-center"
-          >
+          <h2 id="credentials-heading" className="db-h2 text-navy text-center">
             Background
           </h2>
 
@@ -438,10 +452,7 @@ export default function AboutPage() {
 
         <div className="relative mx-auto max-w-2xl text-center">
           <ScrollReveal>
-            <h2
-              id="about-cta-heading"
-              className="font-syne text-4xl font-bold text-white"
-            >
+            <h2 id="about-cta-heading" className="db-h2 text-white">
               Want to work together?
             </h2>
             <p className="text-gray-300 text-lg max-w-xl mx-auto mt-4">

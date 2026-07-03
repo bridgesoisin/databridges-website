@@ -281,19 +281,16 @@ export default function FaqPage() {
         id="faq-hero"
         data-otter-section="faq-hero"
         aria-labelledby="faq-hero-heading"
-        className="relative overflow-hidden bg-navy pt-36 pb-24 px-6"
+        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
       >
         <AnimatedBlobs />
 
         <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
-            <h1
-              id="faq-hero-heading"
-              className="font-syne text-5xl md:text-6xl font-extrabold text-white"
-            >
+            <h1 id="faq-hero-heading" className="db-display text-white">
               Frequently Asked Questions
             </h1>
-            <p className="text-cyan text-2xl mt-2">Straight answers, no jargon.</p>
+            <p className="text-cyan text-2xl mt-3">Straight answers, no jargon.</p>
             <p className="text-gray-300 text-lg max-w-2xl mt-4">
               The things people ask most about working with DataBridges. Can&apos;t
               see your question? Email{" "}
@@ -325,7 +322,7 @@ export default function FaqPage() {
         id="faq-list"
         data-otter-section="faq-list"
         aria-labelledby="faq-list-heading"
-        className="py-20 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <h2 id="faq-list-heading" className="sr-only">
@@ -334,17 +331,14 @@ export default function FaqPage() {
         <div className="mx-auto max-w-3xl flex flex-col gap-5">
           {FAQS.map((f, i) => (
             <ScrollReveal key={f.q} delay={i * 40}>
-              <article
-                className="gfx-card bg-white rounded-2xl border border-gray-100 border-l-4 border-l-cyan p-6 md:p-8"
-                style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.06)" }}
-              >
+              <article className="gfx-card db-card-shadow bg-white rounded-2xl border border-gray-100 border-l-4 border-l-cyan p-6 md:p-8">
                 <p
                   className="font-jetbrains text-xs text-cyan-ink tracking-widest"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="font-syne text-xl md:text-2xl font-bold text-navy mt-2">
+                <h3 className="db-h3 text-navy mt-2">
                   {f.q}
                 </h3>
                 <p className="text-gray-600 text-base leading-relaxed mt-3">
@@ -372,10 +366,7 @@ export default function FaqPage() {
 
         <div className="relative mx-auto max-w-3xl text-center">
           <ScrollReveal>
-            <h2
-              id="faq-cta-heading"
-              className="font-syne text-3xl md:text-4xl font-extrabold text-white"
-            >
+            <h2 id="faq-cta-heading" className="db-h2 text-white">
               Still have a question?
             </h2>
             <p className="text-gray-300 text-lg mt-3">

@@ -5,9 +5,15 @@ import { useEffect, useRef, useState } from "react";
 interface StatCounterProps {
   target: string;
   label: string;
+  /** Accent for the number. One yellow per band max (the "spark"). */
+  accent?: "cyan" | "yellow";
 }
 
-export default function StatCounter({ target, label }: StatCounterProps) {
+export default function StatCounter({
+  target,
+  label,
+  accent = "cyan",
+}: StatCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [display, setDisplay] = useState(target);
   const [visible, setVisible] = useState(false);
@@ -68,7 +74,11 @@ export default function StatCounter({ target, label }: StatCounterProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-syne text-5xl font-extrabold text-cyan tabular-nums">
+      <div
+        className={`font-syne text-5xl font-extrabold tabular-nums ${
+          accent === "yellow" ? "text-yellow" : "text-cyan"
+        }`}
+      >
         {display}
       </div>
       <div className="text-sm text-gray-400 mt-2 uppercase tracking-wide">

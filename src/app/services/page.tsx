@@ -309,7 +309,7 @@ function ServiceSection({
       id={id}
       data-otter-section={id}
       aria-labelledby={`${id}-heading`}
-      className={`py-20 md:py-24 px-6 ${bg}`}
+      className={`py-20 md:py-28 px-6 ${bg}`}
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -345,10 +345,11 @@ function ServiceSection({
             </div>
           </div>
 
-          {/* Graphic column */}
+          {/* Graphic column — common baseline height so all four panels
+              sit on one line down the alternating column. */}
           <ScrollReveal delay={80} className={reverse ? "lg:order-1" : ""}>
-            <div className="gfx-card rounded-3xl bg-navy p-6 sm:p-10">
-              <p className="font-jetbrains text-xs uppercase tracking-widest text-cyan mb-5">
+            <div className="gfx-card rounded-3xl bg-navy p-6 sm:p-10 lg:min-h-[320px] flex flex-col justify-center">
+              <p className="font-jetbrains text-xs uppercase tracking-widest text-cyan mb-4 pb-3 border-b border-cyan/20">
                 {graphicCaption}
               </p>
               {graphic}
@@ -409,19 +410,14 @@ export default function ServicesPage() {
         id="services-hero"
         data-otter-section="services-hero"
         aria-labelledby="services-hero-heading"
-        className="relative overflow-hidden bg-navy pt-36 pb-24 px-6"
+        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
       >
         <AnimatedBlobs />
 
         <div className="relative mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
-            <p className="text-sm uppercase tracking-widest text-cyan mb-4">
-              What We Do
-            </p>
-            <h1
-              id="services-hero-heading"
-              className="font-syne text-5xl md:text-6xl font-extrabold text-white"
-            >
+            <p className="db-eyebrow db-eyebrow--dark mb-4">What We Do</p>
+            <h1 id="services-hero-heading" className="db-display text-white">
               Services
             </h1>
             <p className="text-gray-300 text-xl max-w-2xl mt-4">
@@ -484,7 +480,7 @@ export default function ServicesPage() {
           className="rounded-xl p-6 mt-10"
           style={{ backgroundColor: "var(--color-yellow)" }}
         >
-          <h3 className="font-syne text-navy font-semibold text-lg">
+          <h3 className="db-h3 text-navy">
             The August 2026 deadline didn&apos;t move.
           </h3>
           <p className="text-navy/80 mt-2">
@@ -611,13 +607,17 @@ export default function ServicesPage() {
         id="services-cta"
         data-otter-section="footer-cta"
         aria-labelledby="services-cta-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6 border-t border-navy/10"
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl text-center">
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
           <h2
             id="services-cta-heading"
-            className="font-syne text-4xl md:text-5xl font-extrabold text-navy leading-tight"
+            className="db-h2 font-extrabold text-navy leading-tight"
           >
             Not sure which one you need?
           </h2>

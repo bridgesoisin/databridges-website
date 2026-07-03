@@ -101,17 +101,15 @@ export default function WorkPage() {
         id="work-hero"
         data-otter-section="work-hero"
         aria-labelledby="work-hero-heading"
-        className="relative overflow-hidden bg-navy px-6 pt-36 pb-24"
+        className="relative overflow-hidden bg-navy px-6 pt-32 md:pt-40 pb-20 md:pb-28"
       >
         <AnimatedBlobs />
 
         <div className="relative mx-auto max-w-6xl">
-          <p className="font-jetbrains text-cyan text-sm uppercase tracking-widest">
-            Our Work
-          </p>
+          <p className="db-eyebrow db-eyebrow--dark">Our Work</p>
           <h1
             id="work-hero-heading"
-            className="font-syne text-5xl md:text-6xl font-extrabold text-white mt-4 leading-tight"
+            className="db-display text-white mt-4 leading-tight"
           >
             Proof, not promises.
           </h1>
@@ -141,25 +139,20 @@ export default function WorkPage() {
         id="cases"
         data-otter-section="cases"
         aria-labelledby="cases-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
-            Case studies
-          </p>
-          <h2
-            id="cases-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-navy"
-          >
+          <p className="db-eyebrow db-eyebrow--light mb-4">Case studies</p>
+          <h2 id="cases-heading" className="db-h2 text-navy">
             Five jobs, five honest before-and-afters.
           </h2>
-          <p className="text-gray-500 mt-2 max-w-2xl">
+          <p className="db-subhead text-gray-500 mt-3">
             Different sectors, same pattern: find where the hours leak, build
             the fix on tools you already pay for, hand it back working.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 md:mt-14">
             {VIGNETTES.map((v, i) => (
               <ScrollReveal
                 key={v.slug}
@@ -182,14 +175,11 @@ export default function WorkPage() {
         id="how-we-anonymise"
         data-otter-section="how-we-anonymise"
         aria-labelledby="anonymise-heading"
-        className="py-24 px-6 bg-white"
+        className="py-20 md:py-28 px-6 bg-white"
       >
         <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl bg-navy/[0.04] p-8 md:p-10">
-            <h2
-              id="anonymise-heading"
-              className="font-syne text-3xl font-bold text-navy"
-            >
+            <h2 id="anonymise-heading" className="db-h2 text-navy">
               Why no logos or euro figures?
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mt-4">
@@ -207,26 +197,21 @@ export default function WorkPage() {
         id="work-four-bridges"
         data-otter-section="work-four-bridges"
         aria-labelledby="work-four-bridges-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan-ink mb-4">
-            Our framework
-          </p>
-          <h2
-            id="work-four-bridges-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-navy"
-          >
+          <p className="db-eyebrow db-eyebrow--light mb-4">Our framework</p>
+          <h2 id="work-four-bridges-heading" className="db-h2 text-navy">
             The same four bridges under every job on this page.
           </h2>
-          <p className="text-gray-500 mt-2 max-w-2xl">
+          <p className="db-subhead text-gray-500 mt-3">
             Most AI projects don&apos;t fail on the tech. They fall into the gap
             between a clever demo and a team actually using it. These are the
             four spans we build across, every time.
           </p>
 
-          <FourBridges tone="dark" className="mt-12" />
+          <FourBridges tone="dark" className="mt-12 md:mt-14" />
 
           <NumberedFeatures items={BRIDGES} columns={2} className="mt-12" />
 
@@ -246,13 +231,17 @@ export default function WorkPage() {
         id="footer-cta"
         data-otter-section="footer-cta"
         aria-labelledby="work-cta-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6 border-t border-navy/10"
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl text-center">
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
           <h2
             id="work-cta-heading"
-            className="font-syne text-4xl md:text-5xl font-extrabold text-navy leading-tight"
+            className="db-h2 font-extrabold text-navy leading-tight"
           >
             Ready to stop doing things the hard way?
           </h2>

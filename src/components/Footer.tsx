@@ -9,9 +9,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Left — Wordmark and tagline */}
           <div>
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-white">data</span>
-              <span className="text-cyan">bridges</span>
+            <span className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight">
+              <span
+                aria-hidden="true"
+                className="inline-block h-2.5 w-2.5 rotate-45 bg-cyan"
+              />
+              <span>
+                <span className="text-white">data</span>
+                <span className="text-cyan">bridges</span>
+              </span>
             </span>
             <p className="text-sm text-gray-400 mt-3">
               Making AI Useful (and mildly tolerable)
@@ -20,6 +26,7 @@ export default function Footer() {
 
           {/* Centre — Nav links */}
           <nav aria-label="Footer navigation" className="flex flex-col gap-3">
+            <p className="db-eyebrow db-eyebrow--dark mb-1">Explore</p>
             {[
               { href: "/", label: "Home" },
               { href: "/services", label: "Services" },
@@ -39,11 +46,18 @@ export default function Footer() {
 
           {/* Right — Contact */}
           <div className="flex flex-col gap-3">
+            <p className="db-eyebrow db-eyebrow--dark mb-1">Get in touch</p>
             <a
               href="mailto:hello@databridges.ie"
               className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
             >
               hello@databridges.ie
+            </a>
+            <a
+              href="tel:+353851364920"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+            >
+              085 136 4920
             </a>
             <a
               href="https://linkedin.com/company/databridges"
@@ -54,7 +68,7 @@ export default function Footer() {
               linkedin.com/company/databridges
             </a>
             <p className="text-sm text-gray-400">
-              Kilcock, Co. Kildare, Ireland
+              Kilcock, Co. Kildare, Ireland &middot; W23 WV63
             </p>
           </div>
         </div>
