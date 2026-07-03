@@ -28,17 +28,26 @@ const BRIDGES = [
 ];
 
 export const metadata: Metadata = {
-  title: "Our Work — AI & Power Platform case studies | DataBridges",
+  title: "Our Work",
   description:
     "Honest before-and-after stories from real DataBridges engagements across finance, construction, legal, public sector and training — anonymised by sector. Concrete outcomes, no vanity metrics.",
-  alternates: { canonical: "https://databridges.ie/work" },
+  alternates: { canonical: "/work" },
   openGraph: {
     type: "website",
     locale: "en_IE",
     siteName: "DataBridges",
+    url: "https://databridges.ie/work",
     title: "Our Work — AI & Power Platform case studies | DataBridges",
     description:
       "Real engagements, told straight and anonymised by sector. Concrete outcomes, no vanity metrics.",
+    images: ["/images/logo-wordmark.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | DataBridges",
+    description:
+      "Real engagements, told straight and anonymised by sector. Concrete outcomes, no vanity metrics.",
+    images: ["/images/logo-wordmark.png"],
   },
 };
 

@@ -3,19 +3,29 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import StatCounter from "@/components/StatCounter";
 import AEOReadiness from "@/components/AEOReadiness";
+import { graph, breadcrumbLd, ORG_ID } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "SEO & AEO Consulting Ireland | DataBridges",
+  title: "SEO & AEO Consulting Ireland",
   description:
     "Get found by people and by AI. DataBridges offers SEO and Answer Engine Optimisation (AEO) consulting for Irish businesses: structured data, technical SEO, content that gets cited by AI answers. Based in Kilcock, Co. Kildare.",
-  alternates: { canonical: "https://databridges.ie/seo-aeo" },
+  alternates: { canonical: "/seo-aeo" },
   openGraph: {
     type: "website",
     locale: "en_IE",
     siteName: "DataBridges",
+    url: "https://databridges.ie/seo-aeo",
     title: "SEO & AEO Consulting for Irish Businesses | DataBridges",
     description:
       "Rank on Google and get cited by AI answer engines. Practical SEO and AEO consulting, plus free tips you can try today.",
+    images: ["/images/logo-wordmark.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEO & AEO Consulting Ireland | DataBridges",
+    description:
+      "Rank on Google and get cited by AI answer engines. Practical SEO and AEO consulting for Irish businesses.",
+    images: ["/images/logo-wordmark.png"],
   },
 };
 
@@ -112,22 +122,16 @@ const FAQS = [
   },
 ];
 
-const serviceJsonLd = {
-  "@context": "https://schema.org",
+const serviceLd = {
   "@type": "Service",
   serviceType: "SEO and Answer Engine Optimisation consulting",
-  provider: {
-    "@type": "Organization",
-    name: "DataBridges",
-    areaServed: "IE",
-    url: "https://databridges.ie",
-  },
+  provider: { "@id": ORG_ID },
+  areaServed: { "@type": "Country", name: "Ireland" },
   description:
     "SEO and AEO consulting for Irish businesses: technical SEO, structured data, and content optimised to be cited by AI answer engines.",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
+const faqPageLd = {
   "@type": "FAQPage",
   mainEntity: FAQS.map((f) => ({
     "@type": "Question",
@@ -136,16 +140,21 @@ const faqJsonLd = {
   })),
 };
 
+const seoJsonLd = graph(
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "SEO & AEO", path: "/seo-aeo" },
+  ]),
+  serviceLd,
+  faqPageLd
+);
+
 export default function SeoAeoPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(seoJsonLd) }}
       />
 
       {/* HERO */}

@@ -54,37 +54,8 @@ const HOW_IT_WORKS = [
 export default function Home() {
   return (
     <>
-      {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "DataBridges",
-            description:
-              "AI consulting, Power Platform development and training workshops for Irish SMEs and public sector teams.",
-            url: "https://databridges.ie",
-            telephone: "+353 85 136 4920",
-            email: "hello@databridges.ie",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Kilcock",
-              addressRegion: "Co. Kildare",
-              postalCode: "W23WV63",
-              addressCountry: "IE",
-            },
-            founder: {
-              "@type": "Person",
-              name: "Oisín Bridges",
-            },
-            sameAs: [
-              "https://www.linkedin.com/company/databridges",
-              "https://www.linkedin.com/in/oisin-bridges",
-            ],
-          }),
-        }}
-      />
+      {/* Identity graph (WebSite / Organization+LocalBusiness / Person) is
+          emitted site-wide in layout.tsx — no per-page duplicate here. */}
 
       {/* ─── SECTION 1: HERO ─── */}
       <section

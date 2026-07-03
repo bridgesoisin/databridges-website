@@ -5,12 +5,80 @@ import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import RankBars from "@/components/graphics/RankBars";
 import NodeGraph from "@/components/graphics/NodeGraph";
 import FlowDiagram from "@/components/graphics/FlowDiagram";
+import { graph, breadcrumbLd, ORG_ID } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Services | DataBridges — AI Consulting & Power Platform",
+  title: "Services",
   description:
     "AI consulting, Power Platform development, SharePoint automation and AI training workshops for Irish businesses and public sector teams.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    type: "website",
+    locale: "en_IE",
+    siteName: "DataBridges",
+    url: "https://databridges.ie/services",
+    title: "Services | DataBridges — AI Consulting & Power Platform",
+    description:
+      "AI consulting, Power Platform, SharePoint automation and AI training for Irish teams.",
+    images: ["/images/logo-wordmark.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | DataBridges",
+    description:
+      "AI consulting, Power Platform, SharePoint automation and training for Irish teams.",
+    images: ["/images/logo-wordmark.png"],
+  },
 };
+
+// Four Service nodes — copy mirrors the on-page cards so schema and content
+// stay in parity. provider links to the site-wide Organization @id.
+const serviceNodes = [
+  {
+    "@type": "Service",
+    name: "AI Consulting & Integration",
+    serviceType: "AI consulting",
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Ireland" },
+    description:
+      "Make Copilot, ChatGPT and your AI tools actually earn their keep.",
+  },
+  {
+    "@type": "Service",
+    name: "Power Platform Development",
+    serviceType: "Microsoft Power Platform development",
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Ireland" },
+    description:
+      "Replace the Excel chaos with apps and dashboards that work the way your team does.",
+  },
+  {
+    "@type": "Service",
+    name: "SharePoint Automation",
+    serviceType: "SharePoint automation",
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Ireland" },
+    description:
+      "Clean up the mess, automate approvals, make collaboration less painful.",
+  },
+  {
+    "@type": "Service",
+    name: "Training & Workshops",
+    serviceType: "AI training",
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Ireland" },
+    description:
+      "Practical AI sessions. The same approach used at UCD. Tools your team will open on Monday morning.",
+  },
+];
+
+const servicesJsonLd = graph(
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+  ]),
+  ...serviceNodes
+);
 
 /* Bespoke service graphics (dependency-free SVG on the .gfx-* contract
    in globals.css). Both are wrapped in ScrollReveal by ServiceSection,
@@ -331,6 +399,11 @@ const SERVICE_ANCHORS = [
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
+
       {/* HERO */}
       <section
         id="services-hero"

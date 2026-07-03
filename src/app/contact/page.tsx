@@ -3,12 +3,44 @@ import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import FlowDiagram from "@/components/graphics/FlowDiagram";
+import { graph, breadcrumbLd, ORG_ID, SITE_URL } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Contact | DataBridges",
+  title: "Contact",
   description:
     "Get in touch with DataBridges. Book a free discovery call with Oisín Bridges — AI consultant and Power Platform developer based in Kilcock, Co. Kildare.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    type: "website",
+    locale: "en_IE",
+    siteName: "DataBridges",
+    url: "https://databridges.ie/contact",
+    title: "Contact | DataBridges",
+    description:
+      "Book a free discovery call with Oisín Bridges — AI consultant and Power Platform developer.",
+    images: ["/images/logo-wordmark.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact | DataBridges",
+    description:
+      "Book a free discovery call with Oisín Bridges — AI consultant and Power Platform developer.",
+    images: ["/images/logo-wordmark.png"],
+  },
 };
+
+const contactJsonLd = graph(
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ]),
+  {
+    "@type": "ContactPage",
+    "@id": `${SITE_URL}/contact#contactpage`,
+    url: `${SITE_URL}/contact`,
+    about: { "@id": ORG_ID },
+  }
+);
 
 /* Hero graphic: a message leaving a form, flying across a dashed arc and
    landing as a reply — with a clock for the one-working-day promise.
@@ -224,6 +256,11 @@ const DETAILS = [
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
+
       {/* HERO */}
       <section
         id="contact-hero"

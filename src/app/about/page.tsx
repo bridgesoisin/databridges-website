@@ -2,12 +2,39 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
+import { graph, breadcrumbLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "About Oisín Bridges | DataBridges",
+  title: "About Oisín Bridges",
   description:
     "Oisín Bridges is an AI consultant, Machine Learning engineer and UCD lecturer based in Kilcock, Kildare. He founded DataBridges in 2021 after years working in Irish public sector data roles.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    type: "profile",
+    locale: "en_IE",
+    siteName: "DataBridges",
+    url: "https://databridges.ie/about",
+    title: "About Oisín Bridges | DataBridges",
+    description:
+      "AI consultant, ML engineer and UCD lecturer. Founded DataBridges in 2021.",
+    images: ["/images/headshot-oisin.jpeg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Oisín Bridges | DataBridges",
+    description:
+      "AI consultant, ML engineer and UCD lecturer. Founded DataBridges in 2021.",
+    images: ["/images/headshot-oisin.jpeg"],
+  },
 };
+
+// The Person node lives site-wide (layout); About just adds its breadcrumb.
+const aboutJsonLd = graph(
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+  ])
+);
 
 /* Hero graphic: a constellation of stars forming a bridge — astrophysics
    background meets the DataBridges name. Dependency-free SVG on the .gfx-*
@@ -204,6 +231,11 @@ const storyActs = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
+
       {/* HERO */}
       <section
         id="about-hero"

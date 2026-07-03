@@ -2,19 +2,29 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
+import { graph, breadcrumbLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "FAQ | DataBridges — AI, Power Platform & Automation in Ireland",
+  title: "FAQ",
   description:
     "Answers to common questions about DataBridges: what we do, what projects cost, who we work with, the EU AI Act, SharePoint automation, AI training, and how to get started. Based in Kilcock, Co. Kildare.",
-  alternates: { canonical: "https://databridges.ie/faq" },
+  alternates: { canonical: "/faq" },
   openGraph: {
     type: "website",
     locale: "en_IE",
     siteName: "DataBridges",
+    url: "https://databridges.ie/faq",
     title: "DataBridges FAQ — AI, Power Platform & Automation for Irish teams",
     description:
       "Straight answers on services, pricing, the EU AI Act, SharePoint, training and getting started.",
+    images: ["/images/logo-wordmark.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ | DataBridges",
+    description:
+      "Straight answers on services, pricing, the EU AI Act, SharePoint, training and getting started.",
+    images: ["/images/logo-wordmark.png"],
   },
 };
 
@@ -62,13 +72,16 @@ const FAQS: { q: string; a: string }[] = [
     a: "Very possibly. The May 2026 Digital Omnibus delayed the high-risk (Annex III) rules to December 2027, but the AI Act's Article 50 transparency duties still apply from 2 August 2026 — and they apply even if you have no high-risk AI. If you run a chatbot, an AI phone line, or publish AI-generated content, you have disclosures to make. There is a free 30-second checker on the DataBridges home page that shows where you stand. This is general guidance, not legal advice.",
   },
   {
+    q: "What are the EU AI Act transparency rules that apply from August 2026?",
+    a: "From 2 August 2026, Article 50 of the EU AI Act requires you to tell people when they are dealing with AI. That covers chatbots and AI phone lines, AI-generated or AI-edited content you publish, deepfakes, and emotion-recognition or biometric-categorisation systems. These transparency duties apply even if you use no high-risk AI at all. The May 2026 Digital Omnibus delayed the high-risk (Annex III) obligations to 2 December 2027, and to 2 August 2028 where AI is embedded in regulated products — but it did not move the Article 50 date. In short: the deadline didn't move; most people read the wrong line. This is general guidance, not legal advice.",
+  },
+  {
     q: "How do I get started?",
     a: "Email hello@databridges.ie or book a free 30-minute chat. There is no sales script and no jargon: you tell us what is driving you mad, and we tell you honestly whether AI or automation can fix it.",
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
+const faqPageLd = {
   "@type": "FAQPage",
   mainEntity: FAQS.map((f) => ({
     "@type": "Question",
@@ -76,6 +89,14 @@ const faqJsonLd = {
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
+
+const faqJsonLd = graph(
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "FAQ", path: "/faq" },
+  ]),
+  faqPageLd
+);
 
 /* Hero graphic: floating question bubbles resolving, along a dashed flight
    path, into one clear answer with a tick. Dependency-free SVG on the
