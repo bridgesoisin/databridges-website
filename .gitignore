@@ -40,6 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# office temp / lock files
+~$*
+*.tmp
+
 # claude code / overnight runner
 .claude/worktrees/
 .claude/overnight-session-id
