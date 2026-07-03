@@ -3,6 +3,7 @@ import Link from "next/link";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import StatBand from "@/components/graphics/StatBand";
 import NumberedFeatures from "@/components/graphics/NumberedFeatures";
+import FourBridges from "@/components/graphics/FourBridges";
 import ScrollReveal from "@/components/ScrollReveal";
 import VignetteCard from "@/components/VignetteCard";
 import { VIGNETTES } from "@/data/vignettes";
@@ -192,7 +193,7 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* ─── FOUR BRIDGES TEASER (stub — compact framework variant added in a later phase) ─── */}
+      {/* ─── FOUR BRIDGES TEASER (signature framework diagram + numbered detail) ─── */}
       <section
         id="work-four-bridges"
         data-otter-section="work-four-bridges"
@@ -215,6 +216,8 @@ export default function WorkPage() {
             between a clever demo and a team actually using it. These are the
             four spans we build across, every time.
           </p>
+
+          <FourBridges tone="dark" className="mt-12" />
 
           <NumberedFeatures items={BRIDGES} columns={2} className="mt-12" />
 
