@@ -124,14 +124,15 @@ That is **wrong**. The correct, stronger story:
 ## Phase 1 — Overall feel + structure  *(do first)*
 - [ ] Agree tokens/motion language: add `--ease-emph`, scroll-progress CSS var convention,
       one global reduced-motion posture. Document in `globals.css` header comment.
-- [ ] Big **`databridges` wordmark lockup** in the home hero (crisp inline SVG, brand tokens,
-      not the 2.35 MB PNG). Pair with monogram; ensure it reads at 360px.
+- [x] Big **`databridges` wordmark lockup** in the home hero — done: `Wordmark.tsx`
+      (diamond mark + crisp token-coloured text) at the top of the hero, reduced-motion entrance.
 - [ ] Scaffold new **`/work`** page + Nav/Footer/sitemap/robots wiring (content in Phase 2).
 - [ ] Insert placeholders/anchors for new Home sections (Where we've helped, Four Bridges).
 
 ## Phase 2 — Content & correctness  *(highest-value)*
-- [ ] Rewrite **all EU AI Act content** to the corrected story (files listed above); make
-      the checker date-safe; reframe as "The August 2026 deadline didn't move."
+- [x] Rewrite **all EU AI Act content** to the corrected story — done across checker,
+      services, home stat/LinkedIn, FAQ (+JSON-LD) and otter tip; checker now date-safe
+      (no negative countdown); reframed "The August 2026 deadline didn't move."
 - [ ] Replace the two hardcoded LinkedIn cards with the **five real current posts**
       (Article 50 disclosures, Ireland AI Bill 2026, People Inc v Google, Ford rehiring
       engineers, Four Bridges) — move post data to a small typed array.
