@@ -1,11 +1,11 @@
 /**
- * Graphics kit — RankBars
+ * Graphics kit, RankBars
  *
  * Bar chart whose bars rise into place when scrolled into view, modelled on
  * the /seo-aeo hero rank bars. Wraps itself in ScrollReveal so the rise
  * triggers on `.revealed`.
  *
- * CSS contract (globals.css, "Graphics kit" block — task F2):
+ * CSS contract (globals.css, "Graphics kit" block, task F2):
  * - `.gfx-bar`: transform-box: fill-box; transform-origin: bottom center.
  *   Under no-preference motion, start at scaleY(0) and animate a rise
  *   (staggered via :nth-child) when an ancestor `.scroll-reveal.revealed`

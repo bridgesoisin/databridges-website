@@ -36,7 +36,7 @@ const TECH_ITEMS = [
 const HOW_IT_WORKS = [
   {
     title: "A free chat",
-    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help — and say so if we can't.",
+    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help, and say so if we can't.",
   },
   {
     title: "Map the mess",
@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <>
       {/* Identity graph (WebSite / Organization+LocalBusiness / Person) is
-          emitted site-wide in layout.tsx — no per-page duplicate here. */}
+          emitted site-wide in layout.tsx, no per-page duplicate here. */}
 
       {/* ─── SECTION 1: HERO ─── */}
       <section
@@ -89,7 +89,7 @@ export default function Home() {
 
             <p className="text-xl max-w-xl mt-6 text-gray-300">
               DataBridges helps Irish businesses connect people, data and
-              process &mdash; turning &ldquo;there has to be a smarter way to
+              process, turning &ldquo;there has to be a smarter way to
               do this&rdquo; into something that actually works.
             </p>
 
@@ -165,7 +165,7 @@ export default function Home() {
                   Final_V12_UseThisOne(2).xlsx
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  The spreadsheet that runs everything &mdash; until someone
+                  The spreadsheet that runs everything, until someone
                   sorts the wrong column and suddenly Dave&apos;s salary is
                   attached to the wrong department. Instant chaos.
                 </p>
@@ -178,7 +178,7 @@ export default function Home() {
                   Copy. Paste. Repeat.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Time returns, attendance records, contact lists &mdash;
+                  Time returns, attendance records, contact lists,
                   manually copied between sheets every week because
                   that&apos;s just how it&apos;s always been done.
                   There&apos;s another way.
@@ -241,7 +241,7 @@ export default function Home() {
           <p className="db-subhead text-gray-500 mt-3">
             A regulated finance firm, a fit-out company drowning in sticky
             notes, legal teams, the health service, and a room full of people
-            learning AI properly. Same job every time &mdash; find the grind,
+            learning AI properly. Same job every time, find the grind,
             build the fix.
           </p>
 
@@ -388,7 +388,7 @@ export default function Home() {
             Four steps. No jargon.
           </h2>
           <p className="db-subhead text-gray-500 mt-3">
-            From &ldquo;there has to be a smarter way&rdquo; to sorted &mdash;
+            From &ldquo;there has to be a smarter way&rdquo; to sorted,
             here is the route every project takes.
           </p>
 
@@ -421,7 +421,7 @@ export default function Home() {
             Dashboards people actually open.
           </h2>
           <p className="db-subhead text-gray-500 mt-3">
-            A flavour of the real work &mdash; anonymised by sector. Different
+            A flavour of the real work, anonymised by sector. Different
             sectors, one idea: take out the manual grind so people can get on
             with the work that actually needs judgement.
           </p>
@@ -435,12 +435,12 @@ export default function Home() {
               />
             </ScrollReveal>
             <ScrollReveal delay={80}>
-              <ChangeHeatmap caption="Change-ticket volume by quarter, 2019–2026 — the resourcing picture behind a public-sector transition team. Illustrative." />
+              <ChangeHeatmap caption="Change-ticket volume by quarter, 2019–2026, the resourcing picture behind a public-sector transition team. Illustrative." />
             </ScrollReveal>
             <ScrollReveal delay={40} className="lg:col-span-2">
               <WorkflowPipeline
                 stages={["Intake", "Schedule", "Survey", "Quote", "Labour"]}
-                caption="Lead-to-labour flow for a construction & fit-out business: one connected pipeline across Power Platform, Dataverse and Azure OpenAI — no re-keying between systems."
+                caption="Lead-to-labour flow for a construction & fit-out business: one connected pipeline across Power Platform, Dataverse and Azure OpenAI, no re-keying between systems."
               />
             </ScrollReveal>
           </div>
@@ -461,7 +461,7 @@ export default function Home() {
           </h2>
           <p className="db-subhead text-gray-300 mt-3">
             Every engagement crosses the same four spans, in order. Skip one and
-            the whole thing wobbles &mdash; so we build them one at a time.
+            the whole thing wobbles, so we build them one at a time.
           </p>
 
           <FourBridges tone="light" className="mt-14" />
@@ -489,7 +489,7 @@ export default function Home() {
             The difference shows.
           </p>
 
-          {/* Credential list — substance, not tags */}
+          {/* Credential list, substance, not tags */}
           <ul className="mt-12 md:mt-14 mx-auto max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
             {[
               "MSc Astrophysics (Distinction) · Cardiff",

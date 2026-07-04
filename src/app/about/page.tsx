@@ -37,7 +37,7 @@ const aboutJsonLd = graph(
   ])
 );
 
-/* Hero graphic: a constellation of stars forming a bridge — astrophysics
+/* Hero graphic: a constellation of stars forming a bridge, astrophysics
    background meets the DataBridges name. Dependency-free SVG on the .gfx-*
    contract in globals.css. */
 function ConstellationBridge() {
@@ -159,7 +159,7 @@ function ConstellationBridge() {
 }
 
 /* The same eight credentials as before, ordered chronologically so they
-   read as a timeline. Content is real — do not invent entries. */
+   read as a timeline. Content is real, do not invent entries. */
 const timeline = [
   {
     year: "2015",
@@ -220,12 +220,12 @@ const storyActs = [
   {
     eyebrow: "Then",
     heading: "Then I studied Irish organisations.",
-    body: "Four years as a data analyst inside Tusla and the HSE taught me how Irish public sector teams actually work — the legacy systems, the Excel dependencies, the understaffed IT departments, the genuine goodwill from people who want better tools but have never had someone explain them clearly. I saw “digital transformation” projects arrive with fanfare and leave teams worse off. That stuck with me.",
+    body: "Four years as a data analyst inside Tusla and the HSE taught me how Irish public sector teams actually work, the legacy systems, the Excel dependencies, the understaffed IT departments, the genuine goodwill from people who want better tools but have never had someone explain them clearly. I saw “digital transformation” projects arrive with fanfare and leave teams worse off. That stuck with me.",
   },
   {
     eyebrow: "Now",
     heading: "Now I close the gap.",
-    body: "I founded DataBridges in January 2021 to work directly with Irish SMEs and public sector teams. I also lecture at UCD Professional Academy — AI and machine learning, productivity with AI. The approach is the same in both: practical, specific, and honest about what AI can and cannot do. If you can explain something to a classroom, you can explain it to anyone. If that sounds useful, let’s talk.",
+    body: "I founded DataBridges in January 2021 to work directly with Irish SMEs and public sector teams. I also lecture at UCD Professional Academy, AI and machine learning, productivity with AI. The approach is the same in both: practical, specific, and honest about what AI can and cannot do. If you can explain something to a classroom, you can explain it to anyone. If that sounds useful, let’s talk.",
   },
 ];
 
@@ -257,7 +257,7 @@ export default function AboutPage() {
               work harder, not easier. That seemed like something worth fixing.
             </p>
 
-            {/* Credentials strip — surfaced once above the fold */}
+            {/* Credentials strip, surfaced once above the fold */}
             <ul className="mt-8 flex flex-wrap gap-2 list-none p-0">
               {[
                 "MSc Distinction · Cardiff",

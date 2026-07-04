@@ -153,7 +153,7 @@ export default function EUAIActChecker() {
               &#9888;
             </div>
             <h3 className="font-syne text-2xl font-bold text-navy mb-4">
-              You likely have high-risk (Annex III) AI &mdash; and probably
+              You likely have high-risk (Annex III) AI, and probably
               transparency duties too.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
@@ -161,7 +161,7 @@ export default function EUAIActChecker() {
               fall under <strong>Annex III</strong>. The timing news is good:
               those high-risk obligations were pushed back to{" "}
               <strong>2 December 2027</strong> (and 2 August 2028 for AI built
-              into regulated products). The catch &mdash; if any system is a
+              into regulated products). The catch: if any system is a
               chatbot, AI phone line or publishes AI-generated content, the{" "}
               <strong>Article 50 transparency duties still apply from 2 August
               2026</strong>, {countdown}. Use the high-risk runway now for an AI
@@ -185,13 +185,13 @@ export default function EUAIActChecker() {
               The August 2026 transparency deadline applies to you.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
-              You don&apos;t have obvious high-risk systems &mdash; but
+              You don&apos;t have obvious high-risk systems, but
               chatbots, AI phone lines, deepfakes and published AI-generated
               content trigger the AI Act&apos;s{" "}
               <strong>Article 50 transparency duties</strong>, and those land on{" "}
               <strong>2 August 2026</strong> ({countdown}), whether or not you
               run any high-risk AI. Most fixes are a line of disclosure copy or a
-              label, not an engineering project &mdash; but they have to be
+              label, not an engineering project, but they have to be
               there.
             </p>
             <Link
@@ -209,12 +209,12 @@ export default function EUAIActChecker() {
               &#10003;
             </div>
             <h3 className="font-syne text-2xl font-bold text-navy mb-4">
-              You&apos;re light-touch &mdash; for now.
+              You&apos;re light-touch, for now.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
               Using AI for internal productivity (Copilot, ChatGPT) doesn&apos;t
               put you in the high-risk or transparency tiers. General-purpose AI
-              obligations and basic AI literacy still apply &mdash; and that
+              obligations and basic AI literacy still apply, and that
               changes the moment you add a customer-facing chatbot or publish
               AI-generated content. A short review keeps you ahead of it.
             </p>
@@ -233,7 +233,7 @@ export default function EUAIActChecker() {
               &#10003;
             </div>
             <h3 className="font-syne text-2xl font-bold text-navy mb-4">
-              Nothing to disclose yet &mdash; a good time to plan.
+              Nothing to disclose yet, a good time to plan.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
               You&apos;re not using AI, so the Act&apos;s obligations don&apos;t
@@ -262,7 +262,7 @@ export default function EUAIActChecker() {
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
               If you&apos;re not sure whether the Act reaches you, that
               uncertainty is usually the answer. Let&apos;s spend 30 minutes
-              finding out &mdash; it&apos;s free and there&apos;s no obligation.
+              finding out, it&apos;s free and there&apos;s no obligation.
             </p>
             <Link
               href="/contact"

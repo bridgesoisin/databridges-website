@@ -1,12 +1,12 @@
 /**
- * Graphics kit — NodeGraph
+ * Graphics kit, NodeGraph
  *
  * A network of pulsing data nodes joined by animated connection lines, in the
  * style of the /seo-aeo answer-engine motifs. Layout is fixed/deterministic
  * (no randomness) so server and client renders always match. Works on both
- * navy and off-white backgrounds — links and nodes are self-coloured.
+ * navy and off-white backgrounds, links and nodes are self-coloured.
  *
- * CSS contract (globals.css, "Graphics kit" block — task F2):
+ * CSS contract (globals.css, "Graphics kit" block, task F2):
  * - `.gfx-node`: pulse (opacity/scale) keyframes, transform-box: fill-box,
  *   staggered via :nth-child; motion only under no-preference.
  * - `.gfx-link`: travelling stroke-dash animation; motion only under

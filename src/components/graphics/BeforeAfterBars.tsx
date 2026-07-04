@@ -1,5 +1,5 @@
 /**
- * Graphics kit — BeforeAfterBars
+ * Graphics kit, BeforeAfterBars
  *
  * A before/after admin-hours dashboard tile. Two bars (before = dim, after =
  * bright) rise into place on scroll-reveal; the reclaimed slice above the
@@ -7,7 +7,7 @@
  * real HSE approval-triage automation (~1 hr/week saved per analyst).
  *
  * Deterministic layout (no randomness) so SSR and client always match. Values
- * are illustrative and set by the caller — keep them honest.
+ * are illustrative and set by the caller, keep them honest.
  *
  * CSS contract (globals.css, "Graphics kit" block):
  * - `.gfx-ba-bar`: transform-box: fill-box; origin bottom. Under no-preference,

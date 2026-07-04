@@ -1,5 +1,5 @@
 /**
- * Graphics kit — ChangeHeatmap
+ * Graphics kit, ChangeHeatmap
  *
  * A change-ticket heatmap dashboard tile: a grid of cells (rows × columns)
  * shaded by volume, that scale/fade in on a diagonal wave when scrolled into
@@ -7,7 +7,7 @@
  * 2019–2026 change-ticket resourcing dashboard.
  *
  * Deterministic data (no randomness) so SSR and client match. The default
- * matrix trends upward across the years — illustrative of rising change volume.
+ * matrix trends upward across the years, illustrative of rising change volume.
  *
  * CSS contract (globals.css, "Graphics kit" block):
  * - `.gfx-cell`: base opacity 1 (static fallback). Under no-preference,

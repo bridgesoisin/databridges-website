@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     locale: "en_IE",
     siteName: "DataBridges",
     url: "https://databridges.ie/faq",
-    title: "DataBridges FAQ — AI, Power Platform & Automation for Irish teams",
+    title: "DataBridges FAQ, AI, Power Platform & Automation for Irish teams",
     description:
       "Straight answers on services, pricing, the EU AI Act, SharePoint, training and getting started.",
     images: ["/images/logo-wordmark.png"],
@@ -69,11 +69,11 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Does the EU AI Act affect my business?",
-    a: "Very possibly. The May 2026 Digital Omnibus delayed the high-risk (Annex III) rules to December 2027, but the AI Act's Article 50 transparency duties still apply from 2 August 2026 — and they apply even if you have no high-risk AI. If you run a chatbot, an AI phone line, or publish AI-generated content, you have disclosures to make. There is a free 30-second checker on the DataBridges home page that shows where you stand. This is general guidance, not legal advice.",
+    a: "Very possibly. The May 2026 Digital Omnibus delayed the high-risk (Annex III) rules to December 2027, but the AI Act's Article 50 transparency duties still apply from 2 August 2026, and they apply even if you have no high-risk AI. If you run a chatbot, an AI phone line, or publish AI-generated content, you have disclosures to make. There is a free 30-second checker on the DataBridges home page that shows where you stand. This is general guidance, not legal advice.",
   },
   {
     q: "What are the EU AI Act transparency rules that apply from August 2026?",
-    a: "From 2 August 2026, Article 50 of the EU AI Act requires you to tell people when they are dealing with AI. That covers chatbots and AI phone lines, AI-generated or AI-edited content you publish, deepfakes, and emotion-recognition or biometric-categorisation systems. These transparency duties apply even if you use no high-risk AI at all. The May 2026 Digital Omnibus delayed the high-risk (Annex III) obligations to 2 December 2027, and to 2 August 2028 where AI is embedded in regulated products — but it did not move the Article 50 date. In short: the deadline didn't move; most people read the wrong line. This is general guidance, not legal advice.",
+    a: "From 2 August 2026, Article 50 of the EU AI Act requires you to tell people when they are dealing with AI. That covers chatbots and AI phone lines, AI-generated or AI-edited content you publish, deepfakes, and emotion-recognition or biometric-categorisation systems. These transparency duties apply even if you use no high-risk AI at all. The May 2026 Digital Omnibus delayed the high-risk (Annex III) obligations to 2 December 2027, and to 2 August 2028 where AI is embedded in regulated products, but it did not move the Article 50 date. In short: the deadline didn't move; most people read the wrong line. This is general guidance, not legal advice.",
   },
   {
     q: "How do I get started?",

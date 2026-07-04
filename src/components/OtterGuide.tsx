@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 /**
- * OtterGuide — the DataBridges mascot.
+ * OtterGuide, the DataBridges mascot.
  *
  * Pure guide, no chatbot (the AI chat is paused until a backend/API is wired;
  * see src/app/api/otter/route.ts for the ready seam). The otter:
@@ -53,7 +53,7 @@ const SECTION_TIPS: Record<string, Tip> = {
   "eu-ai-act-checker": {
     kind: "section",
     message:
-      "The AI Act's August 2026 transparency deadline catches more businesses than people expect — chatbots and AI content count. Worth 30 seconds.",
+      "The AI Act's August 2026 transparency deadline catches more businesses than people expect, chatbots and AI content count. Worth 30 seconds.",
     replies: [
       { label: "Take the check below", scrollTo: "eu-ai-act-checker" },
       { label: "More questions? FAQ", href: "/faq" },

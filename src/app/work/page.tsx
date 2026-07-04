@@ -11,7 +11,7 @@ import { VIGNETTES } from "@/data/vignettes";
 const BRIDGES = [
   {
     title: "Design & explainability",
-    body: "AI you can open up and explain — not a black box you have to take on faith.",
+    body: "AI you can open up and explain, not a black box you have to take on faith.",
   },
   {
     title: "Leadership & trust",
@@ -30,14 +30,14 @@ const BRIDGES = [
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Honest before-and-after stories from real DataBridges engagements across finance, construction, legal, public sector and training — anonymised by sector. Concrete outcomes, no vanity metrics.",
+    "Honest before-and-after stories from real DataBridges engagements across finance, construction, legal, public sector and training, anonymised by sector. Concrete outcomes, no vanity metrics.",
   alternates: { canonical: "/work" },
   openGraph: {
     type: "website",
     locale: "en_IE",
     siteName: "DataBridges",
     url: "https://databridges.ie/work",
-    title: "Our Work — AI & Power Platform case studies | DataBridges",
+    title: "Our Work, AI & Power Platform case studies | DataBridges",
     description:
       "Real engagements, told straight and anonymised by sector. Concrete outcomes, no vanity metrics.",
     images: ["/images/logo-wordmark.png"],
@@ -182,7 +182,7 @@ export default function WorkPage() {
             <p className="text-gray-600 text-lg leading-relaxed mt-4">
               Because most of this work sits inside regulated firms and the
               public sector, and because a saving we can&apos;t stand over
-              isn&apos;t proof &mdash; it&apos;s decoration. If a client&apos;s
+              isn&apos;t proof, it&apos;s decoration. If a client&apos;s
               happy to be named, we&apos;ll ask them, not assume.
             </p>
           </div>

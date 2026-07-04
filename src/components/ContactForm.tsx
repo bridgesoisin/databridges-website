@@ -17,7 +17,7 @@ function ContactFormInner() {
           Message received.
         </h3>
         <p className="text-gray-600 text-lg">
-          Ois&iacute;n will be in touch shortly &mdash; usually within one
+          Ois&iacute;n will be in touch shortly, usually within one
           working day.
         </p>
         <a

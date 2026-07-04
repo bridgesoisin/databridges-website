@@ -1,11 +1,11 @@
 /**
- * Graphics kit — AnimatedBlobs
+ * Graphics kit, AnimatedBlobs
  *
  * Soft blurred colour blobs that drift behind hero sections, modelled on the
  * /seo-aeo hero. Purely decorative (aria-hidden), absolutely positioned to
  * fill the nearest `relative` ancestor.
  *
- * CSS contract (globals.css, "Graphics kit" block — task F2):
+ * CSS contract (globals.css, "Graphics kit" block, task F2):
  * - `.gfx-blob`: border-radius 9999px, blur filter, ~0.5 opacity; drifting
  *   transform keyframes only under prefers-reduced-motion: no-preference.
  *   Reduced-motion fallback: static glow (no animation).
@@ -14,7 +14,7 @@
 type BlobSpec = {
   /** Diameter in px. */
   size: number;
-  /** Any CSS colour — prefer tokens, e.g. "var(--color-cyan)". */
+  /** Any CSS colour, prefer tokens, e.g. "var(--color-cyan)". */
   color: string;
   top?: number | string;
   right?: number | string;

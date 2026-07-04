@@ -1,12 +1,12 @@
 /**
- * Graphics kit — StatBand
+ * Graphics kit, StatBand
  *
  * Full-width navy band of animated stat counters, modelled on the /seo-aeo
  * "Approach in numbers" section. Wraps the existing StatCounter, which counts
  * up on scroll into view and already falls back to a static number under
  * prefers-reduced-motion: reduce.
  *
- * No custom CSS needed — layout is Tailwind, motion lives in StatCounter.
+ * No custom CSS needed, layout is Tailwind, motion lives in StatCounter.
  */
 
 import StatCounter from "@/components/StatCounter";

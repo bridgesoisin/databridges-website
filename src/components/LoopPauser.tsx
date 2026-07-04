@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * LoopPauser — pauses off-screen looping graphics to save CPU/GPU.
+ * LoopPauser, pauses off-screen looping graphics to save CPU/GPU.
  *
  * Mounted once in layout.tsx, renders nothing. A single IntersectionObserver
  * watches every `[data-gfx-loop]` graphic wrapper and toggles the `.gfx-idle`
@@ -52,7 +52,7 @@ export default function LoopPauser() {
     };
 
     scan();
-    // App Router swaps page content without remounting layout — re-scan for
+    // App Router swaps page content without remounting layout, re-scan for
     // graphics added by client navigation. Coalesced to one rAF per burst.
     const mo = new MutationObserver(scheduleScan);
     mo.observe(document.body, { childList: true, subtree: true });

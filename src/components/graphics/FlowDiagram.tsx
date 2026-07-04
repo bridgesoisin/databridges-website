@@ -1,12 +1,12 @@
 /**
- * Graphics kit — FlowDiagram
+ * Graphics kit, FlowDiagram
  *
  * Numbered process stages joined by animated flow lines, in the style of the
  * /seo-aeo query-to-answer flow. Stage boxes are self-coloured navy so the
  * diagram reads correctly on both navy and off-white backgrounds. Keep step
  * labels short (one or two words) so they fit their boxes at 360px.
  *
- * CSS contract (globals.css, "Graphics kit" block — task F2):
+ * CSS contract (globals.css, "Graphics kit" block, task F2):
  * - `.gfx-flow`: travelling stroke-dash animation on the connector paths;
  *   motion only under no-preference (static dashed line otherwise).
  */

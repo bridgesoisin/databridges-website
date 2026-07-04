@@ -1,10 +1,10 @@
 /**
- * VignetteCard — reusable before→after engagement card.
+ * VignetteCard, reusable before→after engagement card.
  *
  * Used full on `/work` (before/after split shown) and compact on the Home
  * "Where we've helped" section (`compact` hides the split for scannability).
  *
- * Presentational only — no client JS. The scroll reveal is handled by the
+ * Presentational only, no client JS. The scroll reveal is handled by the
  * wrapping <ScrollReveal> at the call site; the hover lift comes from the
  * already reduced-motion-gated `.gfx-card` class in globals.css.
  */

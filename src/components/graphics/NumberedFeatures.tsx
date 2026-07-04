@@ -1,5 +1,5 @@
 /**
- * Graphics kit — NumberedFeatures
+ * Graphics kit, NumberedFeatures
  *
  * Numbered feature cards in a responsive grid, modelled on the /seo-aeo
  * "8 things you can try today" tips grid: big Syne cyan number beside a bold
@@ -7,7 +7,7 @@
  * Reveal motion comes from ScrollReveal, which is a no-op under
  * prefers-reduced-motion: reduce.
  *
- * CSS contract (globals.css, "Graphics kit" block — task F2):
+ * CSS contract (globals.css, "Graphics kit" block, task F2):
  * - `.gfx-card`: subtle hover lift (translateY/shadow via transform only),
  *   transition disabled under prefers-reduced-motion: reduce.
  */

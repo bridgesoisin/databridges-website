@@ -16,7 +16,7 @@
   --ease-emph: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Scroll driver outputs — safe static defaults so CSS renders correctly
+  /* Scroll driver outputs, safe static defaults so CSS renders correctly
      before JS hydrates, and forever under reduced-motion. */
   --scroll-progress: 0; /* 0..1 whole-document scroll */
   --scroll-y: 0px; /* raw window.scrollY in px */
@@ -242,7 +242,7 @@ body {
    Otter guide mascot
    ============================================================ */
 
-/* Visible by default — JS only adds the *entrance motion*, never gates
+/* Visible by default, JS only adds the *entrance motion*, never gates
    visibility. Matches the .scroll-reveal / .wordmark-in pattern so the
    mascot shows even with slow/failed JS or reduced motion. */
 .otter-guide-root {
@@ -471,7 +471,7 @@ body {
    SEO / AEO consulting page graphics (dependency-free)
    ============================================================ */
 
-/* Hero-graphic palette — derived from brand tokens (navy/cyan) via
+/* Hero-graphic palette, derived from brand tokens (navy/cyan) via
    color-mix so the tokens-only rule holds and no raw hex lives in the
    markup. These are the intermediate shades the SVG needs. */
 :root {
@@ -585,7 +585,7 @@ body {
 }
 
 /* ============================================================
-   Graphics kit (src/components/graphics/) — shared keyframes and
+   Graphics kit (src/components/graphics/), shared keyframes and
    utilities, namespaced .gfx-* to avoid collisions. Each component
    documents its contract here; motion only runs under
    prefers-reduced-motion: no-preference, with a calm static fallback.
@@ -830,7 +830,7 @@ body {
 }
 
 /* ============================================================
-   Design system — Phase 5 layout / visual-hierarchy utilities.
+   Design system, Phase 5 layout / visual-hierarchy utilities.
    One type scale, one eyebrow, restrained section-transition
    devices. Tokens only; these are static (no motion to gate).
    ============================================================ */
@@ -863,7 +863,7 @@ body {
   max-width: 42rem;
 }
 
-/* Eyebrow — one treatment, coloured by surface, with a leading brand
+/* Eyebrow, one treatment, coloured by surface, with a leading brand
    diamond tick that threads the whole site. */
 .db-eyebrow {
   font-family: var(--font-jetbrains);
@@ -966,7 +966,7 @@ body {
    ============================================================ */
 
 /* ---- Windmill decorative rotation ---- */
-/* The brand diamond turns a *small* amount as its section passes — a subtle
+/* The brand diamond turns a *small* amount as its section passes, a subtle
    living touch, deliberately not a full spin (reads calmer for B2B buyers). */
 .windmill {
   display: inline-block;
@@ -993,7 +993,7 @@ body {
   .otter-scroll-layer {
     display: block;
     /* Lean into scroll direction + a gentle bob mapped to progress.
-       Small numbers — the mascot must stay unobtrusive (project rule). */
+       Small numbers, the mascot must stay unobtrusive (project rule). */
     transform:
       translateY(calc(var(--scroll-progress, 0) * -10px))
       rotate(calc((var(--scroll-progress, 0) - 0.5) * 8deg));

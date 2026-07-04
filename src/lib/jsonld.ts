@@ -1,6 +1,6 @@
 // Central identity graph for structured data (SEO + AEO).
 // Single source of truth so every @id cross-reference resolves consistently.
-// Constants + tiny helpers only — no dependency.
+// Constants + tiny helpers only, no dependency.
 
 export const SITE_URL = "https://databridges.ie";
 export const ORG_ID = `${SITE_URL}/#organization`;
@@ -112,7 +112,7 @@ export const websiteLd = {
   inLanguage: "en-IE",
 };
 
-// Breadcrumb helper — call per subpage.
+// Breadcrumb helper, call per subpage.
 export function breadcrumbLd(trail: { name: string; path: string }[]) {
   return {
     "@type": "BreadcrumbList",

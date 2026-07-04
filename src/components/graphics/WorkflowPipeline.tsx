@@ -1,5 +1,5 @@
 /**
- * Graphics kit — WorkflowPipeline
+ * Graphics kit, WorkflowPipeline
  *
  * An automation "pipeline" dashboard tile: labelled stages joined by a
  * connector, with a data packet travelling the length of the line on a gentle
@@ -39,7 +39,7 @@ const NODE_R = 15;
 export default function WorkflowPipeline({
   stages = ["Intake", "Schedule", "Survey", "Quote", "Labour"],
   title = "pipeline.dash",
-  caption = "One connected flow, end to end — no re-keying between systems.",
+  caption = "One connected flow, end to end, no re-keying between systems.",
   tone = "dark",
   ariaLabel,
   className = "",

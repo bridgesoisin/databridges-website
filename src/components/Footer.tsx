@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-navy py-12 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Left — Wordmark and tagline */}
+          {/* Left, Wordmark and tagline */}
           <div>
             <span className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight">
               <span
@@ -24,7 +24,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Centre — Nav links */}
+          {/* Centre, Nav links */}
           <nav aria-label="Footer navigation" className="flex flex-col gap-3">
             <p className="db-eyebrow db-eyebrow--dark mb-1">Explore</p>
             {[
@@ -46,7 +46,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          {/* Right — Contact */}
+          {/* Right, Contact */}
           <div className="flex flex-col gap-3">
             <p className="db-eyebrow db-eyebrow--dark mb-1">Get in touch</p>
             <a

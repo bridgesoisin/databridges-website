@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * CursorTracer — a neon-cyan trailing cursor for desktop pointers.
+ * CursorTracer, a neon-cyan trailing cursor for desktop pointers.
  *
  * Mounted once in layout.tsx, renders nothing itself (it appends two fixed,
  * pointer-events:none nodes to <body>). Strictly gated: only runs on a real

@@ -1,5 +1,5 @@
 /**
- * Graphics kit — DashCard
+ * Graphics kit, DashCard
  *
  * Shared "dashboard card" chrome for the animated dashboard graphics
  * (BeforeAfterBars, WorkflowPipeline, ChangeHeatmap). A glass panel with a
@@ -7,13 +7,13 @@
  * graphic reads as a live dashboard tile rather than a bare SVG.
  *
  * Reads correctly on both navy and off-white surfaces:
- * - `tone="light"` — for placement on navy sections (light text).
- * - `tone="dark"`  — default, for off-white / white sections (navy text).
+ * - `tone="light"`, for placement on navy sections (light text).
+ * - `tone="dark"`, default, for off-white / white sections (navy text).
  *
  * CSS contract (globals.css, "Graphics kit" block):
  * - `.gfx-dash`: rounded glass shell (translucent film + cyan-dim border);
  *   subtle lift on hover, disabled under prefers-reduced-motion: reduce.
- * No motion of its own — the child SVG owns the animation.
+ * No motion of its own, the child SVG owns the animation.
  */
 
 interface DashCardProps {

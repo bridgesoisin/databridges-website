@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: "en_IE",
     siteName: "DataBridges",
     url: "https://databridges.ie/services",
-    title: "Services | DataBridges — AI Consulting & Power Platform",
+    title: "Services | DataBridges, AI Consulting & Power Platform",
     description:
       "AI consulting, Power Platform, SharePoint automation and AI training for Irish teams.",
     images: ["/images/logo-wordmark.png"],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Four Service nodes — copy mirrors the on-page cards so schema and content
+// Four Service nodes, copy mirrors the on-page cards so schema and content
 // stay in parity. provider links to the site-wide Organization @id.
 const serviceNodes = [
   {
@@ -354,7 +354,7 @@ function ServiceSection({
             </div>
           </div>
 
-          {/* Graphic column — common baseline height so all four panels
+          {/* Graphic column, common baseline height so all four panels
               sit on one line down the alternating column. */}
           <ScrollReveal delay={80} className={reverse ? "lg:order-1" : ""}>
             <div className="gfx-card rounded-3xl bg-navy p-6 sm:p-10 lg:min-h-[320px] flex flex-col justify-center">
@@ -470,7 +470,7 @@ export default function ServicesPage() {
           </svg>
         }
         problem="Your organisation has Microsoft 365. Some teams are using Copilot. Most are not. A few are using AI tools with no governance in place, creating risk nobody has formally acknowledged. Meanwhile the EU AI Act's first transparency deadline lands in August 2026."
-        whatWeDo="We audit how your team currently works, identify where AI genuinely saves time (and where it does not), and roll out tools with proper training and guardrails. Microsoft Copilot, ChatGPT, Gemini — whichever fits your stack and your budget. We also help you meet your EU AI Act obligations — the Article 50 transparency duties that apply from August 2026, and the high-risk (Annex III) rules now phased to 2027–2028."
+        whatWeDo="We audit how your team currently works, identify where AI genuinely saves time (and where it does not), and roll out tools with proper training and guardrails. Microsoft Copilot, ChatGPT, Gemini, whichever fits your stack and your budget. We also help you meet your EU AI Act obligations: the Article 50 transparency duties that apply from August 2026, and the high-risk (Annex III) rules now phased to 2027–2028."
         whatYouGet={[
           "AI readiness audit and workflow analysis",
           "Tool recommendations matched to your actual needs",
@@ -495,7 +495,7 @@ export default function ServicesPage() {
           </h3>
           <p className="text-navy/80 mt-2">
             The May 2026 Digital Omnibus delayed the high-risk (Annex III)
-            rules to December 2027 &mdash; but the Article 50{" "}
+            rules to December 2027, but the Article 50{" "}
             <strong>transparency</strong> duties still apply from{" "}
             <strong>2 August 2026</strong>. Run a chatbot, an AI phone line, or
             publish AI-generated content and they apply to you, high-risk or
@@ -521,12 +521,12 @@ export default function ServicesPage() {
           </svg>
         }
         problem="The business runs on a 40MB Excel file that someone built in 2019. It freezes on filter. Nobody knows all the formulas. Version control is a folder called 'FINAL' with eleven files in it. Every Monday morning, two people spend two hours copying data between sheets."
-        whatWeDo="We replace the chaos with custom PowerApps, Power Automate flows, and Power BI dashboards. Built for how your team actually works — not how a consultant imagines it does. We have spent years inside Irish organisations and we understand the constraints: legacy systems, limited IT support, teams who are busy and do not want to learn something complicated."
+        whatWeDo="We replace the chaos with custom PowerApps, Power Automate flows, and Power BI dashboards. Built for how your team actually works, not how a consultant imagines it does. We have spent years inside Irish organisations and we understand the constraints: legacy systems, limited IT support, teams who are busy and do not want to learn something complicated."
         whatYouGet={[
           "Custom PowerApp built to your exact workflow",
           "Power Automate flows replacing manual processes",
           "Power BI dashboards your team will actually open",
-          "Full handover training — your team owns it after we leave",
+          "Full handover training, your team owns it after we leave",
           "30-day post-launch support",
         ]}
         ctaLabel="Talk to Oisín about Power Platform"
@@ -597,7 +597,7 @@ export default function ServicesPage() {
           </svg>
         }
         problem="Your team has heard of AI. Half are worried it is going to replace them. The other half are using it randomly with no consistency or governance. Neither outcome is useful."
-        whatWeDo="Practical, tailored workshops — the same approach Oisín uses lecturing at UCD Professional Academy. No theory lectures. No vendor sales pitches. Just honest guidance on which tools are worth your team's time, how to use them safely, and what to do on Monday morning."
+        whatWeDo="Practical, tailored workshops, the same approach Oisín uses lecturing at UCD Professional Academy. No theory lectures. No vendor sales pitches. Just honest guidance on which tools are worth your team's time, how to use them safely, and what to do on Monday morning."
         whatYouGet={[
           "Half-day or full-day workshop (your choice)",
           "Tailored to your specific tools and team",
@@ -612,7 +612,7 @@ export default function ServicesPage() {
         graphicCaption="Skills that stick after we leave"
       />
 
-      {/* SERVICE 5: SEO & AEO — callout linking to its own page */}
+      {/* SERVICE 5: SEO & AEO, callout linking to its own page */}
       <section
         id="seo-aeo"
         data-otter-section="seo-aeo"
@@ -639,8 +639,8 @@ export default function ServicesPage() {
                   <p className="text-gray-300 text-lg leading-relaxed mt-6">
                     Ranking on Google is no longer enough. When someone asks an
                     AI a question, your business should be the answer it gives.
-                    We make your site win in search and in AI answers alike
-                    &mdash; it&apos;s a service in its own right, with its own
+                    We make your site win in search and in AI answers alike,
+                    it&apos;s a service in its own right, with its own
                     page.
                   </p>
                   <Link

@@ -8,7 +8,7 @@ import { graph, breadcrumbLd, ORG_ID, SITE_URL } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with DataBridges. Book a free discovery call with Oisín Bridges — AI consultant and Power Platform developer based in Kilcock, Co. Kildare.",
+    "Get in touch with DataBridges. Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer based in Kilcock, Co. Kildare.",
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     url: "https://databridges.ie/contact",
     title: "Contact | DataBridges",
     description:
-      "Book a free discovery call with Oisín Bridges — AI consultant and Power Platform developer.",
+      "Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer.",
     images: ["/images/logo-wordmark.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact | DataBridges",
     description:
-      "Book a free discovery call with Oisín Bridges — AI consultant and Power Platform developer.",
+      "Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer.",
     images: ["/images/logo-wordmark.png"],
   },
 };
@@ -43,7 +43,7 @@ const contactJsonLd = graph(
 );
 
 /* Hero graphic: a message leaving a form, flying across a dashed arc and
-   landing as a reply — with a clock for the one-working-day promise.
+   landing as a reply, with a clock for the one-working-day promise.
    Dependency-free SVG on the .gfx-* contract in globals.css. */
 function MessageInFlight() {
   const scatter = [
@@ -316,7 +316,7 @@ export default function ContactPage() {
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-5 gap-12 lg:gap-16">
-          {/* LEFT — FORM (60%) */}
+          {/* LEFT, FORM (60%) */}
           <ScrollReveal className="md:col-span-3">
             <div className="relative">
               {/* offset frame + corner accents around the form */}
@@ -346,7 +346,7 @@ export default function ContactPage() {
             </div>
           </ScrollReveal>
 
-          {/* RIGHT — DETAILS (40%) */}
+          {/* RIGHT, DETAILS (40%) */}
           <ScrollReveal delay={120} className="md:col-span-2">
             <div className="space-y-4">
               {DETAILS.map((d) => (

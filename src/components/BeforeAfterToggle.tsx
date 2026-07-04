@@ -293,7 +293,7 @@ export default function BeforeAfterToggle() {
         </div>
 
         <p className="text-sm text-gray-400 text-center mt-8 max-w-2xl mx-auto">
-          Built with Microsoft Power Platform &mdash; no new software licences.
+          Built with Microsoft Power Platform, no new software licences.
           This is an illustration of the shape of the work; see the real
           engagements on our{" "}
           <a

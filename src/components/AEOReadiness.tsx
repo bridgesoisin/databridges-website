@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 
 /**
- * AEOReadiness — a small interactive self-check.
+ * AEOReadiness, a small interactive self-check.
  * Clients tick what they already do; the score and advice update live.
  * Native checkboxes keep it keyboard- and screen-reader friendly.
  */

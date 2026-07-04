@@ -1,10 +1,10 @@
 /**
- * Graphics kit — FourBridges
+ * Graphics kit, FourBridges
  *
  * The signature "Four Bridges to AI Adoption" diagram: a deck carried by four
  * connected arch spans that build in left-to-right on scroll-reveal (piers
  * rise, arches draw, labels fade up), then a light "traveller" crosses the
- * deck on a slow loop. This is proprietary framework IP — keep the four stage
+ * deck on a slow loop. This is proprietary framework IP, keep the four stage
  * names in order.
  *
  * Deterministic geometry; four spans are fixed. Reduced motion: the whole
@@ -42,11 +42,38 @@ const DEFAULT_SPANS: BridgeSpan[] = [
 ];
 
 const VIEW_W = 640;
-const VIEW_H = 268;
+const VIEW_H = 284;
 const DECK_Y = 150;
 const WATER_Y = 202;
 const M = 40; // side margin
 const PEAK = 60; // arch rise above deck
+
+// Span labels (esp. "Design & explainability", "Operations & implementation")
+// are wider than a single 140-unit arch span at any font size that stays
+// legible, so long titles/subs wrap onto two balanced lines rather than
+// overlapping the neighbouring span.
+function wrapBalanced(text: string): string[] {
+  const words = text.split(" ");
+  if (words.length === 1) return [text];
+  let bestIndex = 1;
+  let bestDiff = Infinity;
+  for (let i = 1; i < words.length; i++) {
+    const line1 = words.slice(0, i).join(" ");
+    const line2 = words.slice(i).join(" ");
+    const diff = Math.abs(line1.length - line2.length);
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      bestIndex = i;
+    }
+  }
+  return [words.slice(0, bestIndex).join(" "), words.slice(bestIndex).join(" ")];
+}
+
+// Only wrap once the text is actually too wide for a span slot at the given
+// font size; short text stays on one (vertically centred) line.
+function wrapIfNeeded(text: string, maxLineChars: number): string[] {
+  return text.length > maxLineChars ? wrapBalanced(text) : [text];
+}
 
 export default function FourBridges({
   spans = DEFAULT_SPANS,
@@ -113,15 +140,36 @@ export default function FourBridges({
                 {i + 1}
               </text>
 
-              {/* span label under the deck — hidden on phones (scales sub-legible);
+              {/* span label under the deck, hidden on phones (scales sub-legible);
                   a real DOM list below the SVG carries these on <sm */}
               <g className="gfx-span-label max-sm:hidden" style={{ animationDelay: `${0.35 + i * 0.22}s` }}>
-                <text x={midX} y={WATER_Y + 26} textAnchor="middle" className="font-syne" fontSize={13} fontWeight={700} fill={textOnCard}>
-                  {s.title}
-                </text>
-                <text x={midX} y={WATER_Y + 44} textAnchor="middle" className="font-jetbrains" fontSize={10.5} fill={subColor}>
-                  {s.sub}
-                </text>
+                {wrapIfNeeded(s.title, 17).map((line, li, arr) => (
+                  <text
+                    key={`title-${li}`}
+                    x={midX}
+                    y={WATER_Y + (arr.length === 1 ? 30 : 24 + li * 14)}
+                    textAnchor="middle"
+                    className="font-syne"
+                    fontSize={12}
+                    fontWeight={700}
+                    fill={textOnCard}
+                  >
+                    {line}
+                  </text>
+                ))}
+                {wrapIfNeeded(s.sub, 19).map((line, li, arr) => (
+                  <text
+                    key={`sub-${li}`}
+                    x={midX}
+                    y={WATER_Y + (arr.length === 1 ? 60 : 54 + li * 12)}
+                    textAnchor="middle"
+                    className="font-jetbrains"
+                    fontSize={10.5}
+                    fill={subColor}
+                  >
+                    {line}
+                  </text>
+                ))}
               </g>
             </g>
           );

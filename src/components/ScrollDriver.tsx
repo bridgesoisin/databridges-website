@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * ScrollDriver — the single scroll-progress engine for the motion system.
+ * ScrollDriver, the single scroll-progress engine for the motion system.
  *
  * Mounted once in layout.tsx, renders nothing. It writes CSS custom properties
  * that the whole system reads, so the actual animation stays in globals.css:

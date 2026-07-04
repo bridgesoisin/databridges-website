@@ -1,11 +1,11 @@
 /**
- * Graphics kit — LogoMarquee
+ * Graphics kit, LogoMarquee
  *
  * Continuously scrolling strip of client/technology names (text chips, no
  * image assets), in the style of a partner-logo marquee. The item list is
  * rendered twice so the loop is seamless; the duplicate copy is aria-hidden.
  *
- * CSS contract (globals.css, "Graphics kit" block — task F2):
+ * CSS contract (globals.css, "Graphics kit" block, task F2):
  * - `.gfx-marquee`: overflow hidden, soft fade mask on both edges.
  * - `.gfx-marquee-track`: inline-flex; under no-preference motion, an
  *   infinite linear translateX(-50%) loop with duration from
