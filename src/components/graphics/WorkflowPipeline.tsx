@@ -88,15 +88,15 @@ export default function WorkflowPipeline({
               strokeWidth={2}
               style={{ animationDelay: `${i * 0.45}s` }}
             />
-            <text x={xs[i]} y={MID_Y + 4} textAnchor="middle" className="font-jetbrains" fontSize={11} fill="var(--color-cyan)">
+            <text x={xs[i]} y={MID_Y + 5} textAnchor="middle" className="font-jetbrains" fontSize={14} fill="var(--color-cyan)">
               {String(i + 1).padStart(2, "0")}
             </text>
             <text
               x={xs[i]}
-              y={MID_Y + NODE_R + 22}
+              y={MID_Y + NODE_R + 24}
               textAnchor="middle"
               className="font-syne"
-              fontSize={13}
+              fontSize={16}
               fontWeight={700}
               fill={textOnCard}
             >

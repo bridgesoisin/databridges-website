@@ -430,7 +430,7 @@ export default function ServicesPage() {
                 <a
                   key={s.href}
                   href={s.href}
-                  className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 hover:border-cyan hover:text-cyan transition-colors duration-200"
+                  className="inline-flex items-center min-h-[44px] rounded-full border border-white/20 px-4 py-2.5 text-sm text-white/80 hover:border-cyan hover:text-cyan transition-colors duration-200"
                 >
                   {s.label}
                 </a>

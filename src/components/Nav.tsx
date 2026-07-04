@@ -93,7 +93,7 @@ export default function Nav() {
           {/* Book a Chat — mobile icon */}
           <Link
             href="mailto:hello@databridges.ie"
-            className="md:hidden"
+            className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 -m-2"
             aria-label="Book a chat"
           >
             <svg
@@ -116,7 +116,7 @@ export default function Nav() {
 
           {/* Hamburger — mobile */}
           <button
-            className="md:hidden"
+            className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 -m-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}

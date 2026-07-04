@@ -113,8 +113,9 @@ export default function FourBridges({
                 {i + 1}
               </text>
 
-              {/* span label under the deck */}
-              <g className="gfx-span-label" style={{ animationDelay: `${0.35 + i * 0.22}s` }}>
+              {/* span label under the deck — hidden on phones (scales sub-legible);
+                  a real DOM list below the SVG carries these on <sm */}
+              <g className="gfx-span-label max-sm:hidden" style={{ animationDelay: `${0.35 + i * 0.22}s` }}>
                 <text x={midX} y={WATER_Y + 26} textAnchor="middle" className="font-syne" fontSize={13} fontWeight={700} fill={textOnCard}>
                   {s.title}
                 </text>
@@ -131,6 +132,35 @@ export default function FourBridges({
           <circle cx={M} cy={DECK_Y - 7} r={5} fill="var(--color-yellow)" />
         </g>
       </svg>
+
+      {/* Phone-legible labels: on <sm the in-SVG text scales to ~6px, so the
+          four stages are carried here as a real, ordered DOM list under the
+          arches-only diagram. Numbered badge mirrors the arch keystones. */}
+      <ol className="sm:hidden mt-6 grid grid-cols-1 gap-3 list-none p-0">
+        {spans.map((s, i) => (
+          <li key={s.title} className="flex items-start gap-3">
+            <span
+              aria-hidden="true"
+              className="font-syne shrink-0 flex h-7 w-7 items-center justify-center rounded-full border-2 text-sm font-extrabold"
+              style={{
+                backgroundColor: "var(--color-navy)",
+                borderColor: "var(--color-yellow)",
+                color: "var(--color-yellow)",
+              }}
+            >
+              {i + 1}
+            </span>
+            <span>
+              <span className="block font-syne text-base font-bold" style={{ color: textOnCard }}>
+                {s.title}
+              </span>
+              <span className="block font-jetbrains text-xs mt-0.5" style={{ color: subColor }}>
+                {s.sub}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ol>
     </ScrollReveal>
   );
 }

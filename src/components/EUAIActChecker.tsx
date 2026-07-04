@@ -323,7 +323,7 @@ export default function EUAIActChecker() {
             key={option}
             onClick={() => handleSelect(option)}
             aria-pressed={isSelected(option)}
-            className={`px-4 py-2.5 rounded-full text-sm font-medium border transition-colors duration-200 ${
+            className={`inline-flex items-center min-h-[44px] px-4 py-2.5 rounded-2xl text-sm font-medium border transition-colors duration-200 ${
               isSelected(option)
                 ? "bg-navy border-navy text-white"
                 : "bg-white border-navy/20 text-navy hover:border-navy/40"
