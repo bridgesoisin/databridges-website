@@ -125,13 +125,9 @@ export default function Home() {
         ariaLabel="DataBridges in numbers"
         stats={[
           { target: "5+", label: "Years consulting" },
-          { target: "~1hr", label: "Saved per analyst each week" },
-          { target: "UCD", label: "Live AI cohorts delivered" },
-          {
-            target: "Aug '26",
-            label: "AI Act transparency deadline",
-            accent: "yellow",
-          },
+          { target: "4", label: "Years in Irish public sector" },
+          { target: "UCD", label: "Professional Academy" },
+          { target: "MSc", label: "Machine Learning Astrophysics" },
         ]}
       />
 
@@ -424,16 +420,17 @@ export default function Home() {
             Dashboards people actually open.
           </h2>
           <p className="db-subhead text-gray-500 mt-3">
-            A flavour of the real work &mdash; anonymised by sector. The hours
-            saved are modest and honest; the point is they add up, every week.
+            A flavour of the real work &mdash; anonymised by sector. Different
+            sectors, one idea: take out the manual grind so people can get on
+            with the work that actually needs judgement.
           </p>
 
           <div className="mt-12 md:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ScrollReveal>
               <BeforeAfterBars
                 title="admin-hours.dash"
-                caption="Approval-triage admin per analyst in a public-sector service desk, before and after automation. Illustrative."
-                savedLabel="≈1 hr/wk saved"
+                caption="Time on a repetitive manual process, before and after automation. Illustrative."
+                savedLabel="time reclaimed"
               />
             </ScrollReveal>
             <ScrollReveal delay={80}>

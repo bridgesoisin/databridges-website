@@ -275,8 +275,18 @@ body {
 /* The avatar button: idle float + state-driven motion */
 .otter-avatar-btn {
   cursor: pointer;
+  width: 256px;
+  height: 256px;
   transform-origin: 50% 85%;
   transition: box-shadow 250ms ease, transform 250ms var(--otter-ease);
+}
+
+/* Scale the mascot down on small (portrait phone) screens so it stays out of the way */
+@media (max-width: 640px) {
+  .otter-avatar-btn {
+    width: 140px;
+    height: 140px;
+  }
 }
 
 .otter-guide-root.otter-mounted .otter-avatar-btn {

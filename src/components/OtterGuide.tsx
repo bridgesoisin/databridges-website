@@ -465,6 +465,7 @@ export default function OtterGuide() {
             borderRadius: "16px",
             padding: "14px 16px",
             boxShadow: "0 8px 24px rgba(10,30,61,0.15)",
+            zIndex: 5,
           }}
         >
           <button
@@ -612,8 +613,6 @@ export default function OtterGuide() {
           aria-expanded={menuOpen}
           className="otter-avatar-btn"
           style={{
-            width: "128px",
-            height: "128px",
             position: "relative",
             background: "transparent",
             border: "none",
@@ -624,7 +623,7 @@ export default function OtterGuide() {
             src="/images/mascot/otter-avatar.png"
             alt=""
             fill
-            sizes="128px"
+            sizes="(max-width: 640px) 140px, 256px"
             style={{
               objectFit: "contain",
               filter: "drop-shadow(0 6px 8px rgba(10, 30, 61, 0.28))",

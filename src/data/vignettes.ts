@@ -6,8 +6,8 @@
  *
  * House rules baked in here:
  * - Every client is anonymised by SECTOR. Never name a client.
- * - No euro figures. The only hard number we quote is the public-sector
- *   ~1 hr/week/analyst saving, which is real and defensible.
+ * - No euro figures, and no single metric is leaned on as the headline; the
+ *   proof is the concrete change in how the work actually runs.
  */
 
 export interface Vignette {
@@ -63,20 +63,20 @@ export const VIGNETTES: Vignette[] = [
     proof:
       "Fee-earners spend their time on judgement, not on finding the right version of a letter.",
     stack: ["SharePoint", "ChatGPT", "Document AI"],
+    featured: true,
   },
   {
     slug: "public-sector",
     sector: "Public sector (health, ITIL 4)",
     eyebrow: "Automation + governance",
-    title: "An hour a week back for every analyst — and a paper trail that stands up.",
+    title: "Change approvals that move faster — with a paper trail that stands up to audit.",
     before:
       "Change approvals triaged by hand, post-CAB changes distributed manually, and no clear picture of where the resourcing pressure actually was.",
     after:
       "Approval-triage automation, a Python tool that auto-distributes post-CAB changes, and a 2019–2026 change-ticket heatmap that shows resourcing at a glance — all wrapped in an AI/automation strategy covering the EU AI Act, GDPR, DPIA, HIQA and a human-in-the-loop framework.",
     proof:
-      "Roughly one hour per week saved per analyst on triage alone, with a governance model built for a regulated environment — humans stay in the loop by design.",
+      "A governance model built for a regulated environment — humans in the loop by design — plus a 2019–2026 change-ticket heatmap that turns 'we're stretched' into something you can actually resource against.",
     stack: ["Python", "ITIL 4 Service Transition", "HITL governance", "Power BI"],
-    featured: true,
   },
   {
     slug: "training",

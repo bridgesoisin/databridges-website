@@ -125,12 +125,9 @@ export default function WorkPage() {
       <StatBand
         ariaLabel="DataBridges work in numbers"
         stats={[
-          {
-            target: "~1hr",
-            label: "Saved per analyst each week (public sector)",
-          },
           { target: "5", label: "Sectors delivered in" },
           { target: "UCD", label: "Live AI cohorts taught" },
+          { target: "ITIL 4", label: "Governance-grade delivery" },
         ]}
       />
 

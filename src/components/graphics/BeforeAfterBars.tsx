@@ -48,13 +48,13 @@ const A_X = 208;
 
 export default function BeforeAfterBars({
   title = "admin-hours.dash",
-  caption = "Approval-triage admin per analyst, before and after automation. Illustrative.",
+  caption = "Time on a repetitive manual process, before and after automation. Illustrative.",
   beforeLabel = "Before",
   afterLabel = "After",
-  beforeValue = 3,
-  afterValue = 2,
+  beforeValue = 4,
+  afterValue = 1,
   unit = "hrs/wk",
-  savedLabel = "≈1 hr/wk saved",
+  savedLabel = "time reclaimed",
   tone = "dark",
   ariaLabel,
   className = "",
