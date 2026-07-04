@@ -60,3 +60,11 @@ Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automa
 - Do not commit secrets. `ANTHROPIC_API_KEY` lives in Netlify env vars, never in the repo.
 - Do not add heavy animation libraries; CSS keyframes are sufficient here.
 - Do not push the overnight branch automatically; review the diff first.
+- Do not add `public/_redirects`. This site runs on `@netlify/plugin-nextjs` (a full
+  server runtime), not a static SPA, so there is no single `index.html` to catch-all to.
+  A `/* /index.html 200` rule would hijack every request (including `/sitemap.xml`,
+  `/robots.txt`, `/api/otter`) before the plugin's own routing runs. This exact file was
+  a known bug fixed by removal during the redesign (see `REDESIGN_ROADMAP.md` Phase 4).
+- Do not run the overnight/maintenance script and an interactive Claude Code session on
+  `redesign/overnight` at the same time. They will commit concurrently to the same
+  branch; a fix from one session can get silently absorbed into the other's commit.
