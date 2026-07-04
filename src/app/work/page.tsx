@@ -131,7 +131,7 @@ export default function WorkPage() {
         ]}
       />
 
-      {/* ─── CASE VIGNETTES (stub — filled in a later phase) ─── */}
+      {/* ─── CASE VIGNETTES ─── */}
       <section
         id="cases"
         data-otter-section="cases"

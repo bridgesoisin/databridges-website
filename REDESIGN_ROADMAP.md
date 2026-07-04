@@ -47,13 +47,13 @@ feel *engineered* (easing, physics-y) not decorative. Everything degrades cleanl
 
 ## New sections / pages proposed
 
-- [ ] **Work / Case Studies page** (`/work`) — the real engagements as honest before→after
+- [x] **Work / Case Studies page** (`/work`) — the real engagements as honest before→after
       vignettes (anonymised by sector unless consent to name). Adds `sitemap`, `Nav`, schema.
-- [ ] **Home "Where we've helped" section** — 3–4 vignette cards linking to `/work`.
-- [ ] **Home "Four Bridges" section** — surface the proprietary framework as a signature diagram.
-- [ ] **Reframed EU AI Act block → "The August 2026 deadline didn't move"** — the corrected,
+- [x] **Home "Where we've helped" section** — 3–4 vignette cards linking to `/work`.
+- [x] **Home "Four Bridges" section** — surface the proprietary framework as a signature diagram.
+- [x] **Reframed EU AI Act block → "The August 2026 deadline didn't move"** — the corrected,
       stronger story; feeds the checker and a short explainer.
-- [ ] **Results/credibility band** — real, modest metrics (e.g. HSE "~1 hr/week per analyst
+- [x] **Results/credibility band** — real, modest metrics (e.g. HSE "~1 hr/week per analyst
       saved", "curriculum delivered to live UCD cohorts") replacing invented figures.
 
 ---
@@ -122,62 +122,73 @@ That is **wrong**. The correct, stronger story:
 ---
 
 ## Phase 1 — Overall feel + structure  *(do first)*
-- [ ] Agree tokens/motion language: add `--ease-emph`, scroll-progress CSS var convention,
-      one global reduced-motion posture. Document in `globals.css` header comment.
+- [x] Agree tokens/motion language: `--ease-emph`/`--ease-out` and the `--scroll-progress`/
+      `--scroll-y`/`--vh` CSS var convention are declared and documented in the `globals.css`
+      `:root` header block.
 - [x] Big **`databridges` wordmark lockup** in the home hero — done: `Wordmark.tsx`
       (diamond mark + crisp token-coloured text) at the top of the hero, reduced-motion entrance.
-- [ ] Scaffold new **`/work`** page + Nav/Footer/sitemap/robots wiring (content in Phase 2).
-- [ ] Insert placeholders/anchors for new Home sections (Where we've helped, Four Bridges).
+- [x] Scaffold new **`/work`** page + Nav/Footer/sitemap/robots wiring (content in Phase 2).
+- [x] Insert placeholders/anchors for new Home sections (Where we've helped, Four Bridges) —
+      superseded: both sections are fully built out, not placeholders (see Phase 2).
 
 ## Phase 2 — Content & correctness  *(highest-value)*
 - [x] Rewrite **all EU AI Act content** to the corrected story — done across checker,
       services, home stat/LinkedIn, FAQ (+JSON-LD) and otter tip; checker now date-safe
       (no negative countdown); reframed "The August 2026 deadline didn't move."
-- [ ] Replace the two hardcoded LinkedIn cards with the **five real current posts**
+- [x] Replace the two hardcoded LinkedIn cards with the **five real current posts**
       (Article 50 disclosures, Ireland AI Bill 2026, People Inc v Google, Ford rehiring
-      engineers, Four Bridges) — move post data to a small typed array.
-- [ ] Write the **client-outcome vignettes** (Work page + Home section) from the real
-      material above, honest and sector-anonymised.
-- [ ] Replace invented stats (`BeforeAfterToggle` €142k etc.) with **real, modest metrics**
-      or clearly-labelled illustrative framing.
-- [ ] Surface **Four Bridges** framework copy; add **real credentials** consistently.
-- [ ] Copy-audit every page for stale claims, tone, and CTA clarity.
+      engineers, Four Bridges) — data lives in `src/data/linkedin.ts`, rendered on Home.
+- [x] Write the **client-outcome vignettes** (Work page + Home section) from the real
+      material above, honest and sector-anonymised — `src/data/vignettes.ts`.
+- [x] Replace invented stats (`BeforeAfterToggle` €142k etc.) with **real, modest metrics**
+      or clearly-labelled illustrative framing — verified no invented figures remain;
+      illustrative demos are explicitly labelled as such.
+- [x] Surface **Four Bridges** framework copy; add **real credentials** consistently.
+- [x] Copy-audit every page for stale claims, tone, and CTA clarity — re-audited 2026-07-04:
+      no stale EU AI Act claims, no TODO/placeholder copy; fixed two outdated "stub" section
+      comments in `page.tsx`/`work/page.tsx` that no longer matched the (fully built) content.
 
 ## Phase 3 — Dashboards & designs  *(expand the graphics kit)*
-- [ ] Build 2–3 **animated dashboard cards** (compose RankBars + StatBand + NodeGraph):
-      e.g. a "before/after admin hours" live bar panel, a "workflow pipeline" flow, a
-      "change-ticket heatmap" nod to the real HSE work.
-- [ ] A signature **Four Bridges** diagram graphic (four connected spans, animated build-in).
-- [ ] Dashboards animate on reveal and subtly loop; reduced-motion static fallbacks.
+- [x] Build 2–3 **animated dashboard cards** (compose RankBars + StatBand + NodeGraph):
+      `DashCard`, `ChangeHeatmap`, `WorkflowPipeline`, `BeforeAfterBars` in
+      `src/components/graphics/`.
+- [x] A signature **Four Bridges** diagram graphic (four connected spans, animated build-in) —
+      `src/components/graphics/FourBridges.tsx`, mounted on Home and `/work`.
+- [x] Dashboards animate on reveal and subtly loop; reduced-motion static fallbacks.
 
 ## Phase 4 — SEO & AEO  *(act as SEO/AEO expert)*
-- [ ] Add `metadataBase`; canonicals on **all** pages; Twitter card + OG **images** per page.
-- [ ] Schema: upgrade LocalBusiness (add `areaServed`, `geo`, `image`/`logo`; phone per
+- [x] Add `metadataBase`; canonicals on **all** pages; Twitter card + OG **images** per page.
+- [x] Schema: upgrade LocalBusiness (add `areaServed`, `geo`, `image`/`logo`; phone per
       Open Decisions), add **Organization**, **Person** (Oisín, E-E-A-T), **BreadcrumbList**,
-      **Service** on services, and per-vignette schema where sensible.
-- [ ] Fix `public/_redirects` SPA catch-all so multi-page routes/sitemap/robots index cleanly.
-- [ ] AEO: tighten FAQ answers to match the corrected Act facts; ensure Q&A parity with JSON-LD;
+      **Service** on services, and per-vignette schema where sensible — `src/lib/jsonld.ts`.
+- [x] Fix `public/_redirects` SPA catch-all so multi-page routes/sitemap/robots index cleanly —
+      confirmed: no `_redirects` file ships in `public/` (an SPA catch-all would have broken
+      Next.js routing under `@netlify/plugin-nextjs`); the fix was removing it, not adding one.
+- [x] AEO: tighten FAQ answers to match the corrected Act facts; ensure Q&A parity with JSON-LD;
       add an Act-specific FAQ; keep answers quotable and self-contained.
-- [ ] Verify headings hierarchy, alt text, internal linking, sitemap priorities.
+- [x] Verify headings hierarchy, alt text, internal linking, sitemap priorities.
 
 ## Phase 5 — Layout & UX redesign  *(senior graphics/infographics designer hat)*
-- [ ] Rework page layouts and rhythm (spacing scale, section transitions, visual hierarchy),
-      infographic treatments for services and the Four Bridges/Act explainers.
-- [ ] Mobile-first pass at 360 / 768 / 1280; ensure new sections and dashboards hold up.
-- [ ] Accessibility re-check (contrast on new surfaces, focus order, aria on new components).
+- [x] Rework page layouts and rhythm (spacing scale, section transitions, visual hierarchy),
+      infographic treatments for services and the Four Bridges/Act explainers — covered by the
+      ultracode ux pass plus the follow-up `db-*` heading-scale/CTA/width unification commits.
+- [x] Mobile-first pass at 360 / 768 / 1280; ensure new sections and dashboards hold up —
+      covered by the Q1 responsive audit and the later mobile tap-target/label-legibility pass.
+- [x] Accessibility re-check (contrast on new surfaces, focus order, aria on new components) —
+      covered by the Q2 accessibility audit and the reduced-motion hover-transform follow-up.
 
 ## Phase 6 — Animation & motion system  *(the "wow" layer)*
-- [ ] **Scroll-progress driver** (`use client`, mounted in `layout.tsx`): rAF-throttled,
-      writes normalised scroll + per-element progress into CSS vars.
-- [ ] **Reveal system:** extend `ScrollReveal` for fade, slide, and stagger variants.
-- [ ] **Pin / parallax** ("place-over-as-you-scroll") sections using sticky + scroll vars.
-- [ ] **Windmill rotation** for decorative marks driven by scroll.
-- [ ] **Scroll-animated mascot:** first fix visibility (dedupe the two otter CSS blocks,
-      harden the `.otter-mounted` mount gate), then drive pose/rotation/position from scroll
-      progress; keep tips + reduced-motion behaviour intact.
-- [ ] **Neon-cyan mouse tracer** (`#3DE0E8`, ease-out smoothing, trailing): desktop
-      pointer-only (`pointer: fine`), disabled on touch and under reduced-motion.
-- [ ] Final build+lint, verify all reduced-motion/touch fallbacks, write run summary.
+- [x] **Scroll-progress driver** (`use client`, mounted in `layout.tsx`): rAF-throttled,
+      writes normalised scroll + per-element progress into CSS vars — `ScrollDriver.tsx`.
+- [x] **Reveal system:** extend `ScrollReveal` for fade, slide, and stagger variants.
+- [x] **Pin / parallax** ("place-over-as-you-scroll") sections using sticky + scroll vars.
+- [x] **Windmill rotation** for decorative marks driven by scroll.
+- [x] **Scroll-animated mascot:** visibility fixed (deduped otter CSS, hardened mount gate),
+      pose/position driven from scroll progress; tips + reduced-motion behaviour intact.
+- [x] **Neon-cyan mouse tracer** (`#3DE0E8`, ease-out smoothing, trailing): desktop
+      pointer-only (`pointer: fine`), disabled on touch and under reduced-motion —
+      `CursorTracer.tsx`.
+- [x] Final build+lint, verify all reduced-motion/touch fallbacks, write run summary.
 
 ---
 
@@ -218,3 +229,14 @@ design specs → 6 strictly-sequential build-gated phases → 4 adversarial veri
 
 Verify pass: build + lint green; EU AI Act facts intact; no client named; no invented metrics;
 tokens (not hex); no new dependencies. **Status: roadmap phases 1–6 complete on `redesign/overnight` (unpushed).**
+
+**2026-07-04 — closeout audit:** re-verified every Phase 1–6 item and the "New sections"
+list against the actual codebase (an Explore agent checked each claim file-by-file, since the
+checkboxes above had drifted out of sync with the real state — the commit hashes cited in the
+ultracode run log don't exist verbatim in `git log`, but equivalent work landed under manual
+commits). Result: everything was already functionally done. Ticked every remaining box; fixed
+two outdated "stub — filled in a later phase" comments in `src/app/page.tsx` and
+`src/app/work/page.tsx` that no longer matched the (fully built) sections; confirmed
+`public/_redirects` is correctly absent (an SPA catch-all would break Next.js routing under
+`@netlify/plugin-nextjs` — removal *was* the Phase 4 fix). Build + lint green. See
+`REDESIGN_REPORT.md` for the full site evaluation and scoring that followed.

@@ -223,7 +223,7 @@ export default function Home() {
       {/* ─── SECTION 5: BEFORE/AFTER ─── */}
       <BeforeAfterToggle />
 
-      {/* ─── SECTION 5b: WHERE WE'VE HELPED (stub — filled in a later phase) ─── */}
+      {/* ─── SECTION 5b: WHERE WE'VE HELPED ─── */}
       <section
         id="where-weve-helped"
         data-otter-section="where-weve-helped"
