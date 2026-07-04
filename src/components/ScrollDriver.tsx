@@ -8,7 +8,7 @@ import { useEffect } from "react";
  * Mounted once in layout.tsx, renders nothing. It writes CSS custom properties
  * that the whole system reads, so the actual animation stays in globals.css:
  *   - global (on <html>): --scroll-y, --scroll-progress, --vh
- *   - per-section (on each [data-scroll-section]): --sp, --sp-center, --sp-in
+ *   - per-section (on each [data-scroll-section]): --sp
  *
  * Cheap by construction: one rAF loop, passive listeners that only flip a
  * dirty flag, and per-frame math limited to the sections currently on screen
@@ -43,15 +43,6 @@ export default function ScrollDriver() {
         const total = r.height + vh;
         const sp = clamp01((vh - r.top) / total);
         el.style.setProperty("--sp", sp.toFixed(4));
-        // center: -1 (below) .. 0 (centred) .. 1 (above)
-        const center =
-          (vh / 2 - (r.top + r.height / 2)) / (vh / 2 + r.height / 2);
-        el.style.setProperty(
-          "--sp-center",
-          Math.max(-1, Math.min(1, center)).toFixed(4)
-        );
-        // in: top from viewport-bottom up to viewport-centre
-        el.style.setProperty("--sp-in", clamp01((vh - r.top) / (vh / 2)).toFixed(4));
       });
     };
 
@@ -91,8 +82,6 @@ export default function ScrollDriver() {
       measure();
       sections.forEach((s) => {
         s.style.setProperty("--sp", "0.5");
-        s.style.setProperty("--sp-center", "0");
-        s.style.setProperty("--sp-in", "1");
       });
     };
 

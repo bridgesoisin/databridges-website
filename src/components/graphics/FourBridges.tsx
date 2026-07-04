@@ -67,7 +67,7 @@ export default function FourBridges({
 
   return (
     <ScrollReveal className={className}>
-      <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} role="img" aria-label={label} className="w-full h-auto">
+      <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} role="img" aria-label={label} data-gfx-loop className="w-full h-auto">
         {/* water line */}
         <line x1={M - 16} y1={WATER_Y} x2={VIEW_W - M + 16} y2={WATER_Y} stroke="var(--color-cyan)" strokeOpacity={0.25} strokeWidth={1.5} />
 

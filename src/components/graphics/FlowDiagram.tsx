@@ -39,6 +39,7 @@ export default function FlowDiagram({
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
       role="img"
       aria-label={`${ariaLabel}: ${steps.join(", ")}`}
+      data-gfx-loop
       className={`w-full h-auto ${className}`}
     >
       {steps.map((label, i) => {

@@ -55,7 +55,7 @@ export default function WorkflowPipeline({
 
   return (
     <DashCard title={title} caption={caption} tone={tone} className={className}>
-      <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} role="img" aria-label={label} className="w-full h-auto">
+      <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} role="img" aria-label={label} data-gfx-loop className="w-full h-auto">
         {/* connector line under the nodes */}
         <line
           className="gfx-pipe-line"

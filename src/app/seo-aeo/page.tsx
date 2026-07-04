@@ -165,7 +165,7 @@ export default function SeoAeoPage() {
         className="relative overflow-hidden bg-navy px-6 pt-36 pb-24"
       >
         {/* animated blobs */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div aria-hidden="true" data-gfx-loop className="pointer-events-none absolute inset-0">
           <div
             className="seo-blob"
             style={{ width: 340, height: 340, top: -60, left: -40, background: "var(--color-cyan)" }}
@@ -218,6 +218,7 @@ export default function SeoAeoPage() {
               viewBox="0 0 460 340"
               role="img"
               aria-label="Illustration of a search query producing ranked results and an AI answer"
+              data-gfx-loop
               className="w-full h-auto"
             >
               {/* search bar */}

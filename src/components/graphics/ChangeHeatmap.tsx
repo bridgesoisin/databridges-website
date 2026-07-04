@@ -78,7 +78,7 @@ export default function ChangeHeatmap({
   return (
     <DashCard title={title} caption={caption} tone={tone} className={className}>
       <ScrollReveal>
-        <svg viewBox={`0 0 ${gridW} ${gridH}`} role="img" aria-label={label} className="w-full h-auto">
+        <svg viewBox={`0 0 ${gridW} ${gridH}`} role="img" aria-label={label} data-gfx-loop className="w-full h-auto">
           {data.map((row, r) =>
             row.map((v, c) => {
               const { fill, opacity } = cellFill(v);

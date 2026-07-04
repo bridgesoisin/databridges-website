@@ -95,7 +95,6 @@ body {
     opacity: 0;
     transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
     transition-delay: var(--sr-delay, 0ms);
-    will-change: opacity, transform;
   }
   .sr-fade { transform: none; }
   .sr-fade-up { transform: translateY(24px); }
@@ -805,6 +804,18 @@ body {
   .gfx-traveller { display: none; }
 }
 
+/* Off-screen loop pausing: LoopPauser (mounted in layout) adds `.gfx-idle` to
+   each [data-gfx-loop] graphic wrapper when it leaves the viewport and removes
+   it on re-entry. Pausing (rather than un-setting) keeps state so loops resume
+   seamlessly. Pure perf win on top of the motion already gated above; a no-op
+   under reduced motion (nothing loops, and LoopPauser doesn't attach). */
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-idle,
+  .gfx-idle * {
+    animation-play-state: paused !important;
+  }
+}
+
 /* ============================================================
    Design system — Phase 5 layout / visual-hierarchy utilities.
    One type scale, one eyebrow, restrained section-transition
@@ -933,78 +944,34 @@ body {
 }
 
 /* ============================================================
-   Motion system (Phase 6): pin/parallax, windmill, otter scroll
-   lean, neon cursor tracer. Every block is motion-gated with a
-   static visible fallback + a reduced-motion kill switch. Section
-   progress vars (--sp, --sp-center, --sp-in) are written by
-   ScrollDriver onto [data-scroll-section] elements and default to
-   0 so scenes render as clean static stacks pre-hydration.
+   Motion system (Phase 6): windmill, otter scroll lean, neon
+   cursor tracer. Every block is motion-gated with a static visible
+   fallback + a reduced-motion kill switch. Section progress var
+   (--sp) is written by ScrollDriver onto [data-scroll-section]
+   elements and defaults to 0 so scenes render as clean static
+   stacks pre-hydration.
    ============================================================ */
 
-/* ---- Pin / parallax scenes ---- */
-.pin-scene {
-  position: relative;
-}
-.pin-sticky {
-  position: sticky;
-  top: 0;
-  min-height: 100vh;
-  overflow: clip;
-  display: grid;
-  place-items: center;
-}
-.pin-layer {
-  grid-area: 1 / 1;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* Layers drift at different rates -> depth. --sp is 0..1 for this section. */
-  .pin-back { transform: translate3d(0, calc(var(--sp, 0) * -12vh), 0); }
-  .pin-mid { transform: translate3d(0, calc(var(--sp, 0) * -6vh), 0); }
-  .pin-fore {
-    transform: translate3d(0, calc(var(--sp, 0) * 4vh), 0);
-    opacity: calc(0.4 + var(--sp-in, 1) * 0.6);
-  }
-  /* Optional "crossfade over as you scroll": stack two panels, swap on --sp */
-  .pin-swap-a { opacity: calc(1 - var(--sp, 0)); }
-  .pin-swap-b { opacity: var(--sp, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pin-sticky {
-    position: static;
-    min-height: auto;
-  }
-  .pin-layer {
-    transform: none !important;
-    opacity: 1 !important;
-  }
-}
-
 /* ---- Windmill decorative rotation ---- */
+/* The brand diamond turns a *small* amount as its section passes — a subtle
+   living touch, deliberately not a full spin (reads calmer for B2B buyers). */
 .windmill {
   display: inline-block;
   transform-origin: 50% 50%;
-  will-change: transform;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Global: rotate a full turn across the whole page scroll. */
-  .windmill { transform: rotate(calc(var(--scroll-progress, 0) * 360deg)); }
-  /* Section-scoped: 1.5 turns as its section passes. On a [data-scroll-section]. */
-  .windmill--section { transform: rotate(calc(var(--sp, 0) * 540deg)); }
-  /* Ambient (no scroll section around it): gentle continuous spin. */
-  .windmill--idle { animation: windmill-spin 18s linear infinite; }
-  @keyframes windmill-spin { to { transform: rotate(360deg); } }
+  /* Global fallback: a gentle nudge across the whole page scroll. */
+  .windmill { transform: rotate(calc(var(--scroll-progress, 0) * 45deg)); }
+  /* Section-scoped: a quarter turn as its section passes. On a
+     [data-scroll-section]. Overrides the global rule when both classes are set. */
+  .windmill--section { transform: rotate(calc(var(--sp, 0) * 90deg)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .windmill,
-  .windmill--section,
-  .windmill--idle {
+  .windmill--section {
     transform: none !important;
-    animation: none !important;
   }
 }
 

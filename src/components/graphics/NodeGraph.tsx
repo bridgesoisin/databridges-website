@@ -53,6 +53,7 @@ export default function NodeGraph({
       viewBox="0 0 460 340"
       role="img"
       aria-label={ariaLabel}
+      data-gfx-loop
       className={`w-full h-auto ${className}`}
     >
       {LINKS.map(([a, b]) => (

@@ -40,6 +40,7 @@ export default function AnimatedBlobs({
   return (
     <div
       aria-hidden="true"
+      data-gfx-loop
       className={`pointer-events-none absolute inset-0 ${className}`}
     >
       {blobs.map((b, i) => (

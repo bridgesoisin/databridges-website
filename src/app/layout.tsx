@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import OtterGuide from "@/components/OtterGuide";
 import ScrollDriver from "@/components/ScrollDriver";
+import LoopPauser from "@/components/LoopPauser";
 import CursorTracer from "@/components/CursorTracer";
 import { graph, websiteLd, organizationLd, personLd } from "@/lib/jsonld";
 
@@ -98,6 +99,7 @@ export default function RootLayout({
         <Footer />
         <OtterGuide />
         <ScrollDriver />
+        <LoopPauser />
         <CursorTracer />
       </body>
     </html>

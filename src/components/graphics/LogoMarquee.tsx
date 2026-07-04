@@ -50,7 +50,7 @@ export default function LogoMarquee({
   className = "",
 }: LogoMarqueeProps) {
   return (
-    <div className={`gfx-marquee ${className}`}>
+    <div data-gfx-loop className={`gfx-marquee ${className}`}>
       {/* role="list" sits on the track so listitems are its direct children */}
       <div
         role="list"
