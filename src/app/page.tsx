@@ -101,10 +101,10 @@ export default function Home() {
                 Book a free chat &rarr;
               </Link>
               <a
-                href="#services"
+                href="#what-we-do"
                 className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
               >
-                See What We Do
+                See what we do
               </a>
             </div>
 
