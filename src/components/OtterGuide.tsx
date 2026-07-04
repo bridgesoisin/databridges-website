@@ -612,22 +612,23 @@ export default function OtterGuide() {
           aria-expanded={menuOpen}
           className="otter-avatar-btn"
           style={{
-            width: "64px",
-            height: "64px",
-            borderRadius: "50%",
-            overflow: "hidden",
-            border: "3px solid var(--color-cyan)",
-            boxShadow: "0 6px 18px rgba(10,30,61,0.25)",
+            width: "128px",
+            height: "128px",
             position: "relative",
-            background: "var(--color-navy)",
+            background: "transparent",
+            border: "none",
+            padding: 0,
           }}
         >
           <Image
             src="/images/mascot/otter-avatar.png"
             alt=""
             fill
-            sizes="64px"
-            style={{ objectFit: "cover" }}
+            sizes="128px"
+            style={{
+              objectFit: "contain",
+              filter: "drop-shadow(0 6px 8px rgba(10, 30, 61, 0.28))",
+            }}
           />
         </button>
       </span>

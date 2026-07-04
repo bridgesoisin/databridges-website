@@ -285,7 +285,6 @@ body {
 
 .otter-avatar-btn:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 26px rgba(10, 30, 61, 0.32);
 }
 
 .otter-avatar-btn:focus-visible {
