@@ -67,7 +67,7 @@ export default function Home() {
       >
         <AnimatedBlobs />
 
-        <div className="relative mx-auto max-w-6xl w-full px-6 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+        <div className="relative mx-auto max-w-5xl w-full px-6 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
           <div>
             <Wordmark
               variant="onDark"
@@ -414,7 +414,7 @@ export default function Home() {
         aria-labelledby="dashboards-heading"
         className="db-navy-bottom py-20 md:py-28 px-6 bg-white"
       >
-        <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="relative z-10 mx-auto max-w-5xl">
           <p className="db-eyebrow db-eyebrow--light mb-4">The receipts</p>
           <h2 id="dashboards-heading" className="db-h2 text-navy">
             Dashboards people actually open.
@@ -472,7 +472,7 @@ export default function Home() {
         id="credibility"
         data-otter-section="credibility"
         aria-labelledby="credibility-heading"
-        className="bg-navy py-20 md:py-28 px-6"
+        className="bg-navy border-t border-white/10 py-20 md:py-28 px-6"
       >
         <div className="mx-auto max-w-5xl">
           <h2

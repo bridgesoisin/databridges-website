@@ -324,7 +324,7 @@ function ServiceSection({
               </div>
               <h2
                 id={`${id}-heading`}
-                className="font-syne text-3xl font-bold text-navy"
+                className="db-h2 text-navy"
               >
                 {name}
               </h2>

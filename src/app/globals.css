@@ -471,6 +471,19 @@ body {
    SEO / AEO consulting page graphics (dependency-free)
    ============================================================ */
 
+/* Hero-graphic palette — derived from brand tokens (navy/cyan) via
+   color-mix so the tokens-only rule holds and no raw hex lives in the
+   markup. These are the intermediate shades the SVG needs. */
+:root {
+  --seo-panel: color-mix(in srgb, white 6%, var(--color-navy));       /* lifted navy panel fill */
+  --seo-blue: color-mix(in srgb, var(--color-cyan) 50%, var(--color-navy)); /* mid-blue accent / blob */
+  --seo-line: color-mix(in srgb, white 32%, var(--color-navy));       /* muted label bar */
+  --seo-line-dim: color-mix(in srgb, white 20%, var(--color-navy));   /* dim body bar */
+  --seo-bar-2: color-mix(in srgb, var(--color-cyan) 70%, var(--color-navy)); /* mid rank bar */
+  --seo-bar-3: color-mix(in srgb, var(--color-cyan) 42%, var(--color-navy)); /* deep rank bar */
+  --seo-chip: color-mix(in srgb, var(--color-cyan) 15%, transparent); /* cited-source chip fill */
+}
+
 /* Floating gradient blobs behind the hero */
 .seo-blob {
   position: absolute;

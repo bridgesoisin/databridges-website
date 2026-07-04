@@ -176,7 +176,7 @@ export default function SeoAeoPage() {
           />
           <div
             className="seo-blob"
-            style={{ width: 260, height: 260, top: 80, right: 260, background: "#3B82F6" }}
+            style={{ width: 260, height: 260, top: 80, right: 260, background: "var(--seo-blue)" }}
           />
         </div>
 
@@ -187,7 +187,7 @@ export default function SeoAeoPage() {
             </span>
             <h1
               id="seo-hero-heading"
-              className="font-syne text-5xl md:text-6xl font-extrabold text-white mt-4 leading-tight"
+              className="db-display text-white mt-4"
             >
               Get found by people <span className="text-cyan">and</span> by AI.
             </h1>
@@ -199,7 +199,7 @@ export default function SeoAeoPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="#readiness"
-                className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
+                className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-colors hover:bg-white"
               >
                 Free readiness check
               </Link>
@@ -222,19 +222,19 @@ export default function SeoAeoPage() {
               className="w-full h-auto"
             >
               {/* search bar */}
-              <rect x="30" y="30" width="300" height="44" rx="22" fill="#0F2A4F" stroke="var(--color-cyan)" strokeWidth="1.5" />
+              <rect x="30" y="30" width="300" height="44" rx="22" fill="var(--seo-panel)" stroke="var(--color-cyan)" strokeWidth="1.5" />
               <circle cx="58" cy="52" r="9" fill="none" stroke="var(--color-cyan)" strokeWidth="2.5" />
               <line x1="65" y1="59" x2="74" y2="68" stroke="var(--color-cyan)" strokeWidth="2.5" strokeLinecap="round" />
-              <rect x="86" y="46" width="150" height="6" rx="3" fill="#3A5C86" />
+              <rect x="86" y="46" width="150" height="6" rx="3" fill="var(--seo-line)" />
               <rect className="seo-scan" x="86" y="44" width="40" height="12" rx="6" fill="var(--color-cyan)" opacity="0.5" />
 
               {/* rising rank bars (SEO) */}
               <g>
                 <rect className="seo-bar" x="40" y="140" width="30" height="150" rx="6" fill="var(--color-cyan)" />
-                <rect className="seo-bar" x="80" y="170" width="30" height="120" rx="6" fill="#2FB4BC" />
-                <rect className="seo-bar" x="120" y="200" width="30" height="90" rx="6" fill="#2FB4BC" />
-                <rect className="seo-bar" x="160" y="230" width="30" height="60" rx="6" fill="#26707A" />
-                <rect className="seo-bar" x="200" y="250" width="30" height="40" rx="6" fill="#26707A" />
+                <rect className="seo-bar" x="80" y="170" width="30" height="120" rx="6" fill="var(--seo-bar-2)" />
+                <rect className="seo-bar" x="120" y="200" width="30" height="90" rx="6" fill="var(--seo-bar-2)" />
+                <rect className="seo-bar" x="160" y="230" width="30" height="60" rx="6" fill="var(--seo-bar-3)" />
+                <rect className="seo-bar" x="200" y="250" width="30" height="40" rx="6" fill="var(--seo-bar-3)" />
               </g>
 
               {/* flow line to answer card */}
@@ -249,15 +249,15 @@ export default function SeoAeoPage() {
 
               {/* AI answer card (AEO) */}
               <g>
-                <rect x="300" y="150" width="140" height="150" rx="14" fill="#0F2A4F" stroke="var(--color-yellow)" strokeWidth="1.5" />
+                <rect x="300" y="150" width="140" height="150" rx="14" fill="var(--seo-panel)" stroke="var(--color-yellow)" strokeWidth="1.5" />
                 <circle className="seo-ring" cx="322" cy="176" r="10" fill="none" stroke="var(--color-yellow)" strokeWidth="2" />
                 <circle cx="322" cy="176" r="6" fill="var(--color-yellow)" />
-                <rect x="338" y="172" width="80" height="6" rx="3" fill="#3A5C86" />
-                <rect x="316" y="200" width="108" height="6" rx="3" fill="#2F4A6E" />
-                <rect x="316" y="214" width="108" height="6" rx="3" fill="#2F4A6E" />
-                <rect x="316" y="228" width="70" height="6" rx="3" fill="#2F4A6E" />
+                <rect x="338" y="172" width="80" height="6" rx="3" fill="var(--seo-line)" />
+                <rect x="316" y="200" width="108" height="6" rx="3" fill="var(--seo-line-dim)" />
+                <rect x="316" y="214" width="108" height="6" rx="3" fill="var(--seo-line-dim)" />
+                <rect x="316" y="228" width="70" height="6" rx="3" fill="var(--seo-line-dim)" />
                 {/* cited source chip */}
-                <rect x="316" y="256" width="108" height="26" rx="13" fill="rgba(61,224,232,0.15)" stroke="var(--color-cyan)" strokeWidth="1" />
+                <rect x="316" y="256" width="108" height="26" rx="13" fill="var(--seo-chip)" stroke="var(--color-cyan)" strokeWidth="1" />
                 <circle className="seo-node" cx="330" cy="269" r="4" fill="var(--color-cyan)" />
                 <rect x="342" y="266" width="70" height="6" rx="3" fill="var(--color-cyan)" />
               </g>
@@ -296,7 +296,7 @@ export default function SeoAeoPage() {
         <div className="mx-auto max-w-6xl">
           <h2
             id="seo-vs-aeo-heading"
-            className="font-syne text-3xl md:text-4xl font-extrabold text-navy text-center"
+            className="db-h2 text-navy text-center"
           >
             Two ways to be found. You need both.
           </h2>
@@ -360,7 +360,7 @@ export default function SeoAeoPage() {
         <div className="mx-auto max-w-6xl">
           <h2
             id="seo-services-heading"
-            className="font-syne text-3xl md:text-4xl font-extrabold text-navy text-center"
+            className="db-h2 text-navy text-center"
           >
             What a project looks like
           </h2>
@@ -393,7 +393,7 @@ export default function SeoAeoPage() {
           <div className="text-center">
             <h2
               id="seo-tips-heading"
-              className="font-syne text-3xl md:text-4xl font-extrabold text-navy"
+              className="db-h2 text-navy"
             >
               8 things you can try today
             </h2>
@@ -452,7 +452,7 @@ export default function SeoAeoPage() {
         <div className="mx-auto max-w-3xl">
           <h2
             id="seo-faq-heading"
-            className="font-syne text-3xl md:text-4xl font-extrabold text-navy text-center"
+            className="db-h2 text-navy text-center"
           >
             SEO &amp; AEO questions
           </h2>
@@ -479,7 +479,7 @@ export default function SeoAeoPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2
             id="seo-cta-heading"
-            className="font-syne text-3xl md:text-4xl font-extrabold text-white"
+            className="db-h2 text-white"
           >
             Ready to be the answer?
           </h2>
@@ -490,7 +490,7 @@ export default function SeoAeoPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
               href="mailto:hello@databridges.ie?subject=SEO%20and%20AEO"
-              className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
+              className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-colors hover:bg-white"
             >
               Book a free chat
             </a>
