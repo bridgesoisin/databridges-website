@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import LinkedInPostCard from "@/components/LinkedInPostCard";
 import BeforeAfterToggle from "@/components/BeforeAfterToggle";
@@ -93,12 +94,12 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex gap-4 flex-wrap">
-              <a
-                href="mailto:hello@databridges.ie"
+              <Link
+                href="/contact"
                 className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
               >
-                Book a Free Chat &rarr;
-              </a>
+                Book a free chat &rarr;
+              </Link>
               <a
                 href="#services"
                 className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
@@ -648,12 +649,12 @@ export default function Home() {
             can help.
           </p>
 
-          <a
-            href="mailto:hello@databridges.ie"
+          <Link
+            href="/contact"
             className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
-            Book a Free Chat &rarr;
-          </a>
+            Book a free chat &rarr;
+          </Link>
         </div>
       </section>
     </>

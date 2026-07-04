@@ -70,6 +70,15 @@ const serviceNodes = [
     description:
       "Practical AI sessions. The same approach used at UCD. Tools your team will open on Monday morning.",
   },
+  {
+    "@type": "Service",
+    name: "SEO & AEO",
+    serviceType: "Search and answer-engine optimisation",
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Ireland" },
+    description:
+      "Get found by people and by AI. Win in Google search and in the answers AI assistants give.",
+  },
 ];
 
 const servicesJsonLd = graph(
@@ -379,12 +388,12 @@ function ServiceSection({
 
         {children}
 
-        <a
-          href="mailto:hello@databridges.ie"
+        <Link
+          href="/contact"
           className="inline-block mt-10 text-cyan-ink font-medium hover:underline transition-colors duration-200"
         >
           {ctaLabel} &rarr;
-        </a>
+        </Link>
       </div>
     </section>
   );
@@ -395,6 +404,7 @@ const SERVICE_ANCHORS = [
   { label: "Power Platform", href: "#power-platform" },
   { label: "SharePoint", href: "#sharepoint" },
   { label: "Training", href: "#training" },
+  { label: "SEO & AEO", href: "#seo-aeo" },
 ];
 
 export default function ServicesPage() {
@@ -602,6 +612,60 @@ export default function ServicesPage() {
         graphicCaption="Skills that stick after we leave"
       />
 
+      {/* SERVICE 5: SEO & AEO — callout linking to its own page */}
+      <section
+        id="seo-aeo"
+        data-otter-section="seo-aeo"
+        aria-labelledby="seo-aeo-heading"
+        className="py-20 md:py-28 px-6 bg-white"
+      >
+        <div className="mx-auto max-w-6xl">
+          <ScrollReveal>
+            <div className="gfx-card rounded-3xl bg-navy p-8 sm:p-12 lg:p-16">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center">
+                <div>
+                  <p
+                    className="font-jetbrains text-sm text-cyan mb-3"
+                    aria-hidden="true"
+                  >
+                    /05
+                  </p>
+                  <p className="db-eyebrow db-eyebrow--dark mb-4">
+                    One more thing
+                  </p>
+                  <h2 id="seo-aeo-heading" className="db-h2 text-white">
+                    SEO &amp; AEO
+                  </h2>
+                  <p className="text-gray-300 text-lg leading-relaxed mt-6">
+                    Ranking on Google is no longer enough. When someone asks an
+                    AI a question, your business should be the answer it gives.
+                    We make your site win in search and in AI answers alike
+                    &mdash; it&apos;s a service in its own right, with its own
+                    page.
+                  </p>
+                  <Link
+                    href="/seo-aeo"
+                    className="inline-block mt-8 text-cyan font-medium hover:underline transition-colors duration-200"
+                  >
+                    Explore SEO &amp; AEO &rarr;
+                  </Link>
+                </div>
+
+                <div className="lg:justify-self-end w-full max-w-xs mx-auto lg:mx-0">
+                  <RankBars ariaLabel="Bar chart of search and AI-answer visibility rising" />
+                  <p
+                    className="font-jetbrains text-xs text-white/50 text-center mt-3"
+                    aria-hidden="true"
+                  >
+                    visibility in search &amp; AI answers
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* FOOTER CTA */}
       <section
         id="services-cta"
@@ -625,12 +689,12 @@ export default function ServicesPage() {
             Most projects touch more than one. Start with a free 30-minute
             chat and we&apos;ll point you at the fastest win.
           </p>
-          <a
-            href="mailto:hello@databridges.ie"
+          <Link
+            href="/contact"
             className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
-            Book a Free Chat &rarr;
-          </a>
+            Book a free chat &rarr;
+          </Link>
         </div>
       </section>
     </>

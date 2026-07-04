@@ -248,10 +248,10 @@ export default function WorkPage() {
           </p>
 
           <Link
-            href="mailto:hello@databridges.ie"
+            href="/contact"
             className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
-            Book a Free Chat &rarr;
+            Book a free chat &rarr;
           </Link>
         </div>
       </section>

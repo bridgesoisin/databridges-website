@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import { graph, breadcrumbLd } from "@/lib/jsonld";
@@ -461,12 +462,12 @@ export default function AboutPage() {
               conversation.
             </p>
 
-            <a
-              href="mailto:hello@databridges.ie"
+            <Link
+              href="/contact"
               className="font-syne inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
             >
-              Book a Free Chat &rarr;
-            </a>
+              Book a free chat &rarr;
+            </Link>
           </ScrollReveal>
         </div>
       </section>

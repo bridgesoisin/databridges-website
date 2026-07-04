@@ -203,12 +203,12 @@ export default function SeoAeoPage() {
               >
                 Free readiness check
               </Link>
-              <a
-                href="mailto:hello@databridges.ie?subject=SEO%20and%20AEO"
+              <Link
+                href="/contact"
                 className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Talk to Oisín
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -488,12 +488,12 @@ export default function SeoAeoPage() {
             you want to show up and we&apos;ll tell you straight what it takes.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              href="mailto:hello@databridges.ie?subject=SEO%20and%20AEO"
+            <Link
+              href="/contact"
               className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-colors hover:bg-white"
             >
               Book a free chat
-            </a>
+            </Link>
             <Link
               href="/faq"
               className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white/10"

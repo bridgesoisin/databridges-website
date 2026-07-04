@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const questions = [
   {
@@ -166,12 +167,12 @@ export default function EUAIActChecker() {
               2026</strong>, {countdown}. Use the high-risk runway now for an AI
               inventory and gap analysis.
             </p>
-            <a
-              href="mailto:hello@databridges.ie"
+            <Link
+              href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a compliance chat with Ois&iacute;n &rarr;
-            </a>
+            </Link>
           </div>
         )}
 
@@ -193,12 +194,12 @@ export default function EUAIActChecker() {
               label, not an engineering project &mdash; but they have to be
               there.
             </p>
-            <a
-              href="mailto:hello@databridges.ie"
+            <Link
+              href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a compliance chat with Ois&iacute;n &rarr;
-            </a>
+            </Link>
           </div>
         )}
 
@@ -217,12 +218,12 @@ export default function EUAIActChecker() {
               changes the moment you add a customer-facing chatbot or publish
               AI-generated content. A short review keeps you ahead of it.
             </p>
-            <a
-              href="mailto:hello@databridges.ie"
+            <Link
+              href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free 30-minute chat &rarr;
-            </a>
+            </Link>
           </div>
         )}
 
@@ -241,12 +242,12 @@ export default function EUAIActChecker() {
               cheaper than retrofitting. That&apos;s exactly what the Four
               Bridges approach is for.
             </p>
-            <a
-              href="mailto:hello@databridges.ie"
+            <Link
+              href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free chat &rarr;
-            </a>
+            </Link>
           </div>
         )}
 
@@ -263,12 +264,12 @@ export default function EUAIActChecker() {
               uncertainty is usually the answer. Let&apos;s spend 30 minutes
               finding out &mdash; it&apos;s free and there&apos;s no obligation.
             </p>
-            <a
-              href="mailto:hello@databridges.ie"
+            <Link
+              href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free chat &rarr;
-            </a>
+            </Link>
           </div>
         )}
 

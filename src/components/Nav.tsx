@@ -82,19 +82,19 @@ export default function Nav() {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          {/* Book a Chat — desktop */}
+          {/* Book a free chat — desktop */}
           <Link
-            href="mailto:hello@databridges.ie"
+            href="/contact"
             className="hidden md:inline-flex bg-cyan text-navy font-semibold px-5 py-2 rounded-full text-sm transition-colors duration-200 hover:bg-white"
           >
-            Book a Chat
+            Book a free chat
           </Link>
 
-          {/* Book a Chat — mobile icon */}
+          {/* Book a free chat — mobile icon */}
           <Link
-            href="mailto:hello@databridges.ie"
+            href="/contact"
             className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 -m-2"
-            aria-label="Book a chat"
+            aria-label="Book a free chat"
           >
             <svg
               width="24"
@@ -187,12 +187,12 @@ export default function Nav() {
         ))}
 
         <Link
-          href="mailto:hello@databridges.ie"
+          href="/contact"
           onClick={() => setMenuOpen(false)}
           className="font-syne nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
           style={{ transitionDelay: `${navLinks.length * 80}ms` }}
         >
-          Book a Chat
+          Book a free chat
         </Link>
       </div>
     </nav>

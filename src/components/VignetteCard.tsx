@@ -100,7 +100,7 @@ export default function VignetteCard({
 
       {href && (
         <span className="mt-6 inline-block text-cyan-ink text-sm font-medium group-hover:underline">
-          Read the story &rarr;
+          See it on our work page &rarr;
         </span>
       )}
     </div>
