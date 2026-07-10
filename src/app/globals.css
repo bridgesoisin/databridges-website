@@ -8,6 +8,19 @@
   --color-white: #FFFFFF;
   --color-grey-mid: #6B7280;
   --color-grey-light: #E5E7EB;
+  /* "Ink" variants: same hue as the accent, dark enough for AA (4.5:1)
+     body text on white/off-white. Use cyan/yellow for text on navy only. */
+  --color-cyan-ink: #0E7A83;
+  --color-yellow-ink: #8A6100;
+  /* One shared emphasis easing for the whole motion system. */
+  --ease-emph: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Scroll driver outputs, safe static defaults so CSS renders correctly
+     before JS hydrates, and forever under reduced-motion. */
+  --scroll-progress: 0; /* 0..1 whole-document scroll */
+  --scroll-y: 0px; /* raw window.scrollY in px */
+  --vh: 1vh; /* stable viewport-height unit (mobile URL-bar safe) */
 }
 
 @theme {
@@ -17,6 +30,8 @@
   --color-offwhite: #F8F7F4;
   --color-grey-mid: #6B7280;
   --color-grey-light: #E5E7EB;
+  --color-cyan-ink: #0E7A83;
+  --color-yellow-ink: #8A6100;
 }
 
 /* Skip to main content */
@@ -37,9 +52,11 @@
   top: 0;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+/* Smooth scroll (motion, so gated on the user's preference) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Base body */
@@ -58,13 +75,16 @@ body {
   font-family: var(--font-jetbrains);
 }
 
-/* Focus styles */
+/* Focus styles: two-tone ring (navy halo + cyan outline) so the indicator
+   keeps ≥3:1 contrast on light and dark surfaces alike */
 *:focus-visible {
   outline: 2px solid var(--color-cyan);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-navy);
 }
 
-/* Scroll reveal defaults — visible by default, animated only when motion OK */
+/* ---- Reveal system (extends ScrollReveal) ---- */
+/* Visible by default, animated only when motion OK */
 .scroll-reveal {
   opacity: 1;
   transform: none;
@@ -73,13 +93,48 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 600ms ease-out, transform 600ms ease-out;
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    transition-delay: var(--sr-delay, 0ms);
   }
+  .sr-fade { transform: none; }
+  .sr-fade-up { transform: translateY(24px); }
+  .sr-fade-down { transform: translateY(-24px); }
+  .sr-slide-left { transform: translateX(32px); }
+  .sr-slide-right { transform: translateX(-32px); }
+  .sr-zoom { transform: scale(0.94); }
 
   .scroll-reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+
+  /* Stagger: direct children ripple in. nth-child ladder, no JS timers. */
+  .sr-stagger > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  }
+  .sr-stagger.revealed > * { opacity: 1; transform: none; }
+  .sr-stagger.revealed > *:nth-child(1) { transition-delay: calc(0 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(2) { transition-delay: calc(1 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(3) { transition-delay: calc(2 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(4) { transition-delay: calc(3 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(5) { transition-delay: calc(4 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(6) { transition-delay: calc(5 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(7) { transition-delay: calc(6 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(8) { transition-delay: calc(7 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(9) { transition-delay: calc(8 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(10) { transition-delay: calc(9 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(11) { transition-delay: calc(10 * var(--sr-step, 90ms)); }
+  .sr-stagger.revealed > *:nth-child(12) { transition-delay: calc(11 * var(--sr-step, 90ms)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .sr-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -105,14 +160,41 @@ body {
   }
 }
 
-/* Mobile nav overlay */
+/* Brand wordmark lockup entrance (hero). Visible by default; only the
+   motion is gated on the user's preference. */
+.wordmark-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wordmark-in {
+    opacity: 0;
+    transform: translateY(-12px);
+    animation: wordmarkIn 600ms var(--ease-emph) forwards;
+  }
+
+  @keyframes wordmarkIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Mobile nav overlay. `visibility: hidden` (delayed until the slide-out
+   finishes) keeps the closed menu out of the tab order and the
+   accessibility tree. */
 .nav-overlay {
   transform: translateY(-100%);
-  transition: transform 400ms ease-out;
+  visibility: hidden;
+  transition: transform 400ms ease-out, visibility 0s linear 400ms;
 }
 
 .nav-overlay.open {
   transform: translateY(0);
+  visibility: visible;
+  transition: transform 400ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -144,8 +226,824 @@ body {
   transition: opacity 200ms ease-out, transform 200ms ease-out;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .toggle-panel {
+    transition: none;
+  }
+}
+
 /* Gradient fade for LinkedIn cards */
 .text-fade {
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* ============================================================
+   Otter guide mascot
+   ============================================================ */
+
+/* Visible by default, JS only adds the *entrance motion*, never gates
+   visibility. Matches the .scroll-reveal / .wordmark-in pattern so the
+   mascot shows even with slow/failed JS or reduced motion. */
+.otter-guide-root {
+  --otter-ease: var(--ease-emph);
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .otter-guide-root {
+    opacity: 0;
+    transform: translateY(40px) scale(0.85);
+    transition: opacity 500ms var(--otter-ease), transform 600ms var(--otter-ease);
+  }
+  /* Safety net: if JS never adds .otter-mounted, reveal after a beat anyway. */
+  .otter-guide-root:not(.otter-mounted) {
+    animation: otter-failsafe-in 1ms linear 1400ms forwards;
+  }
+  @keyframes otter-failsafe-in {
+    to { opacity: 1; transform: none; }
+  }
+}
+
+.otter-guide-root.otter-mounted {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* The avatar button: idle float + state-driven motion */
+.otter-avatar-btn {
+  cursor: pointer;
+  width: 256px;
+  height: 256px;
+  transform-origin: 50% 85%;
+  transition: box-shadow 250ms ease, transform 250ms var(--otter-ease);
+}
+
+/* Scale the mascot down on small (portrait phone) screens so it stays out of the way */
+@media (max-width: 640px) {
+  .otter-avatar-btn {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.otter-guide-root.otter-mounted .otter-avatar-btn {
+  animation: otter-float 4.5s ease-in-out infinite;
+}
+
+.otter-avatar-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.otter-avatar-btn:focus-visible {
+  outline: 3px solid var(--color-yellow);
+  outline-offset: 3px;
+}
+
+/* Entrance wave: a quick tilt-wave right after mount */
+.otter-guide-root.otter-enter .otter-avatar-btn {
+  animation: otter-wave 1200ms var(--otter-ease) 1;
+}
+
+/* Searching: user is scrolling chaotically -> perk up + bounce */
+.otter-guide-root.otter-searching .otter-avatar-btn {
+  animation: otter-alert 700ms ease-in-out infinite;
+}
+
+/* Reading: user is calmly reading -> gentle, focused bob */
+.otter-guide-root.otter-reading .otter-avatar-btn {
+  animation: otter-read-bob 2.8s ease-in-out infinite;
+}
+
+@keyframes otter-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-1.5deg); }
+}
+
+@keyframes otter-wave {
+  0% { transform: translateY(0) rotate(0deg); }
+  20% { transform: translateY(-8px) rotate(-10deg); }
+  40% { transform: translateY(-4px) rotate(9deg); }
+  60% { transform: translateY(-6px) rotate(-7deg); }
+  80% { transform: translateY(-2px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes otter-alert {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-10px) scale(1.06); }
+  60% { transform: translateY(-2px) scale(1.02); }
+}
+
+@keyframes otter-read-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(0.6deg); }
+}
+
+/* Props layer (laptop, search glow) sits beside the avatar */
+.otter-prop {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px) scale(0.8);
+  transition: opacity 300ms var(--otter-ease), transform 300ms var(--otter-ease);
+}
+
+.otter-prop.otter-prop-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Laptop shown while reading */
+.otter-laptop {
+  left: -18px;
+  bottom: -6px;
+}
+
+.otter-laptop .otter-key {
+  animation: otter-type 1.1s steps(1, end) infinite;
+}
+.otter-laptop .otter-key:nth-child(2) { animation-delay: 0.18s; }
+.otter-laptop .otter-key:nth-child(3) { animation-delay: 0.36s; }
+.otter-laptop .otter-key:nth-child(4) { animation-delay: 0.54s; }
+
+@keyframes otter-type {
+  0%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+
+/* Search glow / magnifier shown while searching */
+.otter-search {
+  left: -14px;
+  top: -12px;
+}
+.otter-guide-root.otter-searching .otter-search {
+  animation: otter-search-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes otter-search-sweep {
+  0%, 100% { transform: translate(0, 0) rotate(-8deg); }
+  50% { transform: translate(4px, 4px) rotate(8deg); }
+}
+
+/* Sparkle for AI idle tips */
+.otter-spark {
+  right: -6px;
+  top: -10px;
+}
+.otter-guide-root .otter-spark.otter-prop-visible {
+  animation: otter-spark-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes otter-spark-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.9) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(12deg); }
+}
+
+/* Bubble pop-in */
+.otter-bubble {
+  transform-origin: bottom right;
+  animation: otter-bubble-pop 320ms var(--otter-ease) 1;
+}
+
+@keyframes otter-bubble-pop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Panel slide-in */
+.otter-panel {
+  transform-origin: bottom right;
+  animation: otter-panel-in 300ms var(--otter-ease) 1;
+}
+
+@keyframes otter-panel-in {
+  0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Typing dots inside chat */
+.otter-typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 1px;
+  border-radius: 50%;
+  background: var(--color-grey-mid);
+  animation: otter-typing-dot 1.2s ease-in-out infinite;
+}
+.otter-typing span:nth-child(2) { animation-delay: 0.2s; }
+.otter-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes otter-typing-dot {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Respect reduced motion: keep it calm, no looping/bouncing */
+@media (prefers-reduced-motion: reduce) {
+  .otter-guide-root,
+  .otter-avatar-btn,
+  .otter-prop,
+  .otter-bubble,
+  .otter-panel {
+    transition: opacity 200ms ease;
+  }
+  .otter-guide-root.otter-mounted .otter-avatar-btn,
+  .otter-guide-root.otter-enter .otter-avatar-btn,
+  .otter-guide-root.otter-searching .otter-avatar-btn,
+  .otter-guide-root.otter-reading .otter-avatar-btn,
+  .otter-guide-root.otter-searching .otter-search,
+  .otter-laptop .otter-key,
+  .otter-spark.otter-prop-visible,
+  .otter-bubble,
+  .otter-panel,
+  .otter-typing span {
+    animation: none !important;
+  }
+  .otter-guide-root {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   SEO / AEO consulting page graphics (dependency-free)
+   ============================================================ */
+
+/* Hero-graphic palette, derived from brand tokens (navy/cyan) via
+   color-mix so the tokens-only rule holds and no raw hex lives in the
+   markup. These are the intermediate shades the SVG needs. */
+:root {
+  --seo-panel: color-mix(in srgb, white 6%, var(--color-navy));       /* lifted navy panel fill */
+  --seo-blue: color-mix(in srgb, var(--color-cyan) 50%, var(--color-navy)); /* mid-blue accent / blob */
+  --seo-line: color-mix(in srgb, white 32%, var(--color-navy));       /* muted label bar */
+  --seo-line-dim: color-mix(in srgb, white 20%, var(--color-navy));   /* dim body bar */
+  --seo-bar-2: color-mix(in srgb, var(--color-cyan) 70%, var(--color-navy)); /* mid rank bar */
+  --seo-bar-3: color-mix(in srgb, var(--color-cyan) 42%, var(--color-navy)); /* deep rank bar */
+  --seo-chip: color-mix(in srgb, var(--color-cyan) 15%, transparent); /* cited-source chip fill */
+}
+
+/* Floating gradient blobs behind the hero */
+.seo-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(36px);
+  opacity: 0.5;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .seo-blob { animation: seoFloat 14s ease-in-out infinite; }
+  .seo-blob:nth-child(2) { animation-duration: 18s; animation-direction: reverse; }
+  .seo-blob:nth-child(3) { animation-duration: 22s; }
+}
+@keyframes seoFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(24px, -18px) scale(1.08); }
+  66% { transform: translate(-18px, 14px) scale(0.96); }
+}
+
+/* Rank bars that rise into place when revealed */
+.seo-bar {
+  transform-origin: bottom center;
+  transform: scaleY(0);
+}
+.scroll-reveal.revealed .seo-bar,
+.seo-graphic.revealed .seo-bar {
+  animation: seoBarRise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.seo-bar:nth-child(1) { animation-delay: 0.05s; }
+.seo-bar:nth-child(2) { animation-delay: 0.15s; }
+.seo-bar:nth-child(3) { animation-delay: 0.25s; }
+.seo-bar:nth-child(4) { animation-delay: 0.35s; }
+.seo-bar:nth-child(5) { animation-delay: 0.45s; }
+@keyframes seoBarRise {
+  from { transform: scaleY(0); opacity: 0.3; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+/* Pulsing answer-engine nodes */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-node { animation: seoPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .seo-node:nth-child(2) { animation-delay: 0.4s; }
+  .seo-node:nth-child(3) { animation-delay: 0.8s; }
+  .seo-node:nth-child(4) { animation-delay: 1.2s; }
+}
+@keyframes seoPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Citation ring that expands around the cited source */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-ring { animation: seoRing 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes seoRing {
+  0% { opacity: 0.7; transform: scale(0.4); }
+  70% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* Query flow line: animated dash travelling along the path */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-flow { stroke-dasharray: 10 12; animation: seoDash 1.6s linear infinite; }
+}
+@keyframes seoDash {
+  to { stroke-dashoffset: -44; }
+}
+
+/* Scanning highlight across a search bar */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-scan { animation: seoScan 3.2s ease-in-out infinite; }
+}
+@keyframes seoScan {
+  0%, 100% { transform: translateX(-6px); opacity: 0.35; }
+  50% { transform: translateX(120px); opacity: 0.9; }
+}
+
+/* Slow rotation for the orbit motif */
+@media (prefers-reduced-motion: no-preference) {
+  .seo-orbit { animation: seoOrbit 26s linear infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes seoOrbit {
+  to { transform: rotate(360deg); }
+}
+
+/* Cards lift on hover */
+.seo-card {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+.seo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(10, 30, 61, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-blob, .seo-node, .seo-ring, .seo-flow, .seo-scan, .seo-orbit, .seo-bar { animation: none !important; }
+  .seo-bar { transform: scaleY(1); }
+  .seo-card:hover { transform: none; }
+}
+
+/* ============================================================
+   Graphics kit (src/components/graphics/), shared keyframes and
+   utilities, namespaced .gfx-* to avoid collisions. Each component
+   documents its contract here; motion only runs under
+   prefers-reduced-motion: no-preference, with a calm static fallback.
+   ============================================================ */
+
+/* AnimatedBlobs: blurred colour blobs drifting behind hero sections */
+.gfx-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(36px);
+  opacity: 0.5;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-blob { animation: gfxDrift 14s ease-in-out infinite; }
+  .gfx-blob:nth-child(2) { animation-duration: 18s; animation-direction: reverse; }
+  .gfx-blob:nth-child(3) { animation-duration: 22s; }
+  .gfx-blob:nth-child(4) { animation-duration: 16s; animation-direction: reverse; }
+}
+@keyframes gfxDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(24px, -18px) scale(1.08); }
+  66% { transform: translate(-18px, 14px) scale(0.96); }
+}
+
+/* RankBars: bars rise, staggered, when the wrapping ScrollReveal gains
+   .revealed; without motion they render at full height immediately */
+.gfx-bar {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-bar { transform: scaleY(0); }
+  .scroll-reveal.revealed .gfx-bar {
+    animation: gfxBarRise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .gfx-bar:nth-child(1) { animation-delay: 0.05s; }
+  .gfx-bar:nth-child(2) { animation-delay: 0.15s; }
+  .gfx-bar:nth-child(3) { animation-delay: 0.25s; }
+  .gfx-bar:nth-child(4) { animation-delay: 0.35s; }
+  .gfx-bar:nth-child(5) { animation-delay: 0.45s; }
+  .gfx-bar:nth-child(6) { animation-delay: 0.55s; }
+  .gfx-bar:nth-child(7) { animation-delay: 0.65s; }
+  .gfx-bar:nth-child(8) { animation-delay: 0.75s; }
+}
+@keyframes gfxBarRise {
+  from { transform: scaleY(0); opacity: 0.3; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+/* NodeGraph: pulsing nodes (delays cycle by position among the SVG's
+   circles, so siblings never pulse in unison) + expanding hub ring */
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-node { animation: gfxPulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .gfx-node:nth-of-type(2n) { animation-delay: 0.4s; }
+  .gfx-node:nth-of-type(3n) { animation-delay: 0.8s; }
+  .gfx-node:nth-of-type(5n) { animation-delay: 1.2s; }
+  .gfx-ring { animation: gfxRing 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes gfxPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+@keyframes gfxRing {
+  0% { opacity: 0.7; transform: scale(0.4); }
+  70%, 100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* NodeGraph links / FlowDiagram connectors: travelling dash. Links fall
+   back to a static solid line, flow connectors to a static dashed one. */
+.gfx-flow { stroke-dasharray: 10 12; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-link { stroke-dasharray: 10 12; }
+  .gfx-link, .gfx-flow { animation: gfxDash 1.6s linear infinite; }
+}
+@keyframes gfxDash {
+  to { stroke-dashoffset: -44; }
+}
+
+/* NumberedFeatures cards: subtle hover lift */
+.gfx-card {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+.gfx-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--color-navy) 14%, transparent);
+}
+
+/* LogoMarquee: seamless translateX(-50%) loop over a duplicated track;
+   without motion the duplicate hides and the chips wrap into static rows */
+.gfx-marquee {
+  overflow: hidden;
+}
+.gfx-marquee-track {
+  display: inline-flex;
+  align-items: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-marquee {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .gfx-marquee-track {
+    width: max-content;
+    will-change: transform;
+    animation: gfxMarquee var(--gfx-marquee-duration, 28s) linear infinite;
+  }
+  .gfx-marquee-dup { display: contents; }
+}
+@keyframes gfxMarquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ── Animated dashboard cards (DashCard shell + BeforeAfterBars,
+   WorkflowPipeline, ChangeHeatmap) and the FourBridges diagram ── */
+
+/* DashCard: glass panel chrome around a dashboard graphic. Reads on navy and
+   off-white alike (translucent film + cyan-dim border). */
+.gfx-dash {
+  margin: 0;
+  border-radius: 20px;
+  padding: 20px 22px 22px;
+  border: 1px solid color-mix(in srgb, var(--color-cyan) 30%, transparent);
+  background: color-mix(in srgb, var(--color-offwhite) 6%, transparent);
+  box-shadow: 0 10px 34px color-mix(in srgb, var(--color-navy) 10%, transparent);
+}
+.gfx-dash-head { padding-bottom: 14px; border-bottom: 1px solid color-mix(in srgb, var(--color-cyan) 18%, transparent); }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-dash { transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms ease; }
+  .gfx-dash:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--color-navy) 16%, transparent);
+  }
+}
+
+/* BeforeAfterBars: two bars rise (reusing gfxBarRise), the reclaimed slice
+   pulses forever. Static full-height bars + steady slice under reduce. */
+.gfx-ba-bar { transform-box: fill-box; transform-origin: bottom center; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-ba-bar { transform: scaleY(0); }
+  .scroll-reveal.revealed .gfx-ba-bar { animation: gfxBarRise 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .scroll-reveal.revealed .gfx-ba-bar.gfx-ba-after { animation-delay: 0.28s; }
+  .gfx-ba-save { transform-box: fill-box; transform-origin: center; animation: gfxSavePulse 3s ease-in-out infinite 1.3s; }
+}
+@keyframes gfxSavePulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.8; }
+}
+
+/* WorkflowPipeline: travelling dash connector, pulsing nodes, looping packet. */
+.gfx-pipe-line { stroke-dasharray: 8 10; }
+.gfx-pipe-packet { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-pipe-line { animation: gfxDash 1.6s linear infinite; }
+  .gfx-pipe-node { transform-box: fill-box; transform-origin: center; animation: gfxPipeNode 2.8s ease-in-out infinite; }
+  .gfx-pipe-packet { transform-box: fill-box; animation: gfxPipePacket 5s ease-in-out infinite; }
+}
+@keyframes gfxPipeNode {
+  0%, 100% { stroke-opacity: 0.5; }
+  50% { stroke-opacity: 1; }
+}
+@keyframes gfxPipePacket {
+  0% { transform: translateX(0); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateX(var(--gfx-pipe-travel, 0px)); opacity: 0; }
+}
+
+/* ChangeHeatmap: cells scale/fade in on a diagonal wave, hottest cells shimmer. */
+.gfx-cell { transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-cell { opacity: 0; transform: scale(0.4); }
+  .scroll-reveal.revealed .gfx-cell { animation: gfxCellIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .scroll-reveal.revealed .gfx-cell-hot {
+    animation: gfxCellIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards,
+               gfxCellShimmer 3.2s ease-in-out infinite 1.6s;
+  }
+}
+@keyframes gfxCellIn {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes gfxCellShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+/* FourBridges: arches draw, piers rise, labels fade up, traveller crosses. */
+.gfx-arch { fill: none; }
+.gfx-traveller { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-arch { stroke-dasharray: 260; stroke-dashoffset: 260; }
+  .scroll-reveal.revealed .gfx-arch { animation: gfxDraw 950ms ease-out forwards; }
+  .gfx-pier { transform-box: fill-box; transform-origin: bottom center; transform: scaleY(0); }
+  .scroll-reveal.revealed .gfx-pier { animation: gfxBarRise 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .gfx-span-label { opacity: 0; }
+  .scroll-reveal.revealed .gfx-span-label { animation: gfxFadeUp 620ms ease-out forwards; }
+  .gfx-traveller { transform-box: fill-box; animation: gfxPipePacket 6s ease-in-out infinite 1.4s; }
+}
+@keyframes gfxDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes gfxFadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Calm fallbacks under reduced motion (belt and braces on top of the
+   no-preference gates above) */
+@media (prefers-reduced-motion: reduce) {
+  .gfx-blob, .gfx-node, .gfx-ring, .gfx-link, .gfx-flow, .gfx-marquee-track { animation: none !important; }
+  .gfx-bar { transform: scaleY(1); }
+  .gfx-ring { opacity: 0.3; }
+  .gfx-card { transition: none; }
+  .gfx-card:hover { transform: none; }
+  .gfx-marquee-track { flex-wrap: wrap; justify-content: center; }
+  .gfx-marquee-dup { display: none; }
+  /* Dashboard cards + FourBridges: fully drawn, no looping motion */
+  .gfx-dash { transition: none; }
+  .gfx-dash:hover { transform: none; }
+  .gfx-ba-bar { transform: scaleY(1); }
+  .gfx-ba-save { animation: none; opacity: 0.55; }
+  .gfx-pipe-line { animation: none; }
+  .gfx-pipe-node { animation: none; }
+  .gfx-pipe-packet { display: none; }
+  .gfx-cell { opacity: 1; transform: none; animation: none; }
+  .gfx-arch { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+  .gfx-pier { transform: scaleY(1); animation: none; }
+  .gfx-span-label { opacity: 1; animation: none; }
+  .gfx-traveller { display: none; }
+}
+
+/* Off-screen loop pausing: LoopPauser (mounted in layout) adds `.gfx-idle` to
+   each [data-gfx-loop] graphic wrapper when it leaves the viewport and removes
+   it on re-entry. Pausing (rather than un-setting) keeps state so loops resume
+   seamlessly. Pure perf win on top of the motion already gated above; a no-op
+   under reduced motion (nothing loops, and LoopPauser doesn't attach). */
+@media (prefers-reduced-motion: no-preference) {
+  .gfx-idle,
+  .gfx-idle * {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ============================================================
+   Design system, Phase 5 layout / visual-hierarchy utilities.
+   One type scale, one eyebrow, restrained section-transition
+   devices. Tokens only; these are static (no motion to gate).
+   ============================================================ */
+
+/* Type scale (Syne headings). clamp() removes most bespoke md: jumps
+   and floors sizes so 360px never overflows. */
+.db-display {
+  font-family: var(--font-syne);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* ~40 → 72px */
+}
+.db-h2 {
+  font-family: var(--font-syne);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-size: clamp(1.875rem, 3.5vw, 3rem); /* ~30 → 48px */
+}
+.db-h3 {
+  font-family: var(--font-syne);
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: clamp(1.25rem, 2vw, 1.5rem); /* ~20 → 24px */
+}
+.db-subhead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+/* Eyebrow, one treatment, coloured by surface, with a leading brand
+   diamond tick that threads the whole site. */
+.db-eyebrow {
+  font-family: var(--font-jetbrains);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.db-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  rotate: 45deg;
+  background: currentColor;
+  opacity: 0.85;
+  flex: none;
+}
+.db-eyebrow--light { color: var(--color-cyan-ink); }        /* on light surfaces */
+.db-eyebrow--dark { color: var(--color-cyan); }             /* on navy */
+.db-eyebrow--yellow { color: color-mix(in srgb, var(--color-navy) 72%, transparent); } /* on yellow */
+
+/* Light↔light seam: a centred hairline carrying the diamond mark so
+   same-family joins feel authored rather than stacked. Decorative. */
+.db-seam {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+.db-seam::before,
+.db-seam::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-navy) 12%, transparent)
+  );
+}
+.db-seam::after {
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in srgb, var(--color-navy) 12%, transparent)
+  );
+}
+.db-seam-mark {
+  width: 8px;
+  height: 8px;
+  rotate: 45deg;
+  background: var(--color-cyan);
+  opacity: 0.7;
+  flex: none;
+}
+
+/* Navy↔light ramp: a soft gradient bleed on the LIGHT section's edge so
+   navy dissolves in rather than knife-cutting. The section must be
+   `relative` with its content wrapped `relative z-10`. */
+.db-navy-top,
+.db-navy-bottom {
+  position: relative;
+}
+.db-navy-top::before,
+.db-navy-bottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+.db-navy-top::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-navy), transparent);
+}
+.db-navy-bottom::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-navy), transparent);
+}
+
+/* Shared soft card shadow (retires ad-hoc rgba(10,30,61,…) inline shadows). */
+.db-card-shadow {
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-navy) 8%, transparent);
+}
+
+/* ============================================================
+   Motion system (Phase 6): windmill, otter scroll lean, neon
+   cursor tracer. Every block is motion-gated with a static visible
+   fallback + a reduced-motion kill switch. Section progress var
+   (--sp) is written by ScrollDriver onto [data-scroll-section]
+   elements and defaults to 0 so scenes render as clean static
+   stacks pre-hydration.
+   ============================================================ */
+
+/* ---- Windmill decorative rotation ---- */
+/* The brand diamond turns a *small* amount as its section passes, a subtle
+   living touch, deliberately not a full spin (reads calmer for B2B buyers). */
+.windmill {
+  display: inline-block;
+  transform-origin: 50% 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Global fallback: a gentle nudge across the whole page scroll. */
+  .windmill { transform: rotate(calc(var(--scroll-progress, 0) * 45deg)); }
+  /* Section-scoped: a quarter turn as its section passes. On a
+     [data-scroll-section]. Overrides the global rule when both classes are set. */
+  .windmill--section { transform: rotate(calc(var(--sp, 0) * 90deg)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .windmill,
+  .windmill--section {
+    transform: none !important;
+  }
+}
+
+/* ---- Otter mascot scroll lean (additive; sits under state poses) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .otter-scroll-layer {
+    display: block;
+    /* Lean into scroll direction + a gentle bob mapped to progress.
+       Small numbers, the mascot must stay unobtrusive (project rule). */
+    transform:
+      translateY(calc(var(--scroll-progress, 0) * -10px))
+      rotate(calc((var(--scroll-progress, 0) - 0.5) * 8deg));
+    transition: transform 120ms linear;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .otter-scroll-layer { transform: none !important; }
+}
+
+/* ---- Neon-cyan mouse tracer (desktop pointer only) ---- */
+.cursor-tracer-dot,
+.cursor-tracer-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+.cursor-tracer-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-cyan);
+  box-shadow: 0 0 10px 1px var(--color-cyan);
+}
+.cursor-tracer-ring {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-cyan);
+  transition: opacity 200ms var(--ease-out), width 180ms var(--ease-out),
+    height 180ms var(--ease-out), border-color 180ms var(--ease-out);
+}
+.cursor-tracer-on .cursor-tracer-dot,
+.cursor-tracer-on .cursor-tracer-ring { opacity: 0.9; }
+.cursor-tracer-press .cursor-tracer-ring { width: 22px; height: 22px; }
+.cursor-tracer-hot .cursor-tracer-ring {
+  width: 44px;
+  height: 44px;
+  border-color: var(--color-yellow);
+}
+
+/* Belt-and-braces: never render on touch or reduced-motion, even if JS mis-fires */
+@media (pointer: coarse) {
+  .cursor-tracer-dot,
+  .cursor-tracer-ring { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-tracer-dot,
+  .cursor-tracer-ring { display: none !important; }
 }

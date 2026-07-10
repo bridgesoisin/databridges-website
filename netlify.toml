@@ -12,3 +12,13 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Force HTTPS for 2 years, including subdomains (safe once the domain is HTTPS-only).
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    # Isolate the browsing context (mitigates cross-origin leaks / Spectre-class issues).
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    X-DNS-Prefetch-Control = "on"
+    # Content Security Policy. 'unsafe-inline' on script/style is required by Next.js's
+    # inline bootstrap + Tailwind style injection. Tightening script-src with per-request
+    # nonces is the next step if you later add a custom server layer.
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.anthropic.com; form-action 'self' mailto:; upgrade-insecure-requests"

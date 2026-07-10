@@ -1,130 +1,184 @@
 import Image from "next/image";
+import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import LinkedInPostCard from "@/components/LinkedInPostCard";
 import BeforeAfterToggle from "@/components/BeforeAfterToggle";
 import EUAIActChecker from "@/components/EUAIActChecker";
-import StatCounter from "@/components/StatCounter";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroWords from "@/components/HeroWords";
+import Wordmark from "@/components/Wordmark";
+import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
+import NodeGraph from "@/components/graphics/NodeGraph";
+import FlowDiagram from "@/components/graphics/FlowDiagram";
+import StatBand from "@/components/graphics/StatBand";
+import NumberedFeatures from "@/components/graphics/NumberedFeatures";
+import LogoMarquee from "@/components/graphics/LogoMarquee";
+import BeforeAfterBars from "@/components/graphics/BeforeAfterBars";
+import WorkflowPipeline from "@/components/graphics/WorkflowPipeline";
+import ChangeHeatmap from "@/components/graphics/ChangeHeatmap";
+import FourBridges from "@/components/graphics/FourBridges";
+import VignetteCard from "@/components/VignetteCard";
+import { VIGNETTES } from "@/data/vignettes";
+import { LINKEDIN_POSTS } from "@/data/linkedin";
+
+const TECH_ITEMS = [
+  "Microsoft Copilot",
+  "Power Apps",
+  "Power Automate",
+  "Power BI",
+  "SharePoint",
+  "Dataverse",
+  "Microsoft Teams",
+  "ChatGPT",
+  "Microsoft 365",
+];
+
+const HOW_IT_WORKS = [
+  {
+    title: "A free chat",
+    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help, and say so if we can't.",
+  },
+  {
+    title: "Map the mess",
+    body: "We sit with the people actually doing the work, find where the hours go, and pick the fix with the fastest payback.",
+  },
+  {
+    title: "Build it with you",
+    body: "Working software in weeks, not a slide deck. Built on the Microsoft 365 tools you already pay for, shaped around how your team works.",
+  },
+  {
+    title: "Hand it over properly",
+    body: "Training and plain-English documentation so your team owns it. No dependency, no retainer trap.",
+  },
+];
 
 export default function Home() {
   return (
     <>
-      {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "DataBridges",
-            description:
-              "AI consulting, Power Platform development and training workshops for Irish SMEs and public sector teams.",
-            url: "https://databridges.ie",
-            telephone: "",
-            email: "hello@databridges.ie",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Kilcock",
-              addressRegion: "Co. Kildare",
-              addressCountry: "IE",
-            },
-            founder: {
-              "@type": "Person",
-              name: "Oisín Bridges",
-            },
-            sameAs: [
-              "https://www.linkedin.com/company/databridges",
-              "https://www.linkedin.com/in/oisin-bridges",
-            ],
-          }),
-        }}
-      />
+      {/* Identity graph (WebSite / Organization+LocalBusiness / Person) is
+          emitted site-wide in layout.tsx, no per-page duplicate here. */}
 
       {/* ─── SECTION 1: HERO ─── */}
       <section
+        id="hero"
+        data-otter-section="hero"
+        data-scroll-section
         aria-labelledby="hero-heading"
-        className="bg-navy min-h-[100svh] flex items-center relative"
+        className="bg-navy min-h-[100svh] flex items-center relative overflow-hidden"
       >
-        <div className="mx-auto max-w-5xl w-full px-6 pt-[120px] md:pt-[100px] pb-16">
-          <p className="text-sm text-cyan uppercase tracking-widest mb-6">
-            AI Consulting &middot; Power Platform &middot; Training
-          </p>
+        <AnimatedBlobs />
 
-          <h1 id="hero-heading">
-            <HeroWords />
-          </h1>
+        <div className="relative mx-auto max-w-5xl w-full px-6 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+          <div>
+            <Wordmark
+              variant="onDark"
+              priority
+              markSize={60}
+              textClassName="text-5xl sm:text-6xl"
+              className="wordmark-in mb-8"
+              markClassName="windmill windmill--section"
+            />
 
-          <p
-            className="text-xl max-w-2xl mt-6"
-            style={{ color: "var(--color-grey-mid)" }}
-          >
-            DataBridges helps Irish businesses connect people, data and
-            process &mdash; turning &ldquo;there has to be a smarter way to
-            do this&rdquo; into something that actually works.
-          </p>
+            <p className="db-eyebrow db-eyebrow--dark mb-6">
+              AI Consulting &middot; Power Platform &middot; Training
+            </p>
 
-          <div className="mt-10 flex gap-4 flex-wrap">
-            <a
-              href="mailto:hello@databridges.ie"
-              className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
-            >
-              Book a Free Chat &rarr;
-            </a>
-            <a
-              href="#services"
-              className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
-            >
-              See What We Do
-            </a>
+            <h1 id="hero-heading">
+              <HeroWords />
+            </h1>
+
+            <p className="text-xl max-w-xl mt-6 text-gray-300">
+              DataBridges helps Irish businesses connect people, data and
+              process, turning &ldquo;there has to be a smarter way to
+              do this&rdquo; into something that actually works.
+            </p>
+
+            <div className="mt-10 flex gap-4 flex-wrap">
+              <Link
+                href="/contact"
+                className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
+              >
+                Book a free chat &rarr;
+              </Link>
+              <a
+                href="#what-we-do"
+                className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
+              >
+                See what we do
+              </a>
+            </div>
+
+            <p className="mt-16 text-sm text-white/60">
+              Based in Kilcock, Co. Kildare &middot; Working with teams across
+              Ireland
+            </p>
           </div>
 
-          <p className="mt-16 text-sm text-white/40">
-            Based in Kilcock, Co. Kildare &middot; Working with teams across
-            Ireland
-          </p>
+          {/* Hero graphic: people, data and process joined through one hub */}
+          <div className="max-w-sm mx-auto w-full lg:max-w-none">
+            <NodeGraph ariaLabel="Illustration of people, data and process connected through one central hub" />
+          </div>
         </div>
       </section>
 
-      {/* ─── SECTION 2: PAIN POINTS ─── */}
+      {/* ─── SECTION 2: STAT BAND ─── */}
+      <StatBand
+        ariaLabel="DataBridges in numbers"
+        stats={[
+          { target: "5+", label: "Years consulting" },
+          { target: "4", label: "Years in Irish public sector" },
+          { target: "UCD", label: "Professional Academy" },
+          { target: "MSc", label: "Machine Learning Astrophysics" },
+        ]}
+      />
+
+      {/* ─── SECTION 3: TECHNOLOGY MARQUEE ─── */}
+      <section
+        aria-label="Technologies DataBridges works with"
+        className="py-10"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <LogoMarquee
+          items={TECH_ITEMS}
+          ariaLabel="Technologies DataBridges works with"
+        />
+      </section>
+
+      {/* ─── SECTION 4: PAIN POINTS ─── */}
       <section
         id="services"
+        data-otter-section="services"
         aria-labelledby="pain-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
-            The Problem
-          </p>
-          <h2
-            id="pain-heading"
-            className="font-syne text-5xl md:text-6xl font-bold text-navy"
-          >
+          <p className="db-eyebrow db-eyebrow--light mb-4">The Problem</p>
+          <h2 id="pain-heading" className="db-h2 text-navy">
             Sound familiar?
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <ScrollReveal delay={0}>
-              <div className="bg-white rounded-2xl p-8">
-                <p className="font-jetbrains text-lg text-cyan mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 md:mt-14">
+            <ScrollReveal delay={0} className="h-full">
+              <div className="gfx-card bg-white rounded-2xl p-8 h-full">
+                <p className="font-jetbrains text-lg text-cyan-ink mb-4">
                   Final_V12_UseThisOne(2).xlsx
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  The spreadsheet that runs everything &mdash; until someone
+                  The spreadsheet that runs everything, until someone
                   sorts the wrong column and suddenly Dave&apos;s salary is
                   attached to the wrong department. Instant chaos.
                 </p>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={100}>
-              <div className="bg-white rounded-2xl p-8">
-                <p className="font-jetbrains text-lg text-cyan mb-4">
+            <ScrollReveal delay={100} className="h-full">
+              <div className="gfx-card bg-white rounded-2xl p-8 h-full">
+                <p className="font-jetbrains text-lg text-cyan-ink mb-4">
                   Copy. Paste. Repeat.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  Time returns, attendance records, contact lists &mdash;
+                  Time returns, attendance records, contact lists,
                   manually copied between sheets every week because
                   that&apos;s just how it&apos;s always been done.
                   There&apos;s another way.
@@ -132,9 +186,9 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
-              <div className="bg-white rounded-2xl p-8">
-                <p className="font-jetbrains text-lg text-cyan mb-4">
+            <ScrollReveal delay={200} className="h-full">
+              <div className="gfx-card bg-white rounded-2xl p-8 h-full">
+                <p className="font-jetbrains text-lg text-cyan-ink mb-4">
                   40MB and climbing.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
@@ -158,7 +212,7 @@ export default function Home() {
             </p>
             <a
               href="#what-we-do"
-              className="inline-block mt-8 text-cyan font-medium hover:underline transition-colors duration-200"
+              className="inline-block mt-8 text-cyan-ink font-medium hover:underline transition-colors duration-200"
             >
               Show me how &rarr;
             </a>
@@ -166,30 +220,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 3: BEFORE/AFTER ─── */}
+      {/* ─── SECTION 5: BEFORE/AFTER ─── */}
       <BeforeAfterToggle />
 
-      {/* ─── SECTION 4: SERVICES GRID ─── */}
+      {/* ─── SECTION 5b: WHERE WE'VE HELPED ─── */}
       <section
-        id="what-we-do"
-        aria-labelledby="services-heading"
-        className="py-24 px-6 bg-white"
+        id="where-weve-helped"
+        data-otter-section="where-weve-helped"
+        aria-labelledby="where-heading"
+        className="py-20 md:py-28 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm uppercase tracking-widest text-cyan mb-4">
-            What We Do
+          <p className="db-eyebrow db-eyebrow--light mb-4">
+            Where we&apos;ve helped
           </p>
-          <h2
-            id="services-heading"
-            className="font-syne text-5xl font-bold text-navy"
-          >
+          <h2 id="where-heading" className="db-h2 text-navy">
+            Five sectors. One pattern: less faffing, more done.
+          </h2>
+          <p className="db-subhead text-gray-500 mt-3">
+            A regulated finance firm, a fit-out company drowning in sticky
+            notes, legal teams, the health service, and a room full of people
+            learning AI properly. Same job every time, find the grind,
+            build the fix.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 md:mt-14">
+            {VIGNETTES.filter((v) => v.featured).map((v, i) => (
+              <ScrollReveal key={v.slug} delay={i * 100} className="h-full">
+                <VignetteCard vignette={v} href="/work#cases" compact />
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <a
+              href="/work"
+              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
+            >
+              See all our work &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 6: SERVICES GRID ─── */}
+      <section
+        id="what-we-do"
+        data-otter-section="what-we-do"
+        aria-labelledby="services-heading"
+        className="py-20 md:py-28 px-6 bg-white"
+      >
+        <div className="db-seam mb-14 md:mb-16" aria-hidden="true">
+          <span className="db-seam-mark" />
+        </div>
+        <div className="mx-auto max-w-5xl">
+          <p className="db-eyebrow db-eyebrow--light mb-4">What We Do</p>
+          <h2 id="services-heading" className="db-h2 text-navy">
             Four ways we help.
           </h2>
-          <p className="text-gray-500 mt-2">
+          <p className="db-subhead text-gray-500 mt-3">
             Real problems, solved simply. No hype, no decks, no nonsense.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 md:mt-14">
             <ServiceCard
               icon={
                 <svg
@@ -280,70 +374,162 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 5: CREDIBILITY ─── */}
+      {/* ─── SECTION 7: HOW IT WORKS ─── */}
       <section
+        id="how-it-works"
+        data-otter-section="how-it-works"
+        aria-labelledby="how-heading"
+        className="py-20 md:py-28 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="db-eyebrow db-eyebrow--light mb-4">How It Works</p>
+          <h2 id="how-heading" className="db-h2 text-navy">
+            Four steps. No jargon.
+          </h2>
+          <p className="db-subhead text-gray-500 mt-3">
+            From &ldquo;there has to be a smarter way&rdquo; to sorted,
+            here is the route every project takes.
+          </p>
+
+          <ScrollReveal className="mt-12 md:mt-14">
+            <FlowDiagram
+              steps={["Chat", "Map", "Build", "Train"]}
+              ariaLabel="How a DataBridges project runs"
+              className="max-w-2xl mx-auto"
+            />
+          </ScrollReveal>
+
+          <NumberedFeatures
+            items={HOW_IT_WORKS}
+            columns={2}
+            className="mt-12"
+          />
+        </div>
+      </section>
+
+      {/* ─── SECTION 7b: DASHBOARDS ─── */}
+      <section
+        id="dashboards"
+        data-otter-section="dashboards"
+        aria-labelledby="dashboards-heading"
+        className="db-navy-bottom py-20 md:py-28 px-6 bg-white"
+      >
+        <div className="relative z-10 mx-auto max-w-5xl">
+          <p className="db-eyebrow db-eyebrow--light mb-4">The receipts</p>
+          <h2 id="dashboards-heading" className="db-h2 text-navy">
+            Dashboards people actually open.
+          </h2>
+          <p className="db-subhead text-gray-500 mt-3">
+            A flavour of the real work, anonymised by sector. Different
+            sectors, one idea: take out the manual grind so people can get on
+            with the work that actually needs judgement.
+          </p>
+
+          <div className="mt-12 md:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <ScrollReveal>
+              <BeforeAfterBars
+                title="admin-hours.dash"
+                caption="Time on a repetitive manual process, before and after automation. Illustrative."
+                savedLabel="time reclaimed"
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <ChangeHeatmap caption="Change-ticket volume by quarter, 2019–2026, the resourcing picture behind a public-sector transition team. Illustrative." />
+            </ScrollReveal>
+            <ScrollReveal delay={40} className="lg:col-span-2">
+              <WorkflowPipeline
+                stages={["Intake", "Schedule", "Survey", "Quote", "Labour"]}
+                caption="Lead-to-labour flow for a construction & fit-out business: one connected pipeline across Power Platform, Dataverse and Azure OpenAI, no re-keying between systems."
+              />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 7c: FOUR BRIDGES ─── */}
+      <section
+        id="four-bridges"
+        data-otter-section="four-bridges"
+        aria-labelledby="four-bridges-heading"
+        className="bg-navy py-24 md:py-32 px-6"
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="db-eyebrow db-eyebrow--dark mb-4">Our framework</p>
+          <h2 id="four-bridges-heading" className="db-h2 text-white">
+            Four Bridges to AI adoption.
+          </h2>
+          <p className="db-subhead text-gray-300 mt-3">
+            Every engagement crosses the same four spans, in order. Skip one and
+            the whole thing wobbles, so we build them one at a time.
+          </p>
+
+          <FourBridges tone="light" className="mt-14" />
+        </div>
+      </section>
+
+      {/* ─── SECTION 8: CREDIBILITY ─── */}
+      <section
+        id="credibility"
+        data-otter-section="credibility"
         aria-labelledby="credibility-heading"
-        className="bg-navy py-24 px-6"
+        className="bg-navy border-t border-white/10 py-20 md:py-28 px-6"
       >
         <div className="mx-auto max-w-5xl">
           <h2
             id="credibility-heading"
-            className="font-syne text-4xl font-bold text-white text-center"
+            className="db-h2 text-white text-center"
           >
             Not a consultant who learned some buzzwords.
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl text-center mx-auto mt-6">
+          <p className="db-subhead text-gray-300 text-center mx-auto mt-6">
             Ois&iacute;n has worked inside the HSE and Tusla before
             consulting for organisations like them. He has an MSc in data
             science and teaches AI at UCD. He has been doing this since 2021.
             The difference shows.
           </p>
 
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatCounter target="5+" label="Years consulting" />
-            <StatCounter target="4" label="Years in Irish public sector" />
-            <StatCounter target="UCD" label="Professional Academy" />
-            <StatCounter target="Aug '26" label="EU AI Act deadline" />
-          </div>
-
-          {/* Credential pills */}
-          <div className="mt-12 flex flex-wrap gap-3 justify-center">
+          {/* Credential list, substance, not tags */}
+          <ul className="mt-12 md:mt-14 mx-auto max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
             {[
               "MSc Astrophysics (Distinction) · Cardiff",
               "UCD Professional Academy Lecturer",
               "Microsoft Copilot Certified",
-              "HSE · Tusla",
+              "HSE · Tusla · Senior Analyst",
             ].map((cred) => (
-              <span
+              <li
                 key={cred}
-                className="border border-white/20 text-white/60 text-xs px-4 py-2 rounded-full"
+                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white/80"
               >
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rotate-45 bg-cyan shrink-0"
+                />
                 {cred}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* ─── SECTION 6: EU AI ACT CHECKER ─── */}
+      {/* ─── SECTION 9: EU AI ACT CHECKER ─── */}
       <section
         id="eu-ai-act-checker"
+        data-otter-section="eu-ai-act-checker"
         aria-labelledby="euai-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6 border-t border-navy/10"
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl">
-          <p className="text-sm uppercase tracking-widest text-navy/60 mb-4">
-            Free Tool
-          </p>
-          <h2
-            id="euai-heading"
-            className="font-syne text-4xl md:text-5xl font-bold text-navy"
-          >
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
+          <p className="db-eyebrow db-eyebrow--yellow mb-4">Free Tool</p>
+          <h2 id="euai-heading" className="db-h2 text-navy">
             Does the EU AI Act affect your business?
           </h2>
-          <p className="text-navy/70 text-lg mt-4 mb-12">
+          <p className="db-subhead text-navy/70 mt-4 mb-12">
             Answer 4 questions. Get an honest answer in 30 seconds.
           </p>
 
@@ -351,14 +537,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 7: ABOUT TEASER ─── */}
+      {/* ─── SECTION 10: ABOUT TEASER ─── */}
       <section
+        id="about-teaser"
+        data-otter-section="about-teaser"
         aria-labelledby="about-teaser-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center">
+          <ScrollReveal className="flex justify-center">
             <Image
               src="/images/headshot-oisin.jpeg"
               alt="Oisín Bridges, founder of DataBridges, wearing a tweed jacket and paisley tie"
@@ -366,17 +554,14 @@ export default function Home() {
               height={384}
               className="rounded-2xl max-w-sm w-full object-cover aspect-square"
             />
-          </div>
+          </ScrollReveal>
 
           {/* Text */}
-          <div className="md:pl-12">
-            <p className="text-sm uppercase tracking-widest text-cyan mb-4">
+          <ScrollReveal delay={100} className="md:pl-12">
+            <p className="db-eyebrow db-eyebrow--light mb-4">
               About Ois&iacute;n
             </p>
-            <h2
-              id="about-teaser-heading"
-              className="font-syne text-4xl font-bold text-navy"
-            >
+            <h2 id="about-teaser-heading" className="db-h2 text-navy">
               An astrophysicist who got tired of bad spreadsheets.
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mt-4">
@@ -388,39 +573,43 @@ export default function Home() {
             </p>
             <a
               href="/about"
-              className="inline-block mt-6 text-cyan font-medium hover:underline transition-colors duration-200"
+              className="inline-block mt-6 text-cyan-ink font-medium hover:underline transition-colors duration-200"
             >
               Full story &rarr;
             </a>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ─── SECTION 8: LINKEDIN CONTENT ─── */}
+      {/* ─── SECTION 11: LINKEDIN CONTENT ─── */}
       <section
+        id="linkedin"
+        data-otter-section="linkedin"
         aria-labelledby="linkedin-heading"
-        className="py-24 px-6 bg-white"
+        className="py-20 md:py-28 px-6 bg-white"
       >
         <div className="mx-auto max-w-5xl">
-          <h2
-            id="linkedin-heading"
-            className="font-syne text-3xl font-semibold text-navy text-center"
-          >
+          <h2 id="linkedin-heading" className="db-h2 text-navy text-center">
             Straight talk about AI
           </h2>
-          <p className="text-gray-500 text-center mt-2">
+          <p className="db-subhead text-gray-500 text-center mx-auto mt-3">
             No hype. No vendor decks. Just honest takes.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <LinkedInPostCard
-              previewText="Irish businesses love spreadsheets. But here are the top 5 ways they go wrong. 1. One wrong sort and the whole thing collapses. You think you're sorting by date, suddenly everyone's salary..."
-              postUrl="https://www.linkedin.com/feed/update/urn:li:activity:7421857533692387328"
-            />
-            <LinkedInPostCard
-              previewText="The AI Deadline is Closer Than You Think. If your business uses AI for recruitment, credit scoring, or educational placement, the August 2026 Annex III deadline is real and it is approaching..."
-              postUrl="https://www.linkedin.com/pulse/compliance-traps-eu-ai-act-how-irish-firms-can-avoid-them-zy5jf"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-14">
+            {LINKEDIN_POSTS.map((post, i) => (
+              <ScrollReveal
+                key={post.postUrl + post.tag}
+                delay={(i % 3) * 80}
+                className="h-full"
+              >
+                <LinkedInPostCard
+                  tag={post.tag}
+                  previewText={post.previewText}
+                  postUrl={post.postUrl}
+                />
+              </ScrollReveal>
+            ))}
           </div>
 
           <div className="mt-10 text-center">
@@ -436,16 +625,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 9: FOOTER CTA ─── */}
+      {/* ─── SECTION 12: FOOTER CTA ─── */}
       <section
+        id="footer-cta"
+        data-otter-section="footer-cta"
         aria-labelledby="footer-cta-heading"
-        className="py-24 px-6"
+        className="py-20 md:py-28 px-6 border-t border-navy/10"
         style={{ backgroundColor: "var(--color-yellow)" }}
       >
         <div className="mx-auto max-w-2xl text-center">
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
           <h2
             id="footer-cta-heading"
-            className="font-syne text-4xl md:text-5xl font-extrabold text-navy leading-tight"
+            className="db-h2 font-extrabold text-navy leading-tight"
           >
             Ready to stop doing things the hard way?
           </h2>
@@ -454,12 +649,12 @@ export default function Home() {
             can help.
           </p>
 
-          <a
-            href="mailto:hello@databridges.ie"
+          <Link
+            href="/contact"
             className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
-            Book a Free Chat &rarr;
-          </a>
+            Book a free chat &rarr;
+          </Link>
         </div>
       </section>
     </>

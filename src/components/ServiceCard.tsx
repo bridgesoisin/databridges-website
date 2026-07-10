@@ -14,7 +14,7 @@ export default function ServiceCard({
   href,
 }: ServiceCardProps) {
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-cyan">
+    <div className="bg-white border border-gray-100 rounded-2xl p-8 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-cyan motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center text-cyan">
         {icon}
       </div>
@@ -26,7 +26,7 @@ export default function ServiceCard({
       </p>
       <Link
         href={href}
-        className="inline-block text-cyan text-sm font-medium mt-6 hover:underline transition-colors duration-200"
+        className="inline-block text-cyan-ink text-sm font-medium mt-6 hover:underline transition-colors duration-200"
       >
         Learn more &rarr;
       </Link>

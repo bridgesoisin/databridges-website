@@ -1,0 +1,10 @@
+# Normalise line endings so Windows CRLF churn does not create noise commits.
+* text=auto eol=lf
+
+# Binary assets: never touch line endings.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.svg text eol=lf

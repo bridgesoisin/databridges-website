@@ -8,7 +8,10 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/seo-aeo", label: "SEO & AEO" },
   { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -38,10 +41,10 @@ export default function Nav() {
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-gray-100"
-          : "bg-transparent"
+          ? "bg-white/80 backdrop-blur-md border-gray-100"
+          : "bg-transparent border-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
@@ -64,9 +67,11 @@ export default function Nav() {
               href={link.href}
               className={`text-sm font-medium transition-colors duration-200 ${
                 pathname === link.href
-                  ? "text-cyan"
+                  ? scrolled
+                    ? "text-cyan-ink"
+                    : "text-cyan"
                   : scrolled
-                  ? "text-navy hover:text-cyan"
+                  ? "text-navy hover:text-cyan-ink"
                   : "text-white hover:text-cyan"
               }`}
             >
@@ -77,19 +82,19 @@ export default function Nav() {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          {/* Book a Chat — desktop */}
+          {/* Book a free chat, desktop */}
           <Link
-            href="mailto:hello@databridges.ie"
+            href="/contact"
             className="hidden md:inline-flex bg-cyan text-navy font-semibold px-5 py-2 rounded-full text-sm transition-colors duration-200 hover:bg-white"
           >
-            Book a Chat
+            Book a free chat
           </Link>
 
-          {/* Book a Chat — mobile icon */}
+          {/* Book a free chat, mobile icon */}
           <Link
-            href="mailto:hello@databridges.ie"
-            className="md:hidden"
-            aria-label="Book a chat"
+            href="/contact"
+            className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 -m-2"
+            aria-label="Book a free chat"
           >
             <svg
               width="24"
@@ -109,9 +114,9 @@ export default function Nav() {
             </svg>
           </Link>
 
-          {/* Hamburger — mobile */}
+          {/* Hamburger, mobile */}
           <button
-            className="md:hidden"
+            className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 -m-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
@@ -182,12 +187,12 @@ export default function Nav() {
         ))}
 
         <Link
-          href="mailto:hello@databridges.ie"
+          href="/contact"
           onClick={() => setMenuOpen(false)}
           className="font-syne nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
           style={{ transitionDelay: `${navLinks.length * 80}ms` }}
         >
-          Book a Chat
+          Book a free chat
         </Link>
       </div>
     </nav>
