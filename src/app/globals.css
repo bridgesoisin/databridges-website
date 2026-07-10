@@ -95,6 +95,11 @@ body {
   font-family: var(--font-jetbrains);
 }
 
+/* Gilroy ExtraBold: the "databridges" wordmark lockup only (home hero). */
+.font-gilroy {
+  font-family: var(--font-gilroy);
+}
+
 /* Focus styles: two-tone ring (navy halo + cyan outline) so the indicator
    keeps ≥3:1 contrast on light and dark surfaces alike */
 *:focus-visible {

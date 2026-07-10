@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -13,6 +14,16 @@ const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
+  display: "swap",
+});
+
+// Gilroy ExtraBold (the free-for-commercial-use weight), self-hosted.
+// Used ONLY for the "databridges" wordmark lockup on the home hero;
+// all other headings stay Syne.
+const gilroy = localFont({
+  src: "../fonts/Gilroy-ExtraBold.woff",
+  variable: "--font-gilroy",
+  weight: "800",
   display: "swap",
 });
 
@@ -83,7 +94,7 @@ export default function RootLayout({
     // smooth via the html rule in globals.css.
     <html lang="en-IE" data-scroll-behavior="smooth">
       <body
-        className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${syne.variable} ${gilroy.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
         style={{ fontFamily: "var(--font-dm-sans)" }}
       >
         <script
