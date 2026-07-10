@@ -22,7 +22,7 @@ Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automa
 - Cyan `--color-cyan` #3DE0E8 (accent / CTAs)
 - Yellow `--color-yellow` #FFC857 (highlight / sparkle)
 - Off-white `--color-offwhite` #F8F7F4
-- Fonts: Gilroy ExtraBold (headings, `.font-gilroy`, self-hosted free weight in `src/fonts/`), DM Sans (body), JetBrains Mono (`.font-jetbrains`)
+- Fonts: Syne (headings, `.font-syne`), DM Sans (body), JetBrains Mono (`.font-jetbrains`)
 
 ## Key components
 - `src/components/OtterGuide.tsx` — the otter mascot. Client component mounted globally in `layout.tsx`. Pure guide (no chatbot yet). Responsibilities:

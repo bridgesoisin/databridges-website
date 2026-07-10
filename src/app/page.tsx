@@ -198,7 +198,7 @@ export default function Home() {
 
           {/* Transition paragraph */}
           <div className="mt-16 text-center">
-            <p className="font-gilroy text-2xl md:text-3xl text-navy italic">
+            <p className="font-syne text-2xl md:text-3xl text-navy italic">
               There&apos;s a smarter way. It doesn&apos;t require a
               master&apos;s degree.
             </p>
@@ -608,7 +608,7 @@ export default function Home() {
 
           <Link
             href="/contact"
-            className="font-gilroy inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
+            className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
             Book a free chat &rarr;
           </Link>

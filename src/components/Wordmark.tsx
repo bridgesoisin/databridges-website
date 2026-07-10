@@ -51,7 +51,7 @@ export default function Wordmark({
         />
       )}
       <span
-        className={`font-poppins font-extrabold tracking-tight leading-none ${textClassName}`}
+        className={`font-syne font-extrabold tracking-tight leading-none ${textClassName}`}
       >
         <span className={dataColour}>data</span>
         <span className={bridgesColour}>bridges</span>

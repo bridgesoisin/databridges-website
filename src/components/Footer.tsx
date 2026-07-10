@@ -9,12 +9,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Left, Wordmark and tagline */}
           <div>
-            <span className="inline-flex items-center gap-2.5 text-xl tracking-tight">
+            <span className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight">
               <span
                 aria-hidden="true"
                 className="inline-block h-2.5 w-2.5 rotate-45 bg-cyan"
               />
-              <span className="font-poppins font-extrabold">
+              <span>
                 <span className="text-white">data</span>
                 <span className="text-cyan">bridges</span>
               </span>

@@ -71,7 +71,7 @@ export default function VignetteCard({
         <p className="text-xs text-gray-400">{sector}</p>
       </div>
 
-      <h3 className="font-gilroy text-2xl font-bold text-navy mt-3">{title}</h3>
+      <h3 className="font-syne text-2xl font-bold text-navy mt-3">{title}</h3>
 
       {!compact && (
         <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">

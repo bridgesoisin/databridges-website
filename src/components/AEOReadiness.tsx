@@ -87,7 +87,7 @@ export default function AEOReadiness() {
     <div className="mx-auto max-w-3xl rounded-3xl bg-white border border-gray-100 p-6 md:p-10"
       style={{ boxShadow: "0 12px 40px rgba(10,30,61,0.10)" }}>
       <div className="flex items-baseline justify-between gap-4 flex-wrap">
-        <h3 className="font-gilroy text-2xl md:text-3xl font-bold text-navy">
+        <h3 className="font-syne text-2xl md:text-3xl font-bold text-navy">
           Is your site ready for AI answers?
         </h3>
         <span
@@ -123,10 +123,10 @@ export default function AEOReadiness() {
           />
         </div>
         <div className="flex items-center justify-between mt-3">
-          <span className="font-gilroy text-xl font-bold text-navy">
+          <span className="font-syne text-xl font-bold text-navy">
             {t.label}
           </span>
-          <span className="font-gilroy text-2xl font-extrabold text-navy">
+          <span className="font-syne text-2xl font-extrabold text-navy">
             {pct}%
           </span>
         </div>

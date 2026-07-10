@@ -46,11 +46,11 @@ export default function NumberedFeatures({
               className="gfx-card flex h-full gap-4 rounded-2xl border border-gray-100 bg-white p-6"
               style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.05)" }}
             >
-              <span aria-hidden="true" className="font-gilroy text-3xl font-extrabold text-cyan shrink-0">
+              <span aria-hidden="true" className="font-syne text-3xl font-extrabold text-cyan shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>
-                <span className="block font-gilroy text-lg font-bold text-navy">
+                <span className="block font-syne text-lg font-bold text-navy">
                   {item.title}
                 </span>
                 <span className="block text-gray-600 mt-1 text-[15px] leading-relaxed">

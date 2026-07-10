@@ -18,7 +18,7 @@ export default function ServiceCard({
       <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center text-cyan">
         {icon}
       </div>
-      <h3 className="font-gilroy text-xl text-navy mt-4 font-semibold">
+      <h3 className="font-syne text-xl text-navy mt-4 font-semibold">
         {name}
       </h3>
       <p className="text-gray-600 mt-2">

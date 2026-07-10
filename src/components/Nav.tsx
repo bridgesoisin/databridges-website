@@ -179,7 +179,7 @@ export default function Nav() {
             key={link.href}
             href={link.href}
             onClick={() => setMenuOpen(false)}
-            className="font-gilroy nav-overlay-link text-white font-bold text-3xl hover:text-cyan transition-colors duration-200"
+            className="font-syne nav-overlay-link text-white font-bold text-3xl hover:text-cyan transition-colors duration-200"
             style={{ transitionDelay: `${i * 80}ms` }}
           >
             {link.label}
@@ -189,7 +189,7 @@ export default function Nav() {
         <Link
           href="/contact"
           onClick={() => setMenuOpen(false)}
-          className="font-gilroy nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
+          className="font-syne nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
           style={{ transitionDelay: `${navLinks.length * 80}ms` }}
         >
           Book a free chat

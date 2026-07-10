@@ -307,7 +307,7 @@ export default function SeoAeoPage() {
                 <span className="font-jetbrains text-sm uppercase tracking-widest text-cyan-ink">
                   SEO
                 </span>
-                <h3 className="font-gilroy text-2xl font-bold text-navy mt-2">
+                <h3 className="font-syne text-2xl font-bold text-navy mt-2">
                   Rank in search results
                 </h3>
                 <p className="text-gray-600 mt-3 leading-relaxed">
@@ -323,7 +323,7 @@ export default function SeoAeoPage() {
                 <span className="font-jetbrains text-sm uppercase tracking-widest text-yellow-ink">
                   AEO
                 </span>
-                <h3 className="font-gilroy text-2xl font-bold text-navy mt-2">
+                <h3 className="font-syne text-2xl font-bold text-navy mt-2">
                   Get quoted by AI answers
                 </h3>
                 <p className="text-gray-600 mt-3 leading-relaxed">
@@ -369,7 +369,7 @@ export default function SeoAeoPage() {
               <ScrollReveal key={s.title} delay={(i % 3) * 70}>
                 <div className="seo-card h-full rounded-2xl border border-gray-100 bg-white p-7"
                   style={{ boxShadow: "0 6px 20px rgba(10,30,61,0.06)" }}>
-                  <h3 className="font-gilroy text-xl font-bold text-navy">
+                  <h3 className="font-syne text-xl font-bold text-navy">
                     {s.title}
                   </h3>
                   <p className="text-gray-600 mt-2 leading-relaxed text-[15px]">
@@ -409,12 +409,12 @@ export default function SeoAeoPage() {
                   style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.05)" }}>
                   <span
                     aria-hidden="true"
-                    className="font-gilroy text-3xl font-extrabold text-cyan shrink-0"
+                    className="font-syne text-3xl font-extrabold text-cyan shrink-0"
                   >
                     {tip.n}
                   </span>
                   <span>
-                    <span className="block font-gilroy text-lg font-bold text-navy">
+                    <span className="block font-syne text-lg font-bold text-navy">
                       {tip.title}
                     </span>
                     <span className="block text-gray-600 mt-1 text-[15px] leading-relaxed">
@@ -461,7 +461,7 @@ export default function SeoAeoPage() {
               <ScrollReveal key={f.q} delay={i * 40}>
                 <article className="rounded-2xl border border-gray-100 bg-white p-6 md:p-8"
                   style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.06)" }}>
-                  <h3 className="font-gilroy text-xl font-bold text-navy">{f.q}</h3>
+                  <h3 className="font-syne text-xl font-bold text-navy">{f.q}</h3>
                   <p className="text-gray-600 mt-3 leading-relaxed">{f.a}</p>
                 </article>
               </ScrollReveal>

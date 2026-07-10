@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono, Poppins } from "next/font/google";
-import localFont from "next/font/local";
+import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -10,21 +9,10 @@ import LoopPauser from "@/components/LoopPauser";
 import CursorTracer from "@/components/CursorTracer";
 import { graph, websiteLd, organizationLd, personLd } from "@/lib/jsonld";
 
-// Gilroy ExtraBold is one of the two free-for-commercial-use Gilroy weights;
-// it is the only face bundled, so all heading weights render at 800.
-const gilroy = localFont({
-  src: "../fonts/Gilroy-ExtraBold.woff",
-  variable: "--font-gilroy",
-  weight: "800",
-  display: "swap",
-});
-
-// Poppins ExtraBold: the "databridges" business-name wordmark only, not
-// general headings (those use Gilroy above).
-const poppins = Poppins({
-  variable: "--font-poppins",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["800"],
+  weight: ["400", "600", "700", "800"],
   display: "swap",
 });
 
@@ -95,7 +83,7 @@ export default function RootLayout({
     // smooth via the html rule in globals.css.
     <html lang="en-IE" data-scroll-behavior="smooth">
       <body
-        className={`${gilroy.variable} ${poppins.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
         style={{ fontFamily: "var(--font-dm-sans)" }}
       >
         <script

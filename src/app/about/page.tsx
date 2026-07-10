@@ -410,7 +410,7 @@ export default function AboutPage() {
                         className="gfx-card flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-5"
                         style={{ boxShadow: "0 4px 16px rgba(10,30,61,0.05)" }}
                       >
-                        <div className="font-gilroy w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan-ink text-xs font-bold flex-shrink-0">
+                        <div className="font-syne w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan-ink text-xs font-bold flex-shrink-0">
                           {item.initial}
                         </div>
                         <div>
@@ -464,7 +464,7 @@ export default function AboutPage() {
 
             <Link
               href="/contact"
-              className="font-gilroy inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
+              className="font-syne inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
             >
               Book a free chat &rarr;
             </Link>

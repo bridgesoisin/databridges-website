@@ -13,7 +13,7 @@ function ContactFormInner() {
         <div className="text-4xl mb-4" aria-hidden="true">
           &#10003;
         </div>
-        <h3 className="font-gilroy text-2xl font-bold text-navy mb-3">
+        <h3 className="font-syne text-2xl font-bold text-navy mb-3">
           Message received.
         </h3>
         <p className="text-gray-600 text-lg">
