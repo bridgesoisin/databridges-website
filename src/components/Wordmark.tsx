@@ -11,7 +11,7 @@ interface WordmarkProps {
   textClassName?: string;
   /** Extra classes on the wrapper. */
   className?: string;
-  /** Extra classes on the diamond mark itself (e.g. "windmill windmill--section"). */
+  /** Extra classes on the diamond mark itself. */
   markClassName?: string;
   /** Render the diamond mark (set false for text-only lockups). */
   showMark?: boolean;

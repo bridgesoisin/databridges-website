@@ -52,10 +52,30 @@
   top: 0;
 }
 
-/* Smooth scroll (motion, so gated on the user's preference) */
+/* Smooth scroll (motion, so gated on the user's preference).
+   Applies to in-page anchors only: layout.tsx sets data-scroll-behavior="smooth"
+   on <html>, which tells Next.js to scroll instantly on route navigation. */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Page transition: template.tsx remounts on every navigation, so each new
+   page fades in once. Route scroll is instant (see above), so the fade is
+   the only motion on navigation. */
+@media (prefers-reduced-motion: no-preference) {
+  .page-fade {
+    animation: page-fade-in 0.3s ease-out;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -153,28 +173,6 @@ body {
   }
 
   @keyframes heroWordReveal {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-/* Brand wordmark lockup entrance (hero). Visible by default; only the
-   motion is gated on the user's preference. */
-.wordmark-in {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .wordmark-in {
-    opacity: 0;
-    transform: translateY(-12px);
-    animation: wordmarkIn 600ms var(--ease-emph) forwards;
-  }
-
-  @keyframes wordmarkIn {
     to {
       opacity: 1;
       transform: translateY(0);
@@ -403,8 +401,17 @@ body {
 
 /* Bubble pop-in */
 .otter-bubble {
+  /* Clears the mascot's head (avatar is 256px tall, 140px on phones);
+     keep in sync with .otter-avatar-btn's size + breakpoint below. */
+  bottom: 240px;
   transform-origin: bottom right;
   animation: otter-bubble-pop 320ms var(--otter-ease) 1;
+}
+
+@media (max-width: 640px) {
+  .otter-bubble {
+    bottom: 130px;
+  }
 }
 
 @keyframes otter-bubble-pop {
@@ -957,36 +964,13 @@ body {
 }
 
 /* ============================================================
-   Motion system (Phase 6): windmill, otter scroll lean, neon
-   cursor tracer. Every block is motion-gated with a static visible
-   fallback + a reduced-motion kill switch. Section progress var
-   (--sp) is written by ScrollDriver onto [data-scroll-section]
-   elements and defaults to 0 so scenes render as clean static
-   stacks pre-hydration.
+   Motion system (Phase 6): otter scroll lean, neon cursor tracer.
+   Every block is motion-gated with a static visible fallback + a
+   reduced-motion kill switch. Section progress var (--sp) is
+   written by ScrollDriver onto [data-scroll-section] elements and
+   defaults to 0 so scenes render as clean static stacks
+   pre-hydration.
    ============================================================ */
-
-/* ---- Windmill decorative rotation ---- */
-/* The brand diamond turns a *small* amount as its section passes, a subtle
-   living touch, deliberately not a full spin (reads calmer for B2B buyers). */
-.windmill {
-  display: inline-block;
-  transform-origin: 50% 50%;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* Global fallback: a gentle nudge across the whole page scroll. */
-  .windmill { transform: rotate(calc(var(--scroll-progress, 0) * 45deg)); }
-  /* Section-scoped: a quarter turn as its section passes. On a
-     [data-scroll-section]. Overrides the global rule when both classes are set. */
-  .windmill--section { transform: rotate(calc(var(--sp, 0) * 90deg)); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .windmill,
-  .windmill--section {
-    transform: none !important;
-  }
-}
 
 /* ---- Otter mascot scroll lean (additive; sits under state poses) ---- */
 @media (prefers-reduced-motion: no-preference) {

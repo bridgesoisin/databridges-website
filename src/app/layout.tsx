@@ -78,7 +78,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IE">
+    // data-scroll-behavior lets Next.js override CSS smooth scrolling with an
+    // instant jump when navigating between routes; in-page anchor links stay
+    // smooth via the html rule in globals.css.
+    <html lang="en-IE" data-scroll-behavior="smooth">
       <body
         className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
         style={{ fontFamily: "var(--font-dm-sans)" }}

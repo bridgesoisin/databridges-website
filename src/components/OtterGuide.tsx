@@ -457,7 +457,6 @@ export default function OtterGuide() {
           aria-live="polite"
           style={{
             position: "absolute",
-            bottom: "76px",
             right: "0",
             width: "268px",
             background: "var(--color-white)",

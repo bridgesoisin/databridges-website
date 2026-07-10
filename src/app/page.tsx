@@ -75,8 +75,7 @@ export default function Home() {
               priority
               markSize={60}
               textClassName="text-5xl sm:text-6xl"
-              className="wordmark-in mb-8"
-              markClassName="windmill windmill--section"
+              className="mb-8"
             />
 
             <p className="db-eyebrow db-eyebrow--dark mb-6">
