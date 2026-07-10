@@ -75,7 +75,7 @@ export default function StatCounter({
   return (
     <div ref={ref} className="text-center">
       <div
-        className={`font-syne text-5xl font-extrabold tabular-nums ${
+        className={`font-gilroy text-5xl font-extrabold tabular-nums ${
           accent === "yellow" ? "text-yellow" : "text-cyan"
         }`}
       >

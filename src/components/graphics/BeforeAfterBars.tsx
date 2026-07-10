@@ -137,10 +137,10 @@ export default function BeforeAfterBars({
           )}
 
           {/* value labels */}
-          <text x={B_X + BAR_W / 2} y={beforeTop - 10} textAnchor="middle" className="font-syne" fontSize={20} fontWeight={800} fill={textOnCard}>
+          <text x={B_X + BAR_W / 2} y={beforeTop - 10} textAnchor="middle" className="font-gilroy" fontSize={20} fontWeight={800} fill={textOnCard}>
             {beforeValue}
           </text>
-          <text x={A_X + BAR_W / 2} y={afterTop - 10} textAnchor="middle" className="font-syne" fontSize={20} fontWeight={800} fill="var(--color-cyan-ink)">
+          <text x={A_X + BAR_W / 2} y={afterTop - 10} textAnchor="middle" className="font-gilroy" fontSize={20} fontWeight={800} fill="var(--color-cyan-ink)">
             {afterValue}
           </text>
 

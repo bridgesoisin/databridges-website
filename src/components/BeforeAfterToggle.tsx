@@ -15,7 +15,7 @@ export default function BeforeAfterToggle() {
       <div className="mx-auto max-w-4xl">
         <h2
           id="before-after-heading"
-          className="font-syne text-4xl font-bold text-white text-center mb-4"
+          className="font-gilroy text-4xl font-bold text-white text-center mb-4"
         >
           What We Actually Change
         </h2>
@@ -207,7 +207,7 @@ export default function BeforeAfterToggle() {
                     key={kpi.label}
                     className="bg-white rounded-xl p-4 text-center border border-gray-100"
                   >
-                    <div className="font-syne text-2xl font-bold text-cyan-ink">
+                    <div className="font-gilroy text-2xl font-bold text-cyan-ink">
                       {kpi.value}
                     </div>
                     <div className="text-xs text-gray-500 mt-1">

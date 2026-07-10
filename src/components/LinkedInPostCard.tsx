@@ -20,7 +20,7 @@ export default function LinkedInPostCard({
 
       {/* Author header */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="font-syne w-8 h-8 rounded-full bg-navy flex items-center justify-center text-cyan text-xs font-bold">
+        <div className="font-gilroy w-8 h-8 rounded-full bg-navy flex items-center justify-center text-cyan text-xs font-bold">
           db
         </div>
         <div>

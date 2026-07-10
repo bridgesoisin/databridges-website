@@ -79,7 +79,7 @@ export default function FlowDiagram({
               x={x + boxW / 2}
               y={BOX_Y + 52}
               textAnchor="middle"
-              className="font-syne"
+              className="font-gilroy"
               fontSize={15}
               fontWeight={700}
               fill="var(--color-offwhite)"

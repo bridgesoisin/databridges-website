@@ -87,12 +87,17 @@ body {
 }
 
 /* Font utilities */
-.font-syne {
-  font-family: var(--font-syne);
+.font-gilroy {
+  font-family: var(--font-gilroy);
 }
 
 .font-jetbrains {
   font-family: var(--font-jetbrains);
+}
+
+/* "databridges" business-name wordmark only, not general headings. */
+.font-poppins {
+  font-family: var(--font-poppins);
 }
 
 /* Focus styles: two-tone ring (navy halo + cyan outline) so the indicator
@@ -410,7 +415,7 @@ body {
 
 @media (max-width: 640px) {
   .otter-bubble {
-    bottom: 130px;
+    bottom: 165px;
   }
 }
 
@@ -845,21 +850,21 @@ body {
 /* Type scale (Syne headings). clamp() removes most bespoke md: jumps
    and floors sizes so 360px never overflows. */
 .db-display {
-  font-family: var(--font-syne);
+  font-family: var(--font-gilroy);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.05;
   font-size: clamp(2.5rem, 6vw, 4.5rem); /* ~40 → 72px */
 }
 .db-h2 {
-  font-family: var(--font-syne);
+  font-family: var(--font-gilroy);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.1;
   font-size: clamp(1.875rem, 3.5vw, 3rem); /* ~30 → 48px */
 }
 .db-h3 {
-  font-family: var(--font-syne);
+  font-family: var(--font-gilroy);
   font-weight: 700;
   line-height: 1.2;
   font-size: clamp(1.25rem, 2vw, 1.5rem); /* ~20 → 24px */

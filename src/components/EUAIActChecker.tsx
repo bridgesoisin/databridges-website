@@ -152,7 +152,7 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4" aria-hidden="true">
               &#9888;
             </div>
-            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
+            <h3 className="font-gilroy text-2xl font-bold text-navy mb-4">
               You likely have high-risk (Annex III) AI, and probably
               transparency duties too.
             </h3>
@@ -169,7 +169,7 @@ export default function EUAIActChecker() {
             </p>
             <Link
               href="/contact"
-              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
+              className="font-gilroy inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a compliance chat with Ois&iacute;n &rarr;
             </Link>
@@ -181,7 +181,7 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4 text-cyan" aria-hidden="true">
               &#9888;
             </div>
-            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
+            <h3 className="font-gilroy text-2xl font-bold text-navy mb-4">
               The August 2026 transparency deadline applies to you.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
@@ -196,7 +196,7 @@ export default function EUAIActChecker() {
             </p>
             <Link
               href="/contact"
-              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
+              className="font-gilroy inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a compliance chat with Ois&iacute;n &rarr;
             </Link>
@@ -208,7 +208,7 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4 text-emerald-600" aria-hidden="true">
               &#10003;
             </div>
-            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
+            <h3 className="font-gilroy text-2xl font-bold text-navy mb-4">
               You&apos;re light-touch, for now.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
@@ -220,7 +220,7 @@ export default function EUAIActChecker() {
             </p>
             <Link
               href="/contact"
-              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
+              className="font-gilroy inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free 30-minute chat &rarr;
             </Link>
@@ -232,7 +232,7 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4 text-emerald-600" aria-hidden="true">
               &#10003;
             </div>
-            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
+            <h3 className="font-gilroy text-2xl font-bold text-navy mb-4">
               Nothing to disclose yet, a good time to plan.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
@@ -244,7 +244,7 @@ export default function EUAIActChecker() {
             </p>
             <Link
               href="/contact"
-              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
+              className="font-gilroy inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free chat &rarr;
             </Link>
@@ -256,7 +256,7 @@ export default function EUAIActChecker() {
             <div className="text-5xl mb-4 text-cyan" aria-hidden="true">
               ?
             </div>
-            <h3 className="font-syne text-2xl font-bold text-navy mb-4">
+            <h3 className="font-gilroy text-2xl font-bold text-navy mb-4">
               Hard to say without a bit more context.
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
@@ -266,7 +266,7 @@ export default function EUAIActChecker() {
             </p>
             <Link
               href="/contact"
-              className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
+              className="font-gilroy inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
               Book a free chat &rarr;
             </Link>
@@ -308,7 +308,7 @@ export default function EUAIActChecker() {
       </div>
 
       {/* Question */}
-      <h3 className="font-syne text-xl font-bold text-navy mb-2">
+      <h3 className="font-gilroy text-xl font-bold text-navy mb-2">
         {currentQuestion.question}
       </h3>
       {currentQuestion.note && (

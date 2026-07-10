@@ -376,7 +376,7 @@ function ServiceSection({
               <li key={item} className="flex items-start gap-3">
                 <span
                   aria-hidden="true"
-                  className="font-syne text-xl font-extrabold text-cyan shrink-0 leading-7"
+                  className="font-gilroy text-xl font-extrabold text-cyan shrink-0 leading-7"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -691,7 +691,7 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
+            className="font-gilroy inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
             Book a free chat &rarr;
           </Link>

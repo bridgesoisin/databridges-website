@@ -249,7 +249,7 @@ export default function WorkPage() {
 
           <Link
             href="/contact"
-            className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
+            className="font-gilroy inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
             Book a free chat &rarr;
           </Link>

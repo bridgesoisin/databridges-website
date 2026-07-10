@@ -95,7 +95,7 @@ export default function WorkflowPipeline({
               x={xs[i]}
               y={MID_Y + NODE_R + 24}
               textAnchor="middle"
-              className="font-syne"
+              className="font-gilroy"
               fontSize={16}
               fontWeight={700}
               fill={textOnCard}

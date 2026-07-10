@@ -136,7 +136,7 @@ export default function FourBridges({
               />
               {/* numbered keystone at the arch peak */}
               <circle cx={midX} cy={DECK_Y - PEAK} r={14} fill="var(--color-navy)" stroke="var(--color-yellow)" strokeWidth={2} />
-              <text x={midX} y={DECK_Y - PEAK + 5} textAnchor="middle" className="font-syne" fontSize={15} fontWeight={800} fill="var(--color-yellow)">
+              <text x={midX} y={DECK_Y - PEAK + 5} textAnchor="middle" className="font-gilroy" fontSize={15} fontWeight={800} fill="var(--color-yellow)">
                 {i + 1}
               </text>
 
@@ -149,7 +149,7 @@ export default function FourBridges({
                     x={midX}
                     y={WATER_Y + (arr.length === 1 ? 30 : 24 + li * 14)}
                     textAnchor="middle"
-                    className="font-syne"
+                    className="font-gilroy"
                     fontSize={12}
                     fontWeight={700}
                     fill={textOnCard}
@@ -189,7 +189,7 @@ export default function FourBridges({
           <li key={s.title} className="flex items-start gap-3">
             <span
               aria-hidden="true"
-              className="font-syne shrink-0 flex h-7 w-7 items-center justify-center rounded-full border-2 text-sm font-extrabold"
+              className="font-gilroy shrink-0 flex h-7 w-7 items-center justify-center rounded-full border-2 text-sm font-extrabold"
               style={{
                 backgroundColor: "var(--color-navy)",
                 borderColor: "var(--color-yellow)",
@@ -199,7 +199,7 @@ export default function FourBridges({
               {i + 1}
             </span>
             <span>
-              <span className="block font-syne text-base font-bold" style={{ color: textOnCard }}>
+              <span className="block font-gilroy text-base font-bold" style={{ color: textOnCard }}>
                 {s.title}
               </span>
               <span className="block font-jetbrains text-xs mt-0.5" style={{ color: subColor }}>
