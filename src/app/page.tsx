@@ -13,9 +13,6 @@ import FlowDiagram from "@/components/graphics/FlowDiagram";
 import StatBand from "@/components/graphics/StatBand";
 import NumberedFeatures from "@/components/graphics/NumberedFeatures";
 import LogoMarquee from "@/components/graphics/LogoMarquee";
-import BeforeAfterBars from "@/components/graphics/BeforeAfterBars";
-import WorkflowPipeline from "@/components/graphics/WorkflowPipeline";
-import ChangeHeatmap from "@/components/graphics/ChangeHeatmap";
 import FourBridges from "@/components/graphics/FourBridges";
 import VignetteCard from "@/components/VignetteCard";
 import { VIGNETTES } from "@/data/vignettes";
@@ -404,45 +401,6 @@ export default function Home() {
             columns={2}
             className="mt-12"
           />
-        </div>
-      </section>
-
-      {/* ─── SECTION 7b: DASHBOARDS ─── */}
-      <section
-        id="dashboards"
-        data-otter-section="dashboards"
-        aria-labelledby="dashboards-heading"
-        className="db-navy-bottom py-20 md:py-28 px-6 bg-white"
-      >
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <p className="db-eyebrow db-eyebrow--light mb-4">The receipts</p>
-          <h2 id="dashboards-heading" className="db-h2 text-navy">
-            Dashboards people actually open.
-          </h2>
-          <p className="db-subhead text-gray-500 mt-3">
-            A flavour of the real work, anonymised by sector. Different
-            sectors, one idea: take out the manual grind so people can get on
-            with the work that actually needs judgement.
-          </p>
-
-          <div className="mt-12 md:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <ScrollReveal>
-              <BeforeAfterBars
-                title="admin-hours.dash"
-                caption="Time on a repetitive manual process, before and after automation. Illustrative."
-                savedLabel="time reclaimed"
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={80}>
-              <ChangeHeatmap caption="Change-ticket volume by quarter, 2019–2026, the resourcing picture behind a public-sector transition team. Illustrative." />
-            </ScrollReveal>
-            <ScrollReveal delay={40} className="lg:col-span-2">
-              <WorkflowPipeline
-                stages={["Intake", "Schedule", "Survey", "Quote", "Labour"]}
-                caption="Lead-to-labour flow for a construction & fit-out business: one connected pipeline across Power Platform, Dataverse and Azure OpenAI, no re-keying between systems."
-              />
-            </ScrollReveal>
-          </div>
         </div>
       </section>
 
