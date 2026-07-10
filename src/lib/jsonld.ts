@@ -18,7 +18,7 @@ export const organizationLd = {
   email: "hello@databridges.ie",
   telephone: "+353 85 136 4920",
   logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo-wordmark.png` },
-  image: `${SITE_URL}/images/logo-wordmark.png`,
+  image: `${SITE_URL}/images/og-card.jpg`,
   foundingDate: "2021-01",
   founder: { "@id": PERSON_ID },
   address: {

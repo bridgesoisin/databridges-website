@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     title: "Our Work, AI & Power Platform case studies | DataBridges",
     description:
       "Real engagements, told straight and anonymised by sector. Concrete outcomes, no vanity metrics.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Our Work | DataBridges",
     description:
       "Real engagements, told straight and anonymised by sector. Concrete outcomes, no vanity metrics.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
 };
 

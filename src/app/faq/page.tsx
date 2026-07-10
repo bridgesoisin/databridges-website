@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     title: "DataBridges FAQ, AI, Power Platform & Automation for Irish teams",
     description:
       "Straight answers on services, pricing, the EU AI Act, SharePoint, training and getting started.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "FAQ | DataBridges",
     description:
       "Straight answers on services, pricing, the EU AI Act, SharePoint, training and getting started.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
 };
 

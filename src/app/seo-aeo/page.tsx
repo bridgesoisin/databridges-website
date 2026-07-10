@@ -18,14 +18,14 @@ export const metadata: Metadata = {
     title: "SEO & AEO Consulting for Irish Businesses | DataBridges",
     description:
       "Rank on Google and get cited by AI answer engines. Practical SEO and AEO consulting, plus free tips you can try today.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "SEO & AEO Consulting Ireland | DataBridges",
     description:
       "Rank on Google and get cited by AI answer engines. Practical SEO and AEO consulting for Irish businesses.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
 };
 

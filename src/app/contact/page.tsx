@@ -18,14 +18,14 @@ export const metadata: Metadata = {
     title: "Contact | DataBridges",
     description:
       "Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact | DataBridges",
     description:
       "Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
 };
 

@@ -55,10 +55,10 @@ export const metadata: Metadata = {
       "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams. Based in Kilcock, Co. Kildare.",
     images: [
       {
-        url: "/images/logo-wordmark.png",
+        url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "DataBridges",
+        alt: "DataBridges, Making AI Useful",
       },
     ],
   },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "DataBridges | Making AI Useful for Irish Business",
     description:
       "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
   robots: { index: true, follow: true },
 };

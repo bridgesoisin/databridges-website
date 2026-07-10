@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     title: "Services | DataBridges, AI Consulting & Power Platform",
     description:
       "AI consulting, Power Platform, SharePoint automation and AI training for Irish teams.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Services | DataBridges",
     description:
       "AI consulting, Power Platform, SharePoint automation and training for Irish teams.",
-    images: ["/images/logo-wordmark.png"],
+    images: ["/images/og-card.jpg"],
   },
 };
 
