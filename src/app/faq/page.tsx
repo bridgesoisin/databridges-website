@@ -77,7 +77,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do I get started?",
-    a: "Email hello@databridges.ie or book a free 30-minute chat. There is no sales script and no jargon: you tell us what is driving you mad, and we tell you honestly whether AI or automation can fix it.",
+    a: "Email oisin@databridges.ie or book a free 30-minute chat. There is no sales script and no jargon: you tell us what is driving you mad, and we tell you honestly whether AI or automation can fix it.",
   },
 ];
 
@@ -295,10 +295,10 @@ export default function FaqPage() {
               The things people ask most about working with DataBridges. Can&apos;t
               see your question? Email{" "}
               <a
-                href="mailto:hello@databridges.ie"
+                href="mailto:oisin@databridges.ie"
                 className="text-cyan underline underline-offset-4"
               >
-                hello@databridges.ie
+                oisin@databridges.ie
               </a>
               .
             </p>

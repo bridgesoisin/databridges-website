@@ -89,12 +89,12 @@ const PATHNAME_FALLBACK: Record<string, Tip> = {
   "/faq": {
     kind: "section",
     message: "Can't find your question here? A real answer is one email away.",
-    replies: [{ label: "Email hello@databridges.ie", href: "mailto:hello@databridges.ie" }],
+    replies: [{ label: "Email oisin@databridges.ie", href: "mailto:oisin@databridges.ie" }],
   },
   "/contact": {
     kind: "section",
     message: "Stuck on what to write? Just say what's broken, that's enough to start.",
-    replies: [{ label: "Email hello@databridges.ie", href: "mailto:hello@databridges.ie" }],
+    replies: [{ label: "Email oisin@databridges.ie", href: "mailto:oisin@databridges.ie" }],
   },
 };
 

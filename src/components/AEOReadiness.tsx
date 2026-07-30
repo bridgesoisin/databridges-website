@@ -169,7 +169,7 @@ export default function AEOReadiness() {
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <a
-          href="mailto:hello@databridges.ie?subject=AEO%20audit"
+          href="mailto:oisin@databridges.ie?subject=AEO%20audit"
           className="inline-block rounded-full bg-navy px-7 py-3 font-semibold text-white transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
         >
           Get a full audit

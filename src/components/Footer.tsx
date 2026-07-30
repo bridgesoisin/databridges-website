@@ -50,10 +50,10 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <p className="db-eyebrow db-eyebrow--dark mb-1">Get in touch</p>
             <a
-              href="mailto:hello@databridges.ie"
+              href="mailto:oisin@databridges.ie"
               className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
             >
-              hello@databridges.ie
+              oisin@databridges.ie
             </a>
             <a
               href="tel:+353851364920"
@@ -70,7 +70,7 @@ export default function Footer() {
               linkedin.com/company/databridges
             </a>
             <p className="text-sm text-gray-400">
-              Kilcock, Co. Kildare, Ireland &middot; W23 WV63
+              Kilcock, Co. Kildare, Ireland
             </p>
           </div>
         </div>

@@ -37,8 +37,8 @@ and training/workshops. Clients are mostly Irish SMEs and public sector teams, n
 
 Voice: warm, plain-spoken, lightly playful, never salesy or corporate. Keep replies to 1-3 short
 sentences. If asked about price, explain projects are scoped individually and the first 30-minute
-chat is free (hello@databridges.ie). If you do not know something factual, say so and point them
-to hello@databridges.ie rather than guessing. Never invent case studies, figures, or credentials.`;
+chat is free (oisin@databridges.ie). If you do not know something factual, say so and point them
+to oisin@databridges.ie rather than guessing. Never invent case studies, figures, or credentials.`;
 
 export async function POST(req: NextRequest) {
   if (isRateLimited(clientIp(req))) {
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { answer: "The chat brain isn't switched on yet. Email hello@databridges.ie and you'll get a real answer." },
+      { answer: "The chat brain isn't switched on yet. Email oisin@databridges.ie and you'll get a real answer." },
       { status: 200 }
     );
   }
@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
 
     if (!res.ok) {
       return NextResponse.json(
-        { answer: "I hit a snag just now. Try again, or email hello@databridges.ie." },
+        { answer: "I hit a snag just now. Try again, or email oisin@databridges.ie." },
         { status: 200 }
       );
     }
@@ -93,11 +93,11 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
     const answer =
       data?.content?.[0]?.text?.trim() ||
-      "Good question, that one's better answered by a human: hello@databridges.ie.";
+      "Good question, that one's better answered by a human: oisin@databridges.ie.";
     return NextResponse.json({ answer }, { status: 200 });
   } catch {
     return NextResponse.json(
-      { answer: "I hit a snag just now. Try again, or email hello@databridges.ie." },
+      { answer: "I hit a snag just now. Try again, or email oisin@databridges.ie." },
       { status: 200 }
     );
   }

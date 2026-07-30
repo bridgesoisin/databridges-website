@@ -118,7 +118,7 @@ const FAQS = [
   },
   {
     q: "How do I get started?",
-    a: "Try the free readiness check on this page, then email hello@databridges.ie for a full audit. The first 30-minute chat is free and comes with no sales script.",
+    a: "Try the free readiness check on this page, then email oisin@databridges.ie for a full audit. The first 30-minute chat is free and comes with no sales script.",
   },
 ];
 

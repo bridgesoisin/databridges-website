@@ -15,7 +15,7 @@ export const organizationLd = {
   legalName: "DataBridges",
   description:
     "AI consulting, Power Platform development, SharePoint automation and training for Irish SMEs and public sector teams.",
-  email: "hello@databridges.ie",
+  email: "oisin@databridges.ie",
   telephone: "+353 85 136 4920",
   logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo-wordmark.png` },
   image: `${SITE_URL}/images/og-card.jpg`,
@@ -25,7 +25,6 @@ export const organizationLd = {
     "@type": "PostalAddress",
     addressLocality: "Kilcock",
     addressRegion: "Co. Kildare",
-    postalCode: "W23 WV63",
     addressCountry: "IE",
   },
   geo: { "@type": "GeoCoordinates", latitude: 53.4013, longitude: -6.6706 },
@@ -62,7 +61,7 @@ export const personLd = {
   jobTitle: "AI Consultant & Machine Learning Engineer",
   worksFor: { "@id": ORG_ID },
   founder: { "@id": ORG_ID },
-  email: "hello@databridges.ie",
+  email: "oisin@databridges.ie",
   telephone: "+353 85 136 4920",
   knowsAbout: [
     "Artificial Intelligence",

@@ -202,9 +202,11 @@ That is **wrong**. The correct, stronger story:
 ## Decisions (resolved 2026-07-03)
 - [x] **Client naming:** keep anonymised. Do **not** name Classic Bathrooms. Frame the
       engagement as working with **"lead construction and fit-out businesses"** (sector, not name).
-- [x] **Phone + Eircode:** cleared to publish. Show **085 136 4920** and Eircode **W23WV63**
-      on Contact and in LocalBusiness schema (`telephone`, `address` incl. postalCode, `geo`).
-- [x] **Canonical email:** keep `hello@databridges.ie` on-site (CV's gmail is not used publicly).
+- [x] **Phone + Eircode:** phone **085 136 4920** is published. Eircode **W23 WV63** was
+      published then **removed 2026-07-10** at owner's request (locality + geo only, no
+      `postalCode` in schema).
+- [x] **Canonical email:** **oisin@databridges.ie** site-wide (changed 2026-07-10 from the
+      earlier `hello@` alias, which was not reaching the inbox).
 
 ---
 

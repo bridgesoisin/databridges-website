@@ -204,10 +204,10 @@ const DETAILS = [
     label: "Email",
     body: (
       <a
-        href="mailto:hello@databridges.ie"
+        href="mailto:oisin@databridges.ie"
         className="text-navy font-medium hover:text-cyan transition-colors duration-200"
       >
-        hello@databridges.ie
+        oisin@databridges.ie
       </a>
     ),
   },
@@ -250,7 +250,6 @@ const DETAILS = [
     body: (
       <>
         <p className="text-navy font-medium">Kilcock, Co. Kildare, Ireland</p>
-        <p className="font-jetbrains text-sm text-navy/70 mt-1">W23 WV63</p>
         <p className="text-sm text-gray-500 mt-1">
           Working with teams across Ireland
         </p>
