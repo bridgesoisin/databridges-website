@@ -1,11 +1,40 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 
 function ContactFormInner() {
   const searchParams = useSearchParams();
-  const isSuccess = searchParams.get("success") === "true";
+  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
+  const isSuccess = searchParams.get("success") === "true" || submitted;
+
+  // Next.js runs on the Netlify server runtime, so a native <form> POST would
+  // hit the Next server instead of Netlify's form handler. Instead we POST
+  // url-encoded data to /__forms.html (a static file Netlify registers as the
+  // "contact" form), which records the submission and fires the email
+  // notification set in the Netlify dashboard.
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const params = new URLSearchParams();
+    new FormData(form).forEach((value, key) =>
+      params.append(key, value.toString())
+    );
+
+    setStatus("submitting");
+    try {
+      const res = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+      if (!res.ok) throw new Error(`Form POST failed: ${res.status}`);
+      setSubmitted(true);
+    } catch {
+      setStatus("error");
+    }
+  }
 
   if (isSuccess) {
     return (
@@ -34,12 +63,17 @@ function ContactFormInner() {
     <form
       name="contact"
       method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      action="/contact?success=true"
+      action="/__forms.html"
+      onSubmit={handleSubmit}
+      noValidate
     >
       <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="bot-field" />
+      {/* Honeypot: bots fill this; humans never see it. */}
+      <p hidden aria-hidden="true">
+        <label>
+          Do not fill this in: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
 
       <div className="space-y-6">
         <div>
@@ -109,10 +143,24 @@ function ContactFormInner() {
 
         <button
           type="submit"
-          className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-base w-full hover:bg-cyan/90 transition-colors duration-200"
+          disabled={status === "submitting"}
+          className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-base w-full hover:bg-cyan/90 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Send it over &rarr;
+          {status === "submitting" ? "Sending…" : "Send it over →"}
         </button>
+
+        {status === "error" && (
+          <p role="alert" className="text-sm text-navy/80 text-center">
+            Something went wrong sending that. Please email{" "}
+            <a
+              href="mailto:oisin@databridges.ie"
+              className="text-cyan-ink font-medium hover:underline"
+            >
+              oisin@databridges.ie
+            </a>{" "}
+            directly and I&apos;ll get straight back to you.
+          </p>
+        )}
       </div>
     </form>
   );

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form detection</title>
+  </head>
+  <body>
+    <!--
+      Static form so Netlify's build-time bot registers the "contact" form.
+      The real, styled form is src/components/ContactForm.tsx, which POSTs
+      here via fetch (Next.js runs on the @netlify/plugin-nextjs server
+      runtime, so a native <form> POST would hit the Next server and never
+      reach Netlify's form handler). Field names MUST match ContactForm.
+    -->
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="organisation" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
