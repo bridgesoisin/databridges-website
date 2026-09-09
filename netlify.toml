@@ -22,3 +22,22 @@
     # inline bootstrap + Tailwind style injection. Tightening script-src with per-request
     # nonces is the next step if you later add a custom server layer.
     Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.anthropic.com; form-action 'self' mailto:; upgrade-insecure-requests"
+
+# Decap CMS admin at /admin needs to call Netlify's API for Identity login
+# and Git Gateway commits. Scoped to this one path only (Netlify resolves
+# same-named headers by path specificity, so the site-wide policy above is
+# untouched for every other page) rather than loosening the CSP globally.
+# The CMS itself is self-hosted (public/admin/decap-cms.js), not CDN-loaded,
+# so script-src stays 'self' here too.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    X-DNS-Prefetch-Control = "on"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.netlify.com; form-action 'self'; upgrade-insecure-requests"

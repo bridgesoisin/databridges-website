@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>DataBridges Admin</title>
+    <!-- The /admin -> /admin/index.html rewrite (next.config.ts) means the
+         browser can be at "/admin" (no trailing slash), where any relative
+         URL Decap builds (config.yml, uploaded media, etc.) would otherwise
+         resolve against "/" instead of "/admin/". <base> fixes resolution
+         for the whole page regardless of which exact URL got you here. -->
+    <base href="/admin/" />
+    <!-- Self-hosted (vendored) rather than loaded from a CDN, so this page
+         works within the site's existing CSP (script-src 'self') with no
+         changes needed there. See public/admin/README.md for how to update
+         the vendored decap-cms.js file to a newer version. -->
+  </head>
+  <body>
+    <script src="/admin/decap-cms.js"></script>
+  </body>
+</html>

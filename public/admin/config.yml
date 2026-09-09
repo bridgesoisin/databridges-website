@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: master
+
+publish_mode: simple
+
+# Default media location for any field that doesn't set its own
+# media_folder/public_folder (see the "events" collection below, which
+# overrides this to keep posters in their own folder).
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "linkedin"
+    label: "LinkedIn Posts"
+    delete: false # keep exactly one file; add/remove entries within it
+    editor:
+      preview: false
+    files:
+      - name: "posts"
+        label: "LinkedIn Posts"
+        file: "content/linkedin.json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{tag}} — {{previewText}}"
+            fields:
+              - { label: "Topic tag", name: "tag", widget: "string", hint: "Short chip label, e.g. 'EU AI Act'" }
+              - { label: "Preview text", name: "previewText", widget: "text" }
+              - { label: "LinkedIn post URL", name: "postUrl", widget: "string" }
+
+  - name: "events"
+    label: "Events"
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    media_folder: "/public/images/events"
+    public_folder: "/images/events"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date & time", name: "date", widget: "datetime" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Poster image", name: "posterImage", widget: "image" }
+      - { label: "Registration / booking link", name: "registrationUrl", widget: "string", required: false, hint: "Optional — leave blank if there's nowhere to register yet" }
+      - { label: "Description", name: "body", widget: "markdown" }
