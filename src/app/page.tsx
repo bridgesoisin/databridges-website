@@ -110,9 +110,23 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Hero graphic: people, data and process joined through one hub */}
-          <div className="max-w-sm mx-auto w-full lg:max-w-none">
+          {/* Hero graphic: people, data and process joined through one hub,
+              with a founder photo badge so the hero has a face, not just
+              an abstract illustration. */}
+          <div className="relative max-w-sm mx-auto w-full lg:max-w-none">
             <NodeGraph ariaLabel="Illustration of people, data and process connected through one central hub" />
+
+            <div className="absolute -bottom-3 -right-3 sm:bottom-0 sm:right-0 lg:right-4">
+              <div className="relative h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 overflow-hidden rounded-full border-4 border-cyan shadow-xl">
+                <Image
+                  src="/images/headshot-oisin.jpeg"
+                  alt="Oisín Bridges, founder of DataBridges"
+                  fill
+                  sizes="128px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
