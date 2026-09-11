@@ -110,19 +110,23 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Hero graphic: people, data and process joined through one hub,
-              with a founder photo badge so the hero has a face, not just
-              an abstract illustration. */}
+          {/* Hero graphic: people, data and process joined through one hub.
+              The founder photo sits directly on the hub node (the graph's
+              own centre point), so the illustration reads literally, Oisín
+              is the connector, not a badge bolted onto a corner. The navy
+              ring matches the section background, punching a clean hole in
+              the crossing lines so they read as stopping behind the photo. */}
           <div className="relative max-w-sm mx-auto w-full lg:max-w-none">
             <NodeGraph ariaLabel="Illustration of people, data and process connected through one central hub" />
 
-            <div className="absolute -bottom-3 -right-3 sm:bottom-0 sm:right-0 lg:right-4">
-              <div className="relative h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 overflow-hidden rounded-full border-4 border-cyan shadow-xl">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="relative h-36 w-36 sm:h-44 sm:w-44 lg:h-52 lg:w-52 overflow-hidden rounded-full border-4 border-cyan shadow-2xl ring-8 ring-navy">
                 <Image
                   src="/images/headshot-oisin.jpeg"
                   alt="Oisín Bridges, founder of DataBridges"
                   fill
-                  sizes="128px"
+                  sizes="208px"
+                  priority
                   className="object-cover"
                 />
               </div>
