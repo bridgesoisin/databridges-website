@@ -309,7 +309,7 @@ export default function AboutPage() {
                 className="absolute -inset-3 rounded-2xl border-2 border-cyan/30 rotate-2"
               />
               <Image
-                src="/images/headshot-oisin.jpeg"
+                src="/images/about-portrait.jpg"
                 alt="Oisín Bridges, founder of DataBridges"
                 width={320}
                 height={320}
@@ -347,6 +347,15 @@ export default function AboutPage() {
                     <h3 className="db-h3 text-navy mb-3">
                       {act.heading}
                     </h3>
+                    {i === 0 && (
+                      <Image
+                        src="/images/about-msc-graduation.jpg"
+                        alt="Oisín Bridges at his MSc graduation, Cardiff University"
+                        width={160}
+                        height={284}
+                        className="float-right ml-5 mb-2 w-28 sm:w-36 rounded-xl border-2 border-cyan/30 -rotate-2 shadow-md"
+                      />
+                    )}
                     <p className="text-gray-700 leading-relaxed">{act.body}</p>
                   </ScrollReveal>
                 </div>

@@ -1,13 +1,20 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 function ContactFormInner() {
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const isSuccess = searchParams.get("success") === "true" || submitted;
+
+  // Lets OtterGuide (an unrelated sibling component) switch to its
+  // celebrating pose. Covers both the JS success path (setSubmitted) and
+  // the no-JS fallback (page loads with ?success=true already in the URL).
+  useEffect(() => {
+    if (isSuccess) window.dispatchEvent(new Event("db:contact-success"));
+  }, [isSuccess]);
 
   // Next.js runs on the Netlify server runtime, so a native <form> POST would
   // hit the Next server instead of Netlify's form handler. Instead we POST

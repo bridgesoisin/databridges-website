@@ -32,6 +32,25 @@ interface Tip {
 
 type VisualState = "idle" | "reading" | "searching";
 
+/* Which artwork the avatar button shows. Priority (highest first) is
+   resolved in the `pose` derivation below: celebrating > teaching > thinking
+   > default. All four share the same character/render style so swapping
+   `src` composes cleanly with the CSS-driven float/wave/alert animations
+   already applied to the button (those animate the button, not the image). */
+type OtterPose = "default" | "teaching" | "celebrating" | "thinking";
+
+const POSE_SRC: Record<OtterPose, string> = {
+  default: "/images/mascot/otter-avatar.png",
+  teaching: "/images/mascot/otter-teaching.png",
+  celebrating: "/images/mascot/otter-celebrating.png",
+  thinking: "/images/mascot/otter-thinking.png",
+};
+
+/* Dispatched by ContactForm on a successful submission. A plain DOM event
+   rather than React context/props, since the two components are unrelated
+   siblings under layout.tsx and this is the one thing they need to share. */
+const CONTACT_SUCCESS_EVENT = "db:contact-success";
+
 /* Contextual tips per on-page section (guides the user through the page) */
 const SECTION_TIPS: Record<string, Tip> = {
   services: {
@@ -173,6 +192,7 @@ export default function OtterGuide() {
   const [entering, setEntering] = useState(false);
   const [bubble, setBubble] = useState<Tip | null>(null);
   const [visual, setVisual] = useState<VisualState>("idle");
+  const [contactSuccess, setContactSuccess] = useState(false);
 
   const activeSectionRef = useRef<string | null>(null);
   const shownKeysRef = useRef<Set<string>>(new Set());
@@ -219,6 +239,20 @@ export default function OtterGuide() {
     );
     return () => clearTimeout(t);
   }, []);
+
+  // Celebrating pose after a successful contact-form submission, until the
+  // visitor navigates elsewhere (reset lives in the cleanup, run when
+  // `pathname` changes away from "/contact" or the component unmounts, not
+  // synchronously in the effect body).
+  useEffect(() => {
+    if (pathname !== "/contact") return;
+    const onSuccess = () => setContactSuccess(true);
+    window.addEventListener(CONTACT_SUCCESS_EVENT, onSuccess);
+    return () => {
+      window.removeEventListener(CONTACT_SUCCESS_EVENT, onSuccess);
+      setContactSuccess(false);
+    };
+  }, [pathname]);
 
   // Track which tagged section is most visible
   useEffect(() => {
@@ -442,6 +476,14 @@ export default function OtterGuide() {
   const showSearch = !menuOpen && visual === "searching";
   const showSpark = !menuOpen && !!bubble && bubble.kind === "ai";
 
+  const pose: OtterPose = contactSuccess
+    ? "celebrating"
+    : bubble && bubble.kind !== "menu"
+      ? "teaching"
+      : pathname === "/faq" && !bubble
+        ? "thinking"
+        : "default";
+
   return (
     <div
       className={`otter-guide-root ${mounted ? "otter-mounted" : ""} ${
@@ -619,7 +661,7 @@ export default function OtterGuide() {
           }}
         >
           <Image
-            src="/images/mascot/otter-avatar.png"
+            src={POSE_SRC[pose]}
             alt=""
             fill
             sizes="(max-width: 640px) 140px, 256px"
