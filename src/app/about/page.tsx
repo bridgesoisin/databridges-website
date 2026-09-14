@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
+import LinkedInPostCard from "@/components/LinkedInPostCard";
+import { LINKEDIN_POSTS } from "@/data/linkedin";
 import { graph, breadcrumbLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -443,6 +445,46 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* MORE FROM LINKEDIN */}
+      <section
+        id="linkedin-more"
+        data-otter-section="linkedin-more"
+        aria-labelledby="linkedin-more-heading"
+        className="py-20 md:py-28 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl">
+          <p
+            className="font-jetbrains text-sm text-cyan-ink text-center mb-3"
+            aria-hidden="true"
+          >
+            /linkedin
+          </p>
+          <h2 id="linkedin-more-heading" className="db-h2 text-navy text-center">
+            More from LinkedIn
+          </h2>
+          <p className="db-subhead text-gray-500 text-center mx-auto mt-3">
+            The rest of what&apos;s on LinkedIn — same voice, no filter.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-14">
+            {LINKEDIN_POSTS.filter((post) => !post.featured).map((post, i) => (
+              <ScrollReveal
+                key={post.postUrl + post.tag}
+                delay={(i % 3) * 80}
+                className="h-full"
+              >
+                <LinkedInPostCard
+                  tag={post.tag}
+                  previewText={post.previewText}
+                  postUrl={post.postUrl}
+                />
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 

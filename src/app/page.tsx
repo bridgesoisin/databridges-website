@@ -572,11 +572,11 @@ export default function Home() {
             No hype. No vendor decks. Just honest takes.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-14">
-            {LINKEDIN_POSTS.map((post, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 md:mt-14 max-w-2xl mx-auto">
+            {LINKEDIN_POSTS.filter((post) => post.featured).map((post, i) => (
               <ScrollReveal
                 key={post.postUrl + post.tag}
-                delay={(i % 3) * 80}
+                delay={i * 80}
                 className="h-full"
               >
                 <LinkedInPostCard
@@ -590,7 +590,7 @@ export default function Home() {
 
           <div className="mt-10 text-center">
             <a
-              href="https://linkedin.com/company/databridges"
+              href="https://www.linkedin.com/company/databridges"
               target="_blank"
               rel="noopener noreferrer"
               className="text-navy font-medium hover:text-cyan transition-colors duration-200"

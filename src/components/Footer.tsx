@@ -63,12 +63,12 @@ export default function Footer() {
               085 136 4920
             </a>
             <a
-              href="https://linkedin.com/company/databridges"
+              href="https://www.linkedin.com/company/databridges"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
             >
-              linkedin.com/company/databridges
+              www.linkedin.com/company/databridges
             </a>
             <p className="text-sm text-gray-400">
               Kilcock, Co. Kildare, Ireland

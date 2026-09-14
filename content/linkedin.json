@@ -3,27 +3,50 @@
     {
       "tag": "EU AI Act",
       "previewText": "The AI Act deadline is still August 2026. The EU pushed the high-risk rules back to 2027 and 2028. Plenty of us read that as 'we can relax.' We read the wrong line. The Article 50 transparency obligations were never part of that delay. They still land on 2 August 2026...",
-      "postUrl": "https://www.linkedin.com/pulse/2nd-august-2026-disclosures-ois%C3%ADn-bridges-ltuuf"
+      "postUrl": "https://www.linkedin.com/pulse/eu-ai-act-transparency-2nd-august-2026-ois%C3%ADn-bridges-50vyf/",
+      "featured": true
+    },
+    {
+      "tag": "AI Act Update",
+      "previewText": "An update from May 2026 on the EU AI Act's rollout, and what it meant for Irish businesses at the time...",
+      "postUrl": "https://www.linkedin.com/pulse/copy-may-2026-eu-ai-act-update-ois%C3%ADn-bridges-vni6f/",
+      "featured": false
+    },
+    {
+      "tag": "Central Bank",
+      "previewText": "The Central Bank of Ireland is already your AI regulator. Most Irish financial firms are not ready for what that means...",
+      "postUrl": "https://www.linkedin.com/pulse/central-bank-ireland-already-your-ai-regulator-most-irish-bridges-gb9jf/",
+      "featured": true
     },
     {
       "tag": "Ireland",
       "previewText": "Ireland's own AI law is moving. The Regulation of Artificial Intelligence Bill 2026 is before the Oireachtas and sets up an AI Office of Ireland, the local enforcement layer under the EU Act. Here's what Irish businesses should watch...",
-      "postUrl": "https://linkedin.com/in/oisin-bridges"
-    },
-    {
-      "tag": "Copyright",
-      "previewText": "A US publisher is suing Google over AI-generated answers eating its traffic. Whatever the verdict, it's the fight that decides who gets paid when an AI quotes your work, and it matters for anyone publishing online...",
-      "postUrl": "https://linkedin.com/in/oisin-bridges"
+      "postUrl": "https://www.linkedin.com/feed/update/urn:li:share:7475856452134309888/",
+      "featured": false
     },
     {
       "tag": "Jobs",
       "previewText": "Ford quietly rehired engineers it had let AI 'replace'. The lesson isn't 'AI doesn't work'. It's that the hard part was never the code. Judgement doesn't automate as cleanly as the slide decks promised...",
-      "postUrl": "https://linkedin.com/in/oisin-bridges"
+      "postUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7478077632874450945/",
+      "featured": false
     },
     {
-      "tag": "Framework",
-      "previewText": "Most AI projects don't fail on the technology. They fall into the gap between a clever demo and a team actually using the thing. Here are the four bridges I build across every time...",
-      "postUrl": "https://linkedin.com/in/oisin-bridges"
+      "tag": "AI Scraping",
+      "previewText": "A look at AI scraping, and what it means for anyone publishing content online...",
+      "postUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7475530763669647360/",
+      "featured": false
+    },
+    {
+      "tag": "Deadline Delay",
+      "previewText": "The EU AI Act's high-risk deadline has been delayed until 2027 — here's what that update actually means...",
+      "postUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7465763290942619650/",
+      "featured": false
+    },
+    {
+      "tag": "Meta",
+      "previewText": "Meta says no. A quick take on the story making the rounds...",
+      "postUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7460280019911647232/",
+      "featured": false
     }
   ]
 }

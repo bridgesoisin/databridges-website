@@ -1,14 +1,17 @@
 /**
- * The LinkedIn posts surfaced in the Home "Straight talk about AI" section.
+ * The LinkedIn posts surfaced across the site: `featured` ones on the Home
+ * "Straight talk about AI" section, the rest on the About page.
  *
  * Content lives in `content/linkedin.json`, editable via the Decap CMS admin
  * at `/admin` ("LinkedIn Posts") without touching code. This file is just a
- * typed loader so `LINKEDIN_POSTS` keeps its original shape for consumers
- * (`src/app/page.tsx`, `LinkedInPostCard.tsx`) — neither needed to change.
+ * typed loader so `LINKEDIN_POSTS` keeps its shape for consumers
+ * (`src/app/page.tsx`, `src/app/about/page.tsx`, `LinkedInPostCard.tsx`).
  *
- * Topic `tag`s let the section read as a body of work rather than five
- * near-identical AI-Act posts. The EU AI Act preview (post 1) is the
- * already-corrected Article 50 / 2 August 2026 story, do not regress it.
+ * Every entry's `postUrl` resolves to a specific post or article — never the
+ * bare profile page. Five of the eight are converted from LinkedIn's embed
+ * format (`embed/feed/update/...`) to the normal public permalink
+ * (`feed/update/.../`), since the embed URLs are meant for an iframe widget,
+ * not a standalone destination.
  */
 
 import linkedinData from "../../content/linkedin.json";
@@ -17,6 +20,7 @@ export interface LinkedInPost {
   tag: string; // topic chip
   previewText: string;
   postUrl: string;
+  featured: boolean; // true = shown on the homepage; false = About page only
 }
 
 export const LINKEDIN_POSTS: LinkedInPost[] = linkedinData.posts;

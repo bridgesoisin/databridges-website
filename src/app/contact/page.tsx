@@ -227,20 +227,20 @@ const DETAILS = [
     body: (
       <>
         <a
-          href="https://linkedin.com/company/databridges"
+          href="https://www.linkedin.com/company/databridges"
           target="_blank"
           rel="noopener noreferrer"
           className="text-navy font-medium hover:text-cyan transition-colors duration-200 block"
         >
-          linkedin.com/company/databridges
+          www.linkedin.com/company/databridges
         </a>
         <a
-          href="https://linkedin.com/in/oisin-bridges"
+          href="https://www.linkedin.com/in/oisin-bridges"
           target="_blank"
           rel="noopener noreferrer"
           className="text-navy font-medium hover:text-cyan transition-colors duration-200 block mt-1"
         >
-          linkedin.com/in/oisin-bridges
+          www.linkedin.com/in/oisin-bridges
         </a>
       </>
     ),
