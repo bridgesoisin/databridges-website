@@ -5,7 +5,27 @@ import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import RankBars from "@/components/graphics/RankBars";
 import NodeGraph from "@/components/graphics/NodeGraph";
 import FlowDiagram from "@/components/graphics/FlowDiagram";
+import NumberedFeatures from "@/components/graphics/NumberedFeatures";
 import { graph, breadcrumbLd, ORG_ID } from "@/lib/jsonld";
+
+const HOW_IT_WORKS = [
+  {
+    title: "A free chat",
+    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help, and say so if we can't.",
+  },
+  {
+    title: "Map the mess",
+    body: "We sit with the people actually doing the work, find where the hours go, and pick the fix with the fastest payback.",
+  },
+  {
+    title: "Build it with you",
+    body: "Working software in weeks, not a slide deck. Built on the Microsoft 365 tools you already pay for, shaped around how your team works.",
+  },
+  {
+    title: "Hand it over properly",
+    body: "Training and plain-English documentation so your team owns it. No dependency, no retainer trap.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Services",
@@ -663,6 +683,40 @@ export default function ServicesPage() {
               </div>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ─── HOW IT WORKS ─── */}
+      <section
+        id="how-it-works"
+        data-otter-section="how-it-works"
+        aria-labelledby="how-heading"
+        className="py-20 md:py-28 px-6"
+        style={{ backgroundColor: "var(--color-offwhite)" }}
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="db-eyebrow db-eyebrow--light mb-4">How It Works</p>
+          <h2 id="how-heading" className="db-h2 text-navy">
+            Four steps. No jargon.
+          </h2>
+          <p className="db-subhead text-gray-500 mt-3">
+            From &ldquo;there has to be a smarter way&rdquo; to sorted,
+            here is the route every project takes.
+          </p>
+
+          <ScrollReveal className="mt-12 md:mt-14">
+            <FlowDiagram
+              steps={["Chat", "Map", "Build", "Train"]}
+              ariaLabel="How a DataBridges project runs"
+              className="max-w-2xl mx-auto"
+            />
+          </ScrollReveal>
+
+          <NumberedFeatures
+            items={HOW_IT_WORKS}
+            columns={2}
+            className="mt-12"
+          />
         </div>
       </section>
 

@@ -2,52 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import LinkedInPostCard from "@/components/LinkedInPostCard";
-import BeforeAfterToggle from "@/components/BeforeAfterToggle";
 import EUAIActChecker from "@/components/EUAIActChecker";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroWords from "@/components/HeroWords";
 import Wordmark from "@/components/Wordmark";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import NodeGraph from "@/components/graphics/NodeGraph";
-import FlowDiagram from "@/components/graphics/FlowDiagram";
 import StatBand from "@/components/graphics/StatBand";
-import NumberedFeatures from "@/components/graphics/NumberedFeatures";
-import LogoMarquee from "@/components/graphics/LogoMarquee";
 import FourBridges from "@/components/graphics/FourBridges";
 import VignetteCard from "@/components/VignetteCard";
 import { VIGNETTES } from "@/data/vignettes";
 import { LINKEDIN_POSTS } from "@/data/linkedin";
-
-const TECH_ITEMS = [
-  "Microsoft Copilot",
-  "Power Apps",
-  "Power Automate",
-  "Power BI",
-  "SharePoint",
-  "Dataverse",
-  "Microsoft Teams",
-  "ChatGPT",
-  "Microsoft 365",
-];
-
-const HOW_IT_WORKS = [
-  {
-    title: "A free chat",
-    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help, and say so if we can't.",
-  },
-  {
-    title: "Map the mess",
-    body: "We sit with the people actually doing the work, find where the hours go, and pick the fix with the fastest payback.",
-  },
-  {
-    title: "Build it with you",
-    body: "Working software in weeks, not a slide deck. Built on the Microsoft 365 tools you already pay for, shaped around how your team works.",
-  },
-  {
-    title: "Hand it over properly",
-    body: "Training and plain-English documentation so your team owns it. No dependency, no retainer trap.",
-  },
-];
 
 export default function Home() {
   return (
@@ -146,19 +111,7 @@ export default function Home() {
         ]}
       />
 
-      {/* ─── SECTION 3: TECHNOLOGY MARQUEE ─── */}
-      <section
-        aria-label="Technologies DataBridges works with"
-        className="py-10"
-        style={{ backgroundColor: "var(--color-offwhite)" }}
-      >
-        <LogoMarquee
-          items={TECH_ITEMS}
-          ariaLabel="Technologies DataBridges works with"
-        />
-      </section>
-
-      {/* ─── SECTION 4: PAIN POINTS ─── */}
+      {/* ─── SECTION 3: PAIN POINTS ─── */}
       <section
         id="services"
         data-otter-section="services"
@@ -234,51 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 5: BEFORE/AFTER ─── */}
-      <BeforeAfterToggle />
-
-      {/* ─── SECTION 5b: WHERE WE'VE HELPED ─── */}
-      <section
-        id="where-weve-helped"
-        data-otter-section="where-weve-helped"
-        aria-labelledby="where-heading"
-        className="py-20 md:py-28 px-6"
-        style={{ backgroundColor: "var(--color-offwhite)" }}
-      >
-        <div className="mx-auto max-w-5xl">
-          <p className="db-eyebrow db-eyebrow--light mb-4">
-            Where we&apos;ve helped
-          </p>
-          <h2 id="where-heading" className="db-h2 text-navy">
-            Five sectors. One pattern: less faffing, more done.
-          </h2>
-          <p className="db-subhead text-gray-500 mt-3">
-            A regulated finance firm, a fit-out company drowning in sticky
-            notes, legal teams, the health service, and a room full of people
-            learning AI properly. Same job every time, find the grind,
-            build the fix.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 md:mt-14">
-            {VIGNETTES.filter((v) => v.featured).map((v, i) => (
-              <ScrollReveal key={v.slug} delay={i * 100} className="h-full">
-                <VignetteCard vignette={v} href="/work#cases" compact />
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <a
-              href="/work"
-              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
-            >
-              See all our work &rarr;
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 6: SERVICES GRID ─── */}
+      {/* ─── SECTION 4: SERVICES GRID ─── */}
       <section
         id="what-we-do"
         data-otter-section="what-we-do"
@@ -384,110 +293,73 @@ export default function Home() {
               description="Practical AI sessions. The same approach used at UCD. Tools your team will open on Monday morning."
               href="/services#training"
             />
+            <ServiceCard
+              icon={
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              }
+              name="SEO & AEO"
+              description="Win in Google search and in AI answers alike, it's a service in its own right."
+              href="/seo-aeo"
+            />
           </div>
         </div>
       </section>
 
-      {/* ─── SECTION 7: HOW IT WORKS ─── */}
+      {/* ─── SECTION 5: WHERE WE'VE HELPED ─── */}
       <section
-        id="how-it-works"
-        data-otter-section="how-it-works"
-        aria-labelledby="how-heading"
+        id="where-weve-helped"
+        data-otter-section="where-weve-helped"
+        aria-labelledby="where-heading"
         className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="db-eyebrow db-eyebrow--light mb-4">How It Works</p>
-          <h2 id="how-heading" className="db-h2 text-navy">
-            Four steps. No jargon.
+          <p className="db-eyebrow db-eyebrow--light mb-4">
+            Where we&apos;ve helped
+          </p>
+          <h2 id="where-heading" className="db-h2 text-navy">
+            Five sectors. One pattern: less faffing, more done.
           </h2>
           <p className="db-subhead text-gray-500 mt-3">
-            From &ldquo;there has to be a smarter way&rdquo; to sorted,
-            here is the route every project takes.
+            A regulated finance firm, a fit-out company drowning in sticky
+            notes, legal teams, the health service, and a room full of people
+            learning AI properly. Same job every time, find the grind,
+            build the fix.
           </p>
 
-          <ScrollReveal className="mt-12 md:mt-14">
-            <FlowDiagram
-              steps={["Chat", "Map", "Build", "Train"]}
-              ariaLabel="How a DataBridges project runs"
-              className="max-w-2xl mx-auto"
-            />
-          </ScrollReveal>
-
-          <NumberedFeatures
-            items={HOW_IT_WORKS}
-            columns={2}
-            className="mt-12"
-          />
-        </div>
-      </section>
-
-      {/* ─── SECTION 7c: FOUR BRIDGES ─── */}
-      <section
-        id="four-bridges"
-        data-otter-section="four-bridges"
-        aria-labelledby="four-bridges-heading"
-        className="bg-navy py-24 md:py-32 px-6"
-      >
-        <div className="mx-auto max-w-5xl">
-          <p className="db-eyebrow db-eyebrow--dark mb-4">Our framework</p>
-          <h2 id="four-bridges-heading" className="db-h2 text-white">
-            Four Bridges to AI adoption.
-          </h2>
-          <p className="db-subhead text-gray-300 mt-3">
-            Every engagement crosses the same four spans, in order. Skip one and
-            the whole thing wobbles, so we build them one at a time.
-          </p>
-
-          <FourBridges tone="light" className="mt-14" />
-        </div>
-      </section>
-
-      {/* ─── SECTION 8: CREDIBILITY ─── */}
-      <section
-        id="credibility"
-        data-otter-section="credibility"
-        aria-labelledby="credibility-heading"
-        className="bg-navy border-t border-white/10 py-20 md:py-28 px-6"
-      >
-        <div className="mx-auto max-w-5xl">
-          <h2
-            id="credibility-heading"
-            className="db-h2 text-white text-center"
-          >
-            Not a consultant who learned some buzzwords.
-          </h2>
-          <p className="db-subhead text-gray-300 text-center mx-auto mt-6">
-            Ois&iacute;n has worked inside the HSE and Tusla before
-            consulting for organisations like them. He has an MSc in
-            Data-Intensive Astrophysics and teaches AI at UCD. He has been
-            doing this since 2021. The difference shows.
-          </p>
-
-          {/* Credential list, substance, not tags */}
-          <ul className="mt-12 md:mt-14 mx-auto max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
-            {[
-              "MSc Data-Intensive Astrophysics (Distinction) · Cardiff",
-              "UCD Professional Academy Lecturer",
-              "Microsoft Copilot Certified",
-              "HSE · Tusla · Senior Analyst",
-            ].map((cred) => (
-              <li
-                key={cred}
-                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white/80"
-              >
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-2 w-2 rotate-45 bg-cyan shrink-0"
-                />
-                {cred}
-              </li>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 md:mt-14">
+            {VIGNETTES.filter((v) => v.featured).map((v, i) => (
+              <ScrollReveal key={v.slug} delay={i * 100} className="h-full">
+                <VignetteCard vignette={v} href="/work#cases" compact />
+              </ScrollReveal>
             ))}
-          </ul>
+          </div>
+
+          <div className="mt-10">
+            <a
+              href="/work"
+              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
+            >
+              See all our work &rarr;
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* ─── SECTION 9: EU AI ACT CHECKER ─── */}
+      {/* ─── SECTION 6: EU AI ACT CHECKER ─── */}
       <section
         id="eu-ai-act-checker"
         data-otter-section="eu-ai-act-checker"
@@ -512,11 +384,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 10: ABOUT TEASER ─── */}
+      {/* ─── SECTION 7: FOUR BRIDGES ─── */}
       <section
-        id="about-teaser"
-        data-otter-section="about-teaser"
-        aria-labelledby="about-teaser-heading"
+        id="four-bridges"
+        data-otter-section="four-bridges"
+        aria-labelledby="four-bridges-heading"
+        className="bg-navy py-24 md:py-32 px-6"
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="db-eyebrow db-eyebrow--dark mb-4">Our framework</p>
+          <h2 id="four-bridges-heading" className="db-h2 text-white">
+            Four Bridges to AI adoption.
+          </h2>
+          <p className="db-subhead text-gray-300 mt-3">
+            Every engagement crosses the same four spans, in order. Skip one and
+            the whole thing wobbles, so we build them one at a time.
+          </p>
+
+          <FourBridges tone="light" className="mt-14" />
+        </div>
+      </section>
+
+      {/* ─── SECTION 8: WHO YOU'D BE WORKING WITH (merged bio) ─── */}
+      <section
+        id="credibility"
+        data-otter-section="credibility"
+        aria-labelledby="credibility-heading"
         className="py-20 md:py-28 px-6"
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
@@ -536,8 +429,8 @@ export default function Home() {
             <p className="db-eyebrow db-eyebrow--light mb-4">
               About Ois&iacute;n
             </p>
-            <h2 id="about-teaser-heading" className="db-h2 text-navy">
-              An astrophysicist who got tired of bad spreadsheets.
+            <h2 id="credibility-heading" className="db-h2 text-navy">
+              Not a consultant who learned some buzzwords.
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mt-4">
               Ois&iacute;n trained in data-intensive astrophysics at Cardiff
@@ -547,6 +440,28 @@ export default function Home() {
               projects kept making work harder, not easier. He now also
               teaches AI at UCD Professional Academy.
             </p>
+
+            {/* Credential list, substance, not tags */}
+            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0">
+              {[
+                "MSc Data-Intensive Astrophysics (Distinction) · Cardiff",
+                "UCD Professional Academy Lecturer",
+                "Microsoft Copilot Certified",
+                "HSE · Tusla · Senior Analyst",
+              ].map((cred) => (
+                <li
+                  key={cred}
+                  className="flex items-center gap-3 rounded-xl border border-navy/10 bg-white px-4 py-3 text-sm text-navy/80"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="inline-block h-2 w-2 rotate-45 bg-cyan-ink shrink-0"
+                  />
+                  {cred}
+                </li>
+              ))}
+            </ul>
+
             <a
               href="/about"
               className="inline-block mt-6 text-cyan-ink font-medium hover:underline transition-colors duration-200"
@@ -557,7 +472,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 11: LINKEDIN CONTENT ─── */}
+      {/* ─── SECTION 9: LINKEDIN CONTENT ─── */}
       <section
         id="linkedin"
         data-otter-section="linkedin"
@@ -601,7 +516,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SECTION 12: FOOTER CTA ─── */}
+      {/* ─── SECTION 10: FOOTER CTA ─── */}
       <section
         id="footer-cta"
         data-otter-section="footer-cta"
