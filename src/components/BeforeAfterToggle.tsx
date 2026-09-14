@@ -12,7 +12,7 @@ export default function BeforeAfterToggle() {
       aria-labelledby="before-after-heading"
       className="bg-navy py-24 px-6"
     >
-      <div className="mx-auto max-w-4xl">
+      <figure className="mx-auto max-w-4xl">
         <h2
           id="before-after-heading"
           className="font-syne text-4xl font-bold text-white text-center mb-4"
@@ -50,10 +50,14 @@ export default function BeforeAfterToggle() {
         </div>
 
         {/* Panels */}
-        <div className="relative">
+        <div
+          className="relative"
+          role="img"
+          aria-label="Before and after: a fragile spreadsheet with circular reference errors and a 40MB file size, replaced by a single clean monthly output table with reconciled hours and no errors."
+        >
           {/* BEFORE panel */}
           <div
-            aria-hidden={showAfter}
+            aria-hidden="true"
             className={`toggle-panel ${
               !showAfter
                 ? "opacity-100 scale-100"
@@ -188,7 +192,7 @@ export default function BeforeAfterToggle() {
 
           {/* AFTER panel */}
           <div
-            aria-hidden={!showAfter}
+            aria-hidden="true"
             className={`toggle-panel ${
               showAfter
                 ? "opacity-100 scale-100"
@@ -292,7 +296,12 @@ export default function BeforeAfterToggle() {
           </div>
         </div>
 
-        <p className="text-sm text-gray-400 text-center mt-8 max-w-2xl mx-auto">
+        <p className="sr-only">
+          One sheet instead of forty tabs. Hours reconciled rather than
+          retyped. Zero broken references.
+        </p>
+
+        <figcaption className="text-sm text-gray-400 text-center mt-8 max-w-2xl mx-auto">
           Built with Microsoft Power Platform, no new software licences.
           This is an illustration of the shape of the work; see the real
           engagements on our{" "}
@@ -302,8 +311,8 @@ export default function BeforeAfterToggle() {
           >
             Work page &rarr;
           </a>
-        </p>
-      </div>
+        </figcaption>
+      </figure>
     </section>
   );
 }

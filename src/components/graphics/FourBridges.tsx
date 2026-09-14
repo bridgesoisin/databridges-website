@@ -142,7 +142,11 @@ export default function FourBridges({
 
               {/* span label under the deck, hidden on phones (scales sub-legible);
                   a real DOM list below the SVG carries these on <sm */}
-              <g className="gfx-span-label max-sm:hidden" style={{ animationDelay: `${0.35 + i * 0.22}s` }}>
+              <g
+                className="gfx-span-label max-sm:hidden"
+                aria-hidden="true"
+                style={{ animationDelay: `${0.35 + i * 0.22}s` }}
+              >
                 {wrapIfNeeded(s.title, 17).map((line, li, arr) => (
                   <text
                     key={`title-${li}`}
