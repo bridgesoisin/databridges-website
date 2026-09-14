@@ -7,25 +7,7 @@ import FourBridges from "@/components/graphics/FourBridges";
 import ScrollReveal from "@/components/ScrollReveal";
 import VignetteCard from "@/components/VignetteCard";
 import { VIGNETTES } from "@/data/vignettes";
-
-const BRIDGES = [
-  {
-    title: "Design & explainability",
-    body: "AI you can open up and explain, not a black box you have to take on faith.",
-  },
-  {
-    title: "Leadership & trust",
-    body: "Getting the people who sign it off on board, and the people who use it comfortable.",
-  },
-  {
-    title: "Operations & implementation",
-    body: "The unglamorous bit: building it, wiring it in, and making it survive contact with Monday.",
-  },
-  {
-    title: "Strategy & infrastructure",
-    body: "The plumbing and the plan underneath, so it still makes sense in two years.",
-  },
-];
+import { FOUR_BRIDGES_SPANS } from "@/data/fourBridges";
 
 export const metadata: Metadata = {
   title: "Our Work",
@@ -210,7 +192,11 @@ export default function WorkPage() {
 
           <FourBridges tone="dark" className="mt-12 md:mt-14" />
 
-          <NumberedFeatures items={BRIDGES} columns={2} className="mt-12" />
+          <NumberedFeatures
+            items={FOUR_BRIDGES_SPANS}
+            columns={2}
+            className="mt-12"
+          />
 
           <div className="mt-10">
             <Link

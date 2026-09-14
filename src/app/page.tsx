@@ -9,9 +9,11 @@ import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import NodeGraph from "@/components/graphics/NodeGraph";
 import StatBand from "@/components/graphics/StatBand";
 import FourBridges from "@/components/graphics/FourBridges";
+import NumberedFeatures from "@/components/graphics/NumberedFeatures";
 import VignetteCard from "@/components/VignetteCard";
 import { VIGNETTES } from "@/data/vignettes";
 import { LINKEDIN_POSTS } from "@/data/linkedin";
+import { FOUR_BRIDGES_SPANS } from "@/data/fourBridges";
 
 export default function Home() {
   return (
@@ -396,11 +398,19 @@ export default function Home() {
             The gap where AI projects die, and the four bridges across it.
           </h2>
           <p className="db-subhead text-gray-300 mt-3">
-            Every engagement crosses the same four spans, in order. Skip one and
-            the whole thing wobbles, so we build them one at a time.
+            Most AI projects don&apos;t fail on the tech. They fall into the
+            gap between a clever demo and a team actually using it. These
+            are the four spans I build across, every time. Skip one and the
+            whole thing wobbles.
           </p>
 
           <FourBridges tone="light" className="mt-14" />
+
+          <NumberedFeatures
+            items={FOUR_BRIDGES_SPANS}
+            columns={2}
+            className="mt-12"
+          />
         </div>
       </section>
 
