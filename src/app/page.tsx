@@ -142,7 +142,7 @@ export default function Home() {
           { target: "5+", label: "Years consulting" },
           { target: "4", label: "Years in Irish public sector" },
           { target: "UCD", label: "Professional Academy" },
-          { target: "MSc", label: "Machine Learning Astrophysics" },
+          { target: "MSc", label: "Data-Intensive Astrophysics" },
         ]}
       />
 
@@ -459,15 +459,15 @@ export default function Home() {
           </h2>
           <p className="db-subhead text-gray-300 text-center mx-auto mt-6">
             Ois&iacute;n has worked inside the HSE and Tusla before
-            consulting for organisations like them. He has an MSc in data
-            science and teaches AI at UCD. He has been doing this since 2021.
-            The difference shows.
+            consulting for organisations like them. He has an MSc in
+            Data-Intensive Astrophysics and teaches AI at UCD. He has been
+            doing this since 2021. The difference shows.
           </p>
 
           {/* Credential list, substance, not tags */}
           <ul className="mt-12 md:mt-14 mx-auto max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
             {[
-              "MSc Astrophysics (Distinction) · Cardiff",
+              "MSc Data-Intensive Astrophysics (Distinction) · Cardiff",
               "UCD Professional Academy Lecturer",
               "Microsoft Copilot Certified",
               "HSE · Tusla · Senior Analyst",
@@ -540,7 +540,8 @@ export default function Home() {
               An astrophysicist who got tired of bad spreadsheets.
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mt-4">
-              Ois&iacute;n trained as a data scientist at Cardiff University,
+              Ois&iacute;n trained in data-intensive astrophysics at Cardiff
+              University, applying machine learning to astrophysical data,
               spent four years analysing data inside the HSE and Tusla, and
               started DataBridges in 2021 because digital transformation
               projects kept making work harder, not easier. He now also

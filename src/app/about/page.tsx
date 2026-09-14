@@ -260,7 +260,7 @@ export default function AboutPage() {
             {/* Credentials strip, surfaced once above the fold */}
             <ul className="mt-8 flex flex-wrap gap-2 list-none p-0">
               {[
-                "MSc Distinction · Cardiff",
+                "MSc Data-Intensive Astrophysics (Distinction) · Cardiff",
                 "Master's Excellence Scholarship",
                 "ITIL 4",
                 "Microsoft Copilot Certified",
