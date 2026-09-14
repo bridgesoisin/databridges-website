@@ -447,7 +447,9 @@ export default function Home() {
               spent four years analysing data inside the HSE and Tusla, and
               started DataBridges in 2021 because digital transformation
               projects kept making work harder, not easier. He now also
-              teaches AI at UCD Professional Academy.
+              teaches AI at UCD Professional Academy. Ois&iacute;n has
+              worked inside the HSE and Tusla before consulting for
+              organisations like them.
             </p>
 
             {/* Credential list, substance, not tags */}
