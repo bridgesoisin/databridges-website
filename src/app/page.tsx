@@ -4,7 +4,6 @@ import ServiceCard from "@/components/ServiceCard";
 import LinkedInPostCard from "@/components/LinkedInPostCard";
 import EUAIActChecker from "@/components/EUAIActChecker";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroWords from "@/components/HeroWords";
 import Wordmark from "@/components/Wordmark";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import NodeGraph from "@/components/graphics/NodeGraph";
@@ -41,11 +40,16 @@ export default function Home() {
             />
 
             <p className="db-eyebrow db-eyebrow--dark mb-6">
-              AI Consulting &middot; Power Platform &middot; Training
+              Making AI Useful (and mildly tolerable)
             </p>
 
-            <h1 id="hero-heading">
-              <HeroWords />
+            <h1
+              id="hero-heading"
+              className="font-syne text-white leading-tight"
+              style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.75rem)", fontWeight: 800 }}
+            >
+              AI consulting, Power Platform and training for Irish SMEs and
+              public sector teams.
             </h1>
 
             <p className="text-xl max-w-xl mt-6 text-gray-300">
@@ -61,12 +65,6 @@ export default function Home() {
               >
                 Book a free chat &rarr;
               </Link>
-              <a
-                href="#what-we-do"
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg hover:border-white transition-colors duration-200"
-              >
-                See what we do
-              </a>
             </div>
 
             <p className="mt-16 text-sm text-white/60">
@@ -120,7 +118,7 @@ export default function Home() {
         style={{ backgroundColor: "var(--color-offwhite)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="db-eyebrow db-eyebrow--light mb-4">The Problem</p>
+          <p className="db-eyebrow db-eyebrow--light mb-4">The problem</p>
           <h2 id="pain-heading" className="db-h2 text-navy">
             Sound familiar?
           </h2>
@@ -198,9 +196,9 @@ export default function Home() {
           <span className="db-seam-mark" />
         </div>
         <div className="mx-auto max-w-5xl">
-          <p className="db-eyebrow db-eyebrow--light mb-4">What We Do</p>
+          <p className="db-eyebrow db-eyebrow--light mb-4">What I build</p>
           <h2 id="services-heading" className="db-h2 text-navy">
-            Four ways we help.
+            What I build for Irish teams.
           </h2>
           <p className="db-subhead text-gray-500 mt-3">
             Real problems, solved simply. No hype, no decks, no nonsense.
@@ -328,10 +326,11 @@ export default function Home() {
       >
         <div className="mx-auto max-w-5xl">
           <p className="db-eyebrow db-eyebrow--light mb-4">
-            Where we&apos;ve helped
+            Where it&apos;s worked
           </p>
           <h2 id="where-heading" className="db-h2 text-navy">
-            Five sectors. One pattern: less faffing, more done.
+            What changed for a wealth manager, a fit-out firm and a legal
+            practice.
           </h2>
           <p className="db-subhead text-gray-500 mt-3">
             A regulated finance firm, a fit-out company drowning in sticky
@@ -372,9 +371,9 @@ export default function Home() {
             aria-hidden="true"
             className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
           />
-          <p className="db-eyebrow db-eyebrow--yellow mb-4">Free Tool</p>
+          <p className="db-eyebrow db-eyebrow--yellow mb-4">Free tool</p>
           <h2 id="euai-heading" className="db-h2 text-navy">
-            Does the EU AI Act affect your business?
+            Does the EU AI Act apply to you? Four questions, 30 seconds.
           </h2>
           <p className="db-subhead text-navy/70 mt-4 mb-12">
             Answer 4 questions. Get an honest answer in 30 seconds.
@@ -394,7 +393,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl">
           <p className="db-eyebrow db-eyebrow--dark mb-4">Our framework</p>
           <h2 id="four-bridges-heading" className="db-h2 text-white">
-            Four Bridges to AI adoption.
+            The gap where AI projects die, and the four bridges across it.
           </h2>
           <p className="db-subhead text-gray-300 mt-3">
             Every engagement crosses the same four spans, in order. Skip one and
@@ -529,6 +528,7 @@ export default function Home() {
             aria-hidden="true"
             className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
           />
+          <p className="db-eyebrow db-eyebrow--yellow mb-4">Next step</p>
           <h2
             id="footer-cta-heading"
             className="db-h2 font-extrabold text-navy leading-tight"
