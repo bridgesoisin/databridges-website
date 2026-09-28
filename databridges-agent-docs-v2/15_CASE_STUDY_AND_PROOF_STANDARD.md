@@ -1,8 +1,8 @@
 ---
 title: Case study and proof standard
 status: proposed
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
 ---
 

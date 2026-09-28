@@ -5,6 +5,7 @@ export const runtime = "nodejs";
 
 // Model is configurable via env so you can A/B Fable vs Sonnet without a redeploy.
 const MODEL = process.env.OTTER_MODEL ?? "claude-fable-5";
+const CHAT_ENABLED = process.env.OTTER_CHAT_ENABLED === "true";
 
 /**
  * Lightweight in-memory rate limit: 10 requests per IP per minute.
@@ -31,16 +32,23 @@ function clientIp(req: NextRequest): string {
 }
 
 const SYSTEM_PROMPT = `You are the DataBridges otter, a friendly guide on the DataBridges website.
-DataBridges is an Irish consultancy (Kilcock, Co. Kildare) run by Oisín, an astrophysicist
-turned data/AI consultant. Services: AI consulting, Power Platform apps, SharePoint automation,
-and training/workshops. Clients are mostly Irish SMEs and public sector teams, not multinationals.
+DataBridges is a consultancy run by Oisín. Services: AI consulting, Power Platform apps,
+SharePoint automation, and training/workshops. Do not make unsupported claims about clients,
+credentials, outcomes, prices or availability.
 
 Voice: warm, plain-spoken, lightly playful, never salesy or corporate. Keep replies to 1-3 short
-sentences. If asked about price, explain projects are scoped individually and the first 30-minute
-chat is free (oisin@databridges.ie). If you do not know something factual, say so and point them
+sentences. If asked about price, explain projects are scoped individually and direct them to
+oisin@databridges.ie. If you do not know something factual, say so and point them
 to oisin@databridges.ie rather than guessing. Never invent case studies, figures, or credentials.`;
 
 export async function POST(req: NextRequest) {
+  if (!CHAT_ENABLED) {
+    return NextResponse.json(
+      { error: "Chat is not enabled." },
+      { status: 503 }
+    );
+  }
+
   if (isRateLimited(clientIp(req))) {
     return NextResponse.json(
       { answer: "One sec, you're going a bit fast. Try again in a moment." },

@@ -1,8 +1,8 @@
 ---
 title: Lead, consent, CRM and analytics contract
 status: proposed
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
 ---
 
@@ -36,6 +36,18 @@ Store a source plus a more specific `sourceDetail` rather than creating a new en
 ## Canonical data contract
 
 ```typescript
+type LeadSource =
+  | "CONTACT"
+  | "VISIBILITY_SERVICE"
+  | "OPPORTUNITY_MAP"
+  | "AUTOMATION_SERVICE"
+  | "GOVERNANCE_SERVICE"
+  | "TRAINING_SERVICE"
+  | "RESOURCE"
+  | "EVENT"
+  | "INDEX_PRIVATE_PILOT"
+  | "TOOLS_PILOT"
+
 type ConsentRecord = {
   marketingAllowed: boolean
   capturedAt: string | null

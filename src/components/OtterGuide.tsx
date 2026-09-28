@@ -86,8 +86,8 @@ const SECTION_TIPS: Record<string, Tip> = {
   },
   "footer-cta": {
     kind: "section",
-    message: "No sales script, thirty minutes, an honest chat. That's really it.",
-    replies: [{ label: "Book a free chat", href: "/contact" }],
+    message: "Use the contact page to describe what you need and where the problem occurs.",
+    replies: [{ label: "Get in touch", href: "/contact" }],
   },
 };
 
@@ -103,7 +103,7 @@ const PATHNAME_FALLBACK: Record<string, Tip> = {
   "/about": {
     kind: "section",
     message: "Curious what an astrophysicist is doing fixing spreadsheets for a living?",
-    replies: [{ label: "Book a free chat", href: "/contact" }],
+    replies: [{ label: "Get in touch", href: "/contact" }],
   },
   "/faq": {
     kind: "section",
@@ -138,7 +138,7 @@ const AI_TIPS: Tip[] = [
         replyText:
           "We design workflows with a human approval step where it matters, so AI speeds you up without making unchecked decisions.",
       },
-      { label: "Book a free chat", href: "/contact" },
+      { label: "Get in touch", href: "/contact" },
     ],
   },
   {
@@ -171,7 +171,7 @@ const GUIDE_MENU: Tip = {
     { label: "What we do", href: "/services" },
     { label: "Common questions (FAQ)", href: "/faq" },
     { label: "About Oisín", href: "/about" },
-    { label: "Book a free chat", href: "/contact" },
+    { label: "Get in touch", href: "/contact" },
   ],
 };
 

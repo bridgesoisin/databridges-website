@@ -1,14 +1,17 @@
 ---
 title: Repository agent instructions
 status: proposed
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
 ---
 
 # DataBridges Repository Agent Instructions
 
-This file is the source for a future root `AGENTS.md`. Do not maintain independent versions. Generate or copy it during pack activation and add a review check that detects drift.
+This file is the authoritative source for the root `AGENTS.md`. The installed
+root file is a short pointer to this document, not a copy, so there is no second
+instruction body to synchronize. Update this file when repository agent rules
+change.
 
 ## Authority
 
@@ -126,9 +129,14 @@ Current baseline:
 ```text
 npm run lint
 npm run build
+npm run typecheck
 ```
 
-Run TypeScript, unit, integration, E2E, accessibility or visual tests only when the corresponding configured command or approved tool exists. Absence of a test system is a limitation to report, not a reason to claim tests passed.
+The standalone TypeScript check is configured as `npm run typecheck`. Unit,
+integration and E2E infrastructure is not currently configured. Run those or
+accessibility/visual tests only when the corresponding approved command or tool
+exists. Absence of a test system is a limitation to report, not a reason to
+claim tests passed.
 
 ## Completion report
 

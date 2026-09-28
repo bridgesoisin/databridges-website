@@ -2,7 +2,7 @@
 title: AI tools directory experiment
 status: experimental
 owner: unassigned
-last_reviewed: 2026-09-27
+last_reviewed: 2026-09-28
 approval: required-before-build
 ---
 
@@ -46,6 +46,7 @@ type ToolClaimSource = {
   url: string
   publisher: string
   retrievedAt: string
+  supports: string[]
   appliesToTier?: string
   appliesToRegion?: string
 }

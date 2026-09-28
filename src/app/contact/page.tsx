@@ -8,7 +8,7 @@ import { graph, breadcrumbLd, ORG_ID, SITE_URL } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with DataBridges. Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer based in Kilcock, Co. Kildare.",
+    "Get in touch with DataBridges and send an enquiry to Oisín Bridges, AI consultant and Power Platform developer based in Kilcock, Co. Kildare.",
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     url: "https://databridges.ie/contact",
     title: "Contact | DataBridges",
     description:
-      "Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer.",
+      "Send an enquiry to Oisín Bridges, AI consultant and Power Platform developer.",
     images: ["/images/og-card.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact | DataBridges",
     description:
-      "Book a free discovery call with Oisín Bridges, AI consultant and Power Platform developer.",
+      "Send an enquiry to Oisín Bridges, AI consultant and Power Platform developer.",
     images: ["/images/og-card.jpg"],
   },
 };
@@ -43,7 +43,7 @@ const contactJsonLd = graph(
 );
 
 /* Hero graphic: a message leaving a form, flying across a dashed arc and
-   landing as a reply, with a clock for the one-working-day promise.
+   landing as a reply.
    Dependency-free SVG on the .gfx-* contract in globals.css. */
 function MessageInFlight() {
   const scatter = [
@@ -58,7 +58,7 @@ function MessageInFlight() {
     <svg
       viewBox="0 0 460 250"
       role="img"
-      aria-label="A message sent from a form flying to a reply, usually within one working day"
+      aria-label="A message sent from a form flying to a reply"
       className="w-full h-auto"
     >
       {/* ambient pulsing dots */}
@@ -141,26 +141,6 @@ function MessageInFlight() {
         strokeLinejoin="round"
       />
 
-      {/* the one-working-day clock */}
-      <circle
-        className="gfx-ring"
-        cx="230"
-        cy="196"
-        r="24"
-        fill="none"
-        stroke="var(--color-cyan)"
-        strokeWidth="2"
-      />
-      <circle
-        cx="230"
-        cy="196"
-        r="16"
-        fill="var(--color-navy)"
-        stroke="var(--color-cyan)"
-        strokeWidth="2"
-      />
-      <line x1="230" y1="196" x2="230" y2="186" stroke="var(--color-cyan)" strokeWidth="2" strokeLinecap="round" />
-      <line x1="230" y1="196" x2="238" y2="200" stroke="var(--color-cyan)" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -256,12 +236,6 @@ const DETAILS = [
       </>
     ),
   },
-  {
-    label: "Response time",
-    body: (
-      <p className="text-sm text-gray-500">Usually within one working day.</p>
-    ),
-  },
 ];
 
 export default function ContactPage() {
@@ -300,7 +274,7 @@ export default function ContactPage() {
               className="font-jetbrains text-xs text-white/50 text-center mt-3"
               aria-hidden="true"
             >
-              send &rarr; reply, usually within one working day
+              send an enquiry &rarr; message received
             </p>
           </div>
         </div>

@@ -171,7 +171,7 @@ export default function EUAIActChecker() {
               href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
-              Book a compliance chat with Ois&iacute;n &rarr;
+              Get in touch with Ois&iacute;n &rarr;
             </Link>
           </div>
         )}
@@ -198,7 +198,7 @@ export default function EUAIActChecker() {
               href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
-              Book a compliance chat with Ois&iacute;n &rarr;
+              Get in touch with Ois&iacute;n &rarr;
             </Link>
           </div>
         )}
@@ -222,7 +222,7 @@ export default function EUAIActChecker() {
               href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
-              Book a free 30-minute chat &rarr;
+              Get in touch &rarr;
             </Link>
           </div>
         )}
@@ -246,7 +246,7 @@ export default function EUAIActChecker() {
               href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
-              Book a free chat &rarr;
+              Get in touch &rarr;
             </Link>
           </div>
         )}
@@ -261,14 +261,14 @@ export default function EUAIActChecker() {
             </h3>
             <p className="text-navy/70 text-lg leading-relaxed max-w-xl mx-auto">
               If you&apos;re not sure whether the Act reaches you, that
-              uncertainty is usually the answer. Let&apos;s spend 30 minutes
-              finding out, it&apos;s free and there&apos;s no obligation.
+              uncertainty is a reason to get the use case reviewed before
+              relying on a general checker.
             </p>
             <Link
               href="/contact"
               className="font-syne inline-block mt-8 bg-navy text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-navy/90 transition-colors duration-200"
             >
-              Book a free chat &rarr;
+              Get in touch &rarr;
             </Link>
           </div>
         )}

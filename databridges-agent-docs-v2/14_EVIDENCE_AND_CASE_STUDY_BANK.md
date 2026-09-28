@@ -1,8 +1,8 @@
 ---
 title: Internal evidence inventory
 status: blocked-source-unavailable
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
 access: internal
 ---
@@ -11,7 +11,7 @@ access: internal
 
 ## Safety status
 
-This file is an internal index, not public website content. The source files cited by the previous version were not present in this repository during the 2026-09-27 review. Therefore every record below is `UNVERIFIED` for publication until an authorized reviewer can access its source.
+This file is an internal index, not public website content. The source files cited by the previous version were not present in this repository during the 2026-09-28 review. Therefore every record below is `UNVERIFIED` for publication until an authorized reviewer can access its source.
 
 Do not restore named employers, clients, exact internal metrics or confidential operational details to this repository unless its access classification is explicitly approved.
 

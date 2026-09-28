@@ -2,10 +2,22 @@
 
 Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automation, training for Irish SMEs and public sector). Based in Kilcock, Co. Kildare.
 
+## Repository governance
+- Read root `AGENTS.md`; it delegates to the maintained instruction source at
+  `databridges-agent-docs-v2/04_AGENTS.md`.
+- Revision 3 of `databridges-agent-docs-v2` is active for Milestone 0 only.
+  Later milestones and experimental products require separate approval.
+- Preserve unrelated working-tree changes. Do not deploy, push, publish
+  protected claims, or alter legal/privacy wording without the required human
+  approval.
+
 ## Model workflow (Claude Code)
 - **Fable (`claude-fable-5`)** is the default (set in `.claude/settings.json`) and is used for building and iterating on the site.
 - **Opus (`claude-opus-4-8`)** is the model to switch to for the monthly content/maintenance pass. Type `/model claude-opus-4-8` in Claude Code.
-- The otter chatbot is intentionally **paused**: there is no Anthropic API wired yet. The mascot is a pure guide for now. The AI backend (`src/app/api/otter/route.ts`) is ready for when a key is added.
+- The otter chatbot is intentionally **paused**. The mascot is a pure guide for
+  now. The AI backend (`src/app/api/otter/route.ts`) remains disabled unless
+  both `OTTER_CHAT_ENABLED=true` and an Anthropic API key are configured under
+  an approved release.
 
 ## Stack
 - Next.js 16 (App Router) + React 19
@@ -16,6 +28,7 @@ Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automa
 - `npm run dev` — local dev server
 - `npm run build` — production build (must run on a platform with the matching SWC binary)
 - `npm run lint` — ESLint
+- `npm run typecheck` — standalone TypeScript check (`tsc --noEmit`)
 
 ## Design tokens (use these, never raw hex)
 - Navy `--color-navy` #0A1E3D (primary text / dark surfaces)
@@ -62,9 +75,11 @@ Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automa
 - Page sections tag themselves with `data-otter-section` and `id` anchors so the otter can scroll to them.
 
 ## To wire the chatbot later
-1. Add `ANTHROPIC_API_KEY` in Netlify env vars (never in the repo).
-2. Optionally set `OTTER_MODEL` (Fable for voice, Sonnet for factual accuracy).
-3. Re-add a chat UI in `OtterGuide.tsx` that POSTs to `/api/otter` and renders the `answer`.
+1. Obtain approval for the public AI endpoint, its privacy notice and its
+   production environment changes.
+2. Add `ANTHROPIC_API_KEY` in Netlify env vars (never in the repo).
+3. Set `OTTER_CHAT_ENABLED=true` and optionally set `OTTER_MODEL`.
+4. Re-add a chat UI in `OtterGuide.tsx` that POSTs to `/api/otter` and renders the `answer`.
 
 ## Security
 - Security headers (HSTS, CSP, COOP/CORP, frame/nosniff) live in `netlify.toml`. The CSP allows `connect-src https://api.anthropic.com` for the future chatbot; tighten `script-src` with nonces if a custom server layer is added.

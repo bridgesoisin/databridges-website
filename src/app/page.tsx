@@ -65,7 +65,7 @@ export default function Home() {
                 href="/contact"
                 className="bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg hover:bg-white transition-colors duration-200"
               >
-                Book a free chat &rarr;
+                Send an enquiry &rarr;
               </Link>
             </div>
 
@@ -548,15 +548,15 @@ export default function Home() {
             Ready to stop doing things the hard way?
           </h2>
           <p className="text-navy/70 text-xl mt-4">
-            30 minutes. No sales script. Just an honest chat about whether we
-            can help.
+            Tell us what you need. We&apos;ll have an honest conversation about
+            whether we can help.
           </p>
 
           <Link
             href="/contact"
             className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
-            Book a free chat &rarr;
+            Get in touch &rarr;
           </Link>
         </div>
       </section>

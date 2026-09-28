@@ -1,9 +1,11 @@
 ---
 title: DataBridges website operating specification
 status: proposed
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
+milestone_0_status: active
+milestone_0_approved: 2026-09-28
 ---
 
 # DataBridges Website Operating Specification
@@ -12,7 +14,11 @@ approval: pending
 
 This pack defines how the existing `databridges-website` repository should evolve. It is an operating specification, not proof that every proposed product or system should be built.
 
-Until a human marks this pack `active`, the current repository, explicit user instructions and production configuration remain authoritative.
+Revision 3 is approved as the working specification for Milestone 0 only. The
+pack remains proposed for later milestones and is not publication, deployment
+or protected-claim approval. The current repository, explicit user instructions
+and production configuration remain authoritative where this pack has not been
+activated.
 
 ## Authority order
 
@@ -98,6 +104,12 @@ Urgency and importance affect priority. They do not determine whether work is au
 
 Normative definitions must exist in one document only. Other documents should link to them instead of restating enums, event names or rules.
 
+## Execution record
+
+`17_MILESTONE_0_AUDIT.md` records the verified Milestone 0 repository baseline,
+implemented fixes and open decisions. It is evidence of execution, not a new
+normative source.
+
 ## Delivery priorities
 
 1. Correct inaccurate or risky current-site content.
@@ -112,11 +124,11 @@ Normative definitions must exist in one document only. Other documents should li
 Before this pack becomes active:
 
 - [ ] a human owner approves the strategy and risk posture;
-- [ ] `04_AGENTS.md` is installed or generated as root `AGENTS.md`;
-- [ ] root instructions are reconciled with `CLAUDE.md`;
+- [x] `04_AGENTS.md` is installed as the authoritative target of a root `AGENTS.md` pointer;
+- [x] root instructions are reconciled with `CLAUDE.md` for Milestone 0;
 - [ ] missing evidence sources are supplied through an access-controlled location;
 - [ ] current route and redirect inventory is approved;
-- [ ] available validation commands are documented;
+- [x] available validation commands are documented;
 - [ ] public claims are reviewed against accessible sources;
 - [ ] sensitive internal evidence is confirmed appropriate for this repository.
 

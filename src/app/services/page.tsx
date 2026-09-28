@@ -10,8 +10,8 @@ import { graph, breadcrumbLd, ORG_ID } from "@/lib/jsonld";
 
 const HOW_IT_WORKS = [
   {
-    title: "A free chat",
-    body: "30 minutes, no sales script. You describe the daily grind; we tell you honestly whether we can help, and say so if we can't.",
+    title: "An initial enquiry",
+    body: "Describe the daily grind, where it happens, and the outcome you need.",
   },
   {
     title: "Map the mess",
@@ -740,14 +740,14 @@ export default function ServicesPage() {
             Not sure which one you need?
           </h2>
           <p className="text-navy/70 text-xl mt-4">
-            Most projects touch more than one. Start with a free 30-minute
-            chat and we&apos;ll point you at the fastest win.
+            Most projects touch more than one. Start with an enquiry that
+            describes the areas involved.
           </p>
           <Link
             href="/contact"
             className="font-syne inline-block mt-10 bg-navy text-white font-semibold px-10 py-5 rounded-full text-lg hover:bg-navy/90 transition-colors duration-200"
           >
-            Book a free chat &rarr;
+            Get in touch &rarr;
           </Link>
         </div>
       </section>

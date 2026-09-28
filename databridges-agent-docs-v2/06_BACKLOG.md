@@ -1,8 +1,8 @@
 ---
 title: Prioritised implementation backlog
 status: working
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
 ---
 
@@ -19,15 +19,18 @@ This is a prioritised index, not a substitute for delivery tickets. An item beco
 
 ## Milestone 0: authority and risk baseline
 
-| ID | Priority | Outcome | Depends on | Risk |
-|---|---:|---|---|---|
-| DB-001 | P0 | Approve, amend or reject this operating pack and name its owner | None | Medium |
-| DB-002 | P0 | Decide whether internal evidence is permitted in this repository; move or redact it if not | DB-001 | High |
-| DB-003 | P0 | Supply accessible evidence sources and mark every evidence record verified or unavailable | DB-002 | High |
-| DB-004 | P0 | Reconcile root instructions and install a non-divergent `AGENTS.md` | DB-001 | Medium |
-| DB-005 | P0 | Audit current public claims, forms, privacy text, CTAs and broken routes | DB-003 | High |
-| DB-006 | P1 | Document the current analytics/conversion baseline or explicitly record that none exists | None | Low |
-| DB-007 | P1 | Add a documented typecheck/test strategy and CI decision | DB-001 | Medium |
+| ID | Priority | Outcome | Depends on | Risk | Status on 2026-09-28 |
+|---|---:|---|---|---|---|
+| DB-001 | P0 | Approve, amend or reject this operating pack and name its owner | None | Medium | `PARTIAL` — revision 3 approved for Milestone 0; owner unassigned |
+| DB-002 | P0 | Decide whether internal evidence is permitted in this repository; move or redact it if not | DB-001 | High | `BLOCKED` — human repository-handling decision required |
+| DB-003 | P0 | Supply accessible evidence sources and mark every evidence record verified or unavailable | DB-002 | High | `BLOCKED` — cited sources remain unavailable |
+| DB-004 | P0 | Reconcile root instructions and install a non-divergent `AGENTS.md` | DB-001 | Medium | `COMPLETE` — root pointer delegates to the maintained source |
+| DB-005 | P0 | Audit current public claims, forms, privacy text, CTAs and broken routes | DB-003 | High | `PARTIAL` — repository audit complete; protected claims, legal/privacy review and live form delivery remain blocked |
+| DB-006 | P1 | Document the current analytics/conversion baseline or explicitly record that none exists | None | Low | `COMPLETE` — no analytics or conversion collection found |
+| DB-007 | P1 | Add a documented typecheck/test strategy and CI decision | DB-001 | Medium | `PARTIAL` — typecheck added; no test suites or CI, and CI ownership remains undecided |
+
+The evidence and exact findings for these statuses are in
+`17_MILESTONE_0_AUDIT.md`.
 
 Exit: instructions are active, sensitive evidence is controlled, and no known critical trust defect remains unowned.
 

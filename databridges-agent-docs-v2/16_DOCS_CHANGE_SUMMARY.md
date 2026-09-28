@@ -1,8 +1,8 @@
 ---
 title: Documentation redesign record
 status: proposed
-owner: DataBridges
-last_reviewed: 2026-09-27
+owner: unassigned
+last_reviewed: 2026-09-28
 approval: pending
 revision: 3
 ---
@@ -132,3 +132,15 @@ When approved:
 - record future material changes here or in an ADR, not as an untraceable rewrite.
 
 Until then, this revision is a proposal and must not be treated as publication approval.
+
+## Milestone 0 execution note — 2026-09-28
+
+The user subsequently approved revision 3 as the working
+specification for Milestone 0 only. That scoped approval did not activate later
+milestones or authorize deployment, legal/privacy copy, protected claims or
+experimental products.
+
+Milestone 0 repository findings, fixes, validation results and unresolved human
+decisions are recorded in `17_MILESTONE_0_AUDIT.md`. Root `AGENTS.md` is now an
+intentional pointer to `04_AGENTS.md`, and `CLAUDE.md` has been reconciled
+without discarding its repository-specific operating detail.

@@ -2,7 +2,7 @@
 title: Visibility Index experiment specification
 status: experimental
 owner: unassigned
-last_reviewed: 2026-09-27
+last_reviewed: 2026-09-28
 approval: required-before-build
 ---
 

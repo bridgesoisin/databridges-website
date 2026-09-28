@@ -11,7 +11,7 @@ function ContactFormInner() {
 
   // Lets OtterGuide (an unrelated sibling component) switch to its
   // celebrating pose. Covers both the JS success path (setSubmitted) and
-  // the no-JS fallback (page loads with ?success=true already in the URL).
+  // an explicit success redirect that loads ?success=true.
   useEffect(() => {
     if (isSuccess) window.dispatchEvent(new Event("db:contact-success"));
   }, [isSuccess]);
@@ -53,8 +53,7 @@ function ContactFormInner() {
           Message received.
         </h3>
         <p className="text-gray-600 text-lg">
-          Ois&iacute;n will be in touch shortly, usually within one
-          working day.
+          Your message has been sent.
         </p>
         <a
           href="/contact"
@@ -72,7 +71,6 @@ function ContactFormInner() {
       method="POST"
       action="/__forms.html"
       onSubmit={handleSubmit}
-      noValidate
     >
       <input type="hidden" name="form-name" value="contact" />
       {/* Honeypot: bots fill this; humans never see it. */}
@@ -95,6 +93,7 @@ function ContactFormInner() {
             id="name"
             name="name"
             required
+            autoComplete="name"
             className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200"
           />
         </div>
@@ -111,6 +110,7 @@ function ContactFormInner() {
             id="email"
             name="email"
             required
+            autoComplete="email"
             className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200"
           />
         </div>
@@ -126,6 +126,7 @@ function ContactFormInner() {
             type="text"
             id="organisation"
             name="organisation"
+            autoComplete="organization"
             placeholder="Where do you work? (optional)"
             className="bg-white border border-gray-200 rounded-xl px-4 py-3 w-full text-navy placeholder:text-gray-500 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-[border-color,box-shadow] duration-200"
           />
@@ -157,7 +158,7 @@ function ContactFormInner() {
         </button>
 
         {status === "error" && (
-          <p role="alert" className="text-sm text-navy/80 text-center">
+          <p role="alert" aria-live="assertive" className="text-sm text-navy/80 text-center">
             Something went wrong sending that. Please email{" "}
             <a
               href="mailto:oisin@databridges.ie"
@@ -165,7 +166,7 @@ function ContactFormInner() {
             >
               oisin@databridges.ie
             </a>{" "}
-            directly and I&apos;ll get straight back to you.
+            directly instead.
           </p>
         )}
       </div>

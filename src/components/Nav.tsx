@@ -80,19 +80,19 @@ export default function Nav() {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          {/* Book a free chat, desktop */}
+          {/* Contact CTA, desktop */}
           <Link
             href="/contact"
             className="hidden md:inline-flex bg-cyan text-navy font-semibold px-5 py-2 rounded-full text-sm transition-colors duration-200 hover:bg-white"
           >
-            Book a free chat
+            Send an enquiry
           </Link>
 
-          {/* Book a free chat, mobile icon */}
+          {/* Contact CTA, mobile icon */}
           <Link
             href="/contact"
             className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 -m-2"
-            aria-label="Book a free chat"
+            aria-label="Send an enquiry"
           >
             <svg
               width="24"
@@ -190,7 +190,7 @@ export default function Nav() {
           className="font-syne nav-overlay-link mt-4 bg-cyan text-navy font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-200"
           style={{ transitionDelay: `${navLinks.length * 80}ms` }}
         >
-          Book a free chat
+          Send an enquiry
         </Link>
       </div>
     </nav>

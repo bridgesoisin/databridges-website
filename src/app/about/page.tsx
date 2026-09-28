@@ -517,7 +517,7 @@ export default function AboutPage() {
               href="/contact"
               className="font-syne inline-block mt-8 bg-cyan text-navy font-semibold px-10 py-5 rounded-full text-lg hover:bg-white transition-colors duration-200"
             >
-              Book a free chat &rarr;
+              Get in touch &rarr;
             </Link>
           </ScrollReveal>
         </div>

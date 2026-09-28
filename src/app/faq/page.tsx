@@ -45,7 +45,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How much does a project cost?",
-    a: "Projects are scoped individually, so there is no fixed price list. The first 30-minute discovery call is free and usually gives you a clear sense of scope and likely cost before you commit to anything.",
+    a: "Projects are scoped individually, so there is no fixed price list. A quote requires details about scope.",
   },
   {
     q: "Where is DataBridges based, and do you work remotely?",
@@ -77,7 +77,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do I get started?",
-    a: "Email oisin@databridges.ie or book a free 30-minute chat. There is no sales script and no jargon: you tell us what is driving you mad, and we tell you honestly whether AI or automation can fix it.",
+    a: "Email oisin@databridges.ie or send an enquiry through the contact page. Include the process, current pain and desired outcome.",
   },
 ];
 
@@ -370,15 +370,15 @@ export default function FaqPage() {
               Still have a question?
             </h2>
             <p className="text-gray-300 text-lg mt-3">
-              A first 30-minute chat is free, with no sales script. Tell us what&apos;s
-              broken and we&apos;ll tell you straight whether we can help.
+              Tell us what&apos;s broken and we&apos;ll discuss honestly whether we can
+              help.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
                 className="inline-block rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-colors hover:bg-white"
               >
-                Book a free chat
+                Get in touch
               </Link>
               <Link
                 href="/services"

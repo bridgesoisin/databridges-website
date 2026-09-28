@@ -118,7 +118,7 @@ const FAQS = [
   },
   {
     q: "How do I get started?",
-    a: "Try the free readiness check on this page, then email oisin@databridges.ie for a full audit. The first 30-minute chat is free and comes with no sales script.",
+    a: "Try the free readiness check on this page, then email oisin@databridges.ie or use the contact page to enquire about a full audit.",
   },
 ];
 
@@ -484,15 +484,15 @@ export default function SeoAeoPage() {
             Ready to be the answer?
           </h2>
           <p className="text-gray-300 text-lg mt-3">
-            A first 30-minute chat is free, with no sales script. Tell us where
-            you want to show up and we&apos;ll tell you straight what it takes.
+            Use the contact form to describe where search is falling short and
+            where you want to show up.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
               className="rounded-full bg-cyan px-8 py-3 font-semibold text-navy transition-colors hover:bg-white"
             >
-              Book a free chat
+              Get in touch
             </Link>
             <Link
               href="/faq"
