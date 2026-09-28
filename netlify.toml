@@ -8,6 +8,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Static-file policy. Next.js pages and API responses are handled by
+    # Netlify's runtime, so next.config.ts sets the same headers there.
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
@@ -21,7 +23,7 @@
     # Content Security Policy. 'unsafe-inline' on script/style is required by Next.js's
     # inline bootstrap + Tailwind style injection. Tightening script-src with per-request
     # nonces is the next step if you later add a custom server layer.
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.anthropic.com; form-action 'self' mailto:; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests"
 
 # Decap CMS admin at /admin needs to call Netlify's API for Identity login
 # and Git Gateway commits. Scoped to this one path only (Netlify resolves
