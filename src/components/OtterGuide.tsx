@@ -40,7 +40,7 @@ type VisualState = "idle" | "reading" | "searching";
 type OtterPose = "default" | "teaching" | "celebrating" | "thinking";
 
 const POSE_SRC: Record<OtterPose, string> = {
-  default: "/images/mascot/otter-avatar.png",
+  default: "/images/mascot/otter-avatar.webp",
   teaching: "/images/mascot/otter-teaching.png",
   celebrating: "/images/mascot/otter-celebrating.png",
   thinking: "/images/mascot/otter-thinking.png",

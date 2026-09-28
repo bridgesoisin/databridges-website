@@ -87,7 +87,7 @@ export default function Home() {
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="relative h-36 w-36 sm:h-44 sm:w-44 lg:h-52 lg:w-52 overflow-hidden rounded-full border-4 border-cyan shadow-2xl ring-8 ring-navy">
                 <Image
-                  src="/images/headshot-oisin.jpeg"
+                  src="/images/headshot-oisin.webp"
                   alt="Oisín Bridges, founder of DataBridges"
                   fill
                   sizes="208px"
@@ -425,7 +425,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <ScrollReveal className="flex justify-center">
             <Image
-              src="/images/headshot-oisin.jpeg"
+              src="/images/headshot-oisin.webp"
               alt="Oisín Bridges, founder of DataBridges, wearing a tweed jacket and paisley tie"
               width={384}
               height={384}
