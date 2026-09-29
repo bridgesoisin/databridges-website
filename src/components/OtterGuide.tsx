@@ -53,36 +53,29 @@ const CONTACT_SUCCESS_EVENT = "db:contact-success";
 
 /* Contextual tips per on-page section (guides the user through the page) */
 const SECTION_TIPS: Record<string, Tip> = {
-  services: {
+  visibility: {
     kind: "section",
-    message: "Spreadsheet chaos sound familiar? I can point you at the right fix.",
+    message: "Visibility starts with a clear offer and a clear route for the right people to find it.",
     replies: [
-      { label: "Show me what you actually do", scrollTo: "what-we-do" },
+      { label: "Next: improve the work", scrollTo: "improvement" },
+      { label: "Explore visibility", href: "/seo-aeo" },
+    ],
+  },
+  improvement: {
+    kind: "section",
+    message: "Improve the process before adding another tool: remove unnecessary steps and make ownership clear.",
+    replies: [
+      { label: "Next: consider automation", scrollTo: "automation" },
+      { label: "Explore improvement", href: "/services" },
+    ],
+  },
+  automation: {
+    kind: "section",
+    message: "Automate stable, repeatable work only when ownership, exceptions and human judgement remain clear.",
+    replies: [
+      { label: "Describe a process", href: "/contact" },
       { label: "Read the FAQ", href: "/faq" },
     ],
-  },
-  "what-we-do": {
-    kind: "section",
-    message: "Four services, one honest question: which one's actually your problem?",
-    replies: [
-      { label: "I'm buried in spreadsheets", href: "/services#power-platform" },
-      { label: "I want AI that actually works", href: "/services#ai-consulting" },
-    ],
-  },
-  "eu-ai-act-checker": {
-    kind: "section",
-    message:
-      "The AI Act's August 2026 transparency deadline catches more businesses than people expect, chatbots and AI content count. Worth 30 seconds.",
-    replies: [
-      { label: "Take the check below", scrollTo: "eu-ai-act-checker" },
-      { label: "More questions? FAQ", href: "/faq" },
-    ],
-  },
-  "about-teaser": {
-    kind: "section",
-    message:
-      "Oisín's the one you'd actually be talking to, not a rotating cast of account managers.",
-    replies: [{ label: "Read the full story", href: "/about" }],
   },
   "footer-cta": {
     kind: "section",
@@ -102,7 +95,7 @@ const PATHNAME_FALLBACK: Record<string, Tip> = {
   },
   "/about": {
     kind: "section",
-    message: "Curious what an astrophysicist is doing fixing spreadsheets for a living?",
+    message: "See the person and principles behind how DataBridges approaches change.",
     replies: [{ label: "Get in touch", href: "/contact" }],
   },
   "/faq": {
@@ -122,7 +115,7 @@ const AI_TIPS: Tip[] = [
   {
     kind: "ai",
     message:
-      "AI tip: before automating a task, write down the exact steps you do by hand. Half of them usually turn out to be unnecessary.",
+      "AI tip: before automating a task, write down the exact steps and ask which ones can be removed first.",
     replies: [
       { label: "Show me what you'd automate", href: "/services" },
       { label: "Read the FAQ", href: "/faq" },
@@ -131,7 +124,7 @@ const AI_TIPS: Tip[] = [
   {
     kind: "ai",
     message:
-      "AI tip: treat AI like a fast intern. Brilliant first drafts, but keep a human check on anything that leaves the building.",
+      "AI tip: let AI assist with drafting or retrieval, but keep an accountable person reviewing important outputs.",
     replies: [
       {
         label: "How do you build that in?",
@@ -144,7 +137,7 @@ const AI_TIPS: Tip[] = [
   {
     kind: "ai",
     message:
-      "AI tip: your messiest spreadsheet is usually the best place to start. That's where AI saves the most time.",
+      "AI tip: repetitive work is not automatically suitable for automation. Check the exceptions, failure impact and ownership first.",
     replies: [
       { label: "That's basically all of them", href: "/services#power-platform" },
       { label: "See common questions", href: "/faq" },
@@ -488,7 +481,7 @@ export default function OtterGuide() {
     <div
       className={`otter-guide-root ${mounted ? "otter-mounted" : ""} ${
         entering ? "otter-enter" : ""
-      } ${stateClass}`}
+      } ${pathname === "/contact" ? "otter-contact" : ""} ${stateClass}`}
       style={{ position: "fixed", right: "20px", bottom: "20px", zIndex: 60 }}
     >
       {/* Speech bubble: tips + guide menu */}
@@ -664,7 +657,7 @@ export default function OtterGuide() {
             src={POSE_SRC[pose]}
             alt=""
             fill
-            sizes="(max-width: 640px) 140px, 256px"
+            sizes="(max-width: 640px) 96px, 256px"
             style={{
               objectFit: "contain",
               filter: "drop-shadow(0 6px 8px rgba(10, 30, 61, 0.28))",

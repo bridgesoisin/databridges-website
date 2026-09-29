@@ -95,7 +95,7 @@ body {
   font-family: var(--font-jetbrains);
 }
 
-/* Gilroy ExtraBold: the "databridges" wordmark lockup only (home hero). */
+/* Gilroy ExtraBold: home-hero wordmark and primary title. */
 .font-gilroy {
   font-family: var(--font-gilroy);
 }
@@ -285,9 +285,15 @@ body {
 
 /* Scale the mascot down on small (portrait phone) screens so it stays out of the way */
 @media (max-width: 640px) {
+  /* The fixed mascot otherwise covers the right side of contact inputs on
+     portrait phones. The form is the primary task on this route. */
+  .otter-guide-root.otter-contact {
+    display: none;
+  }
+
   .otter-avatar-btn {
-    width: 140px;
-    height: 140px;
+    width: 96px;
+    height: 96px;
   }
 }
 
@@ -415,7 +421,7 @@ body {
 
 @media (max-width: 640px) {
   .otter-bubble {
-    bottom: 130px;
+    bottom: 92px;
   }
 }
 

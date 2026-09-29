@@ -42,7 +42,7 @@ export default function Nav() {
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
         scrolled
           ? "bg-white/80 backdrop-blur-md border-gray-100"
-          : "bg-transparent border-transparent"
+          : "bg-navy/85 backdrop-blur-md border-white/10"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
@@ -105,10 +105,8 @@ export default function Nav() {
               strokeLinejoin="round"
               aria-hidden="true"
             >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
             </svg>
           </Link>
 
