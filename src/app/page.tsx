@@ -50,8 +50,7 @@ export default function Home() {
               className="font-syne text-white leading-tight"
               style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.75rem)", fontWeight: 800 }}
             >
-              AI consulting, Power Platform and training for Irish SMEs and
-              public sector teams.
+              Get found - SEO. Find the friction - Eisenhower. Automate what matters - AI.
             </h1>
 
             <p className="text-xl max-w-xl mt-6 text-gray-300">
