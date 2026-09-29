@@ -134,127 +134,69 @@ export default function Home() {
         id="improvement"
         data-otter-section="improvement"
         aria-labelledby="improvement-heading"
-        className="bg-white px-6 py-16 md:py-24"
-      >
-        <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 md:grid-cols-[1.3fr_0.7fr]">
-          <ScrollReveal className="md:order-1">
-            <p className="db-eyebrow db-eyebrow--light mb-4">Improvement</p>
-            <h2 id="improvement-heading" className="db-h2 max-w-3xl text-navy">
-              Remove friction and bottlenecks.
-            </h2>
-            <p className="db-subhead mt-5 max-w-2xl text-gray-600">
-              When interest becomes work, unclear handoffs and unnecessary
-              steps start to cost time and attention.
-            </p>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-600">
-              We use AI to understand where work slows down, remove friction
-              and bottlenecks, and keep the human decisions that add value.
-            </p>
-            <Link
-              href="/services"
-              className="mt-7 inline-flex min-h-11 items-center font-semibold text-cyan-ink hover:text-navy"
-            >
-              Explore improvement &rarr;
-            </Link>
-          </ScrollReveal>
-          <div
-            aria-hidden="true"
-            className="font-gilroy text-[clamp(6rem,16vw,11rem)] font-extrabold leading-none text-navy/10 md:order-2 md:text-right"
-          >
-            02
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="automation"
-        data-otter-section="automation"
-        aria-labelledby="automation-heading"
         className="bg-navy px-6 py-16 md:py-24"
       >
-        <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 md:grid-cols-[0.7fr_1.3fr]">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-[0.55fr_1.45fr]">
           <div
             aria-hidden="true"
             className="font-gilroy text-[clamp(6rem,16vw,11rem)] font-extrabold leading-none text-cyan/25"
           >
-            03
+            02
           </div>
           <ScrollReveal>
-            <p className="db-eyebrow db-eyebrow--dark mb-4">Automation</p>
-            <h2 id="automation-heading" className="db-h2 max-w-3xl text-white">
-              Automate what is worth automating.
+            <p className="db-eyebrow db-eyebrow--dark mb-4">
+              Improvement + automation
+            </p>
+            <h2 id="improvement-heading" className="db-h2 max-w-3xl text-white">
+              Remove friction. Automate what matters.
             </h2>
-            <p className="db-subhead mt-5 max-w-2xl text-gray-300">
-              Automation comes after the work is understood and improved, not
-              before.
+            <p className="db-subhead mt-5 max-w-3xl text-gray-300">
+              Once people can find you, we improve how the work gets done.
             </p>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-300">
-              We focus on stable, repeatable work, keep human accountability
-              visible and plan for exceptions when the process does not behave
-              as expected.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-7 inline-flex min-h-11 items-center font-semibold text-cyan hover:text-white"
-            >
-              Discuss automation &rarr;
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section
-        id="footer-cta"
-        data-otter-section="footer-cta"
-        aria-labelledby="footer-cta-heading"
-        className="border-t border-navy/10 px-6 py-16 md:py-24"
-        style={{ backgroundColor: "var(--color-yellow)" }}
-      >
-        <div className="mx-auto max-w-2xl text-center">
-          <span
-            aria-hidden="true"
-            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
-          />
-          <p className="db-eyebrow db-eyebrow--yellow mb-4">A useful next step</p>
-          <h2
-            id="footer-cta-heading"
-            className="db-h2 font-extrabold leading-tight text-navy"
-          >
-            Start with one problem that feels harder than it should.
-          </h2>
-          <p className="mt-4 text-xl text-navy/70">
-            Describe what happens now, where it gets stuck and what a better
-            outcome would look like. That is enough to begin.
-          </p>
-          <ol
-            className="mt-8 grid grid-cols-1 gap-3 text-left sm:grid-cols-3"
-            aria-label="What happens next"
-          >
-            {[
-              "Describe the work",
-              "Identify the decision",
-              "Agree a useful next step",
-            ].map((step, index) => (
-              <li
-                key={step}
-                className="rounded-xl border border-navy/15 bg-white/35 px-4 py-3 text-sm font-medium text-navy"
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/15 bg-white/5 p-6">
+                <p className="font-jetbrains text-xs uppercase tracking-[0.2em] text-cyan">
+                  Improve
+                </p>
+                <h3 className="mt-3 font-gilroy text-2xl font-bold text-white">
+                  Remove friction and bottlenecks.
+                </h3>
+                <p className="mt-3 leading-relaxed text-gray-300">
+                  We use AI to understand where work slows down, simplify the
+                  process and keep the human decisions that add value.
+                </p>
+              </div>
+              <div
+                id="automation"
+                className="rounded-2xl border border-white/15 bg-white/5 p-6"
               >
-                <span
-                  className="mr-2 font-jetbrains text-xs text-navy/60"
-                  aria-hidden="true"
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {step}
-              </li>
-            ))}
-          </ol>
-          <Link
-            href="/contact"
-            className="mt-10 inline-block rounded-full bg-navy px-10 py-5 font-syne text-lg font-semibold text-white transition-colors duration-200 hover:bg-navy/90"
-          >
-            Send an enquiry &rarr;
-          </Link>
+                <p className="font-jetbrains text-xs uppercase tracking-[0.2em] text-cyan">
+                  Automate
+                </p>
+                <h3 className="mt-3 font-gilroy text-2xl font-bold text-white">
+                  Automate the right work.
+                </h3>
+                <p className="mt-3 leading-relaxed text-gray-300">
+                  We automate stable, repeatable work while keeping ownership,
+                  exceptions and human accountability clear.
+                </p>
+              </div>
+            </div>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link
+                href="/services"
+                className="inline-flex min-h-12 items-center rounded-full border border-cyan px-6 font-semibold text-cyan transition-colors hover:bg-cyan hover:text-navy"
+              >
+                Explore services
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-12 items-center rounded-full bg-cyan px-6 font-semibold text-navy transition-colors hover:bg-white"
+              >
+                Start with one problem &rarr;
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>
