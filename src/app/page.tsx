@@ -161,8 +161,9 @@ export default function Home() {
                   Remove friction and bottlenecks.
                 </h3>
                 <p className="mt-3 leading-relaxed text-gray-300">
-                  We use AI to understand where work slows down, simplify the
-                  process and keep the human decisions that add value.
+                  We use DataBridges&apos; AI workflow to understand where work
+                  slows down, simplify the process and keep the human decisions
+                  that add value.
                 </p>
               </div>
               <div
