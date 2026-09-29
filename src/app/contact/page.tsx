@@ -251,7 +251,7 @@ export default function ContactPage() {
         id="contact-hero"
         data-otter-section="contact-hero"
         aria-labelledby="contact-hero-heading"
-        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
+        className="db-subpage-hero relative overflow-hidden bg-navy px-6"
       >
         <AnimatedBlobs />
 

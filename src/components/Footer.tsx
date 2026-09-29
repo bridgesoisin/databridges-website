@@ -20,7 +20,7 @@ export default function Footer() {
               </span>
             </span>
             <p className="text-sm text-gray-400 mt-3">
-              Find the friction. Choose the right change.
+              Visibility &rarr; improvement &rarr; automation
             </p>
           </div>
 

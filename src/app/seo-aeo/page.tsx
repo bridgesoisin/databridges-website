@@ -162,7 +162,7 @@ export default function SeoAeoPage() {
         id="seo-hero"
         data-otter-section="seo-hero"
         aria-labelledby="seo-hero-heading"
-        className="relative overflow-hidden bg-navy px-6 pt-36 pb-24"
+        className="db-subpage-hero relative overflow-hidden bg-navy px-6"
       >
         {/* animated blobs */}
         <div aria-hidden="true" data-gfx-loop className="pointer-events-none absolute inset-0">

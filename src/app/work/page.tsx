@@ -83,7 +83,7 @@ export default function WorkPage() {
         id="work-hero"
         data-otter-section="work-hero"
         aria-labelledby="work-hero-heading"
-        className="relative overflow-hidden bg-navy px-6 pt-32 md:pt-40 pb-20 md:pb-28"
+        className="db-subpage-hero relative overflow-hidden bg-navy px-6"
       >
         <AnimatedBlobs />
 

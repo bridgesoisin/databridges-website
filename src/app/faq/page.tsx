@@ -281,7 +281,7 @@ export default function FaqPage() {
         id="faq-hero"
         data-otter-section="faq-hero"
         aria-labelledby="faq-hero-heading"
-        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
+        className="db-subpage-hero relative overflow-hidden bg-navy px-6"
       >
         <AnimatedBlobs />
 

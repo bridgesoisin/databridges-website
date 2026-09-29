@@ -791,24 +791,24 @@ body {
    devices. Tokens only; these are static (no motion to gate).
    ============================================================ */
 
-/* Type scale (Syne headings). clamp() removes most bespoke md: jumps
+/* Type scale (Gilroy headings). clamp() removes most bespoke md: jumps
    and floors sizes so 360px never overflows. */
 .db-display {
-  font-family: var(--font-syne);
+  font-family: var(--font-gilroy);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.05;
   font-size: clamp(2.5rem, 6vw, 4.5rem); /* ~40 → 72px */
 }
 .db-h2 {
-  font-family: var(--font-syne);
+  font-family: var(--font-gilroy);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.1;
   font-size: clamp(1.875rem, 3.5vw, 3rem); /* ~30 → 48px */
 }
 .db-h3 {
-  font-family: var(--font-syne);
+  font-family: var(--font-gilroy);
   font-weight: 700;
   line-height: 1.2;
   font-size: clamp(1.25rem, 2vw, 1.5rem); /* ~20 → 24px */
@@ -817,6 +817,35 @@ body {
   font-size: 1.125rem;
   line-height: 1.6;
   max-width: 42rem;
+}
+
+/* Inner-page hero system. This carries the homepage's compact hierarchy to
+   every route without duplicating a separate design implementation per page. */
+.db-subpage-hero {
+  min-height: min(42rem, 68svh);
+  display: flex;
+  align-items: center;
+  padding-top: clamp(8rem, 14vw, 10rem) !important;
+  padding-bottom: clamp(4rem, 9vw, 7rem) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-cyan) 24%, transparent);
+}
+
+.db-subpage-hero .db-display {
+  max-width: 14ch;
+}
+
+.db-subpage-hero .db-subhead,
+.db-subpage-hero h1 + p {
+  max-width: 40rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 640px) {
+  .db-subpage-hero {
+    min-height: auto;
+    padding-top: 7.5rem !important;
+    padding-bottom: 4rem !important;
+  }
 }
 
 /* Eyebrow, one treatment, coloured by surface, with a leading brand
