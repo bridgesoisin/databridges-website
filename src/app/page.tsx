@@ -140,15 +140,15 @@ export default function Home() {
           <ScrollReveal className="md:order-1">
             <p className="db-eyebrow db-eyebrow--light mb-4">Improvement</p>
             <h2 id="improvement-heading" className="db-h2 max-w-3xl text-navy">
-              Find and remove the friction.
+              Remove friction and bottlenecks.
             </h2>
             <p className="db-subhead mt-5 max-w-2xl text-gray-600">
               When interest becomes work, unclear handoffs and unnecessary
               steps start to cost time and attention.
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-600">
-              We map what actually happens, simplify the process and keep the
-              human decisions that add value.
+              We use AI to understand where work slows down, remove friction
+              and bottlenecks, and keep the human decisions that add value.
             </p>
             <Link
               href="/services"
