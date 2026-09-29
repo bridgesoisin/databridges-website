@@ -42,7 +42,7 @@ export default function Home() {
             />
 
             <p className="db-eyebrow db-eyebrow--dark mb-6">
-              Making AI Useful (and mildly tolerable)
+              Visibility → improvement → automation
             </p>
 
             <h1
@@ -54,8 +54,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl max-w-xl mt-6 text-gray-300">
-              DataBridges helps Irish businesses connect people, data and
-              process, turning &ldquo;there has to be a smarter way to
+              DataBridges helps Irish businesses build, automate and grow turning &ldquo;there has to be a smarter way to
               do this&rdquo; into something that actually works.
             </p>
 
