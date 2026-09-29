@@ -50,7 +50,7 @@ export default function Home() {
               <span className="block whitespace-nowrap">Get found.</span>{" "}
               <span className="block whitespace-nowrap">Find the friction.</span>{" "}
               <span className="block whitespace-nowrap">
-                Automate what matters.
+                Automate with AI.
               </span>
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-relaxed text-gray-300">
@@ -148,7 +148,7 @@ export default function Home() {
               Improvement + automation
             </p>
             <h2 id="improvement-heading" className="db-h2 max-w-3xl text-white">
-              Remove friction. Automate what matters.
+              Remove friction. Automate with AI.
             </h2>
             <p className="db-subhead mt-5 max-w-3xl text-gray-300">
               Once people can find you, we improve how the work gets done.
@@ -174,7 +174,7 @@ export default function Home() {
                   Automate
                 </p>
                 <h3 className="mt-3 font-gilroy text-2xl font-bold text-white">
-                  Automate the right work.
+                  Use AI for routine work.
                 </h3>
                 <p className="mt-3 leading-relaxed text-gray-300">
                   We automate stable, repeatable work while keeping ownership,
