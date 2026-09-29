@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     apple: "/images/favicon.png",
   },
   title: {
-    default: "DataBridges | Find the Friction. Choose the Right Change.",
+    default: "DataBridges | Visibility → Improvement → Automation",
     template: "%s | DataBridges",
   },
   description:
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     locale: "en_IE",
     siteName: "DataBridges",
     url: "https://databridges.ie",
-    title: "DataBridges | Find the Friction. Choose the Right Change.",
+    title: "DataBridges | Visibility → Improvement → Automation",
     description:
       "Improve visibility, simplify work and apply AI or automation without losing the human judgement that matters.",
     images: [
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DataBridges | Find the Friction. Choose the Right Change.",
+    title: "DataBridges | Visibility → Improvement → Automation",
     description:
       "Improve visibility, simplify work and apply AI or automation responsibly.",
     images: ["/images/og-card.jpg"],
