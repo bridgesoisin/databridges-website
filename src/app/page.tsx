@@ -110,7 +110,7 @@ export default function Home() {
           <ScrollReveal>
             <p className="db-eyebrow db-eyebrow--light mb-4">Visibility</p>
             <h2 id="visibility-heading" className="db-h2 max-w-3xl text-navy">
-              Get found—and understood.
+              Get found and understood.
             </h2>
             <p className="db-subhead mt-5 max-w-2xl text-gray-600">
               Growth starts when the right people can find you, understand what
@@ -185,7 +185,7 @@ export default function Home() {
               Automate what is worth automating.
             </h2>
             <p className="db-subhead mt-5 max-w-2xl text-gray-300">
-              Automation comes after the work is understood and improved—not
+              Automation comes after the work is understood and improved, not
               before.
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-300">

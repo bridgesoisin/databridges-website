@@ -3,7 +3,7 @@
  *
  * Content lives as one markdown file per event in `content/events/`,
  * editable via the Decap CMS admin at `/admin` ("Events") without touching
- * code — add a poster, title, date, location, description there and it
+ * code. Add a poster, title, date, location and description there and it
  * shows up here after the next deploy.
  *
  * This loader reads those files at build time (Node `fs`, never shipped to
