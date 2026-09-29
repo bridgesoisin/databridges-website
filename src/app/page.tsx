@@ -52,7 +52,7 @@ export default function Home() {
             >
               <span className="block whitespace-nowrap">Get found.</span>{" "}
               <span className="block whitespace-nowrap">Find the friction.</span>{" "}
-              <span className="block whitespace-nowrap">Automate what matters.
+              <span className="block whitespace-nowrap">Automate with AI.
               </span>
             </h1>
 
