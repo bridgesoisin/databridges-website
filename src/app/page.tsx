@@ -50,7 +50,10 @@ export default function Home() {
               className="font-syne text-white leading-tight"
               style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.75rem)", fontWeight: 800 }}
             >
-              Get found - SEO. Find the friction - Eisenhower. Automate what matters - AI.
+              <span className="block whitespace-nowrap">Get found.</span>{" "}
+              <span className="block whitespace-nowrap">Find the friction.</span>{" "}
+              <span className="block whitespace-nowrap">Automate what matters.
+              </span>
             </h1>
 
             <p className="text-xl max-w-xl mt-6 text-gray-300">
