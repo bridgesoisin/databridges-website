@@ -113,12 +113,14 @@ export default function Home() {
               Get found and understood.
             </h2>
             <p className="db-subhead mt-5 max-w-2xl text-gray-600">
-              Growth starts when the right people can find you, understand what
-              you offer and see a clear next step.
+              Growth starts when the right people can find your business,
+              understand what you offer, and know what to do next.
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-600">
-              We clarify the message and strengthen the routes that connect
-              your business with the people it can help.
+              At DataBridges, we sharpen your message, strengthen SEO and AEO
+              visibility, and improve the website and marketing pathways that
+              connect your business with the people most likely to become
+              customers.
             </p>
             <Link
               href="/seo-aeo"
@@ -150,9 +152,6 @@ export default function Home() {
             <h2 id="improvement-heading" className="db-h2 max-w-3xl text-white">
               Remove friction. Automate with AI.
             </h2>
-            <p className="db-subhead mt-5 max-w-3xl text-gray-300">
-              Once people can find you, we improve how the work gets done.
-            </p>
             <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/15 bg-white/5 p-6">
                 <p className="font-jetbrains text-xs uppercase tracking-[0.2em] text-cyan">
