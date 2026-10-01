@@ -20,7 +20,7 @@ export default function Footer() {
               </span>
             </span>
             <p className="text-sm text-gray-400 mt-3">
-              Making AI Useful (and mildly tolerable)
+              Visibility &rarr; improvement &rarr; automation
             </p>
           </div>
 
@@ -31,7 +31,6 @@ export default function Footer() {
               { href: "/", label: "Home" },
               { href: "/services", label: "Services" },
               { href: "/work", label: "Work" },
-              { href: "/events", label: "Events" },
               { href: "/seo-aeo", label: "SEO & AEO" },
               { href: "/about", label: "About" },
               { href: "/faq", label: "FAQ" },

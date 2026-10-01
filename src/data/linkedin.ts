@@ -7,7 +7,7 @@
  * typed loader so `LINKEDIN_POSTS` keeps its shape for consumers
  * (`src/app/page.tsx`, `src/app/about/page.tsx`, `LinkedInPostCard.tsx`).
  *
- * Every entry's `postUrl` resolves to a specific post or article — never the
+ * Every entry's `postUrl` resolves to a specific post or article, never the
  * bare profile page. Five of the eight are converted from LinkedIn's embed
  * format (`embed/feed/update/...`) to the normal public permalink
  * (`feed/update/.../`), since the embed URLs are meant for an iframe widget,

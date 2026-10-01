@@ -18,8 +18,7 @@ const syne = Syne({
 });
 
 // Gilroy ExtraBold (the free-for-commercial-use weight), self-hosted.
-// Used ONLY for the "databridges" wordmark lockup on the home hero;
-// all other headings stay Syne.
+// Used for the home hero wordmark and primary title. Other headings stay Syne.
 const gilroy = localFont({
   src: "../fonts/Gilroy-ExtraBold.woff",
   variable: "--font-gilroy",
@@ -51,33 +50,33 @@ export const metadata: Metadata = {
     apple: "/images/favicon.png",
   },
   title: {
-    default: "DataBridges | Making AI Useful for Irish Business",
+    default: "DataBridges | Visibility → Improvement → Automation",
     template: "%s | DataBridges",
   },
   description:
-    "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams. Based in Kilcock, Co. Kildare.",
+    "DataBridges helps Irish SMEs and operational teams improve visibility, simplify work and apply AI or automation responsibly.",
   openGraph: {
     type: "website",
     locale: "en_IE",
     siteName: "DataBridges",
     url: "https://databridges.ie",
-    title: "DataBridges | Making AI Useful for Irish Business",
+    title: "DataBridges | Visibility → Improvement → Automation",
     description:
-      "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams. Based in Kilcock, Co. Kildare.",
+      "Improve visibility, simplify work and apply AI or automation without losing the human judgement that matters.",
     images: [
       {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "DataBridges, Making AI Useful",
+        alt: "DataBridges",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DataBridges | Making AI Useful for Irish Business",
+    title: "DataBridges | Visibility → Improvement → Automation",
     description:
-      "AI consulting, Power Platform development and workshops for Irish SMEs and public sector teams.",
+      "Improve visibility, simplify work and apply AI or automation responsibly.",
     images: ["/images/og-card.jpg"],
   },
   robots: { index: true, follow: true },

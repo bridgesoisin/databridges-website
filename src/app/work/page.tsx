@@ -83,7 +83,7 @@ export default function WorkPage() {
         id="work-hero"
         data-otter-section="work-hero"
         aria-labelledby="work-hero-heading"
-        className="relative overflow-hidden bg-navy px-6 pt-32 md:pt-40 pb-20 md:pb-28"
+        className="db-subpage-hero relative overflow-hidden bg-navy px-6"
       >
         <AnimatedBlobs />
 
@@ -197,15 +197,6 @@ export default function WorkPage() {
             columns={2}
             className="mt-12"
           />
-
-          <div className="mt-10">
-            <Link
-              href="/#four-bridges"
-              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
-            >
-              See the framework in full &rarr;
-            </Link>
-          </div>
         </div>
       </section>
 

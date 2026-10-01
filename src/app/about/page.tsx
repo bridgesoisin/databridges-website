@@ -244,7 +244,7 @@ export default function AboutPage() {
         id="about-hero"
         data-otter-section="about-hero"
         aria-labelledby="about-hero-heading"
-        className="relative overflow-hidden bg-navy pt-32 md:pt-40 pb-20 md:pb-28 px-6"
+        className="db-subpage-hero relative overflow-hidden bg-navy px-6"
       >
         <AnimatedBlobs />
 
@@ -467,7 +467,7 @@ export default function AboutPage() {
             More from LinkedIn
           </h2>
           <p className="db-subhead text-gray-500 text-center mx-auto mt-3">
-            The rest of what&apos;s on LinkedIn — same voice, no filter.
+            The rest of what&apos;s on LinkedIn. Same voice, no filter.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 md:mt-14">
