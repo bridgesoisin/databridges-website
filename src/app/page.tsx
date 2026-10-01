@@ -3,6 +3,8 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedBlobs from "@/components/graphics/AnimatedBlobs";
 import NodeGraph from "@/components/graphics/NodeGraph";
+import StatBand from "@/components/graphics/StatBand";
+import EUAIActChecker from "@/components/EUAIActChecker";
 
 export default function Home() {
   return (
@@ -199,6 +201,43 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </section>
+
+      <section
+        id="eu-ai-act-checker"
+        data-otter-section="eu-ai-act-checker"
+        aria-labelledby="euai-heading"
+        className="border-t border-navy/10 px-6 py-20 md:py-28"
+        style={{ backgroundColor: "var(--color-yellow)" }}
+      >
+        <div className="mx-auto max-w-2xl">
+          <span
+            aria-hidden="true"
+            className="mb-6 inline-block h-2.5 w-2.5 rotate-45 bg-navy/70"
+          />
+          <p className="db-eyebrow db-eyebrow--yellow mb-4">Free tool</p>
+          <p className="mb-4 font-semibold text-navy">
+            The EU AI Act is live since August 2024.
+          </p>
+          <h2 id="euai-heading" className="db-h2 text-navy">
+            Does the EU AI Act apply to you? Four questions, 30 seconds.
+          </h2>
+          <p className="db-subhead mt-4 mb-12 text-navy/70">
+            Answer 4 questions. Get an honest answer in 30 seconds.
+          </p>
+
+          <EUAIActChecker />
+        </div>
+      </section>
+
+      <StatBand
+        ariaLabel="DataBridges in numbers"
+        stats={[
+          { target: "5+", label: "Years consulting" },
+          { target: "4", label: "Years in Irish public sector" },
+          { target: "UCD", label: "Professional Academy" },
+          { target: "MSc", label: "Data-Intensive Astrophysics" },
+        ]}
+      />
     </>
   );
 }
