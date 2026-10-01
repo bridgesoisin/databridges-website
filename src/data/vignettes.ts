@@ -1,8 +1,8 @@
 /**
  * Single source of truth for the engagement vignettes.
  *
- * Imported by both `/work` (full cards) and the Home "Where we've helped"
- * section (compact cards), so the copy can never diverge.
+ * Imported by `/work` (full cards). Single source so the copy can never
+ * diverge if these are reused elsewhere.
  *
  * House rules baked in here:
  * - Every client is anonymised by SECTOR. Never name a client.
@@ -29,7 +29,7 @@ export const VIGNETTES: Vignette[] = [
     eyebrow: "AI discovery",
     title: "Which AI ideas are worth it, ranked before a euro is spent.",
     before:
-      "A regulated firm with a long wish-list of 'could AI do this?' and no safe way to tell the quick wins from the compliance headaches.",
+      "A regulated firm had a backlog of candidate AI use cases and no structured way to assess which were feasible or compliant. They needed someone to sort the good ideas from the bad, then build and implement them.",
     after:
       "A discovery engagement that scoped every use case and ranked them by return: email-triggered investment summaries, call transcription with meeting notes, and a client-query assistant, sequenced so the safe, high-value ones went first.",
     proof:
@@ -43,7 +43,7 @@ export const VIGNETTES: Vignette[] = [
     eyebrow: "End-to-end Power Platform",
     title: "From first enquiry to labour on-site, in one system instead of six.",
     before:
-      "Leads on sticky notes, surveys in one inbox, quotes in Word, the schedule in someone's head. Every handover a chance to drop the ball.",
+      "Leads, surveys, quotes and scheduling were spread across paper, email, Word and individual staff knowledge, with no shared system linking them. They needed the whole job in one place, from first enquiry to labour on site.",
     after:
       "One Power Platform + Dataverse pipeline: lead intake → scheduling → property surveys → quotation → labour allocation, with Azure OpenAI drafting quotes, sanity-checking data and answering staff questions in an internal chatbot.",
     proof:
@@ -57,7 +57,7 @@ export const VIGNETTES: Vignette[] = [
     eyebrow: "SharePoint + document AI",
     title: "Case files that behave, and drafting that starts at the second draft.",
     before:
-      "Matter documents scattered across drives, versioned by filename, and hours lost summarising correspondence by hand.",
+      "Matter documents were spread across multiple drives and versioned by filename, and correspondence was summarised by hand. They needed case files kept in order and routine summarising and drafting streamlined.",
     after:
       "A SharePoint-based case-management system that keeps everything in its place, with ChatGPT summarising documents and email threads and getting first drafts on the page.",
     proof:
@@ -71,7 +71,7 @@ export const VIGNETTES: Vignette[] = [
     eyebrow: "Automation + governance",
     title: "Change approvals that move faster, with a paper trail that stands up to audit.",
     before:
-      "Change approvals triaged by hand, post-CAB changes distributed manually, and no clear picture of where the resourcing pressure actually was.",
+      "Change approvals were triaged manually, post-CAB changes were distributed by hand, and there was no consolidated view of where resourcing pressure sat. They needed the process automated and the resourcing made visible, without loosening the audit trail.",
     after:
       "Approval-triage automation, a Python tool that auto-distributes post-CAB changes, and a 2019–2026 change-ticket heatmap that shows resourcing at a glance, all wrapped in an AI/automation strategy covering the EU AI Act, GDPR, DPIA, HIQA and a human-in-the-loop framework.",
     proof:
@@ -84,7 +84,7 @@ export const VIGNETTES: Vignette[] = [
     eyebrow: "Curriculum + delivery",
     title: "The AI course we teach, taught to your team.",
     before:
-      "Staff hearing 'just use AI' with no idea which tool, which task, or where the line is.",
+      "Staff were told to use AI without guidance on which tools suited which tasks, or where the appropriate limits were. They needed practical, task-based training rather than another vendor deck.",
     after:
       "Built the AI/ML curriculum for a professional academy and delivers it to live cohorts (ChatGPT Productivity, AI for Business and GenAI), the same practical sessions offered to client teams.",
     proof:
