@@ -197,15 +197,6 @@ export default function WorkPage() {
             columns={2}
             className="mt-12"
           />
-
-          <div className="mt-10">
-            <Link
-              href="/#four-bridges"
-              className="inline-block text-cyan-ink font-medium hover:underline transition-colors duration-200"
-            >
-              See the framework in full &rarr;
-            </Link>
-          </div>
         </div>
       </section>
 

@@ -31,7 +31,6 @@ export default function Footer() {
               { href: "/", label: "Home" },
               { href: "/services", label: "Services" },
               { href: "/work", label: "Work" },
-              { href: "/events", label: "Events" },
               { href: "/seo-aeo", label: "SEO & AEO" },
               { href: "/about", label: "About" },
               { href: "/faq", label: "FAQ" },

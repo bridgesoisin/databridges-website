@@ -42,12 +42,10 @@ Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automa
   `public/admin/decap-cms.js`, not npm-installed — see `public/admin/README.md`
   for why and how to update it). Backend is `git-gateway`: saves commit
   straight to `master`, which triggers the existing Netlify auto-deploy.
-- Two collections: **LinkedIn Posts** (`content/linkedin.json`, loaded by
-  `src/data/linkedin.ts`) and **Events** (`content/events/*.md` markdown
-  files, loaded by `src/data/events.ts` via `gray-matter`). Both loaders read
-  from disk at build time and are the single source of truth their
-  respective pages/components consume — edit content through `/admin` or
-  those files directly, not by hand-editing the loaders.
+- One collection: **LinkedIn Posts** (`content/linkedin.json`, loaded by
+  `src/data/linkedin.ts`). The loader reads from disk at build time and is the
+  single source of truth the page/component consumes — edit content through
+  `/admin` or that file directly, not by hand-editing the loader.
 - One-time setup (Netlify dashboard, not code): Identity → enable, set
   invite-only, enable Git Gateway, invite the admin's email. Full login only
   works once that's done; `/admin` still loads and shows Decap's UI locally
@@ -58,10 +56,6 @@ Marketing site for DataBridges (AI consulting, Power Platform, SharePoint automa
   is untouched.
 
 ## Key components
-- `src/app/events/page.tsx` + `src/components/EventCard.tsx` — the events
-  listing. Reads `UPCOMING_EVENTS`/`PAST_EVENTS` from `src/data/events.ts`;
-  renders a graceful empty state when there are none. Upcoming events get
-  `schema.org/Event` JSON-LD.
 - `src/components/OtterGuide.tsx` — the otter mascot. Client component mounted globally in `layout.tsx`. Pure guide (no chatbot yet). Responsibilities:
   - Entrance wave, idle float, reading "works-at-laptop" state, chaotic-scroll "searching" state (see `VisualState`).
   - Contextual tips keyed off `data-otter-section="..."` anchors in pages, plus rotating AI-usage tips on idle.
