@@ -219,7 +219,7 @@ export default function Home() {
             The EU AI Act is live since August 2024.
           </p>
           <h2 id="euai-heading" className="db-h2 text-navy">
-            Does the EU AI Act apply to you? Four questions, 30 seconds.
+            Does the EU AI Act apply to you? Four questions.
           </h2>
           <p className="db-subhead mt-4 mb-12 text-navy/70">
             Answer 4 questions. Get an honest answer in 30 seconds.
