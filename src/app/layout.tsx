@@ -70,6 +70,12 @@ export const metadata: Metadata = {
         height: 630,
         alt: "DataBridges",
       },
+      {
+        url: "/images/og-card-square.jpg",
+        width: 1200,
+        height: 1200,
+        alt: "DataBridges",
+      },
     ],
   },
   twitter: {
