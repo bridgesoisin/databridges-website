@@ -99,9 +99,7 @@ export default function WorkPage() {
             Proof, not promises.
           </h1>
           <p className="text-gray-300 text-lg mt-6 max-w-2xl">
-            Real engagements, told straight and anonymised by sector. Where a
-            number is genuinely ours, we quote it. Where it isn&apos;t, we
-            won&apos;t invent one.
+            Real engagements, real people.
           </p>
         </div>
       </section>
