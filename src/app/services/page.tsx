@@ -40,7 +40,10 @@ export const metadata: Metadata = {
     title: "Services | DataBridges, AI Consulting & Power Platform",
     description:
       "AI consulting, Power Platform, SharePoint automation and AI training for Irish teams.",
-    images: ["/images/og-card.jpg"],
+    images: [
+      { url: "/images/og-card.jpg", width: 1200, height: 630, alt: "DataBridges" },
+      { url: "/images/og-card-square.jpg", width: 1200, height: 1200, alt: "DataBridges" },
+    ],
   },
   twitter: {
     card: "summary_large_image",

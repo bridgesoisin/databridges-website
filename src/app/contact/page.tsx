@@ -18,7 +18,10 @@ export const metadata: Metadata = {
     title: "Contact | DataBridges",
     description:
       "Send an enquiry to Oisín Bridges, AI consultant and Power Platform developer.",
-    images: ["/images/og-card.jpg"],
+    images: [
+      { url: "/images/og-card.jpg", width: 1200, height: 630, alt: "DataBridges" },
+      { url: "/images/og-card-square.jpg", width: 1200, height: 1200, alt: "DataBridges" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
