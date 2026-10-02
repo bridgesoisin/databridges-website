@@ -283,7 +283,7 @@ export default function SeoAeoPage() {
       >
         <p className="mx-auto max-w-4xl text-center text-gray-600">
           Led by <span className="text-navy font-semibold">Oisín Bridges</span>,
-          AI consultant, machine learning engineer and UCD lecturer. The same
+          AI consultant, machine learning engineer and UCD PA lecturer. The same
           data mindset that builds AI systems, pointed at making your business
           the answer engines choose.
         </p>
