@@ -295,18 +295,6 @@ export default function EUAIActChecker() {
 
   return (
     <div>
-      {/* Progress dots */}
-      <div className="flex justify-center gap-2 mb-10" role="progressbar" aria-valuenow={currentStep + 1} aria-valuemin={1} aria-valuemax={4} aria-label={`Question ${currentStep + 1} of 4`}>
-        {[0, 1, 2, 3].map((step) => (
-          <div
-            key={step}
-            className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
-              step === currentStep ? "bg-navy" : "bg-navy/20"
-            }`}
-          />
-        ))}
-      </div>
-
       {/* Question */}
       <h3 className="font-syne text-xl font-bold text-navy mb-2">
         {currentQuestion.question}
@@ -359,6 +347,18 @@ export default function EUAIActChecker() {
         >
           {currentStep === 3 ? "See my result →" : "Next →"}
         </button>
+      </div>
+
+      {/* Progress dots */}
+      <div className="flex justify-center gap-2 mt-10" role="progressbar" aria-valuenow={currentStep + 1} aria-valuemin={1} aria-valuemax={4} aria-label={`Question ${currentStep + 1} of 4`}>
+        {[0, 1, 2, 3].map((step) => (
+          <div
+            key={step}
+            className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
+              step === currentStep ? "bg-navy" : "bg-navy/20"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

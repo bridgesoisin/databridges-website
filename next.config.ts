@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+// Next's dev bundler needs eval() for Fast Refresh / dev source maps, which the
+// production script-src intentionally excludes. Loosen it only when NODE_ENV
+// isn't "production" so the deployed, Netlify-served policy is untouched.
+const isDev = process.env.NODE_ENV !== "production";
+
 const siteContentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -8,7 +13,7 @@ const siteContentSecurityPolicy = [
   "img-src 'self' data: https:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "connect-src 'self'",
   "form-action 'self'",
   "upgrade-insecure-requests",
