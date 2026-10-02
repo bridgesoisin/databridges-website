@@ -11,7 +11,7 @@ import { useMemo, useState } from "react";
 const ITEMS: { id: string; label: string; hint: string }[] = [
   {
     id: "answers",
-    label: "Each key page answers one clear question in its first paragraph",
+    label: "Each page answers one question in its first paragraph",
     hint: "Answer engines lift the first direct answer they can find.",
   },
   {
@@ -21,12 +21,12 @@ const ITEMS: { id: string; label: string; hint: string }[] = [
   },
   {
     id: "headings",
-    label: "Headings are written as real questions people ask",
+    label: "Headings are written as real questions",
     hint: '"How much does X cost?" beats "Pricing".',
   },
   {
     id: "freshness",
-    label: "Important pages have been updated in the last 6 months",
+    label: "Pages have been updated in the last 6 months",
     hint: "Freshness is a strong signal for both Google and AI answers.",
   },
   {
@@ -60,8 +60,7 @@ function tier(pct: number): { label: string; note: string; color: string } {
       color: "var(--color-yellow)",
     };
   return {
-    label: "Lots of upside",
-    note: "Plenty of quick wins here. This is exactly the kind of starting point where results come fastest.",
+    label: "Quick wins",
     color: "#FF8A6B",
   };
 }
@@ -98,8 +97,6 @@ export default function AEOReadiness() {
         </span>
       </div>
       <p className="text-gray-500 mt-2 text-base">
-        Tick everything you already do. No email required, your answers stay in
-        your browser.
       </p>
 
       {/* Score bar */}
