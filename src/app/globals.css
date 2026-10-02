@@ -116,17 +116,20 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Content is only hidden once ScrollReveal's JS has "armed" it (.sr-armed),
+     so on slow connections / before hydration everything stays visible
+     instead of leaving blank sections. */
   .scroll-reveal {
-    opacity: 0;
     transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
     transition-delay: var(--sr-delay, 0ms);
   }
-  .sr-fade { transform: none; }
-  .sr-fade-up { transform: translateY(24px); }
-  .sr-fade-down { transform: translateY(-24px); }
-  .sr-slide-left { transform: translateX(32px); }
-  .sr-slide-right { transform: translateX(-32px); }
-  .sr-zoom { transform: scale(0.94); }
+  .scroll-reveal.sr-armed { opacity: 0; }
+  .sr-armed.sr-fade { transform: none; }
+  .sr-armed.sr-fade-up { transform: translateY(24px); }
+  .sr-armed.sr-fade-down { transform: translateY(-24px); }
+  .sr-armed.sr-slide-left { transform: translateX(32px); }
+  .sr-armed.sr-slide-right { transform: translateX(-32px); }
+  .sr-armed.sr-zoom { transform: scale(0.94); }
 
   .scroll-reveal.revealed {
     opacity: 1;
@@ -135,9 +138,11 @@ body {
 
   /* Stagger: direct children ripple in. nth-child ladder, no JS timers. */
   .sr-stagger > * {
+    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  }
+  .sr-stagger.sr-armed > * {
     opacity: 0;
     transform: translateY(18px);
-    transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
   }
   .sr-stagger.revealed > * { opacity: 1; transform: none; }
   .sr-stagger.revealed > *:nth-child(1) { transition-delay: calc(0 * var(--sr-step, 90ms)); }
