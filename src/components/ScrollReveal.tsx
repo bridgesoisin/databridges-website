@@ -36,6 +36,14 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
+    // Already on screen when JS arrives: reveal without hiding it first.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const t = setTimeout(() => el.classList.add("revealed"), delay);
+      return () => clearTimeout(t);
+    }
+
+    el.classList.add("sr-armed");
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

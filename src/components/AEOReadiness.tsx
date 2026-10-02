@@ -61,6 +61,7 @@ function tier(pct: number): { label: string; note: string; color: string } {
     };
   return {
     label: "Quick wins",
+    note: "Plenty of quick wins here. This is exactly the kind of starting point where results come fastest.",
     color: "#FF8A6B",
   };
 }
