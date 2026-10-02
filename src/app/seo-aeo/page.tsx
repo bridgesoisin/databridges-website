@@ -401,8 +401,8 @@ export default function SeoAeoPage() {
               8 things you can try today
             </h2>
             <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-              No consultant required. These are the same fundamentals we start
-              every project with, laid out so you can act on them now.
+              No consultant required. These are the fundamentals we start
+              every project with.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
