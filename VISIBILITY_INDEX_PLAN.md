@@ -1433,12 +1433,12 @@ type ScanReport = {
 
 ### Appendix G: Execution record and methodology questions
 
-**Status at 2026-10-03: Stage 2 run PAUSED, partly built.** The run was
-interrupted twice by the account usage limit (5-hour window), and was then
-stopped deliberately at a checkpoint because the weekly allowance was at 83%.
-No part of the public release (Stage 5) was started. Nothing has been pushed,
-merged or deployed. All work is on the local branch
-`feat/visibility-index-prototype`.
+**Status at 2026-10-03: Stage 2 run PAUSED, mostly built.** The run was
+interrupted twice by the account usage limit (5-hour window), then run in
+checkpointed waves, and stopped deliberately after the evaluator wave because
+the weekly allowance had reached 94%. No part of the public release (Stage 5)
+was started. Nothing has been pushed, merged or deployed. All work is on the
+local branch `feat/visibility-index-prototype`.
 
 **Built and verified**
 
@@ -1451,19 +1451,24 @@ merged or deployed. All work is on the local branch
 | Guarded fetch layer | `url.ts`, `net-guard.ts`, `fetch.ts` | Security suite of 8 files (about 500 tests): SSRF ranges, redirects, rebinding, size and time caps, TLS, production-seam checks |
 | Methodology and scoring | `methodology.ts`, `scoring.ts` | 52 metrics and 8 categories encoded; both worked examples in 4.3.6 reproduced exactly (81 + 23 tests) |
 | Fixtures | `tests/visibility/fixtures/` (15 directories) | Authored independently from the plan text; **not yet executed** because the runner does not exist |
+| Evaluation context | `context.ts` | `context.test.ts` |
+| Metric evaluators (all 52 metrics) | `evaluate/seo-crawl.ts`, `seo-onpage.ts`, `seo-technical.ts`, `seo-content.ts`, `aeo-access.ts`, `aeo-structured.ts`, `aeo-answers.ts`, `aeo-trust.ts` | Eight test files, about 1,100 tests, one case per rule branch plus boundary values |
+| Agent submissions and consensus | `aggregate.ts`, `aggregate-fs.ts`, `scripts/visibility-aggregate.ts`, `scripts/visibility-facts.ts` | `aggregate.test.ts` (31): validation, scoring, multi-agent consensus, the approved-target guard |
+| Standalone agent pack | `scripts/build-visibility-pack.ts`, `VISIBILITY_AGENT_BRIEF.md` | Built to `reports/visibility-pack.zip` and exercised end to end from a clean folder |
 
-Commands run on 2026-10-03 (exact results): `npx vitest run` gave 17 test
-files, 1,204 tests, all passing; `npx tsc --noEmit --incremental false` gave no
-errors; `npm run lint` gave no output (clean). `npm run build` was not run in
-this pause. These results cover only the modules above.
+Commands run on 2026-10-03 (exact results): `npx vitest run` gave 27 test
+files, 2,335 tests, all passing; `npx tsc --noEmit --incremental false` gave no
+errors; `npm run lint` gave no output (clean, after `reports/**` was added to the
+ESLint ignores because it holds generated bundles). `npm run build` was last run
+earlier in this pause, before the evaluators were added, and not re-run.
 
-**Not built (the engine cannot yet score a site)**
+**Not built (the engine cannot yet score a site by itself)**
 
-- `context.ts` (evaluation context builder)
-- the eight category evaluators under `evaluate/` (all 52 metric implementations)
-- `evaluate/index.ts`, `report.ts`, `scan.ts`, the fixture runner and
-  determinism test, and `scripts/visibility-scan.ts` (the `visibility:scan`
-  npm script has not been added yet)
+- `evaluate/index.ts` (the pure `evaluateSnapshot`), `report.ts`, `scan.ts` (the
+  scan orchestration), the fixture runner and determinism test, and
+  `scripts/visibility-scan.ts` (the `visibility:scan` npm script has not been
+  added yet). Until these exist, scores come from agents following the brief,
+  with `aggregate.ts` doing the arithmetic.
 - reconcile loop against the 15 fixtures
 - Workflow 2 (security panel, fidelity audit, governance check, completeness critic)
 - WP-5 calibration: the self-scan of `databridges.ie` and the test-retest run (7.4, 7.5)
@@ -1486,8 +1491,8 @@ this pause. These results cover only the modules above.
 | `vitest` 3.x (dev) | Tests | Dev only; `npm audit` reports 7 findings (2 moderate, 5 high) in dev tooling, not in shipped code; not yet triaged |
 | `tsx` (dev) | Intended CLI runner | Dev only; unused until the CLI exists |
 
-**Open items for the methodology owner.** The agents raised 85 methodology
-questions (many duplicates of the same ambiguity) and left 52 hand-off notes.
+**Open items for the methodology owner.** The agents raised 142 methodology
+questions (many duplicates of the same ambiguity) and left 80 hand-off notes.
 They are recorded in full in `VISIBILITY_INDEX_BUILD_NOTES.md`. The ones most
 likely to change scores if decided differently: heading scope for S2.05/S2.06
 (document-wide or main only); which metrics count as word-count metrics for
@@ -1498,5 +1503,5 @@ three FAQ-pair mechanisms in A3.03. Until D-03 is decided, every score the
 prototype produces is an engineering result, not a published claim.
 
 **To resume:** see the resume instructions at the top of
-`VISIBILITY_INDEX_BUILD_NOTES.md`. Remaining phases, in order: Context,
-Evaluators, Integrate, Reconcile, Verify, then calibration.
+`VISIBILITY_INDEX_BUILD_NOTES.md`. Remaining phases, in order: Integrate,
+Reconcile (run the 15 fixtures and adjudicate), Verify, then calibration.
