@@ -1,0 +1,195 @@
+{
+  "description": "Galway joinery site built to hit every S1.04 branch across the five sampled pages: homepage canonical points to another site (0, raises CF-06); /services declares its self canonical only in a Link response header (1); /about points to the www variant of itself (different same-site URL, 0.5); /faq has none (0); the article has two conflicting canonical link elements (0). S1.04 = 0.3. Other metrics carry deliberate partials (missing alt, partial Open Graph, missing viewport on /about, passive mixed content on the article, no JSON-LD except on the homepage, no llms.txt, all pages 150-299 words).",
+  "scannedAt": "2026-10-02T09:15:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/choosing-a-kitchen-joiner"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      },
+      "ttfbMs": 60
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      },
+      "ttfbSamplesMs": [
+        140,
+        160,
+        180
+      ]
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "link": "<https://fixture.example/services>; rel=\"canonical\""
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/choosing-a-kitchen-joiner": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/resources": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/pricing": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/services/fitted-wardrobes": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/oak-or-ash": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    }
+  }
+}

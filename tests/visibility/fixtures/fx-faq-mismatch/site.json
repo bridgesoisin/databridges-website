@@ -1,0 +1,182 @@
+{
+  "description": "Accounting practice whose /faq page carries FAQPage JSON-LD (three Questions, each with acceptedAnswer.text) that was copied from an older site: none of the three Question texts appears in the visible page, which shows four different questions. A2.05 stays satisfied (structure only) while A2.07 fails for that page; the homepage organisation name and the article headline (contained in the H1) pass A2.07.",
+  "scannedAt": "2026-10-02T09:00:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/preliminary-tax-explained"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      },
+      "ttfbMs": 90
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      },
+      "ttfbSamplesMs": [
+        120,
+        150,
+        180
+      ]
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/preliminary-tax-explained": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article-preliminary-tax.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/contact.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/privacy.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/terms": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/terms.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/cookies": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/cookies.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/vat-registration-basics": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article-vat.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    }
+  }
+}

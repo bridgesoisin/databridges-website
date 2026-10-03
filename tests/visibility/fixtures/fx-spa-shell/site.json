@@ -1,0 +1,121 @@
+{
+  "description": "Client-rendered single-page application: every route returns the same raw shell, an empty #root div plus a noscript 'enable JavaScript' message, no anchors, and a static head that carries the same canonical (the homepage), title, description, Open Graph tags and an Organization plus WebSite JSON-LD graph on every route. All five sampled pages are render-dependent, so CF-04 is raised, every body metric is NOT_OBSERVED, A1.04 = 0 and the overall score is withheld on coverage. Meta metrics are still evaluated on the shell. Port 80 refuses connections (S3.01 NOT_OBSERVED); with S3.06 (no links in the raw HTML, fewer than 5 observed) and S3.07 (body metric) also unobserved, S3 coverage is 0.45 and S3 is hidden. S4 (coverage 0.1), A3 (0) and A4 (0.2667) are hidden too, so only S1, S2, A1 and A2 are shown: shown weight 60, below the 70 overall minimum. Each pillar sits exactly on the 30-point pillar minimum (at least 30) and is published. Without the refused port the shown weight would be exactly 70 and the overall would be published. S2.02 and S2.04 score 0.2 because every route serves the identical head, S1.04 scores 0.6 because the shared canonical points at the homepage, and A2.05 is 0 because no route carries page-type schema. samplingExpectation lists the homepage first, then the four selected pages in selection order (no article candidate exists, so the fourth slot is filled by the other-type page /pricing).",
+  "scannedAt": "2026-10-02T09:15:00Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/pricing"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "error": {
+        "code": "CONNECT_REFUSED",
+        "message": "connect ECONNREFUSED fixture.example:80"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/shell.html",
+      "ttfbMs": 280,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/shell.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/shell.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/shell.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/pricing": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/shell.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/shell.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/shell.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 60
+      }
+    }
+  }
+}

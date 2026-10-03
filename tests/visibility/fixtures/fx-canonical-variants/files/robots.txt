@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /private/
+
+Sitemap: https://fixture.example/sitemap.xml

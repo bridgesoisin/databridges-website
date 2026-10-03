@@ -1,0 +1,138 @@
+{
+  "description": "Five-page business site left on noindex after launch. Every sampled page carries a noindex-type directive through a different mechanism: homepage meta robots 'noindex, follow' (raises CF-02), services X-Robots-Tag 'noindex, nosnippet', about meta robots 'none', faq meta googlebot 'noindex, nofollow', article meta bingbot 'noindex'. All five pages therefore score 0 in S1.01 (FAIL). robots.txt allows everything except /admin/, so S1.02 and A1.01 are full. Other metrics carry deliberate partial values: http redirects with 302 (S3.01 0.5), certificate with 9 days left (S3.02 0.5), 1200 ms median first byte from three samples of 1100, 1200 and 1300 ms (S3.05 0.5), a passive http image on /about (S3.07), a 4-character title on /faq (S2.01), no description on /about (S2.03), an h2-to-h4 skip on /about (S2.06), nosnippet on /services and none on /about (A1.02), an llms.txt with no heading or link (A1.03 0.5), an article with no dateModified (A4.04 0.5), a newest date 260 days before the scan (A4.05 0.5), and no outbound link on /faq (A4.07). The article declares its canonical only in a Link header. samplingExpectation lists the homepage first, then the four selected pages in selection order.",
+  "scannedAt": "2026-10-02T09:15:00Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/year-end-checklist"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 302,
+      "headers": {
+        "location": "https://fixture.example/"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "ttfbSamplesMs": [
+        1100,
+        1200,
+        1300
+      ],
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, nosnippet"
+      },
+      "bodyFile": "files/services.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/blog/year-end-checklist": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "link": "<https://fixture.example/blog/year-end-checklist>; rel=\"canonical\""
+      },
+      "bodyFile": "files/article.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/contact.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/privacy.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    }
+  }
+}

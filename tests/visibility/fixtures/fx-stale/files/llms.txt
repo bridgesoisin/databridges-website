@@ -1,0 +1,6 @@
+# Nore Valley Plumbing
+
+> Plumbing and heating contractor in Kilkenny providing boiler servicing, bathroom installation and heat pump installation.
+
+- [Services](https://fixture.example/services): Boiler servicing, call-outs, bathrooms and heat pumps.
+- [Project gallery](https://fixture.example/gallery): Recent completed jobs.

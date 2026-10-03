@@ -1,0 +1,1248 @@
+[
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/fish",
+    "allowed": false,
+    "why": "prefix: rule /fish matches the identical path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/fish.html",
+    "allowed": false,
+    "why": "prefix: a rule is a prefix match, so /fish.html is covered"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/fish/salmon.html",
+    "allowed": false,
+    "why": "prefix: a sub-path under the prefix is covered"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/fishheads",
+    "allowed": false,
+    "why": "prefix: the prefix has no word boundary"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/fishheads/yummy.html",
+    "allowed": false,
+    "why": "prefix: the prefix has no word boundary, deeper path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/fish.php?id=anything",
+    "allowed": false,
+    "why": "prefix: the query string follows the path and does not stop the prefix match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/catfish",
+    "allowed": true,
+    "why": "prefix: the rule is anchored at the start of the path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/?id=fish",
+    "allowed": true,
+    "why": "prefix: the pattern is not matched inside the query string"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/desert/fish",
+    "allowed": true,
+    "why": "prefix: the pattern is not matched mid-path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/Fish.asp",
+    "allowed": true,
+    "why": "case-sensitive: path matching is case-sensitive, /Fish.asp does not match /fish"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/fish/",
+    "allowed": false,
+    "why": "prefix: trailing-slash rule matches the folder itself"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/fish/?id=anything",
+    "allowed": false,
+    "why": "prefix: folder with a query string"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/fish/salmon.htm",
+    "allowed": false,
+    "why": "prefix: file inside the folder"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/fish",
+    "allowed": true,
+    "why": "prefix: without the trailing slash the folder rule does not match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/fish.html",
+    "allowed": true,
+    "why": "prefix: a sibling file name does not match the folder rule"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /fish/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/Fish/Salmon.asp",
+    "allowed": true,
+    "why": "prefix: case differs, so no match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /Private/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/Private/data",
+    "allowed": false,
+    "why": "case-sensitive: exact-case path is blocked"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /Private/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private/data",
+    "allowed": true,
+    "why": "case-sensitive: lower-case path is a different path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "prefix: the root is not covered by /admin/"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/about",
+    "allowed": true,
+    "why": "prefix: unrelated path allowed by default"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/admin",
+    "allowed": true,
+    "why": "prefix: no trailing slash, so /admin does not start with /admin/"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/administrator",
+    "allowed": true,
+    "why": "prefix: /administrator does not start with /admin/"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/admin/users",
+    "allowed": false,
+    "why": "prefix: path under the folder is blocked"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /folder/\nAllow: /folder/page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/page",
+    "allowed": true,
+    "why": "longest-match: Allow /folder/page (12 octets) beats Disallow /folder/ (8 octets)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /folder/\nAllow: /folder/page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/page.html",
+    "allowed": true,
+    "why": "longest-match: the longer Allow rule is also a prefix of /folder/page.html"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /folder/\nAllow: /folder/page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/pages/x",
+    "allowed": true,
+    "why": "longest-match: the longer Allow rule is a prefix of /folder/pages/x"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /folder/\nAllow: /folder/page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/other",
+    "allowed": false,
+    "why": "longest-match: only the Disallow rule matches"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /folder/\nAllow: /folder/page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/",
+    "allowed": false,
+    "why": "longest-match: only the Disallow rule matches the folder itself"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /folder/\nAllow: /folder/page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/pag",
+    "allowed": false,
+    "why": "longest-match: shorter than the Allow rule, so only the Disallow rule matches"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /folder/page\nDisallow: /folder/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/page",
+    "allowed": true,
+    "why": "longest-match: line order does not matter, the longest match wins"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /folder/page\nDisallow: /folder/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/folder/other",
+    "allowed": false,
+    "why": "longest-match: line order does not matter, Disallow still applies"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /shop/\nDisallow: /shop/private/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/shop/private/orders",
+    "allowed": false,
+    "why": "longest-match: Disallow /shop/private/ (14 octets) beats Allow /shop/ (6 octets)"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /shop/\nDisallow: /shop/private/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/shop/public",
+    "allowed": true,
+    "why": "longest-match: only the Allow rule matches"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /shop/\nDisallow: /shop/private/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/shop/",
+    "allowed": true,
+    "why": "longest-match: only the Allow rule matches the folder itself"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /shop/\nDisallow: /shop/private/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/shop/private",
+    "allowed": true,
+    "why": "longest-match: no trailing slash, so the longer Disallow does not match"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /p\nDisallow: /\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/page",
+    "allowed": true,
+    "why": "longest-match: Allow /p (2 octets) beats Disallow / (1 octet)"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /p\nDisallow: /\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/p",
+    "allowed": true,
+    "why": "longest-match: exact match of the Allow rule"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /p\nDisallow: /\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/other",
+    "allowed": false,
+    "why": "longest-match: only Disallow / matches"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /p\nDisallow: /\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "longest-match: only Disallow / matches the root"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\nAllow: /public/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/public/report.pdf",
+    "allowed": true,
+    "why": "longest-match: Allow /public/ (8 octets) beats Disallow /*.pdf (6 octets)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\nAllow: /public/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private/report.pdf",
+    "allowed": false,
+    "why": "longest-match: only Disallow /*.pdf matches"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\nAllow: /public/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/public/page.html",
+    "allowed": true,
+    "why": "longest-match: only Allow matches"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\nAllow: /public/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private/page.html",
+    "allowed": true,
+    "why": "longest-match: neither rule matches"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /*.pdf\nDisallow: /secret/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/secret/doc.pdf",
+    "allowed": false,
+    "why": "longest-match: Disallow /secret/ (8 octets) beats Allow /*.pdf (6 octets)"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /*.pdf\nDisallow: /secret/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/open/doc.pdf",
+    "allowed": true,
+    "why": "longest-match: only Allow matches"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /*.pdf\nDisallow: /secret/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/secret/page.html",
+    "allowed": false,
+    "why": "longest-match: only Disallow matches"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\nAllow: /$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "longest-match: Allow /$ (2 octets) beats Disallow / (1 octet) for the root"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\nAllow: /$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/about",
+    "allowed": false,
+    "why": "longest-match: the $ anchor means Allow /$ matches only the root"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\nAllow: /$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/?utm=1",
+    "allowed": false,
+    "why": "longest-match: path plus query is /?utm=1, which Allow /$ does not match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page\nAllow: /page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page",
+    "allowed": true,
+    "why": "equal-length: identical Allow and Disallow rules: allow wins the tie"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page\nAllow: /page\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page/sub",
+    "allowed": true,
+    "why": "equal-length: allow wins the tie for sub-paths too"
+  },
+  {
+    "robots": "User-agent: *\nAllow: /page\nDisallow: /page\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/page",
+    "allowed": true,
+    "why": "equal-length: tie result does not depend on line order"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /abc\nAllow: /a*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/abc",
+    "allowed": true,
+    "why": "equal-length: /abc and /a*c are both 4 octets, so the Allow rule wins the tie"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /abc\nAllow: /a*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/abcd",
+    "allowed": true,
+    "why": "equal-length: both rules are prefixes of /abcd and tie at 4 octets, Allow wins"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/docs/a.pdf",
+    "allowed": false,
+    "why": "wildcard: * matches any run of characters"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a.pdf",
+    "allowed": false,
+    "why": "wildcard: * may match nothing before the dot"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/docs/a.pdf?download=1",
+    "allowed": false,
+    "why": "wildcard: without $ the rule is still a prefix match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/docs/a.html",
+    "allowed": true,
+    "why": "wildcard: different extension"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/pdf",
+    "allowed": true,
+    "why": "wildcard: no dot before pdf"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.pdf\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/docs/apdf",
+    "allowed": true,
+    "why": "wildcard: the literal dot is required"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.php$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/index.php",
+    "allowed": false,
+    "why": "end-anchor: ends in .php"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.php$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/dir/page.php",
+    "allowed": false,
+    "why": "end-anchor: ends in .php in a sub-directory"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.php$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/index.php?x=1",
+    "allowed": true,
+    "why": "end-anchor: the query string means the match does not end at .php"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.php$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/index.phps",
+    "allowed": true,
+    "why": "end-anchor: does not end at .php"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.php$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/index.php/",
+    "allowed": true,
+    "why": "end-anchor: trailing slash means the match does not end at .php"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*.php$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/index.html",
+    "allowed": true,
+    "why": "end-anchor: different extension"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page",
+    "allowed": false,
+    "why": "end-anchor: exact path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page/",
+    "allowed": true,
+    "why": "end-anchor: anything after /page defeats the $ anchor"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page.html",
+    "allowed": true,
+    "why": "end-anchor: anything after /page defeats the $ anchor"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page?x=1",
+    "allowed": true,
+    "why": "end-anchor: a query string defeats the $ anchor"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /page$\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/pages",
+    "allowed": true,
+    "why": "end-anchor: anything after /page defeats the $ anchor"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private*/secret\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private/secret",
+    "allowed": false,
+    "why": "wildcard: * matches an empty run"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private*/secret\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private-area/secret",
+    "allowed": false,
+    "why": "wildcard: * matches -area"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private*/secret\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/privateX/other/secret",
+    "allowed": false,
+    "why": "wildcard: * matches X/other, including slashes"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private*/secret\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private/secret/more",
+    "allowed": false,
+    "why": "wildcard: no $ so extra path is still covered"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private*/secret\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/private/public",
+    "allowed": true,
+    "why": "wildcard: /secret never follows"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private*/secret\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/priv/secret",
+    "allowed": true,
+    "why": "wildcard: the literal prefix /private is required"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a*b*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/abc",
+    "allowed": false,
+    "why": "wildcard: both * match empty runs"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a*b*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/axxbxxc",
+    "allowed": false,
+    "why": "wildcard: a then b then c in order"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a*b*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a/b/c/d",
+    "allowed": false,
+    "why": "wildcard: a then b then c in order, then extra path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a*b*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/axxcxxb",
+    "allowed": true,
+    "why": "wildcard: c comes before b, so the pattern order fails"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a*b*c\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/ab",
+    "allowed": true,
+    "why": "wildcard: no c"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /tmp*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/tmp",
+    "allowed": false,
+    "why": "wildcard: trailing * is redundant but harmless"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /tmp*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/tmpfile",
+    "allowed": false,
+    "why": "wildcard: prefix match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /tmp*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/tmp/x",
+    "allowed": false,
+    "why": "wildcard: prefix match"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /tmp*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/temp",
+    "allowed": true,
+    "why": "wildcard: different path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*?sessionid=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page?sessionid=abc",
+    "allowed": false,
+    "why": "wildcard: rule matches the query string"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*?sessionid=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/?sessionid=1",
+    "allowed": false,
+    "why": "wildcard: * may match nothing"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*?sessionid=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page?a=1&sessionid=abc",
+    "allowed": true,
+    "why": "wildcard: ?sessionid= does not appear, only &sessionid="
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*?sessionid=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/page",
+    "allowed": true,
+    "why": "wildcard: no query string"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /search?q=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/search?q=cats",
+    "allowed": false,
+    "why": "wildcard: literal query rule"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /search?q=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/search",
+    "allowed": true,
+    "why": "wildcard: no query string"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /search?q=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/search?lang=en",
+    "allowed": true,
+    "why": "wildcard: different parameter"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /search?q=\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/search?q",
+    "allowed": true,
+    "why": "wildcard: the = is part of the rule"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/anything",
+    "allowed": false,
+    "why": "wildcard: /* blocks everything"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "wildcard: * may match nothing, so the root is blocked"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a/b?c=d",
+    "allowed": false,
+    "why": "wildcard: /* blocks paths with queries"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/x",
+    "allowed": false,
+    "why": "wildcard: Disallow / blocks every path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/deep/path?q=1",
+    "allowed": false,
+    "why": "wildcard: Disallow / blocks deep paths with a query string"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*/drafts/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/blog/drafts/post",
+    "allowed": false,
+    "why": "wildcard: * matches blog"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*/drafts/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a/b/drafts/c",
+    "allowed": false,
+    "why": "wildcard: * matches a/b"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /*/drafts/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/drafts/post",
+    "allowed": true,
+    "why": "wildcard: only one slash precedes drafts but the rule needs a second one"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private/\n\nUser-agent: OAI-SearchBot\nDisallow: /tmp/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/private/a",
+    "allowed": true,
+    "why": "specific-group: a matching specific group replaces the * group, so /private/ is not blocked"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private/\n\nUser-agent: OAI-SearchBot\nDisallow: /tmp/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/tmp/a",
+    "allowed": false,
+    "why": "specific-group: the specific group's own rule applies"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private/\n\nUser-agent: OAI-SearchBot\nDisallow: /tmp/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/private/a",
+    "allowed": false,
+    "why": "fallback-wildcard: no PerplexityBot group, so the * group applies"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /private/\n\nUser-agent: OAI-SearchBot\nDisallow: /tmp/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/tmp/a",
+    "allowed": true,
+    "why": "fallback-wildcard: the OAI-SearchBot rule does not apply to PerplexityBot"
+  },
+  {
+    "robots": "User-agent: GOOGLEBOT\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "agent-case: upper-case group name, mixed-case token"
+  },
+  {
+    "robots": "User-agent: GOOGLEBOT\nDisallow: /x/\n",
+    "agent": "googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "agent-case: upper-case group name, lower-case token"
+  },
+  {
+    "robots": "User-agent: googlebot\nDisallow: /x/\n",
+    "agent": "GoogleBot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "agent-case: lower-case group name, mixed-case token"
+  },
+  {
+    "robots": "User-agent: GOOGLEBOT\nDisallow: /x/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/x/a",
+    "allowed": true,
+    "why": "agent-case: bingbot has no group and there is no * group"
+  },
+  {
+    "robots": "USER-AGENT: *\nDISALLOW: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "directive-case: directive names are case-insensitive"
+  },
+  {
+    "robots": "user-agent: *\ndisallow: /x/\nALLOW: /x/ok\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "directive-case: lower-case disallow"
+  },
+  {
+    "robots": "user-agent: *\ndisallow: /x/\nALLOW: /x/ok\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/ok",
+    "allowed": true,
+    "why": "directive-case: upper-case ALLOW with a longer match"
+  },
+  {
+    "robots": "User-agent:    Googlebot   \nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "agent-case: whitespace around the user-agent value is ignored"
+  },
+  {
+    "robots": "User-agent: Googlebot\nDisallow: /a/\n\nUser-agent: Googlebot\nDisallow: /b/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a/1",
+    "allowed": false,
+    "why": "group-merging: rules of both Googlebot groups apply: first group"
+  },
+  {
+    "robots": "User-agent: Googlebot\nDisallow: /a/\n\nUser-agent: Googlebot\nDisallow: /b/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/b/1",
+    "allowed": false,
+    "why": "group-merging: rules of both Googlebot groups apply: second group"
+  },
+  {
+    "robots": "User-agent: Googlebot\nDisallow: /a/\n\nUser-agent: Googlebot\nDisallow: /b/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/c/1",
+    "allowed": true,
+    "why": "group-merging: neither group covers /c/"
+  },
+  {
+    "robots": "User-agent: bingbot\nDisallow: /docs/\n\nUser-agent: bingbot\nAllow: /docs/public/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/docs/public/a",
+    "allowed": true,
+    "why": "group-merging: merged groups: the longer Allow rule from the second group wins"
+  },
+  {
+    "robots": "User-agent: bingbot\nDisallow: /docs/\n\nUser-agent: bingbot\nAllow: /docs/public/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/docs/private/a",
+    "allowed": false,
+    "why": "group-merging: merged groups: the Disallow rule from the first group applies"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a/\n\nUser-agent: *\nDisallow: /b/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/a/x",
+    "allowed": false,
+    "why": "group-merging: two * groups merge: first group"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a/\n\nUser-agent: *\nDisallow: /b/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/b/x",
+    "allowed": false,
+    "why": "group-merging: two * groups merge: second group"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a/\n\nUser-agent: *\nDisallow: /b/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/c/x",
+    "allowed": true,
+    "why": "group-merging: neither * group covers /c/"
+  },
+  {
+    "robots": "User-agent: Googlebot\nUser-agent: bingbot\nDisallow: /shared/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/shared/x",
+    "allowed": false,
+    "why": "group-merging: consecutive User-agent lines share one group: first agent"
+  },
+  {
+    "robots": "User-agent: Googlebot\nUser-agent: bingbot\nDisallow: /shared/\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/shared/x",
+    "allowed": false,
+    "why": "group-merging: consecutive User-agent lines share one group: second agent"
+  },
+  {
+    "robots": "User-agent: Googlebot\nUser-agent: bingbot\nDisallow: /shared/\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/shared/x",
+    "allowed": true,
+    "why": "fallback-wildcard: not named in the group and no * group"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /nostar/\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/nostar/a",
+    "allowed": false,
+    "why": "fallback-wildcard: no specific group, so the * group applies"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /nostar/\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/ok",
+    "allowed": true,
+    "why": "fallback-wildcard: path not covered"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "specific-group: no matching group and no * group means allowed"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n",
+    "agent": "GPTBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "specific-group: GPTBot has its own group"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n",
+    "agent": "ClaudeBot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "specific-group: a different training token is not affected"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n\nUser-agent: PerplexityBot\nDisallow:\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/anything",
+    "allowed": true,
+    "why": "specific-group: the specific group has an empty Disallow, so it allows everything and the * group is not merged in"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n\nUser-agent: PerplexityBot\nDisallow:\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/anything",
+    "allowed": false,
+    "why": "fallback-wildcard: no OAI-SearchBot group, so Disallow / from * applies"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a/b",
+    "allowed": true,
+    "why": "specific-group: Googlebot's own group allows everything"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/a/b",
+    "allowed": false,
+    "why": "fallback-wildcard: bingbot falls back to the * group"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n\nUser-agent: *\nDisallow: /admin/\n",
+    "agent": "GPTBot",
+    "url": "https://fixture.example/blog",
+    "allowed": false,
+    "why": "specific-group: GPTBot group blocks everything"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n\nUser-agent: *\nDisallow: /admin/\n",
+    "agent": "GPTBot",
+    "url": "https://fixture.example/admin/x",
+    "allowed": false,
+    "why": "specific-group: blocked by the GPTBot group"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n\nUser-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/blog",
+    "allowed": true,
+    "why": "fallback-wildcard: the GPTBot block does not leak to other agents"
+  },
+  {
+    "robots": "User-agent: GPTBot\nDisallow: /\n\nUser-agent: *\nDisallow: /admin/\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/admin/x",
+    "allowed": false,
+    "why": "fallback-wildcard: the * group applies to OAI-SearchBot"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /w/\n\nUser-agent: Googlebot\nDisallow: /g/\n",
+    "agent": "*",
+    "url": "https://fixture.example/w/a",
+    "allowed": false,
+    "why": "wildcard-token: the * token evaluates the wildcard group (CF-01 reads the * group)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /w/\n\nUser-agent: Googlebot\nDisallow: /g/\n",
+    "agent": "*",
+    "url": "https://fixture.example/g/a",
+    "allowed": true,
+    "why": "wildcard-token: the * token ignores the Googlebot group"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /w/\n\nUser-agent: Googlebot\nDisallow: /g/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/g/a",
+    "allowed": false,
+    "why": "specific-group: Googlebot's own rule"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /w/\n\nUser-agent: Googlebot\nDisallow: /g/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/w/a",
+    "allowed": true,
+    "why": "specific-group: Googlebot does not inherit the * group"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "DataBridgesBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "fallback-wildcard: the scanner's own agent falls back to the * group (plan 4.2.1)"
+  },
+  {
+    "robots": "User-agent: DataBridgesBot\nDisallow: /\n",
+    "agent": "DataBridgesBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "specific-group: a block aimed at the scanner's own agent"
+  },
+  {
+    "robots": "User-agent: DataBridgesBot\nDisallow: /\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "specific-group: a DataBridgesBot block does not affect Googlebot"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "block-all: Disallow / for * blocks Googlebot (CF-01)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "bingbot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "block-all: Disallow / for * blocks bingbot (CF-01)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "block-all: Disallow / for * blocks OAI-SearchBot (CF-01)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "block-all: Disallow / for * blocks PerplexityBot (CF-01)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/",
+    "allowed": false,
+    "why": "block-all: Disallow / for * blocks Claude-SearchBot (CF-01)"
+  },
+  {
+    "robots": "User-agent: GPTBot\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Claude-SearchBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/about",
+    "allowed": false,
+    "why": "scanner: one of the three AI search agents blocked"
+  },
+  {
+    "robots": "User-agent: GPTBot\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Claude-SearchBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/about",
+    "allowed": true,
+    "why": "scanner: OAI-SearchBot falls back to Allow /"
+  },
+  {
+    "robots": "User-agent: GPTBot\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Claude-SearchBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n",
+    "agent": "PerplexityBot",
+    "url": "https://fixture.example/about",
+    "allowed": true,
+    "why": "scanner: PerplexityBot falls back to Allow /"
+  },
+  {
+    "robots": "User-agent: GPTBot\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Claude-SearchBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n",
+    "agent": "GPTBot",
+    "url": "https://fixture.example/about",
+    "allowed": false,
+    "why": "scanner: training agents are blocked but only informational"
+  },
+  {
+    "robots": "User-agent: GPTBot\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Claude-SearchBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "scanner: classic search agents fall back to Allow /"
+  },
+  {
+    "robots": "Sitemap: https://fixture.example/sitemap.xml\nUser-agent: *\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "scanner: a Sitemap line before the group does not disturb it"
+  },
+  {
+    "robots": "Sitemap: https://fixture.example/sitemap.xml\nUser-agent: *\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/y",
+    "allowed": true,
+    "why": "scanner: path not covered"
+  },
+  {
+    "robots": "User-agent: *\nDisallow:\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/anything",
+    "allowed": true,
+    "why": "empty-disallow: an empty Disallow allows everything"
+  },
+  {
+    "robots": "User-agent: *\nDisallow:\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "empty-disallow: an empty Disallow allows the root"
+  },
+  {
+    "robots": "User-agent: *\nDisallow:\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "empty-disallow: the empty Disallow is ignored, the other rule applies"
+  },
+  {
+    "robots": "User-agent: *\nDisallow:\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/y",
+    "allowed": true,
+    "why": "empty-disallow: path not covered"
+  },
+  {
+    "robots": "User-agent: *\nAllow:\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "empty-disallow: an empty Allow matches nothing"
+  },
+  {
+    "robots": "# robots for the example\nUser-agent: *   # everyone\nDisallow:   /x/   # not public\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "comments: comments and spaces are stripped"
+  },
+  {
+    "robots": "# robots for the example\nUser-agent: *   # everyone\nDisallow:   /x/   # not public\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/y",
+    "allowed": true,
+    "why": "comments: path not covered"
+  },
+  {
+    "robots": "User-agent: *\r\nDisallow: /x/\r\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "line-endings: CRLF line endings"
+  },
+  {
+    "robots": "User-agent: *\r\nDisallow: /x/\r\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/y",
+    "allowed": true,
+    "why": "line-endings: path not covered"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /x/",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "line-endings: no trailing newline"
+  },
+  {
+    "robots": "User-agent: *\n\nDisallow: /x/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/x/a",
+    "allowed": false,
+    "why": "blank-lines: a blank line between the User-agent line and its rules stays in the group (RFC 9309 grammar)"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a/\n\nDisallow: /b/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/a/1",
+    "allowed": false,
+    "why": "blank-lines: rule before the blank line"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /a/\n\nDisallow: /b/\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/b/1",
+    "allowed": false,
+    "why": "blank-lines: a blank line between rules stays in the group"
+  },
+  {
+    "robots": "",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/",
+    "allowed": true,
+    "why": "4xx: a 4xx robots.txt is treated as no rules: everything allowed (S1.02)"
+  },
+  {
+    "robots": "",
+    "agent": "OAI-SearchBot",
+    "url": "https://fixture.example/anything/at/all",
+    "allowed": true,
+    "why": "4xx: a 4xx robots.txt is treated as no rules: everything allowed (A1.01)"
+  },
+  {
+    "robots": "# only a comment\n",
+    "agent": "Claude-SearchBot",
+    "url": "https://fixture.example/x",
+    "allowed": true,
+    "why": "4xx: a file with no rules allows everything"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /foo/bar/%E3%83%84\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/foo/bar/%E3%83%84",
+    "allowed": false,
+    "why": "percent-encoding: encoded rule against the encoded path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /foo/bar/%E3%83%84\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/foo/bar/ツ",
+    "allowed": false,
+    "why": "percent-encoding: encoded rule against the unencoded non-ASCII path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /foo/bar/ツ\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/foo/bar/%E3%83%84",
+    "allowed": false,
+    "why": "percent-encoding: non-ASCII rule against the encoded path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /foo/bar/ツ\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/foo/bar/ツ",
+    "allowed": false,
+    "why": "percent-encoding: non-ASCII rule against the non-ASCII path"
+  },
+  {
+    "robots": "User-agent: *\nDisallow: /foo/bar/baz\n",
+    "agent": "Googlebot",
+    "url": "https://fixture.example/foo/bar/%62%61%7A",
+    "allowed": false,
+    "why": "percent-encoding: percent-encoded unreserved ASCII is decoded before comparison"
+  }
+]

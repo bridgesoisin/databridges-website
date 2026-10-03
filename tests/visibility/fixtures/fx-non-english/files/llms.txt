@@ -1,0 +1,9 @@
+# Studio Boréal
+
+> Conseil indépendant en rénovation énergétique à Nantes et en Loire-Atlantique.
+
+## Pages principales
+
+- [Nos services](https://fixture.example/services): audit énergétique, aides financières, suivi de chantier
+- [À propos](https://fixture.example/about): l'équipe et ses méthodes
+- [Questions fréquentes](https://fixture.example/faq): réponses aux questions des propriétaires

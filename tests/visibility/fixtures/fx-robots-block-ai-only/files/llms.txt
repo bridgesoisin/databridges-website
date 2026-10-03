@@ -1,0 +1,8 @@
+# Kestrel Bookkeeping
+
+> Bookkeeping, payroll and VAT services for small businesses in Naas and across Kildare.
+
+## Key pages
+
+- [Services](https://fixture.example/services): what we do and how we price it
+- [FAQ](https://fixture.example/faq): answers to common questions

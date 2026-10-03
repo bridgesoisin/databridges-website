@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://fixture.example/sitemap.xml

@@ -1,0 +1,49 @@
+{
+  "description": "robots.txt is 'User-agent: *' with 'Disallow: /'. The scanner's own-agent check (plan 4.2.1: DataBridgesBot, falling back to the * group) finds the homepage disallowed, so the outcome is BLOCKED_BY_ROBOTS: no request other than robots.txt may be made, no score is produced, every metric is NOT_OBSERVED (own-agent robots block, 4.3.1), and no critical finding is raised because no evaluator runs (types.ts: criticalFindings is empty unless the outcome is COMPLETED). The homepage, sitemap and an http redirect are served as bait, so a scanner that ignores robots.txt would fetch and score them and fail this fixture. Plan 7.2 lists CF-01 and CF-03 for this scenario, but they can only be raised on a completed scan, which needs robots.txt to give DataBridgesBot its own Allow group while * stays on Disallow: /; that variant is requested separately (see the methodology question returned with this fixture). samplingExpectation is empty because nothing is sampled.",
+  "scannedAt": "2026-10-02T09:15:00Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "ttfbMs": 300,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    }
+  }
+}

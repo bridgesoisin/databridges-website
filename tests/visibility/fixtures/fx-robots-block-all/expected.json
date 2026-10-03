@@ -1,0 +1,263 @@
+{
+  "outcome": "BLOCKED_BY_ROBOTS",
+  "partial": false,
+  "scores": {
+    "overall": null,
+    "seo": null,
+    "aeo": null,
+    "coverage": 0
+  },
+  "categories": {
+    "S1": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "S2": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "S3": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "S4": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "A1": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "A2": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "A3": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "A4": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    }
+  },
+  "criticalFindings": [],
+  "metrics": {
+    "S1.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S1.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S1.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S1.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S1.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.08": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.09": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A1.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A1.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A1.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A1.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.08": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    }
+  }
+}
