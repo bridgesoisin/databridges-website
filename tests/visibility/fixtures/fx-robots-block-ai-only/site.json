@@ -1,0 +1,132 @@
+{
+  "description": "Healthy five-page business site whose robots.txt disallows OAI-SearchBot (a scored AI search crawler) and several training crawlers (GPTBot, ClaudeBot, Google-Extended, CCBot; informational only, never scored) while the * group allows everything except /admin/. A1.01 = 10 of 15 (agent, page) pairs allowed = 2/3: OAI-SearchBot is blocked on all five sampled pages, PerplexityBot and Claude-SearchBot fall back to the * group and are allowed. ClaudeBot is disallowed but Claude-SearchBot is a different token and stays allowed; Googlebot and bingbot also fall back to *, so S1.02 passes. No critical finding (CF-03 needs all three AI search crawlers blocked). Other metrics carry deliberate partial values: article title 72 characters (S2.01), faq description 181 characters (S2.03), two h1 elements on /about (S2.05), an image without alt on /about (S2.07), a relative og:image on /about (S2.09), max-snippet:30 on /about (A1.02), homepage organisation node without description (A2.02), one sameAs URL (A2.03), og:site_name differing from the organisation name (A2.08), six distinct homepage links (S4.02), mixed question headings and answer paragraphs (A3.01, A3.02, A3.04), and /faq with no outbound link (A4.07). samplingExpectation lists the homepage first, then the four selected pages in selection order.",
+  "scannedAt": "2026-10-02T09:15:00Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/year-end-checklist"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "ttfbMs": 320,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/blog/year-end-checklist": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/contact.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/privacy.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 83
+      }
+    }
+  }
+}

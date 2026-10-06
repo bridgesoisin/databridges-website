@@ -1,0 +1,6 @@
+# Blackwater Accounting
+
+> Accounting practice in Fermoy providing tax returns, bookkeeping and payroll for sole traders and small businesses.
+
+- [Services](https://fixture.example/services): Tax returns, bookkeeping, payroll and company accounts.
+- [Frequently asked questions](https://fixture.example/faq): Answers to common client questions.

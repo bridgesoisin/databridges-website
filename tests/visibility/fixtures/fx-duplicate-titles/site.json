@@ -1,0 +1,194 @@
+{
+  "description": "Joinery site whose CMS repeats one title on /services, /about (case and NBSP variant) and /kitchens, one description on four of five pages, and one body text on /services and /kitchens. Exercises S2.02, S2.04 and S4.04 partial branches and 4.2.5 text normalisation; /blog/2025/... (deeper, lexicographically earlier) and /projects (later path) test the sampler tie-breaks.",
+  "scannedAt": "2026-10-02T09:00:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/blog/choosing-oak-worktops",
+    "https://fixture.example/kitchens"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      },
+      "ttfbMs": 90
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      },
+      "ttfbSamplesMs": [
+        120,
+        150,
+        180
+      ]
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/kitchens": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/kitchens.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/choosing-oak-worktops": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article-oak-worktops.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/contact.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/privacy.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/terms": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/terms.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/cookies": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/cookies.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/seasoning-timber": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article-seasoning.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/2025/first-shaker-kitchen": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article-first-shaker.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/projects": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/projects.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "description": "Hostile-input robustness fixture for a small Galway consultancy (html lang en-IE). The scan must complete without a crash and in bounded time, and the metrics listed in expected.json (partial=true) must still come out as derived from the plan. Hostile traits, one cluster per page. Home: RTL-override (U+202E) and zero-width (U+200B) characters in the title, description, h1 and JSON-LD description (raw characters, numeric entities and JSON escapes), literal script text in the h1, an img alt of 120,000 characters, a 120,000-character data attribute and a 40,000-character class attribute. Services: a 300,000-byte JSON-LD block (over the 256 KB cap) followed by a small valid Service block. About: a JSON-LD block nested 40 deep (over the depth-32 cap), a block of 10,000 nested arrays, 22 small valid blocks and a final valid AboutPage block (25 blocks seen, over the 20-block cap). FAQ: 3,000 nested div elements inside main after the FAQ content. Article: 101,000 empty elements inside main after the article text (over the 100,000-element cap). All head tags precede the hostile blocks and all asserted facts precede the hostile body content, so each asserted metric is unaffected by where a cap cuts evaluation. No assertion is made about A2.01, A2.04 to A2.07, S4.01, A3.01, A3.02, A3.04, A3.05, A4.07, scores or categories.",
+  "scannedAt": "2026-10-02T09:15:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/field-notes"
+  ],
+  "samplingNote": "Selected candidates in selection order (services, about, faq, article); the homepage is always pages[0]. /services (depth 1) beats the unsampled /services/appraisals and /services/surveys (depth 2). contact (/contact) and legal pages (/privacy, /terms, /cookies) are never sampled. /blog/field-notes is the only article. No candidate has type other.",
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "ttfbSamplesMs": [
+        100,
+        110,
+        120
+      ],
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 90,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "ttfbMs": 70,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/blog/field-notes": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/services/appraisals": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/services/surveys": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/terms": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/cookies": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    }
+  }
+}

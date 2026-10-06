@@ -17,6 +17,24 @@ change.
 
 Follow the authority order in `00_README.md`. An explicit user instruction may supersede a ticket or proposed document. Legal, privacy, contractual and security obligations still apply.
 
+### Visibility Index decision — 2026-10-04
+
+The owner explicitly removed the owner-consent-only scanning requirement and
+authorized autonomous discovery, technical scoring and a private draft ranked
+database. Consent is not treated as a universal legal requirement or safe harbour.
+For this implementation the operator-approved scope is a bounded initial batch
+of up to 50 Irish professional-services corporate .ie websites, under
+`public-company-ie-2026-10-04-v1`. The admission heuristic is not legal clearance.
+The coordinator may admit candidates within that scope; agents may not widen it.
+
+This supersedes older consent-only pilot instructions, not robots/access rules,
+privacy/security obligations, methodology versioning or the publication gate.
+Do not retain raw third-party content or personal/contact values in the batch
+database. Persist only root company URLs, numeric technical results, fixed
+technical tips and provenance origins. No outreach, publication, deployment,
+new paid API service or unlimited crawling is authorized by this decision.
+See `docs/visibility/AUTONOMOUS_RUNNER.md` for operation and limitations.
+
 ## Before changing code or content
 
 1. Read the request and applicable ticket.

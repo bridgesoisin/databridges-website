@@ -1,0 +1,265 @@
+{
+  "outcome": "SCORED",
+  "partial": false,
+  "scores": {
+    "overall": null,
+    "seo": 86.77,
+    "aeo": 65,
+    "coverage": 0.6055
+  },
+  "categories": {
+    "S1": {
+      "score": 0.92,
+      "coverage": 1,
+      "shown": true
+    },
+    "S2": {
+      "score": 0.8154,
+      "coverage": 0.65,
+      "shown": true
+    },
+    "S3": {
+      "score": 1,
+      "coverage": 0.45,
+      "shown": false
+    },
+    "S4": {
+      "score": 1,
+      "coverage": 0.1,
+      "shown": false
+    },
+    "A1": {
+      "score": 0.55,
+      "coverage": 1,
+      "shown": true
+    },
+    "A2": {
+      "score": 0.75,
+      "coverage": 0.8421,
+      "shown": true
+    },
+    "A3": {
+      "score": null,
+      "coverage": 0,
+      "shown": false
+    },
+    "A4": {
+      "score": 1,
+      "coverage": 0.2667,
+      "shown": false
+    }
+  },
+  "criticalFindings": [
+    "CF-04"
+  ],
+  "metrics": {
+    "S1.01": {
+      "result": "PASS",
+      "points": 25
+    },
+    "S1.02": {
+      "result": "PASS",
+      "points": 25
+    },
+    "S1.03": {
+      "result": "PASS",
+      "points": 20
+    },
+    "S1.04": {
+      "result": "PARTIAL",
+      "points": 12
+    },
+    "S1.05": {
+      "result": "PASS",
+      "points": 10
+    },
+    "S2.01": {
+      "result": "PASS",
+      "points": 20
+    },
+    "S2.02": {
+      "result": "PARTIAL",
+      "points": 2
+    },
+    "S2.03": {
+      "result": "PASS",
+      "points": 15
+    },
+    "S2.04": {
+      "result": "PARTIAL",
+      "points": 1
+    },
+    "S2.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S2.08": {
+      "result": "PASS",
+      "points": 5
+    },
+    "S2.09": {
+      "result": "PASS",
+      "points": 10
+    },
+    "S3.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.02": {
+      "result": "PASS",
+      "points": 10
+    },
+    "S3.03": {
+      "result": "PASS",
+      "points": 15
+    },
+    "S3.04": {
+      "result": "PASS",
+      "points": 10
+    },
+    "S3.05": {
+      "result": "PASS",
+      "points": 10
+    },
+    "S3.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S3.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "S4.05": {
+      "result": "PASS",
+      "points": 10
+    },
+    "S4.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A1.01": {
+      "result": "PASS",
+      "points": 40
+    },
+    "A1.02": {
+      "result": "PASS",
+      "points": 15
+    },
+    "A1.03": {
+      "result": "FAIL",
+      "points": 0
+    },
+    "A1.04": {
+      "result": "FAIL",
+      "points": 0
+    },
+    "A2.01": {
+      "result": "PASS",
+      "points": 15
+    },
+    "A2.02": {
+      "result": "PASS",
+      "points": 20
+    },
+    "A2.03": {
+      "result": "PARTIAL",
+      "points": 5
+    },
+    "A2.04": {
+      "result": "PASS",
+      "points": 10
+    },
+    "A2.05": {
+      "result": "FAIL",
+      "points": 0
+    },
+    "A2.06": {
+      "result": "NOT_APPLICABLE",
+      "points": null
+    },
+    "A2.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A2.08": {
+      "result": "PASS",
+      "points": 10
+    },
+    "A3.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.03": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.04": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.05": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A3.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.01": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.02": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.03": {
+      "result": "NOT_APPLICABLE",
+      "points": null
+    },
+    "A4.04": {
+      "result": "NOT_APPLICABLE",
+      "points": null
+    },
+    "A4.05": {
+      "result": "PASS",
+      "points": 20
+    },
+    "A4.06": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    },
+    "A4.07": {
+      "result": "NOT_OBSERVED",
+      "points": null
+    }
+  }
+}

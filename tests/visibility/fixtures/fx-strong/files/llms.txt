@@ -1,0 +1,9 @@
+# Harbour Light Consulting
+
+> Practical AI and automation advice for small businesses in Dundalk and across Ireland.
+
+## Key pages
+
+- [Services](https://fixture.example/services): AI readiness reviews, SharePoint automation, workflow automation and training
+- [About](https://fixture.example/about): who we are and how we work
+- [FAQ](https://fixture.example/faq): answers to common questions

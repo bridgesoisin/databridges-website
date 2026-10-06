@@ -1,0 +1,106 @@
+{
+  "description": "Valid but sparse bakery site: titles only (no descriptions, canonicals, viewport, Open Graph, JSON-LD, images), no robots.txt, no sitemap, no llms.txt, no nav on most pages, HTTP redirects with a 302, a certificate with 9 days left, median TTFB 1,200 ms, a 714-byte homepage (S3.04 not applicable), an underscore URL, an about page with no H1 and no lang, a services page that jumps from H1 to H3, an FAQ with two H1s and thin answers, and only four distinct internal link targets (S3.06 NOT_OBSERVED). Scored with known partials, no critical findings.",
+  "scannedAt": "2026-10-02T09:15:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/news/summer_opening_hours"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 302,
+      "headers": {
+        "location": "https://fixture.example/"
+      },
+      "ttfbMs": 60
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/home.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      },
+      "ttfbSamplesMs": [
+        1100,
+        1200,
+        1300
+      ]
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 404,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 80
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 404,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 80
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 404,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 80
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    },
+    "https://fixture.example/news/summer_opening_hours": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/news-summer.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 9
+      }
+    }
+  }
+}

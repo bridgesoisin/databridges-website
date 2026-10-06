@@ -17,6 +17,8 @@ const eslintConfig = defineConfig([
     // Vendored, pre-built Decap CMS bundle (public/admin) — minified,
     // single-line, ~5MB; not our code and chokes ESLint's parser.
     "public/admin/decap-cms.js",
+    // Generated, git-ignored output (scan reports and the built agent pack).
+    "reports/**",
   ]),
 ]);
 

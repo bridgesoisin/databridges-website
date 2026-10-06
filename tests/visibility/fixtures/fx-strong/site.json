@@ -1,0 +1,194 @@
+{
+  "description": "Well-built Dundalk consultancy: self canonicals everywhere, titles and descriptions in range, one H1 per page, en-IE, full Open Graph, a JSON-LD graph (ProfessionalService, WebSite, FAQPage, BlogPosting, BreadcrumbList, Service, AboutPage) whose @id references resolve through the homepage, Q&A headings with answer-first paragraphs, byline and dates, contact signals, privacy link, llms.txt, a sitemap with excluded entries (pdf, /tag, /page/2, other host) and a robots.txt that opts GPTBot and CCBot out (informational, never scored). All 11 internal link targets return 200. Two small gaps keep the arithmetic non-trivial: the FAQ page has no og:image (S2.09 = 2/3 on that page) and homepage TTFB samples have a median of 1,000 ms (S3.05 = 0.5). The sampler must stop at four extra pages (services, about, faq, article), so the type 'other' candidates (/blog, /pricing) are never fetched.",
+  "scannedAt": "2026-10-02T09:15:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/",
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/ai-for-small-business"
+  ],
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      },
+      "ttfbMs": 60
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      },
+      "ttfbSamplesMs": [
+        950,
+        1000,
+        1050
+      ]
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/ai-for-small-business": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/pricing": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/services/ai-readiness-review": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    },
+    "https://fixture.example/blog/another-post": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/stub.html",
+      "ttfbMs": 150,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 90
+      }
+    }
+  }
+}

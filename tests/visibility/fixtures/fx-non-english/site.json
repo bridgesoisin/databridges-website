@@ -1,0 +1,187 @@
+{
+  "description": "French-language consultancy site (html lang fr-FR, English URL slugs so the path patterns classify every page). Five pages are sampled. A3.01 and A3.05 are NOT_APPLICABLE because lang does not start with en; every other metric is evaluated normally, including word counts (whitespace tokenising works for French). Deliberate non-passes: one 81-character title, one 44-character description, an h2-to-h4 skip, a missing alt, an http image (passive mixed content), missing or relative og:image, max-snippet:30, no JSON-LD description, an AboutPage-less about page, a FAQ question that differs from its JSON-LD name, a missing dateModified, an icon-only same-site link, and a homepage entity statement without a knowsAbout term in its first 200 words. Linked but unsampled pages (contact, privacy, services/audit, services/suivi, blog/guide-isolation) and the sitemap-only blog/2026/bilan-annee answer 200 with no body; they exist so every link check passes.",
+  "scannedAt": "2026-10-02T09:15:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/aides-renovation-2026"
+  ],
+  "samplingNote": "The list holds the selected candidates in selection order (services, about, faq, article); the homepage is always pages[0]. Tie-breaks exercised: /services (depth 1) beats /services/audit and /services/suivi (depth 2); /blog/aides-renovation-2026 beats /blog/guide-isolation on path order at equal depth 2, and /blog/2026/bilan-annee loses on depth 3. contact and legal pages are never sampled. There is no candidate of type other, so exactly four pages are chosen and no fill step runs.",
+  "resources": {
+    "http://fixture.example/": {
+      "status": 301,
+      "headers": {
+        "location": "https://fixture.example/"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "gzip"
+      },
+      "bodyFile": "files/home.html",
+      "ttfbSamplesMs": [
+        120,
+        140,
+        130
+      ],
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 90,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "ttfbMs": 70,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/blog/aides-renovation-2026": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/article.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/services/audit": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/services/suivi": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/blog/guide-isolation": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/blog/2026/bilan-annee": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 200
+      }
+    }
+  }
+}

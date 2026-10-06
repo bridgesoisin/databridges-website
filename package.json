@@ -7,9 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "visibility:aggregate": "tsx scripts/visibility-aggregate.ts",
+    "visibility:facts": "tsx scripts/visibility-facts.ts",
+    "visibility:pack": "tsx scripts/build-visibility-pack.ts",
+    "visibility:batch": "tsx scripts/visibility-batch.ts"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "next": "16.3.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -19,10 +25,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
     "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "3.2.7"
   }
 }

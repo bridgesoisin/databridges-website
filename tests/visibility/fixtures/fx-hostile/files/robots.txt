@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://fixture.example/sitemap.xml

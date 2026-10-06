@@ -1,0 +1,177 @@
+{
+  "description": "Japanese-language coffee roastery site (html lang ja and ja-JP, English URL slugs). Whitespace tokenising yields only 6 to 12 'words' per main content, so any word-count rule applied to it would wrongly fail every page. Per plan 4.2.5 every word-count metric is NOT_APPLICABLE: S2.06 (its 300-word clause), S4.01, A1.04, A3.02, A3.04, A3.05 and A3.06 (200-word window); A3.01 is also NOT_APPLICABLE because lang does not start with en. A3.03 (a dl with four pairs) is the only evaluated A3 metric, so A3 is shown on 20 of its 100 points. Character-count rules still apply as written (two short titles score 0.5, a 21-character description scores 0). The homepage is not render-dependent: no framework root or noscript marker, so its 6-word count does not raise CF-04. Other deliberate non-passes: 302 HTTPS redirect, certificate with 10 days left, 900-1100 ms server time, a PerplexityBot-only robots group, an unstructured llms.txt, an invalid JSON-LD block on the FAQ page, a dangling publisher reference, no breadcrumb, an Organization node without logo or contact fields, one sameAs link, an og:site_name that differs from the JSON-LD name, identical sitemap lastmod values (ignored) so freshness comes from the article dates, a max-snippet:0 X-Robots-Tag header, an active http script at the end of the article body, a second h1, a page without a viewport tag, and icon-only links. NFKC normalisation is exercised by FAQ questions that use a full-width question mark on the page and either an ASCII or a full-width one in JSON-LD; a rel=sponsored link does not count as an external reference.",
+  "scannedAt": "2026-10-02T09:15:00.000Z",
+  "inputUrl": "https://fixture.example/",
+  "samplingExpectation": [
+    "https://fixture.example/services",
+    "https://fixture.example/about",
+    "https://fixture.example/faq",
+    "https://fixture.example/blog/new-crop-guide"
+  ],
+  "samplingNote": "Selected candidates in selection order (services, about, faq, article); the homepage is always pages[0]. /services (depth 1) beats /services/wholesale (depth 2); /blog/new-crop-guide (depth 2) beats /blog/2026/spring-menu (depth 3). contact and legal pages are never sampled. No candidate has type other.",
+  "resources": {
+    "http://fixture.example/": {
+      "status": 302,
+      "headers": {
+        "location": "https://fixture.example/"
+      }
+    },
+    "https://fixture.example/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-encoding": "br"
+      },
+      "bodyFile": "files/home.html",
+      "ttfbSamplesMs": [
+        900,
+        1000,
+        1100
+      ],
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/robots.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/robots.txt",
+      "ttfbMs": 80,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/sitemap.xml": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bodyFile": "files/sitemap.xml",
+      "ttfbMs": 90,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/llms.txt": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=utf-8"
+      },
+      "bodyFile": "files/llms.txt",
+      "ttfbMs": 70,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/services": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/services.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/about": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/about.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/faq": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bodyFile": "files/faq.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/blog/new-crop-guide": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "max-snippet:0"
+      },
+      "bodyFile": "files/article.html",
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/services/wholesale": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/blog/2026/spring-menu": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/contact": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/privacy": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    },
+    "https://fixture.example/access": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8"
+      },
+      "ttfbMs": 100,
+      "tls": {
+        "authorized": true,
+        "daysToExpiry": 10
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://fixture.example/</loc><lastmod>2026-01-15</lastmod></url>
+<url><loc>https://fixture.example/services</loc><lastmod>2025-11-20</lastmod></url>
+<url><loc>https://fixture.example/about</loc><lastmod>2025-06-02</lastmod></url>
+<url><loc>https://fixture.example/faq</loc><lastmod>2025-09-30</lastmod></url>
+<url><loc>https://fixture.example/blog/year-end-checklist</loc><lastmod>2025-11-04</lastmod></url>
+<url><loc>https://fixture.example/contact</loc><lastmod>2025-06-02</lastmod></url>
+<url><loc>https://fixture.example/privacy</loc><lastmod>2025-03-18</lastmod></url>
+</urlset>
