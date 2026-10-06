@@ -9,6 +9,7 @@ import {
   type Submission,
 } from "@/lib/visibility/aggregate";
 import { METHODOLOGY, METHODOLOGY_VERSION } from "@/lib/visibility/methodology";
+import { POLICY_VERSION, rootUrl } from "@/lib/visibility/autonomous/policy";
 
 export const DEFAULT_ROOT = process.env.VISIBILITY_ROOT || "reports/visibility";
 const MAX_FILE_BYTES = 256 * 1024;
@@ -121,8 +122,12 @@ export async function getApprovedTarget(root: string, targetId: string): Promise
   if (found.status !== "APPROVED") {
     throw new RangeError(`Target "${targetId}" has status ${String(found.status)}, not APPROVED, so it must not be scored.`);
   }
-  if (found.approvalBasis !== "OWNED" && found.approvalBasis !== "WRITTEN_CONSENT") {
-    throw new RangeError(`Target "${targetId}" has no valid approvalBasis (OWNED or WRITTEN_CONSENT).`);
+  if (found.approvalBasis !== "OWNED" && found.approvalBasis !== "WRITTEN_CONSENT" && found.approvalBasis !== "PUBLIC_SCOPE") {
+    throw new RangeError("Target has no valid approval basis.");
+  }
+  if (found.approvalBasis === "PUBLIC_SCOPE" && (found.approvalRef !== POLICY_VERSION || found.homeUrl !== rootUrl(found.homeUrl, true) ||
+    found.sector !== "professional-services" || found.companyOnly !== true)) {
+    throw new RangeError("Target is outside the approved public-company scope.");
   }
   if (typeof found.homeUrl !== "string" || typeof found.approvalRef !== "string" || found.approvalRef.trim() === "") {
     throw new RangeError(`Target "${targetId}" needs a homeUrl and an approvalRef.`);

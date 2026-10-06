@@ -94,6 +94,13 @@ describe("production factory: allowlist", () => {
 });
 
 describe("production factory: VISIBILITY_EXTRA_HOSTS", () => {
+  it("cannot widen an autonomous batch allowlist from ambient environment", async () => {
+    process.env[EXTRA_HOSTS_ENV] = "extra.example";
+    const calls: string[] = [];
+    const fetcher = production(answers(["10.0.0.5"], calls), { allowedHosts: ["one.example"], includeExtraHosts: false });
+    expectRefused(await fetcher.fetch({ url: "https://extra.example/", kind: "page", method: "GET" }), "HOST_NOT_ALLOWLISTED");
+    expect(calls).toEqual([]);
+  });
   it("adds hosts from the environment variable, comma separated, read when the factory is created", async () => {
     process.env[EXTRA_HOSTS_ENV] = " Extra.Example , other.example,, ";
     const calls: string[] = [];

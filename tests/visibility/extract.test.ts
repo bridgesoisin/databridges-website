@@ -1452,3 +1452,42 @@ describe("determinism and shape", () => {
     expect(f.truncated).toBe(false);
   });
 });
+
+describe("attribute flood", () => {
+  const facts = (html: string) => extractPageFacts(html, { finalUrl: "https://example.ie/", headers: {} });
+
+  it("cuts a tag with tens of thousands of attributes instead of stalling the parser", () => {
+    const attrs = Array.from({ length: 80_000 }, (_, i) => `a${i}=1`).join(" ");
+    const html = `<html><head><title>Flood</title></head><body><h1>Visible</h1><div ${attrs}>text</div></body></html>`;
+    const started = performance.now();
+    const result = facts(html);
+    expect(performance.now() - started).toBeLessThan(2000);
+    expect(result.capsHit).toContain("element_count");
+    expect(result.head.titles[0]?.text).toBe("Flood");
+  });
+
+  it("keeps an ordinary element with many attributes", () => {
+    const attrs = Array.from({ length: 200 }, (_, i) => `data-a${i}="x y"`).join(" ");
+    const result = facts(`<html><head><title>Ok</title></head><body><main><h1>Hi</h1><div ${attrs}>text</div></main></body></html>`);
+    expect(result.capsHit).toEqual([]);
+    expect(result.headings.map((h) => h.text)).toContain("Hi");
+  });
+
+  it("does not count attribute values or quoted text as attributes", () => {
+    const longValue = "v ".repeat(5_000);
+    const result = facts(`<html><head><title>Ok</title></head><body><div class="${longValue}" title='a b c' data-x=1/2>t</div></body></html>`);
+    expect(result.capsHit).toEqual([]);
+  });
+});
+
+describe("attribute flood across many tags", () => {
+  it("cuts a page that repeats a heavy tag many times", () => {
+    const attrs = Array.from({ length: 10_000 }, (_, i) => `a${i}=1`).join(" ");
+    const tags = Array.from({ length: 40 }, () => `<div ${attrs}>x</div>`).join("");
+    const html = `<html><head><title>Many</title></head><body><h1>Visible</h1>${tags}</body></html>`;
+    const started = performance.now();
+    const result = extractPageFacts(html, { finalUrl: "https://example.ie/", headers: {} });
+    expect(performance.now() - started).toBeLessThan(4000);
+    expect(result.capsHit).toContain("element_count");
+  });
+});

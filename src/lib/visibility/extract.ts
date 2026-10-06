@@ -54,6 +54,9 @@ export interface ExtractInput {
 
 const HTML_BYTE_CAP = 3 * 1024 * 1024;
 const ELEMENT_CAP = 100_000;
+// parse5 is quadratic in the number of distinct attributes on one element (20,000 take about 0.5 s, 80,000 about 15 s).
+// The sum of squared attribute counts over all start tags is budgeted to about one second; the markup is cut where it runs out.
+const ATTRIBUTE_WORK_BUDGET = 800_000_000;
 // parse5 does work proportional to the open-element depth for every start tag; this bounds that work to about two seconds.
 const PARSE_WORK_BUDGET = 150_000_000;
 const JSONLD_BLOCK_BYTES = 256 * 1024;
@@ -178,6 +181,46 @@ function findTagEnd(html: string, from: number): number {
   return -1;
 }
 
+function skipAttributeValue(html: string, from: number, end: number): number {
+  let i = from;
+  while (i < end && html.charCodeAt(i) <= 32) i++;
+  const quote = html.charCodeAt(i);
+  if (quote === 34 || quote === 39) {
+    const close = html.indexOf(String.fromCharCode(quote), i + 1);
+    return close === -1 || close >= end ? end : close + 1;
+  }
+  while (i < end && html.charCodeAt(i) > 32) i++;
+  return i;
+}
+
+// Counts attribute names in the start tag between from and end, in one linear pass.
+function countAttributes(html: string, from: number, end: number): number {
+  let count = 0;
+  let inName = false;
+  let i = from;
+  while (i < end) {
+    const c = html.charCodeAt(i);
+    if (c <= 32 || c === 47) {
+      inName = false;
+      i++;
+    } else if (c === 61) {
+      i = skipAttributeValue(html, i + 1, end);
+      inName = false;
+    } else if (c === 34 || c === 39) {
+      const close = html.indexOf(String.fromCharCode(c), i + 1);
+      i = close === -1 || close >= end ? end : close + 1;
+      inName = false;
+    } else {
+      if (!inName) {
+        count++;
+        inName = true;
+      }
+      i++;
+    }
+  }
+  return count;
+}
+
 function findRawTextEnd(html: string, name: string, from: number): number {
   let i = from;
   while (true) {
@@ -232,6 +275,7 @@ export function findHtmlCutPoint(html: string): number {
   const open = new Map<string, number>();
   let elements = 0;
   let work = 0;
+  let attributeWork = 0;
   let pos = 0;
   const popOne = (): void => {
     const name = stack.pop() as string;
@@ -298,6 +342,9 @@ export function findHtmlCutPoint(html: string): number {
     if (work > PARSE_WORK_BUDGET) return lt;
     const end = findTagEnd(html, j);
     if (end === -1) return -1;
+    const attributes = countAttributes(html, j, end);
+    attributeWork += attributes * attributes;
+    if (attributeWork > ATTRIBUTE_WORK_BUDGET) return lt;
     pos = end + 1;
     if (name === "plaintext") return -1;
     if (RAW_TEXT_TAGS.has(name)) {

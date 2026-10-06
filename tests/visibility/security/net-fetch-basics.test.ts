@@ -580,6 +580,28 @@ describe("the own-agent robots gate", () => {
     expect(server.seen.map((s) => s.url)).toEqual(["/start"]);
   });
 
+  it("gates the exact URL it will request, trailing slash included", async () => {
+    const server = await serve((req, res) => {
+      if (req.url === "/start") redirect(res, "/private/");
+      else sendHtml(res);
+    });
+    const asked: string[] = [];
+    const { fetcher } = fetcherFor(server, {
+      robotsGate: (url) => {
+        asked.push(url);
+        return !new URL(url).pathname.startsWith("/private/");
+      },
+    });
+    const hop = await fetcher.fetch(page(server, "/start"));
+    expect(hop.error?.code).toBe("REDIRECT_BLOCKED");
+    expect(server.seen.map((s) => s.url)).toEqual(["/start"]);
+
+    const direct = await fetcher.fetch(page(server, "/private/"));
+    expect(direct.error?.code).toBe("ROBOTS_DISALLOWED");
+    expect(server.seen.map((s) => s.url)).toEqual(["/start"]);
+    expect(asked.filter((u) => u.endsWith("/private/"))).toHaveLength(2);
+  });
+
   it("fails closed when the gate throws", async () => {
     const server = await serve((_req, res) => sendHtml(res));
     const { fetcher } = fetcherFor(server, {

@@ -36,19 +36,21 @@ const SECTION_3 = `Use \`PROMPT.md\` in this pack. It has three ready-to-paste p
 Each one points back to this brief, which stays the single specification.
 `;
 
-const SECTION_11 = `**Approving a candidate.** Open \`visibility-data/candidates.json\`, pick an entry, and
-get the site owner's written consent (or confirm the site is yours). Keep that consent
-outside this folder. Then add the site to \`visibility-data/targets.json\` with
-\`"status": "APPROVED"\`, \`"approvalBasis": "WRITTEN_CONSENT"\` (or \`"OWNED"\`) and an
-\`approvalRef\` that points to the consent record. Mark the candidate \`APPROVED\` or
-\`REJECTED\`. Agents never do this.
+const SECTION_11 = `**Approving a candidate.** This is the manual pack, not an unattended batch
+runner. The operator adds approved entries to \`visibility-data/targets.json\`.
+Use \`OWNED\`, \`WRITTEN_CONSENT\`, or \`PUBLIC_SCOPE\`. The last basis requires a root
+corporate .ie site within the approved Irish professional-services scope and
+\`approvalRef\` equal to \`public-company-ie-2026-10-04-v1\`, \`sector\` equal to
+\`professional-services\` and \`companyOnly\` true. Owner consent is not
+mandatory under that scope. It is not legal clearance. Keep any consent records
+outside this folder. Agents do not change approved targets.
 
 **Why agents do not score what they discover.** Scoring a site nobody has approved is
 arbitrary-URL scanning. DataBridges' own governance treats that as a decision needing
-explicit approval and a security review, and limits pilots to owned or explicitly
-approved sites. The tools therefore refuse unapproved targets. If you decide to allow
-it, record that decision and change the tools on purpose; editing a prompt is not
-enough.
+explicit approval and security safeguards. The operator approved a bounded private
+public-company scope on 2026-10-04. The tools still refuse unapproved targets or a
+PUBLIC_SCOPE reference outside that policy. No access-control bypass, publication
+or outreach is authorized.
 
 **Reviewing results.**
 - \`visibility-data/index.csv\` has one row per target: scores, coverage, number of
@@ -267,8 +269,11 @@ organisation.
    \`targets.json\` and \`candidates.json\`.
 3. Add each site you are entitled to score to \`visibility-data/targets.json\` (copy the
    shape from \`targets.example.json\`). Use \`"approvalBasis": "OWNED"\` for your own
-   sites, or \`"WRITTEN_CONSENT"\` with an \`approvalRef\` for a site whose owner agreed in
-   writing. Keep the consent record elsewhere. Nothing is scored without this.
+   sites, \`"WRITTEN_CONSENT"\` for existing consent records, or \`"PUBLIC_SCOPE"\` with
+   \`approvalRef\` equal to \`public-company-ie-2026-10-04-v1\` for a root corporate .ie
+   website in the approved Irish professional-services scope. Consent is not mandatory
+   under that policy; it does not establish legal clearance. Nothing is scored without
+   an approved target record. This pack is separate from the unattended runner.
 4. Give each agent the folder and one prompt from \`PROMPT.md\`, filling in its
    placeholders. Use the same \`RUN_ID\` for every agent in one cycle and a different
    \`AGENT_ID\` for each. Two agents per site is the aim.
@@ -537,12 +542,13 @@ ${PROMPT_C}
           targetId: "example-ie",
           homeUrl: "https://example.ie/",
           status: "PAUSED",
-          approvalBasis: "WRITTEN_CONSENT",
-          approvalRef: "Where the written consent is kept (not in this folder)",
-          approvedBy: "Your name",
-          approvedAt: "2026-10-03",
-          sector: "professional services",
-          notes: "Change status to APPROVED only once consent is on record.",
+          approvalBasis: "PUBLIC_SCOPE",
+          approvalRef: "public-company-ie-2026-10-04-v1",
+          approvedBy: "Operator",
+          approvedAt: "2026-10-04",
+          sector: "professional-services",
+          companyOnly: true,
+          notes: "Example only. Confirm the company is within the approved scope before setting APPROVED.",
         },
       ],
     })
@@ -559,7 +565,7 @@ ${PROMPT_C}
           discoverySource: "Name of the directory or search page where it was listed",
           whyRelevant: "Irish professional-services firm",
           inclusionCriteria: "Public business site; Ireland; matches the target population",
-          ownershipNote: "Publicly listed business; no consent yet",
+          ownershipNote: "Candidate only; corporate status and approved scope not confirmed",
           status: "PROPOSED",
         },
       ],

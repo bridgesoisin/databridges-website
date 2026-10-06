@@ -11,7 +11,8 @@
     "test": "vitest run",
     "visibility:aggregate": "tsx scripts/visibility-aggregate.ts",
     "visibility:facts": "tsx scripts/visibility-facts.ts",
-    "visibility:pack": "tsx scripts/build-visibility-pack.ts"
+    "visibility:pack": "tsx scripts/build-visibility-pack.ts",
+    "visibility:batch": "tsx scripts/visibility-batch.ts"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
@@ -31,6 +32,6 @@
     "tailwindcss": "4.3.3",
     "tsx": "^4.23.15",
     "typescript": "^5",
-    "vitest": "^3.2.7"
+    "vitest": "3.2.7"
   }
 }

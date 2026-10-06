@@ -1,6 +1,9 @@
 import { METHODOLOGY, METHODOLOGY_VERSION, getMetricDefinition } from "@/lib/visibility/methodology";
+import { normaliseUrl, sameSite } from "@/lib/visibility/normalise";
 import {
+  aggregatePageScores,
   computeScoreSummary,
+  deriveResultCode,
   displayScore,
   noScoreSummary,
   notApplicable,
@@ -16,7 +19,9 @@ import {
   CRITICAL_FINDING_IDS,
   EVIDENCE_STRING_MAX,
   PAGE_TYPES,
+  SCOPE_PAGE_TYPES,
   type EvidenceRecord,
+  type EvidenceValue,
   type MetricResult,
   type PerPageScore,
   type PerPageScoreStatus,
@@ -100,8 +105,24 @@ function isHttpUrl(value: unknown): value is string {
   }
 }
 
-function isIsoDate(value: unknown): value is string {
-  return typeof value === "string" && !Number.isNaN(Date.parse(value));
+function normaliseTimestamp(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  // Require seconds and an explicit zone; retain millisecond precision without silently dropping digits.
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(Z|[+-]\d{2}:\d{2})$/.exec(value);
+  if (!match || match[0] !== value) return null;
+  const [year, month, day, hour, minute, second] = match.slice(1, 7).map(Number);
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month < 1 || month > 12 || day < 1 || day > days[month - 1] || hour > 23 || minute > 59 || second > 59) {
+    return null;
+  }
+  const zone = match[7];
+  if (zone !== "Z" && (Number(zone.slice(1, 3)) > 23 || Number(zone.slice(4)) > 59)) return null;
+  const timestamp = Date.parse(value);
+  if (!Number.isFinite(timestamp)) return null;
+  const utc = new Date(timestamp).toISOString();
+  // Keep normalised submissions within the same four-digit-year timestamp contract.
+  return /^\d{4}-/.test(utc) ? utc : null;
 }
 
 function isUnitNumber(value: unknown): value is number {
@@ -118,7 +139,7 @@ export function validateSubmission(input: unknown): ValidationResult {
 
   if (input.schemaVersion !== 1) fail("schemaVersion must be 1.");
   if (input.methodologyVersion !== METHODOLOGY_VERSION) {
-    fail(`methodologyVersion must be "${METHODOLOGY_VERSION}" (found ${JSON.stringify(input.methodologyVersion)}).`);
+    fail(`methodologyVersion must be "${METHODOLOGY_VERSION}".`);
   }
   for (const key of ["targetId", "runId", "agentId"] as const) {
     const value = input[key];
@@ -127,7 +148,8 @@ export function validateSubmission(input: unknown): ValidationResult {
     }
   }
   if (!isHttpUrl(input.homeUrl)) fail("homeUrl must be an absolute http or https URL.");
-  if (!isIsoDate(input.scannedAt)) fail("scannedAt must be an ISO 8601 date-time.");
+  const scannedAt = normaliseTimestamp(input.scannedAt);
+  if (scannedAt === null) fail("scannedAt must be a full, valid ISO 8601 date-time with seconds, a timezone and at most millisecond precision.");
   if (!SUBMISSION_MODES.includes(input.mode as SubmissionMode)) {
     fail(`mode must be one of ${SUBMISSION_MODES.join(", ")}.`);
   }
@@ -136,6 +158,7 @@ export function validateSubmission(input: unknown): ValidationResult {
     fail(`outcome must be one of ${SUBMISSION_OUTCOMES.join(", ")}.`);
   }
 
+  const sampledPages = new Map<string, string>();
   if (!Array.isArray(input.sampledPages)) {
     fail("sampledPages must be an array.");
   } else {
@@ -150,12 +173,25 @@ export function validateSubmission(input: unknown): ValidationResult {
       if (!PAGE_TYPES.includes(page.type as (typeof PAGE_TYPES)[number])) {
         fail(`sampledPages[${i}].type must be one of ${PAGE_TYPES.join(", ")}.`);
       }
+      const url = normaliseUrl(page.url)!;
+      if (sampledPages.has(url)) fail(`sampledPages[${i}].url duplicates another sampled page.`);
+      sampledPages.set(url, page.type as string);
+      if (outcome === "COMPLETED" && isHttpUrl(input.homeUrl) && !sameSite(page.url, input.homeUrl)) {
+        fail(`sampledPages[${i}].url must belong to the homepage's site.`);
+      }
       if (typeof page.reason !== "string" || page.reason.length === 0 || page.reason.length > 300) {
         fail(`sampledPages[${i}].reason must be a short string.`);
       }
     });
-    if (outcome === "COMPLETED" && input.sampledPages.length === 0) {
-      fail("A COMPLETED submission must list at least the homepage in sampledPages.");
+    if (outcome === "COMPLETED") {
+      const root = input.sampledPages[0];
+      if (!isRecord(root) || root.type !== "home" || !isHttpUrl(root.url) ||
+          !isHttpUrl(input.homeUrl) || normaliseUrl(root.url) !== normaliseUrl(input.homeUrl)) {
+        fail("A COMPLETED submission must start sampledPages with its homeUrl and type home.");
+      }
+      if (input.sampledPages.filter((page) => isRecord(page) && page.type === "home").length !== 1) {
+        fail("A COMPLETED submission must contain exactly one home page in sampledPages.");
+      }
     }
   }
 
@@ -164,7 +200,7 @@ export function validateSubmission(input: unknown): ValidationResult {
   } else {
     for (const id of input.criticalFindings) {
       if (!CRITICAL_FINDING_IDS.includes(id as (typeof CRITICAL_FINDING_IDS)[number])) {
-        fail(`criticalFindings contains an unknown id ${JSON.stringify(id)}.`);
+        fail("criticalFindings contains an unknown id.");
       }
     }
   }
@@ -187,7 +223,7 @@ export function validateSubmission(input: unknown): ValidationResult {
   if (!Array.isArray(input.metrics)) {
     fail("metrics must be an array.");
   } else if (outcome !== "COMPLETED") {
-    if (input.metrics.length > 0) fail(`metrics must be empty when outcome is ${String(outcome)}.`);
+    if (input.metrics.length > 0) fail("metrics must be empty when outcome is not COMPLETED.");
   } else {
     const seen = new Set<string>();
     input.metrics.forEach((raw, i) => {
@@ -198,7 +234,7 @@ export function validateSubmission(input: unknown): ValidationResult {
       const id = raw.metricId;
       const known = METHODOLOGY.metrics.find((m) => m.id === id);
       if (typeof id !== "string" || !known) {
-        fail(`metrics[${i}].metricId ${JSON.stringify(id)} is not a known metric.`);
+        fail(`metrics[${i}].metricId is not a known metric.`);
         return;
       }
       if (seen.has(id)) fail(`metric ${id} appears more than once.`);
@@ -215,6 +251,12 @@ export function validateSubmission(input: unknown): ValidationResult {
           }
         }
       }
+      const hasScoredObservation = raw.outcome === "SCORED" ||
+        (Array.isArray(raw.pageScores) && raw.pageScores.some((p) => isRecord(p) && p.status === "observed"));
+      if (hasScoredObservation && (!Array.isArray(raw.evidence) ||
+          !raw.evidence.some((item) => typeof item === "string" && item.trim() !== ""))) {
+        fail(`${where}: scored observations need at least one non-empty evidence string.`);
+      }
       if (typeof raw.explanation !== "string" || raw.explanation.trim() === "" || raw.explanation.length > MAX_EXPLANATION) {
         fail(`${where}: explanation must be a non-empty string of at most ${MAX_EXPLANATION} characters.`);
       } else if (/^\s*todo\b/i.test(raw.explanation)) {
@@ -225,13 +267,26 @@ export function validateSubmission(input: unknown): ValidationResult {
         if (raw.score !== undefined || raw.outcome !== undefined) {
           fail(`${where}: a per-page metric (scope ${known.scope}) takes pageScores only, not score or outcome.`);
         }
-        if (!Array.isArray(raw.pageScores) || raw.pageScores.length === 0 || raw.pageScores.length > MAX_SAMPLED_PAGES * 3) {
-          fail(`${where}: pageScores must list one entry per page (or per page and agent) the rule applies to.`);
+        const types: readonly string[] = SCOPE_PAGE_TYPES[known.scope];
+        const applicableUrls = new Set([...sampledPages].filter(([, type]) => types.includes(type)).map(([url]) => url));
+        if (!Array.isArray(raw.pageScores) || raw.pageScores.length > MAX_SAMPLED_PAGES) {
+          fail(`${where}: pageScores must list one entry per applicable sampled page, at most ${MAX_SAMPLED_PAGES}.`);
         } else {
+          const pageUrls = new Set<string>();
           raw.pageScores.forEach((p, j) => {
             if (!isRecord(p) || !isHttpUrl(p.url)) {
               fail(`${where}: pageScores[${j}].url must be an absolute http or https URL.`);
-            } else if (!PAGE_STATUSES.includes(p.status as PerPageScoreStatus)) {
+              return;
+            }
+            const url = normaliseUrl(p.url)!;
+            if (pageUrls.has(url)) fail(`${where}: pageScores[${j}].url duplicates another page row.`);
+            pageUrls.add(url);
+            if (!sampledPages.has(url)) {
+              fail(`${where}: pageScores[${j}].url must be part of sampledPages.`);
+            } else if (!applicableUrls.has(url) && p.status !== "not_applicable") {
+              fail(`${where}: pageScores[${j}] is outside scope ${known.scope} and must be not_applicable.`);
+            }
+            if (!PAGE_STATUSES.includes(p.status as PerPageScoreStatus)) {
               fail(`${where}: pageScores[${j}].status must be one of ${PAGE_STATUSES.join(", ")}.`);
             } else if (p.status === "observed" && !isUnitNumber(p.score)) {
               fail(`${where}: pageScores[${j}].score must be a number from 0 to 1 when status is observed.`);
@@ -239,6 +294,9 @@ export function validateSubmission(input: unknown): ValidationResult {
               fail(`${where}: pageScores[${j}].score must be null unless status is observed.`);
             }
           });
+          if ([...applicableUrls].some((url) => !pageUrls.has(url))) {
+            fail(`${where}: pageScores must list one entry per applicable sampled page; an applicable row is missing.`);
+          }
         }
       } else {
         if (raw.pageScores !== undefined) {
@@ -259,7 +317,16 @@ export function validateSubmission(input: unknown): ValidationResult {
   }
 
   if (errors.length > 0) return { ok: false, errors };
-  return { ok: true, submission: input as unknown as Submission };
+  return { ok: true, submission: { ...input, scannedAt } as unknown as Submission };
+}
+
+function toPageScores(pages: readonly SubmissionPageScore[]): PerPageScore[] {
+  return pages.map((p) => ({
+    url: p.url,
+    status: p.status,
+    score: p.status === "observed" ? p.score : null,
+    evidence: {},
+  }));
 }
 
 function toResult(sub: Submission, metric: SubmissionMetric): MetricResult {
@@ -268,12 +335,7 @@ function toResult(sub: Submission, metric: SubmissionMetric): MetricResult {
 
   if (PER_PAGE_SCOPES.has(def.scope)) {
     const pages = metric.pageScores ?? [];
-    const perPage: PerPageScore[] = pages.map((p) => ({
-      url: p.url,
-      status: p.status,
-      score: p.status === "observed" ? p.score : null,
-      evidence: {},
-    }));
+    const perPage = toPageScores(pages);
     const pageEvidence = pages.map((p) => ({ url: p.url, status: p.status, s_p: p.score }));
     return resultFromPageScores(def.id, perPage, { ...base, pages: pageEvidence }, metric.explanation);
   }
@@ -351,28 +413,67 @@ export type ConsensusReport = {
   perAgent: AgentScoreLine[];
 };
 
-function normalised(result: MetricResult): number | null {
-  if (result.points === null || result.maxPoints === null || result.maxPoints === 0) return null;
+function normalised(result: MetricResult, metric: SubmissionMetric): number | null {
   if (result.result !== "PASS" && result.result !== "PARTIAL" && result.result !== "FAIL") return null;
-  return result.points / result.maxPoints;
+  // Points are rounded for presentation; agreement and the mean use the original score.
+  return metric.pageScores === undefined ? metric.score ?? null : aggregatePageScores(toPageScores(metric.pageScores)).mean;
 }
 
-function agreeOn(results: MetricResult[]): boolean {
-  const scores = results.map(normalised);
+function agreeOn(results: MetricResult[], scores: (number | null)[]): boolean {
+  if (!results.every((r) => r.result === results[0].result)) return false;
   const scoredCount = scores.filter((s) => s !== null).length;
   if (scoredCount === results.length) {
     const values = scores as number[];
     return Math.max(...values) - Math.min(...values) <= AGREEMENT_TOLERANCE + EPSILON;
   }
   if (scoredCount > 0) return false;
-  return results.every((r) => r.result === results[0].result);
+  return true;
+}
+
+function agreeOnPages(pageRows: SubmissionPageScore[][]): boolean {
+  const byAgent = pageRows.map((rows) => new Map(rows.map((p) => [normaliseUrl(p.url)!, p])));
+  return [...byAgent[0]].every(([url, first]) => {
+    const corresponding = byAgent.map((rows) => rows.get(url));
+    if (!corresponding.every((p) => p?.status === first.status)) return false;
+    if (first.status !== "observed") return true;
+    const scores = corresponding.map((p) => p!.score!);
+    return scores.every((s) => deriveResultCode(s) === deriveResultCode(scores[0])) &&
+      Math.max(...scores) - Math.min(...scores) <= AGREEMENT_TOLERANCE + EPSILON;
+  });
 }
 
 export function buildConsensus(submissions: readonly Submission[]): ConsensusReport {
   if (submissions.length === 0) throw new RangeError("buildConsensus needs at least one submission.");
-  const first = submissions[0];
-  const completed = submissions.filter((s) => s.outcome === "COMPLETED");
-  const scannedAt = submissions.map((s) => s.scannedAt).sort().at(-1) ?? first.scannedAt;
+  const validated = submissions.map((submission, index) => {
+    const result = validateSubmission(submission);
+    if (!result.ok) throw new RangeError(`Invalid submission at index ${index}: ${result.errors.join(" ")}`);
+    return result.submission;
+  });
+  const first = validated[0];
+  const agentIds = new Set<string>();
+  for (const sub of validated) {
+    for (const field of ["targetId", "runId", "methodologyVersion"] as const) {
+      if (sub[field] !== first[field]) throw new RangeError(`Consensus submissions must have the same ${field}.`);
+    }
+    if (normaliseUrl(sub.homeUrl) !== normaliseUrl(first.homeUrl)) {
+      throw new RangeError("Consensus submissions must have the same homeUrl.");
+    }
+    const agentKey = sub.agentId.toLowerCase();
+    if (agentIds.has(agentKey)) throw new RangeError("Consensus submissions must have unique agentIds (case-insensitive).");
+    agentIds.add(agentKey);
+  }
+  const completed = validated.filter((s) => s.outcome === "COMPLETED");
+  if (completed.length > 1) {
+    const capture = completed[0];
+    const sample = new Map(capture.sampledPages.map((p) => [normaliseUrl(p.url)!, p.type]));
+    for (const sub of completed.slice(1)) {
+      if (sub.scannedAt !== capture.scannedAt || sub.sampledPages.length !== sample.size ||
+          sub.sampledPages.some((p) => sample.get(normaliseUrl(p.url)!) !== p.type)) {
+        throw new RangeError("Completed consensus submissions must describe the same snapshot: capture time and sampled page URLs/types.");
+      }
+    }
+  }
+  const scannedAt = completed[0]?.scannedAt ?? validated.map((s) => s.scannedAt).sort().at(-1)!;
   const common = {
     methodologyVersion: METHODOLOGY_VERSION,
     targetId: first.targetId,
@@ -381,7 +482,7 @@ export function buildConsensus(submissions: readonly Submission[]): ConsensusRep
     scannedAt,
   };
 
-  const perAgent: AgentScoreLine[] = submissions.map((s) => {
+  const perAgent: AgentScoreLine[] = validated.map((s) => {
     const scored = scoreSubmission(s);
     return {
       agentId: s.agentId,
@@ -396,8 +497,8 @@ export function buildConsensus(submissions: readonly Submission[]): ConsensusRep
     return {
       ...common,
       outcome: first.outcome,
-      raters: submissions.length,
-      agentIds: submissions.map((s) => s.agentId),
+      raters: validated.length,
+      agentIds: validated.map((s) => s.agentId),
       confidence: "no-score",
       agreementRate: null,
       disputes: [],
@@ -410,31 +511,46 @@ export function buildConsensus(submissions: readonly Submission[]): ConsensusRep
     };
   }
 
-  const perAgentResults = completed.map((s) => ({ agentId: s.agentId, results: submissionToResults(s) }));
+  const perAgentResults = completed.map((s) => ({
+    agentId: s.agentId,
+    results: submissionToResults(s),
+    metrics: new Map(s.metrics.map((m) => [m.metricId, m])),
+  }));
   const raters = completed.length;
   const disputes: Dispute[] = [];
   let agreed = 0;
 
   const results = METHODOLOGY.metrics.map((def, index) => {
-    const rows = perAgentResults.map((p) => ({ agentId: p.agentId, result: p.results[index] }));
+    const rows = perAgentResults.map((p) => ({ agentId: p.agentId, result: p.results[index], metric: p.metrics.get(def.id)! }));
     if (raters === 1) return rows[0].result;
     const all = rows.map((r) => r.result);
-    if (!agreeOn(all)) {
+    const values = rows.map((r) => normalised(r.result, r.metric));
+    const types: readonly string[] = SCOPE_PAGE_TYPES[def.scope];
+    const applicableUrls = new Set(completed[0].sampledPages.filter((p) => types.includes(p.type)).map((p) => normaliseUrl(p.url)!));
+    const pageRows = rows.map((r) => (r.metric.pageScores ?? []).filter((p) => applicableUrls.has(normaliseUrl(p.url)!)));
+    const perAgentEvidence = rows.map((r) => ({
+      agentId: r.agentId,
+      result: r.result.result,
+      points: r.result.points,
+      evidence: r.result.evidence as EvidenceValue,
+      explanation: r.result.explanation,
+    }));
+    if (!agreeOn(all, values) || (PER_PAGE_SCOPES.has(def.scope) && !agreeOnPages(pageRows))) {
       disputes.push({
         metricId: def.id,
         perAgent: rows.map((r) => ({ agentId: r.agentId, result: r.result.result, points: r.result.points })),
       });
       return notObserved(def.id, "The agents disagreed on this metric, so it is not scored until a person reviews it.", {
-        disagreement: rows.map((r) => ({ agent: r.agentId, result: r.result.result, points: r.result.points })),
+        disagreement: perAgentEvidence.map(({ agentId, ...observation }) => ({ agent: agentId, ...observation })),
       });
     }
     agreed += 1;
-    const values = all.map(normalised);
+    const evidence: EvidenceRecord = { agreedBy: rows.map((r) => r.agentId), perAgent: perAgentEvidence };
     if (values.every((v) => v !== null)) {
       const mean = (values as number[]).reduce((a, b) => a + b, 0) / values.length;
-      return resultFromScore(def.id, mean, { agreedBy: rows.map((r) => r.agentId) }, `Agreed by ${raters} agents.`);
+      return resultFromScore(def.id, mean, evidence, `Agreed by ${raters} agents.`);
     }
-    return all[0];
+    return { ...all[0], evidence: { ...(all[0].evidence as EvidenceRecord), ...evidence } };
   });
 
   const counts = new Map<string, number>();

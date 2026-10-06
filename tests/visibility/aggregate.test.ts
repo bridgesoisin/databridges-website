@@ -21,20 +21,33 @@ import {
   writeSkeleton,
 } from "@/lib/visibility/aggregate-fs";
 import { METHODOLOGY, METHODOLOGY_VERSION } from "@/lib/visibility/methodology";
+import { SCOPE_PAGE_TYPES } from "@/lib/visibility/types";
 
 const HOME = "https://fixture.example/";
+const ARTICLE = "https://fixture.example/article";
+const SAMPLE = [
+  { url: HOME, type: "home", reason: "Homepage" },
+  { url: ARTICLE, type: "article", reason: "Sampled article" },
+];
 const PER_PAGE = new Set(["P", "CP", "KO", "AP"]);
 
-function perfectMetric(id: string): SubmissionMetric {
+function perfectMetric(id: string, sampledPages = SAMPLE): SubmissionMetric {
   const def = METHODOLOGY.metrics.find((m) => m.id === id)!;
   const base = { metricId: id, evidence: ["observed value"], explanation: "Meets the rule." };
   if (PER_PAGE.has(def.scope)) {
-    return { ...base, pageScores: [{ url: HOME, status: "observed", score: 1 }] };
+    const types: readonly string[] = SCOPE_PAGE_TYPES[def.scope];
+    return {
+      ...base,
+      pageScores: sampledPages.filter((p) => types.includes(p.type)).map((p) => ({
+        url: p.url, status: "observed", score: 1,
+      })),
+    };
   }
   return { ...base, outcome: "SCORED", score: 1 };
 }
 
 function makeSubmission(overrides: Partial<Submission> = {}): Submission {
+  const sampledPages = overrides.sampledPages ?? SAMPLE.map((p) => ({ ...p }));
   return {
     schemaVersion: 1,
     methodologyVersion: METHODOLOGY_VERSION,
@@ -45,8 +58,8 @@ function makeSubmission(overrides: Partial<Submission> = {}): Submission {
     scannedAt: "2026-10-03T12:00:00.000Z",
     mode: "manual-agent",
     outcome: "COMPLETED",
-    sampledPages: [{ url: HOME, type: "home", reason: "Homepage" }],
-    metrics: METHODOLOGY.metrics.map((m) => perfectMetric(m.id)),
+    sampledPages,
+    metrics: METHODOLOGY.metrics.map((m) => perfectMetric(m.id, sampledPages)),
     criticalFindings: [],
     ...overrides,
   };
@@ -64,6 +77,124 @@ function errorsOf(input: unknown): string[] {
 describe("validateSubmission", () => {
   it("accepts a complete, well-formed submission", () => {
     expect(validateSubmission(makeSubmission()).ok).toBe(true);
+  });
+
+  it.each([
+    "2026-10-03", "October 3, 2026", "2026-10-03T12:00:00", "2026-10-03T12:00Z",
+    "2026-10-03 12:00:00Z", "2026-02-30T12:00:00Z", "2025-02-29T12:00:00Z",
+    "2100-02-29T12:00:00Z", "2026-04-31T12:00:00Z", "2026-13-01T12:00:00Z",
+    "2026-00-01T12:00:00Z", "2026-10-00T12:00:00Z", "2026-10-03T24:00:00Z",
+    "2026-10-03T12:60:00Z", "2026-10-03T12:00:60Z", "2026-10-03T12:00:00+24:00",
+    "2026-10-03T12:00:00+01:60", "2026-10-03T12:00:00Z\n",
+    "2026-10-03T12:00:00.0001Z", "2026-10-03T12:00:00+0100",
+  ])("rejects a non-full or invalid ISO timestamp: %s", (scannedAt) => {
+    expect(errorsOf(makeSubmission({ scannedAt })).join("\n")).toMatch(/scannedAt/);
+  });
+
+  it.each([
+    ["2026-10-03T13:00:00+01:00", "2026-10-03T12:00:00.000Z"],
+    ["2026-10-03T07:30:00-04:30", "2026-10-03T12:00:00.000Z"],
+    ["2026-10-03T12:00:00.1Z", "2026-10-03T12:00:00.100Z"],
+    ["2000-02-29T00:00:00Z", "2000-02-29T00:00:00.000Z"],
+    ["2024-02-29T00:00:00Z", "2024-02-29T00:00:00.000Z"],
+    ["2026-01-01T00:30:00+01:00", "2025-12-31T23:30:00.000Z"],
+  ])("normalises a valid ISO timestamp to UTC: %s", (scannedAt, expected) => {
+    const input = makeSubmission({ scannedAt });
+    const validated = validateSubmission(input);
+    expect(validated.ok).toBe(true);
+    if (!validated.ok) throw new Error("Expected a valid submission.");
+    expect(validated.submission.scannedAt).toBe(expected);
+    expect(input.scannedAt).toBe(scannedAt);
+  });
+
+  it("requires a unique sample rooted at the submission homepage", () => {
+    for (const sampledPages of [
+      [],
+      [SAMPLE[0], SAMPLE[0]],
+      [SAMPLE[0], { ...SAMPLE[0], url: "https://FIXTURE.example:443/#duplicate" }],
+      [SAMPLE[1], SAMPLE[0]],
+      [{ ...SAMPLE[0], url: "https://fixture.example/different-home" }],
+      [{ ...SAMPLE[0], type: "other" }],
+      [SAMPLE[0], { ...SAMPLE[1], type: "home" }],
+      [SAMPLE[0], { ...SAMPLE[1], url: "https://outside.example/article" }],
+    ]) {
+      expect(errorsOf(makeSubmission({ sampledPages })).join("\n")).toMatch(/sampledPages/);
+    }
+  });
+
+  it("rejects duplicate, unsampled and missing applicable page rows", () => {
+    const metric = perfectMetric("S2.01");
+    const home = metric.pageScores![0];
+    const article = metric.pageScores![1];
+    for (const pageScores of [
+      [home, home, article],
+      [home, { ...home, url: "https://FIXTURE.example:443/#duplicate" }, article],
+      [home, article, { ...home, url: "https://fixture.example/unsampled" }],
+      [home],
+      [],
+    ]) {
+      expect(errorsOf(withMetric(makeSubmission(), { ...metric, pageScores })).join("\n")).toMatch(/S2\.01.*pageScores/);
+    }
+  });
+
+  it("requires every applicable row for each per-page scope", () => {
+    const sampledPages = [
+      SAMPLE[0], SAMPLE[1],
+      { url: "https://fixture.example/services", type: "services", reason: "Services" },
+      { url: "https://fixture.example/contact", type: "contact", reason: "Contact" },
+      { url: "https://fixture.example/legal", type: "legal", reason: "Legal" },
+    ];
+    const sub = makeSubmission({ sampledPages });
+    expect(errorsOf(sub)).toEqual([]);
+    for (const scope of PER_PAGE) {
+      const def = METHODOLOGY.metrics.find((m) => m.scope === scope)!;
+      const metric = perfectMetric(def.id, sampledPages);
+      expect(metric.pageScores!.length).toBeGreaterThan(0);
+      expect(errorsOf(withMetric(sub, { ...metric, pageScores: metric.pageScores!.slice(1) })).join("\n"))
+        .toMatch(/pageScores/);
+    }
+  });
+
+  it("allows empty rows when the sample has no pages in scope", () => {
+    const sub = makeSubmission({ sampledPages: [SAMPLE[0]] });
+    expect(errorsOf(sub)).toEqual([]);
+    const result = submissionToResults(sub).find((m) => m.metricId === "A4.03")!;
+    expect(result.result).toBe("NOT_APPLICABLE");
+    const explicit = withMetric(sub, {
+      ...perfectMetric("A4.03", [SAMPLE[0]]),
+      pageScores: [{ url: HOME, status: "not_applicable", score: null }],
+    });
+    expect(errorsOf(explicit)).toEqual([]);
+  });
+
+  it.each(["observed", "not_observed", "scan_error"] as const)("rejects %s rows outside a metric's scope", (status) => {
+    const metric = perfectMetric("A4.03");
+    const pageScores = [...metric.pageScores!, { url: HOME, status, score: status === "observed" ? 1 : null }];
+    expect(errorsOf(withMetric(makeSubmission(), { ...metric, pageScores })).join("\n")).toMatch(/A4\.03.*scope/);
+  });
+
+  it("requires evidence for scored site and page observations, including zero scores", () => {
+    for (const evidence of [[], [""], ["  \t\n"]]) {
+      for (const score of [0, 1]) {
+        const site = { ...perfectMetric("S1.03"), score, evidence };
+        const page = {
+          ...perfectMetric("S2.01"), evidence,
+          pageScores: SAMPLE.map((p) => ({ url: p.url, status: "observed" as const, score })),
+        };
+        expect(errorsOf(withMetric(makeSubmission(), site)).join("\n")).toMatch(/S1\.03.*evidence/);
+        expect(errorsOf(withMetric(makeSubmission(), page)).join("\n")).toMatch(/S2\.01.*evidence/);
+      }
+    }
+  });
+
+  it("allows unscored observations without evidence", () => {
+    const sub = withMetric(makeSubmission(), {
+      ...perfectMetric("S2.01"), evidence: [],
+      pageScores: SAMPLE.map((p) => ({ url: p.url, status: "not_observed", score: null })),
+    });
+    expect(errorsOf(withMetric(sub, {
+      metricId: "S1.03", outcome: "NOT_OBSERVED", evidence: [], explanation: "Could not observe.",
+    }))).toEqual([]);
   });
 
   it("rejects input that is not an object", () => {
@@ -167,14 +298,16 @@ describe("scoreSubmission", () => {
   });
 
   it("derives points and result codes from page scores (plan 4.3.6 example)", () => {
-    const urls = ["a", "b", "c", "d", "e"].map((p) => `https://fixture.example/${p}`);
+    const urls = [HOME, ARTICLE, "https://fixture.example/b", "https://fixture.example/c", "https://fixture.example/d"];
     const scores = [1, 1, 0.5, 1, 0];
-    const sub = withMetric(makeSubmission(), {
+    const sampledPages = urls.map((url, i) => ({ url, type: i === 0 ? "home" : "article", reason: "Sampled page" }));
+    const sub = withMetric(makeSubmission({ sampledPages }), {
       metricId: "S2.01",
       evidence: ["titles checked"],
       explanation: "Mixed.",
       pageScores: urls.map((url, i) => ({ url, status: "observed", score: scores[i] })),
     });
+    expect(errorsOf(sub)).toEqual([]);
     const result = submissionToResults(sub).find((r) => r.metricId === "S2.01")!;
     expect(result.points).toBe(14);
     expect(result.result).toBe("PARTIAL");
@@ -218,11 +351,11 @@ describe("buildConsensus", () => {
     expect(report.agentIds).toEqual(["agent-a", "agent-b"]);
   });
 
-  it("averages scores that differ by 0.1 or less", () => {
-    const a = withMetric(makeSubmission(), { metricId: "S1.03", evidence: [], explanation: "x", outcome: "SCORED", score: 1 });
+  it("averages scores in the same result category that differ by 0.1 or less", () => {
+    const a = withMetric(makeSubmission(), { metricId: "S1.03", evidence: ["Sitemap checked"], explanation: "x", outcome: "SCORED", score: 0.8 });
     const b = withMetric(makeSubmission({ agentId: "agent-b" }), {
       metricId: "S1.03",
-      evidence: [],
+      evidence: ["Sitemap checked"],
       explanation: "x",
       outcome: "SCORED",
       score: 0.9,
@@ -230,13 +363,210 @@ describe("buildConsensus", () => {
     const report = buildConsensus([a, b]);
     const metric = report.results.find((r) => r.metricId === "S1.03")!;
     expect(report.disputes).toHaveLength(0);
-    expect(metric.points).toBe(19);
+    expect(metric.points).toBe(17);
+  });
+
+  it.each([[1, 0.9], [0, 0.1]])("disputes different result categories within numeric tolerance: %s versus %s", (aScore, bScore) => {
+    const a = withMetric(makeSubmission(), { ...perfectMetric("S1.03"), score: aScore });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), { ...perfectMetric("S1.03"), score: bScore });
+    const report = buildConsensus([a, b]);
+    expect(report.disputes.map((d) => d.metricId)).toEqual(["S1.03"]);
+    expect(report.results.find((r) => r.metricId === "S1.03")!.points).toBeNull();
+  });
+
+  it("requires tolerance across every rater, rather than only adjacent scores", () => {
+    const submissions = [0.5, 0.6, 0.7].map((score, i) => withMetric(
+      makeSubmission({ agentId: `agent-${i}` }), { ...perfectMetric("S1.03"), score },
+    ));
+    expect(buildConsensus(submissions).disputes.map((d) => d.metricId)).toEqual(["S1.03"]);
+  });
+
+  it("compares unrounded scores so points rounding cannot hide a difference above tolerance", () => {
+    const a = withMetric(makeSubmission(), { ...perfectMetric("S1.03"), score: 0.50001 });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), { ...perfectMetric("S1.03"), score: 0.60002 });
+    expect(buildConsensus([a, b]).disputes.map((d) => d.metricId)).toEqual(["S1.03"]);
+  });
+
+  it("averages unrounded scores without turning agreed PARTIAL inputs into PASS", () => {
+    const a = withMetric(makeSubmission(), { ...perfectMetric("S1.03"), score: 0.9999 });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), { ...perfectMetric("S1.03"), score: 0.9998 });
+    const result = buildConsensus([a, b]).results.find((r) => r.metricId === "S1.03")!;
+    expect(result.result).toBe("PARTIAL");
+    expect(result.points).toBe(20);
+  });
+
+  it.each([
+    [1, 0, 0, 1],
+    [0.4, 0.8, 0.8, 0.4],
+    [1, 0.8, 0.9, 0.9],
+  ])("disputes opposed corresponding pages even when metric means match", (aHome, aArticle, bHome, bArticle) => {
+    const metric = perfectMetric("S2.01");
+    const a = withMetric(makeSubmission(), {
+      ...metric, pageScores: [
+        { url: HOME, status: "observed", score: aHome },
+        { url: ARTICLE, status: "observed", score: aArticle },
+      ],
+    });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), {
+      ...metric, pageScores: [
+        { url: ARTICLE, status: "observed", score: bArticle },
+        { url: HOME, status: "observed", score: bHome },
+      ],
+    });
+    const report = buildConsensus([a, b]);
+    expect(report.disputes.map((d) => d.metricId)).toEqual(["S2.01"]);
+    expect(report.results.find((r) => r.metricId === "S2.01")!.result).toBe("NOT_OBSERVED");
+  });
+
+  it("disputes differing page statuses despite equal metric scores", () => {
+    const a = withMetric(makeSubmission(), {
+      ...perfectMetric("S2.01"), pageScores: [
+        { url: HOME, status: "observed", score: 1 },
+        { url: ARTICLE, status: "not_observed", score: null },
+      ],
+    });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), {
+      ...perfectMetric("S2.01"), pageScores: [
+        { url: HOME, status: "not_observed", score: null },
+        { url: ARTICLE, status: "observed", score: 1 },
+      ],
+    });
+    expect(buildConsensus([a, b]).disputes.map((d) => d.metricId)).toEqual(["S2.01"]);
+  });
+
+  it("agrees on corresponding pages within tolerance regardless of row order", () => {
+    const a = withMetric(makeSubmission(), {
+      ...perfectMetric("S2.01"), pageScores: [
+        { url: HOME, status: "observed", score: 0.6 },
+        { url: ARTICLE, status: "observed", score: 0.8 },
+      ],
+    });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), {
+      ...perfectMetric("S2.01"), pageScores: [
+        { url: ARTICLE, status: "observed", score: 0.9 },
+        { url: HOME, status: "observed", score: 0.7 },
+      ],
+    });
+    const report = buildConsensus([a, b]);
+    expect(report.disputes).toEqual([]);
+    expect(report.results.find((r) => r.metricId === "S2.01")!.points).toBe(15);
+  });
+
+  it("keeps each rater's underlying evidence and explanation for agreed metrics", () => {
+    const a = withMetric(makeSubmission(), {
+      ...perfectMetric("S2.01"), evidence: ["Titles measured on both pages"], explanation: "First observation.",
+    });
+    const b = withMetric(makeSubmission({ agentId: "agent-b" }), {
+      ...perfectMetric("S2.01"), evidence: ["Title lengths verified"], explanation: "Second observation.",
+    });
+    const report = buildConsensus([a, b]);
+    expect(report.results.find((r) => r.metricId === "S2.01")!.evidence).toMatchObject({
+      agreedBy: ["agent-a", "agent-b"],
+      perAgent: [
+        {
+          agentId: "agent-a", explanation: "First observation.",
+          evidence: { observed: ["Titles measured on both pages"], source: "agent-a", pages: [
+            { url: HOME, status: "observed", s_p: 1 }, { url: ARTICLE, status: "observed", s_p: 1 },
+          ] },
+        },
+        {
+          agentId: "agent-b", explanation: "Second observation.",
+          evidence: { observed: ["Title lengths verified"], source: "agent-b" },
+        },
+      ],
+    });
+    expect(report.results.find((r) => r.metricId === "S1.03")!.evidence).toMatchObject({
+      perAgent: [
+        { agentId: "agent-a", evidence: { observed: ["observed value"] } },
+        { agentId: "agent-b", evidence: { observed: ["observed value"] } },
+      ],
+    });
+  });
+
+  it("keeps all evidence for agreed unscored metrics too", () => {
+    const submissions = ["agent-a", "agent-b"].map((agentId) => withMetric(makeSubmission({ agentId }), {
+      metricId: "S1.03", outcome: "NOT_OBSERVED", evidence: [`Resource unreadable (${agentId})`], explanation: "Unavailable.",
+    }));
+    const report = buildConsensus(submissions);
+    expect(report.results.find((r) => r.metricId === "S1.03")!.evidence).toMatchObject({
+      perAgent: [
+        { agentId: "agent-a", evidence: { observed: ["Resource unreadable (agent-a)"] } },
+        { agentId: "agent-b", evidence: { observed: ["Resource unreadable (agent-b)"] } },
+      ],
+    });
+  });
+
+  it.each([
+    { targetId: "other-target" }, { runId: "other-run" }, { methodologyVersion: "other-method" },
+    { homeUrl: "https://other.example/", sampledPages: [
+      { url: "https://other.example/", type: "home", reason: "Homepage" },
+    ] },
+    { agentId: "agent-a" },
+    { agentId: "AGENT-A" },
+  ])("rejects incompatible identities and duplicate raters", (overrides) => {
+    expect(() => buildConsensus([makeSubmission(), makeSubmission({ agentId: "agent-b", ...overrides })])).toThrow(RangeError);
+  });
+
+  it("rejects identity mismatches even for non-completed submissions", () => {
+    const blocked = makeSubmission({ outcome: "UNREACHABLE", sampledPages: [], metrics: [], agentId: "agent-b" });
+    expect(() => buildConsensus([makeSubmission(), { ...blocked, targetId: "other-target" }])).toThrow(/targetId/);
+    expect(() => buildConsensus([blocked, { ...blocked, agentId: "agent-c", homeUrl: "https://other.example/" }])).toThrow(/homeUrl/);
+  });
+
+  it("requires completed raters to describe the same capture time and URL/type sample", () => {
+    for (const overrides of [
+      { scannedAt: "2026-10-03T12:00:00.001Z" },
+      { sampledPages: [SAMPLE[0]] },
+      { sampledPages: [SAMPLE[0], { ...SAMPLE[1], url: "https://fixture.example/other-article" }] },
+      { sampledPages: [SAMPLE[0], { ...SAMPLE[1], type: "services" }] },
+    ]) {
+      expect(() => buildConsensus([makeSubmission(), makeSubmission({ agentId: "agent-b", ...overrides })])).toThrow(/snapshot/);
+    }
+  });
+
+  it("accepts equivalent capture instants and samples regardless of reason or non-home order", () => {
+    const services = { url: "https://fixture.example/services", type: "services", reason: "Services" };
+    const a = makeSubmission({ sampledPages: [...SAMPLE, services] });
+    const b = makeSubmission({
+      agentId: "agent-b", scannedAt: "2026-10-03T13:00:00+01:00",
+      sampledPages: [SAMPLE[0], services, { ...SAMPLE[1], reason: "Independent sampling note" }],
+    });
+    const report = buildConsensus([a, b]);
+    expect(report.confidence).toBe("agreed");
+    expect(report.scannedAt).toBe("2026-10-03T12:00:00.000Z");
+  });
+
+  it("uses the completed snapshot time rather than a later failed attempt", () => {
+    const blocked = makeSubmission({
+      agentId: "agent-b", outcome: "UNREACHABLE", sampledPages: [], metrics: [], scannedAt: "2026-10-04T12:00:00Z",
+    });
+    expect(buildConsensus([blocked, makeSubmission()]).scannedAt).toBe("2026-10-03T12:00:00.000Z");
+  });
+
+  it("validates direct consensus callers instead of trusting their types", () => {
+    const sub = withMetric(makeSubmission(), { ...perfectMetric("S2.01"), pageScores: [] });
+    expect(() => buildConsensus([sub])).toThrow(/pageScores/);
+  });
+
+  it("does not echo untrusted field values in validation or consensus errors", () => {
+    const marker = "private-input-marker";
+    const sub = makeSubmission({
+      methodologyVersion: marker, scannedAt: marker, homeUrl: marker, outcome: marker as never,
+      criticalFindings: [marker], metrics: [{ ...perfectMetric("S1.03"), metricId: marker }],
+    });
+    expect(errorsOf(sub).join("\n")).not.toContain(marker);
+    let message = "";
+    try { buildConsensus([sub]); } catch (error) { message = (error as Error).message; }
+    expect(message).not.toBe("");
+    expect(message).not.toContain(marker);
+    expect(errorsOf(withMetric(makeSubmission(), { ...perfectMetric("S1.03"), metricId: marker })).join("\n"))
+      .not.toContain(marker);
   });
 
   it("flags a dispute and leaves the metric unscored", () => {
     const b = withMetric(makeSubmission({ agentId: "agent-b" }), {
       metricId: "S1.03",
-      evidence: [],
+      evidence: ["Sitemap not present"],
       explanation: "No sitemap found.",
       outcome: "SCORED",
       score: 0,

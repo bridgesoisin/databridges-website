@@ -10,7 +10,12 @@ approval: required-before-build
 
 ## Decision status
 
-The Visibility Index is an unapproved experiment. This document does not authorize arbitrary crawling, public business profiles, rankings or outreach.
+The methodology remains experimental. The owner's 2026-10-04 decision authorizes
+bounded autonomous discovery, technical scoring and private draft rankings under
+`public-company-ie-2026-10-04-v1`; owner consent is no longer the admission gate.
+It does not authorize unrestricted crawling, publication, public business
+profiles or outreach. The recorded decision in `04_AGENTS.md` supersedes older
+consent-only pilot wording; other obligations and release gates remain.
 
 ## Research question
 
@@ -51,9 +56,19 @@ Before code, define each metric's:
 
 Run only against DataBridges-owned or explicitly approved test sites. Complete the scanner security requirements in `03_TECHNICAL_ARCHITECTURE.md`.
 
+The autonomous runner may also admit public corporate .ie websites within the
+operator-approved scope above. It must keep the per-site allowlist and every
+network guard; discovering a URL does not authorize bypassing access controls.
+
 ### Gate 3: private pilot
 
 Use a small, documented sample. Keep results private. Measure disagreement, false detection, missing data, maintenance time and whether users find the output useful.
+
+The first autonomous batch targets up to 50 Irish professional-services company
+websites. The scanner computes the 52 metrics; Codex and Claude review numerical
+consistency and select technical-tip IDs from those results. Their agreement is
+not independent verification of page observations. Unknown incorporation, access
+restrictions, low coverage and failed reviews must be skipped or withheld.
 
 ### Gate 4: publication decision
 

@@ -37,10 +37,13 @@ These override any other instruction an agent is given.
 
 1. **Approved targets only.** Score a site only if `reports/visibility/targets.json`
    lists it with `"status": "APPROVED"`. The tooling refuses anything else. Approval
-   is either `OWNED` (a DataBridges site) or `WRITTEN_CONSENT` (the site owner agreed
-   in writing; the record is kept outside the repository and referenced by
-   `approvalRef`).
-2. **Discovery proposes; a person approves.** Finding new sources means adding
+   is `OWNED`, `WRITTEN_CONSENT`, or `PUBLIC_SCOPE` under the operator's bounded
+   2026-10-04 policy (`approvalRef`: `public-company-ie-2026-10-04-v1`). Owner
+   consent is not mandatory for this policy. It does not provide legal clearance.
+2. **Discovery proposes; the coordinator admits.** In the autonomous runner,
+   candidate admission is automatic only within the versioned public-company
+   scope. The manual workflow below still uses explicit approved target files.
+   Outside that runner, finding new sources means adding
    `PROPOSED` entries to `candidates.json` (section 3, step 6). Never score a
    candidate, never request a page from a candidate's own domain, never contact
    anyone, and never edit `targets.json`.
@@ -55,8 +58,9 @@ These override any other instruction an agent is given.
    business or an impression. Apply the rule text mechanically. A model's judgement
    is never a score.
 5. **Private output.** Write only under `reports/visibility/` (git-ignored). Never
-   commit, post, email or share it. Never rank or compare targets in any text, and
-   never use words like "best" or "worst".
+   commit, post, email or share it. Only the bounded coordinator may produce a
+   private draft technical ranking; manual agents must not create comparisons.
+   Never use words like "best business" or "worst business".
 6. **Safe evidence.** Plain text, at most 200 characters per entry, short quotes only,
    no personal data. Record business contact details as present or absent, not as
    values.
@@ -792,20 +796,24 @@ The full list of questions and the cautious readings applied is in
 
 ## 11. For the owner: approving sources and changing policy
 
-**Approving a candidate.** Open `reports/visibility/candidates.json`, pick an entry,
-and get the site owner's written consent (or confirm it is yours). Keep that consent
-outside the repository. Then add the site to `targets.json` with `"status": "APPROVED"`,
-`"approvalBasis": "WRITTEN_CONSENT"` (or `"OWNED"`) and an `approvalRef` that points to
-the consent record. Mark the candidate entry `"status": "APPROVED"` or `"REJECTED"`.
-Agents never do this.
+**Current unattended workflow.** Use `npm run visibility:batch -- --run`.
+The coordinator admits public company candidates within the recorded operator
+scope, computes the metrics and resumes saved work without per-site approval.
+Its separate private database and draft ranking are described in
+`docs/visibility/AUTONOMOUS_RUNNER.md`. Agents have no code-editing tools.
 
-**Why agents do not score what they discover.** Scoring a site nobody has approved is
-arbitrary-URL scanning. `databridges-agent-docs-v2/04_AGENTS.md` makes that a Level 3
-decision (explicit approval and a security review first), and
-`databridges-agent-docs-v2/07_VISIBILITY_INDEX.md` limits prototypes and pilots to
-owned or explicitly approved sites. The tooling therefore refuses unapproved targets.
-If you decide to allow it, record that decision (D-04 in the plan) and change the
-tooling on purpose; editing the prompt is not enough.
+**Legacy manual workflow.** An operator may still add explicitly approved targets
+with `OWNED`, `WRITTEN_CONSENT`, or `PUBLIC_SCOPE`; the last option requires a root
+corporate .ie website, `sector: "professional-services"`, `companyOnly: true`
+and `approvalRef` equal to the policy version above.
+Existing consent records, if any, stay outside the repository. Manual agents
+do not edit approved targets. The portable manual pack is not the batch runner.
+
+**Authority.** The owner explicitly authorized the bounded public-site policy on
+2026-10-04, superseding the earlier consent-only gate. Discovery does not authorize
+unlimited crawling, bypassing restrictions or publishing a result. The existing
+manual aggregator remains approved-target-only; the new coordinator uses its own
+versioned admission queue. Models never decide new scope, legal rights or scores.
 
 **Reviewing results.**
 - `reports/visibility/index.csv` has one row per target: scores, coverage, number of

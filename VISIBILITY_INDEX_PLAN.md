@@ -19,6 +19,28 @@ implements: databridges-agent-docs-v2/07_VISIBILITY_INDEX.md (Gate 0 and Gate 1 
 
 ## Contents
 
+### Superseding execution decision — 2026-10-04
+
+The owner removed the consent-only admission gate and authorized an autonomous
+private website-diagnostic database and draft ranking. This decision supersedes
+the consent requirements in Stage 3, WP-6 and D-11 below; those passages record
+the original pilot proposal, not the current operating requirement. It does not
+approve publication or make a legal-compliance claim.
+
+Current implementation: `docs/visibility/AUTONOMOUS_RUNNER.md`, policy
+`public-company-ie-2026-10-04-v1`. Initial scope is at most 50 Irish
+professional-services corporate .ie websites; code admits candidates, enforces
+guards and calculates scores. Two agent providers discover candidates and review
+technical-tip selection. The metrics, weights and formulas in section 4 remain
+unchanged at 0.1.0-draft; no agent may change a rule or invent an observation.
+Private ranking eligibility additionally requires at least 90% coverage, all
+eight categories shown and confirmed reviews from both providers. Results below
+that gate are retained privately, not presented as zero or silently dropped.
+Search positions, AI citations, business quality and legal compliance are not
+measured. Public deployment still requires a separate release decision.
+
+### Original plan contents
+
 0. At a glance
 1. Governance position
 2. Product definition
@@ -1433,12 +1455,65 @@ type ScanReport = {
 
 ### Appendix G: Execution record and methodology questions
 
-**Status at 2026-10-03: Stage 2 run PAUSED, mostly built.** The run was
-interrupted twice by the account usage limit (5-hour window), then run in
-checkpointed waves, and stopped deliberately after the evaluator wave because
-the weekly allowance had reached 94%. No part of the public release (Stage 5)
+**Status at 2026-10-04: Stage 2 engine built and calibrated; the Verify phase
+(security panel, fidelity audit, governance check, completeness critic) has not
+been run.** The run was interrupted by usage limits, run in checkpointed waves,
+and resumed after the allowance reset. No part of the public release (Stage 5)
 was started. Nothing has been pushed, merged or deployed. All work is on the
 local branch `feat/visibility-index-prototype`.
+
+**Calibration record (2026-10-04, `databridges.ie`, an owned site).** The
+guarded scanner (`scripts/visibility-scan.ts`) scored the site 90 overall (SEO
+95, AEO 85) with 97.3% coverage and no critical findings. The five predictions
+written down before the scan (A1.03 FAIL, S1.03 PASS, A1.01 3 of 3, S2.08 PASS,
+A2.05 PASS) all matched. Five consecutive scans gave identical results for every
+metric, including the timing metric (plan 7.5 acceptance met for this site). All
+15 fixtures, whose expected results were derived by hand without reading the
+code, pass against the evaluators (`fixtures.test.ts`, `determinism.test.ts`).
+Findings on the site itself: no `llms.txt` (A1.03), no homepage link to a privacy
+policy (A4.06), no readable dates (A4.05 not observed), and several partial
+scores (S2.01, S2.03, S4.01, S4.02, A3.x).
+
+**Concurrent work in this tree.** A separate session added an unattended batch
+runner (`src/lib/visibility/autonomous/`, `scripts/visibility/`,
+`scripts/visibility-batch.ts`, `docs/visibility/`), a `PUBLIC_SCOPE` approval basis
+(`public-company-ie-2026-10-04-v1`), and edits to `databridges-agent-docs-v2/04_AGENTS.md`
+and `07_VISIBILITY_INDEX.md` recording the owner's 2026-10-04 decision to drop the
+consent-only gate for a bounded private batch (up to 50 Irish professional-services
+`.ie` company sites, no publication or outreach). Those changes are uncommitted and
+were not made by this run; the combined tree passes `vitest` (41 files, 3,121
+tests), `tsc` and `lint`.
+
+**Verification wave 1 (2026-10-04, read-only, two reviewers).** The fetch-layer
+security reviewer and the unattended-runner reviewer ran; each medium-or-higher
+finding was re-checked by an independent skeptic. A first attempt with five
+parallel reviewers was cut off by the usage limit and returned nothing. Result:
+two **confirmed high** findings, both fixed in this tree with regression tests:
+- **NET-01** (`extract.ts`): one start tag with tens of thousands of distinct
+  attributes made the HTML parser quadratic (80,000 attributes took 15 s or more,
+  blocking the event loop past every timeout). The pre-parse scan now budgets the
+  sum of squared attribute counts across the page and cuts the markup when it runs
+  out; a tag with 20,000 attributes still parses.
+- **NET-02** (`fetch.ts`): the own-agent robots gate received the normalised URL
+  (trailing slash removed) while the request used the original, so
+  `Disallow: /dir/` did not stop a redirect to `/dir/`. The gate now receives the
+  exact request URL.
+One finding was refuted (an unreadable `robots.txt` allowing the scan is the
+specified behaviour). Nine medium or low findings were not independently checked:
+- Scanner: NET-03 (CLI help says the allowlist cannot change although
+  `VISIBILITY_EXTRA_HOSTS` extends it by design, so the text is inaccurate); NET-04
+  (parse5 misnested-formatting cost still allows 5 to 10 s on about 100,000
+  elements); NET-05 (zlib versus raw deflate is guessed from the first two bytes).
+- Unattended runner (from the other session): F2 (sector, incorporation and
+  Irish-scope admission rest on model assertions plus a trivial word match); F3 (the
+  limit of 50 counts reviewed sites, so up to 200 can be scanned); F4 (the
+  user agent points to `/index/bot`, which does not exist); F5 (the Codex capability
+  restriction is a denylist of three features); F6 (`sourceOrigin` is
+  model-supplied and unverified); F7 (the docs say more is screened than the code
+  enforces).
+Not yet run: the plan-fidelity audits (SEO, AEO and scoring), the governance and
+claims check, and the completeness critic. The runner reviewer did not run any
+model session, so model tool restrictions are unconfirmed.
 
 **Built and verified**
 
@@ -1462,16 +1537,16 @@ errors; `npm run lint` gave no output (clean, after `reports/**` was added to th
 ESLint ignores because it holds generated bundles). `npm run build` was last run
 earlier in this pause, before the evaluators were added, and not re-run.
 
-**Not built (the engine cannot yet score a site by itself)**
+**Not done**
 
-- `evaluate/index.ts` (the pure `evaluateSnapshot`), `report.ts`, `scan.ts` (the
-  scan orchestration), the fixture runner and determinism test, and
-  `scripts/visibility-scan.ts` (the `visibility:scan` npm script has not been
-  added yet). Until these exist, scores come from agents following the brief,
-  with `aggregate.ts` doing the arithmetic.
-- reconcile loop against the 15 fixtures
-- Workflow 2 (security panel, fidelity audit, governance check, completeness critic)
-- WP-5 calibration: the self-scan of `databridges.ie` and the test-retest run (7.4, 7.5)
+- The engine itself is complete as of 2026-10-04: `evaluateSnapshot`,
+  `report.ts`, `scan.ts`, the fixture runner, the determinism test and the scan
+  CLI exist and pass. The `visibility:scan` npm script has not been added to
+  `package.json`.
+- Workflow 2 (security panel, fidelity audit, governance check, completeness critic),
+  including a review of the concurrent batch runner.
+- Owner decisions: D-03 methodology sign-off, D-04 review of arbitrary-URL
+  scanning, D-05 publication.
 
 **Deviations from the plan**
 

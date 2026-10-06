@@ -77,8 +77,10 @@ export interface GuardedFetcher extends Fetcher {
 }
 
 export interface GuardedFetcherOptions {
-  // Replaces DEFAULT_ALLOWED_HOSTS. VISIBILITY_EXTRA_HOSTS is always added on top.
+  // Replaces DEFAULT_ALLOWED_HOSTS. By default VISIBILITY_EXTRA_HOSTS is added on top.
   allowedHosts?: readonly string[];
+  // Autonomous batches must not inherit a wider ambient allowlist.
+  includeExtraHosts?: boolean;
   // Supplies DNS answers. Whatever it returns is still validated before any connection.
   resolver?: Resolver;
   // Scan time source for fetchedAt and certificate days-to-expiry.
@@ -879,7 +881,7 @@ export function _createFetcherCore(policy: CorePolicy): GuardedFetcher {
       }
       let permitted: boolean;
       try {
-        permitted = await checkGate(next.url, kind);
+        permitted = await checkGate(next.href, kind);
       } catch (error) {
         return blocked(new Failure("UNKNOWN", `Robots gate failed: ${toFailure(error).message}`));
       }
@@ -976,7 +978,7 @@ export function _createFetcherCore(policy: CorePolicy): GuardedFetcher {
     }
     try {
       job.assertAlive();
-      if (!(await checkGate(parsed.url, req.kind))) {
+      if (!(await checkGate(parsed.href, req.kind))) {
         return refusal(new Failure("ROBOTS_DISALLOWED", "Disallowed by robots.txt for this scanner"));
       }
     } catch (error) {
@@ -1043,7 +1045,7 @@ function readExtraHosts(): string[] {
 // Production factory. It offers no switch for address validation, ports, limits or the allowlist
 // beyond naming more allowed hostnames; anything else passed in is ignored.
 export function createGuardedFetcher(options: GuardedFetcherOptions = {}): GuardedFetcher {
-  const extra = readExtraHosts();
+  const extra = options.includeExtraHosts === false ? [] : readExtraHosts();
   const deadlineMs = Math.min(
     PRODUCTION_LIMITS.deadlineMs,
     typeof options.deadlineMs === "number" && options.deadlineMs > 0 ? options.deadlineMs : PRODUCTION_LIMITS.deadlineMs,

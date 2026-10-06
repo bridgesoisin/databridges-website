@@ -60,6 +60,7 @@ export type ScanOptions = {
 
 export type ScanSiteOptions = ScanOptions & {
   allowedHosts?: readonly string[];
+  includeExtraHosts?: boolean;
   resolver?: Resolver;
 };
 
@@ -655,6 +656,7 @@ export async function scanSite(input: string, options: ScanSiteOptions): Promise
   const gate = options.ownAgentGate ?? createOwnAgentGate();
   const fetcher = createGuardedFetcher({
     allowedHosts: options.allowedHosts,
+    includeExtraHosts: options.includeExtraHosts,
     resolver: options.resolver,
     robotsGate: gate.gate,
   });
