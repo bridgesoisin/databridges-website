@@ -1,0 +1,139 @@
+{
+ "reportVersion": 1,
+ "methodologyVersion": "0.1.0-draft",
+ "scannerVersion": "t",
+ "scannedAt": "2026-10-02T09:15:00.000Z",
+ "snapshotHash": "a109614e12f00aa112809ced0343089768ba5e065e53e06d1e9987c57ce23d0a",
+ "homeUrl": "https://fixture.example/",
+ "outcome": "COMPLETED",
+ "outcomeDetail": null,
+ "coverage": 0.6055,
+ "pagesSampled": [
+  {
+   "url": "https://fixture.example/",
+   "type": "home",
+   "reason": "Homepage after redirects",
+   "fetchClass": "ok",
+   "observed": true,
+   "renderDependent": true
+  },
+  {
+   "url": "https://fixture.example/services",
+   "type": "services",
+   "reason": "Best of 1 services candidate by depth, then path",
+   "fetchClass": "ok",
+   "observed": true,
+   "renderDependent": true
+  },
+  {
+   "url": "https://fixture.example/about",
+   "type": "about",
+   "reason": "Best of 1 about candidate by depth, then path",
+   "fetchClass": "ok",
+   "observed": true,
+   "renderDependent": true
+  },
+  {
+   "url": "https://fixture.example/faq",
+   "type": "faq",
+   "reason": "Best of 1 faq candidate by depth, then path",
+   "fetchClass": "ok",
+   "observed": true,
+   "renderDependent": true
+  },
+  {
+   "url": "https://fixture.example/pricing",
+   "type": "other",
+   "reason": "Best of 1 other candidate by depth, then path",
+   "fetchClass": "ok",
+   "observed": true,
+   "renderDependent": true
+  }
+ ],
+ "criticalFindings": [
+  {
+   "id": "CF-04",
+   "summary": "Detected: the homepage looks built by JavaScript, so its content is not in the raw HTML this scan reads; its body content was not scored."
+  }
+ ],
+ "informational": {
+  "trainingCrawlerPolicy": [
+   {
+    "token": "GPTBot",
+    "allowed": true
+   },
+   {
+    "token": "ClaudeBot",
+    "allowed": true
+   },
+   {
+    "token": "Google-Extended",
+    "allowed": true
+   },
+   {
+    "token": "Applebot-Extended",
+    "allowed": true
+   },
+   {
+    "token": "CCBot",
+    "allowed": true
+   },
+   {
+    "token": "Amazonbot",
+    "allowed": true
+   },
+   {
+    "token": "Bytespider",
+    "allowed": true
+   },
+   {
+    "token": "meta-externalagent",
+    "allowed": true
+   }
+  ],
+  "userAgentPolicy": [
+   {
+    "token": "ChatGPT-User",
+    "allowed": true
+   },
+   {
+    "token": "Claude-User",
+    "allowed": true
+   },
+   {
+    "token": "Perplexity-User",
+    "allowed": true
+   }
+  ],
+  "challengeDetected": false,
+  "scannerRegion": null,
+  "jsonLdTypes": [
+   "Organization",
+   "WebSite"
+  ],
+  "homepageHtmlBytes": 2089,
+  "homepageRedirects": 0
+ },
+ "listVersions": {
+  "aiAgents": "1.0.0-draft",
+  "patterns": "1.0.0-draft"
+ },
+ "staleLists": [
+  "aiAgents",
+  "patterns"
+ ],
+ "limitations": [
+  "Reads the raw HTML only; content added by JavaScript is not seen or scored.",
+  "Samples the homepage and up to four other pages chosen by a fixed rule, so results describe those pages and not every page on the site.",
+  "Scores are signals of readiness only. They do not compare this site with others and do not predict search results or whether any AI system will mention the site.",
+  "Does not measure search positions, traffic, backlinks, domain authority, Core Web Vitals, whether any AI system cites the site, content accuracy or quality, accessibility conformance, legal compliance or off-site reputation.",
+  "Several thresholds are DataBridges judgements (heuristics) and may change in a later methodology version.",
+  "Server response time is measured from one scanner location at one moment and varies with region and time of day.",
+  "Methodology 0.1.0-draft is a draft that the methodology owner has not signed off, so results are engineering calibration results and not published claims.",
+  "The AI crawler list is unverified against vendor documentation or past its review date, so crawler treatment may be out of date.",
+  "The page-type and wording pattern lists have no recorded review date.",
+  "5 sampled pages are built by JavaScript, so their body content was not read.",
+  "One or more scores are withheld because too little of the site could be observed; the observed metrics are still shown."
+ ],
+ "correctionRoute": "oisin@databridges.ie"
+}

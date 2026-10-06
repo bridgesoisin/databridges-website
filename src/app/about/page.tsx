@@ -508,7 +508,7 @@ export default function AboutPage() {
               Want to work together?
             </h2>
             <p className="text-gray-300 text-lg max-w-xl mx-auto mt-4">
-              A 30-minute call costs nothing and usually tells us both whether
+              A 10 minute call costs nothing and usually tells us both whether
               it&apos;s worth going further. No sales script. Just a
               conversation.
             </p>
