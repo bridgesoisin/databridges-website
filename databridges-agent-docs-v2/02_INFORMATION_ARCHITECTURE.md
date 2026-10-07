@@ -54,6 +54,12 @@ Reserved, non-public experiment routes:
 
 Do not publish or include reserved routes in navigation, sitemap or search indexing until the relevant gate is approved.
 
+Exception (proposed 2026-10-07, takes effect when the owner merges it): `/index/bot` is a live crawler
+information page. The scanner's User-Agent links to it, so a site owner who sees DataBridgesBot in their logs
+can find who runs it, what it reads, how to block it and how to ask us to stop. It is `noindex`, and is not in
+navigation or the sitemap. Its numbers are read from the scanner's code, and a test fails if the
+User-Agent's link and the page's route drift apart.
+
 ## Existing-route migration
 
 The repository currently includes routes that must be preserved or deliberately migrated.
