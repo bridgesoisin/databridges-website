@@ -9,6 +9,11 @@ import { MAX_REQUESTS } from "@/lib/visibility/scan";
 
 const CONTACT_EMAIL = "oisin@databridges.ie";
 
+// Rendered on request rather than prerendered: Next.js does not write prerender metadata where
+// @netlify/plugin-nextjs looks for it under a route segment named "index" (.next/server/app/index/bot.meta),
+// which failed every Netlify deploy.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "DataBridgesBot",
   description:
