@@ -36,6 +36,7 @@ export default function Nav() {
   }, [menuOpen]);
 
   return (
+    <>
     <nav
       role="navigation"
       aria-label="Main navigation"
@@ -143,12 +144,14 @@ export default function Nav() {
           </button>
         </div>
       </div>
+    </nav>
 
-      {/* Mobile overlay */}
+      {/* Mobile overlay. It sits outside <nav> on purpose: the nav's backdrop-blur makes it the
+          containing block for fixed children, which would shrink this overlay to the nav's height. */}
       <div
         className={`nav-overlay ${
           menuOpen ? "open" : ""
-        } fixed inset-0 bg-navy flex flex-col items-center justify-center gap-8 md:hidden z-40`}
+        } fixed inset-0 bg-navy flex flex-col items-center justify-center gap-8 md:hidden z-[60]`}
       >
         <button
           onClick={() => setMenuOpen(false)}
@@ -191,6 +194,6 @@ export default function Nav() {
           Send an enquiry
         </Link>
       </div>
-    </nav>
+    </>
   );
 }
